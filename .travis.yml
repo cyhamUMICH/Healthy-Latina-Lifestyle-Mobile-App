@@ -17,5 +17,6 @@ jobs:
       node_js: lts/*
       script:
         - npm ci
+        - npm install -g expo-cli
         - npx expo login --non-interactive -u cyhamumich
         - npx expo publish --non-interactive
