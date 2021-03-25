@@ -20,3 +20,6 @@ jobs:
         - npm install -g expo-cli
         - npx expo login --non-interactive -u cyhamumich
         - npx expo publish --non-interactive
+branches:
+  except:
+  - develop
