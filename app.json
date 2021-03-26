@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Healthy Latina Lifestyle Mobile App",
+    "slug": "Healthy-Latina-Lifestyle-Mobile-App",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo-icon.png",
+    "splash": {
+      "image": "./assets/logo-splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/logo-adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/logo-favicon.png"
+    },
+    "description": "Healthy Latina Lifestyle will be a mobile application whose purpose is to provide resources for the betterment of users' physical and mental well-being. The app aims to guide users through relaxation techniques such as meditation and yoga, teach them about self-care and health topics, and create a space for reflecting on their thoughts with the help of journal prompts. It will also use challenges to incentivize users to complete self-care tasks and in-app messaging to encourage them to reach out to one another. By the end of August, the Healthy Latina Lifestyle app will be on the Google Play Store and Apple App Store.",
+    "githubUrl": "https://github.com/cyhamUMICH/Healthy-Latina-Lifestyle-Mobile-App"
+  }
+}
