@@ -17,7 +17,7 @@ const Stack = createStackNavigator();
 
 const StackNavigation = () => {
   return (
-    <Stack.Navigator initialRouteName="Temp"
+    <Stack.Navigator initialRouteName="Login"
       screenOptions={({navigation}) => ({
         headerStyle: {backgroundColor: colors.accentBackground},
         headerTitleStyle: { color: colors.text },
