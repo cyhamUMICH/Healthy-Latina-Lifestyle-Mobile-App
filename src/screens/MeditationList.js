@@ -1,11 +1,52 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { styles } from '../styles/Styles';
+import ContentList from '../components/ContentList';
 
 const MeditationList = () => {
+  // TODO: Make data come from the database
+  const data = [
+    {
+      contentID: '1',
+      title: 'This is a Mediatation Title. It is Very Long.',
+      imagePath: require('../../assets/temporary/Meditation1.png'),
+      description: 'This is the first meditation.',
+      topics: 'Sleep',
+      language: 'EN',
+      duration: '926',
+      difficulty: 'B',
+      cost: '0'
+    },
+    {
+      contentID: '2',
+      title: 'Second Item',
+      imagePath: require('../../assets/temporary/Meditation2.png'),
+      description: 'Esta es la segunda meditación.',
+      topics: 'Anxiety,Stress',
+      language: 'ES',
+      duration: '3788',
+      difficulty: 'B',
+      cost: '0'
+    },
+    {
+      contentID: '3',
+      title: 'Third Item',
+      imagePath: require('../../assets/temporary/Meditation3.png'),
+      description: 'This is the third meditation.',
+      topics: 'Abundance,Anxiety,Stress',
+      language: 'EN',
+      duration: '600',
+      difficulty: 'A',
+      cost: '3.99'
+    },
+  ];
+
   return (
     <View style={styles.app}>
-      <Text>Meditation List Page</Text>
+      <ContentList 
+        contentType="Meditations"
+        data={data}
+        filterBy="Difficulty,Duration,Topic,Language"></ContentList>
     </View>
   );
 };
