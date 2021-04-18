@@ -13,7 +13,7 @@ const MeditationList = () => {
       description: 'This is the first meditation.',
       topics: 'Sleep',
       language: 'EN',
-      duration: '926',
+      duration: '360',
       difficulty: 'B',
       cost: '0'
     },
@@ -46,7 +46,7 @@ const MeditationList = () => {
       <ContentList 
         contentType="Meditations"
         data={data}
-        filterBy="Difficulty,Duration,Topic,Language"></ContentList>
+        filterBy="Difficulty,Language,Topic,Duration"></ContentList>
     </View>
   );
 };

@@ -31,6 +31,9 @@ export const styles = StyleSheet.create({
     padding: '2%',
     marginBottom: '4%'
   },
+  noContent: {
+    alignSelf: 'center'
+  },
   cardList: {
     marginVertical: '2%',
     marginBottom: '4%'
@@ -61,7 +64,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: '5%',
     marginRight: '2%',
     marginBottom: '2%',
-    backgroundColor: "#D3D3D3CC",
+    backgroundColor: colors.duration,
     fontWeight: 'bold'
   },
   tags: {
@@ -86,11 +89,58 @@ export const styles = StyleSheet.create({
     marginRight: '2%',
     marginBottom: '2%'
   },
-   button: {
+  button: {
     backgroundColor: colors.button,
+  },
+  modalButtonWrapper: {
+    marginHorizontal: '2%',
+    marginBottom: '2%'
+  },
+  modalButtons: {
+    backgroundColor: colors.modalButtons,
   },
   buttonText: {
     color: colors.text
+  },
+  selectedFilterButton: {
+    backgroundColor: colors.selectedButton
+  },
+  modalView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.appBackground
+  },
+  modal: {
+    maxHeight: '70%',
+    alignItems: 'center',
+    backgroundColor: colors.modalBackground,
+    padding: '5%',
+    marginHorizontal: '10%',
+    marginVertical: '30%',
+    borderColor: colors.borderColor,
+    borderWidth: 1,
+    // https://reactnative.dev/docs/modal#example
+    borderRadius: 20,
+    shadowColor: colors.modalBorder,
+    shadowOffset: {
+      width: 2,
+      height: 4
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  modalSection: {
+    alignItems: 'center'
+  },
+  modalText: {
+    fontSize: 18
+  },
+  horizontalButtonLayout: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    marginVertical: '5%'
   }
 });
   

@@ -1,21 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import { styles } from '../styles/Styles';
+import FilterModal from '../components/ContentFilter';
 
 const ContentCards = (props) => {
   return (
-    <View>
-    {
-      (props.filteredList.length != 0) 
-      ? <FlatList 
-          style={props.style}
-          data={props.filteredList}
-          renderItem={ContentCard}
-          keyExtractor={item => item.contentID} /> 
-      : <Text>No {props.contentType} Match Your Search</Text>
-    }
-    </View>
+    (props.filteredList.length != 0) 
+    ? <FlatList 
+        style={props.style}
+        data={props.filteredList}
+        renderItem={ContentCard}
+        keyExtractor={item => item.contentID} /> 
+    : <Text style={styles.noContent}>No {props.contentType} Match Your Search</Text>
   );
 };
 
@@ -51,7 +48,7 @@ const Tags = (props) => {
   }
 
   let topics = props.topics.split(",");
-  let topicTags = topics.map((topic, index) => <Text key={index} style={styles.topicTag}>{topic}</Text>);
+  let topicTags = topics.sort().map((topic, index) => <Text key={index} style={styles.topicTag}>{topic}</Text>);
   
   return (
     <View style={styles.tags}>
@@ -62,19 +59,38 @@ const Tags = (props) => {
 };
 
 const ContentList = (props) => {
-  return (
-    <View>         
-      <View style={styles.fullWidthWindow}>
-        <Button
-          buttonStyle={styles.button}
-          titleStyle={styles.buttonText}
-          title="Filter"
-          onPress={() => {}}></Button>
-        <ContentCards 
-          style={styles.cardList} 
-          contentType={props.contentType}
-          filteredList={props.data}/>
-      </View>
+  const [filteredList, setFilteredList] = useState(props.data);
+  const [filterModalVisible, setFilterModalVisible] = useState(false);
+  const [filterSettings, setFilterSettings] = useState({
+    difficultyFilter: [],
+    languageFilter: [],
+    topicFilter: [],
+    durationFilter: []
+  });
+  const filterBy = props.filterBy.split(',');
+
+  return (     
+    <View style={styles.fullWidthWindow}>
+      <Button 
+        buttonStyle={styles.button}
+        titleStyle={styles.buttonText}
+        title="Filter"
+        onPress={() => {
+          setFilterModalVisible(true);
+        }}></Button>
+      <ContentCards 
+        style={styles.cardList} 
+        contentType={props.contentType}
+        filteredList={filteredList}/>
+      <FilterModal
+        allData={props.data}
+        filterBy={filterBy}
+        visibleFunction={setFilterModalVisible}
+        visible={filterModalVisible}
+        filterSettingsFunction={setFilterSettings}
+        filterSettings={filterSettings}
+        filteredListFunction={setFilteredList}
+        filteredList={filteredList}/>
     </View>
   );
 };
