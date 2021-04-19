@@ -4,12 +4,19 @@ import { styles } from '../styles/Styles';
 import { Button } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { Image } from 'react-native';
+
 
 //https://code.tutsplus.com/tutorials/common-react-native-app-layouts-login-page--cms-27639
 
 const Login = (props) => {
   return (
     <View style={styles.app}>
+
+    <Image 
+      source={require('../../assets/logo-title.png')} 
+      style={styles.loginPhoto}
+      />
 
 
       <View style={{top: 200}}>

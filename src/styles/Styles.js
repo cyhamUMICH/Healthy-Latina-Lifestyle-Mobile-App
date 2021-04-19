@@ -18,6 +18,8 @@ export const styles = StyleSheet.create({
     height: 45,
     marginBottom: 20,
     alignItems: "center",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   TextInput: {
     height: 50,
@@ -141,6 +143,43 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     flexWrap: 'wrap',
     marginVertical: '5%'
+  },
+  playButton: {
+    backgroundColor: '#FFF',
+    borderColor: 'rgba(93, 63, 106, 0.2)',
+    borderWidth: 16,
+    width: 128,
+    height: 128,
+    borderRadius: 64,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 32,
+    shadowColor: '#5D3F6A',
+    shadowRadius: 30,
+    shadowOpacity: 0.5,
+  },
+  meditationPhoto:{
+    width: 300,
+    height: 300,
+    borderRadius: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+    bottom: 85,
+  },
+  editAccountProfile:{
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    bottom: 100,
+  },
+  loginPhoto:{
+    width: 250,
+    height: 250,
+    alignItems: 'center',
+    justifyContent: 'center',
+    bottom: 50,
   }
 });
   

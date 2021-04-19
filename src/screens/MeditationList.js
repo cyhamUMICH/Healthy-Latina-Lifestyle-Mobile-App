@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { styles } from '../styles/Styles';
 import ContentList from '../components/ContentList';
+import Meditation from './Meditation';
 
 const MeditationList = () => {
   // TODO: Make data come from the database
@@ -41,6 +42,7 @@ const MeditationList = () => {
     },
   ];
 
+  
   return (
     <View style={styles.app}>
       <ContentList 
@@ -48,6 +50,7 @@ const MeditationList = () => {
         data={data}
         filterBy="Difficulty,Language,Topic,Duration"></ContentList>
     </View>
+   
   );
 };
 

@@ -7,7 +7,7 @@ import { Button } from 'react-native';
 const SideMenu = (props) => {
   return (
     <DrawerContentScrollView {...props}>
-      <Text>Edit Account</Text>
+      <Button title="Edit Account" onPress={() => props.navigation.navigate("EditAccount")} />
       <Button title="Log out" onPress={() => props.navigation.navigate("Login")} />
     </DrawerContentScrollView>
   );
