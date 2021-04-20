@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { styles } from '../styles/Styles';
-import { Button } from 'react-native';
+import { Button } from 'react-native-elements';
 import { TextInput } from 'react-native-gesture-handler';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Image } from 'react-native';
@@ -17,12 +17,6 @@ const Login = (props) => {
       source={require('../../assets/logo-title.png')} 
       style={styles.loginPhoto}
       />
-
-
-      <View style={{top: 200}}>
-        <Button title="Login" onPress={() => props.navigation.navigate("Temp")} />
-        <Button title="Create an account" onPress={() => props.navigation.navigate("Register")} />
-      </View>
 
       <View style={styles.inputView}>
         <TextInput
@@ -40,6 +34,18 @@ const Login = (props) => {
           placeholderTextColor="#003f5c"
           secureTextEntry={true}
           //onChangeText={(password) => setPassword(password)}
+        />
+      </View>
+
+
+      <View>
+        <Button 
+        buttonStyle={styles.basicButtons}
+        title="Login"  onPress={() => props.navigation.navigate("Temp")} 
+        />
+        <Button 
+        buttonStyle={styles.basicButtons}
+        title="Create an account" onPress={() => props.navigation.navigate("Register")} 
         />
       </View>
 

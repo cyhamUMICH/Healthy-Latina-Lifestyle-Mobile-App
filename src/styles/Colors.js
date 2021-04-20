@@ -10,5 +10,6 @@ export const colors =
   topicTag: '#d7efc0',
   modalButtons: '#d3d3d3',
   modalBackground: '#fff',
-  modalBorder: '#000'
+  modalBorder: '#000',
+  transparentButton: 'rgba(52, 52, 52, 0)'
 };

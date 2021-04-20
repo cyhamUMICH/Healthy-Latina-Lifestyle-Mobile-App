@@ -1,6 +1,6 @@
 import { useLinkProps } from '@react-navigation/native';
 import React from 'react';
-import { Button } from 'react-native';
+import { Button } from 'react-native-elements';
 import { View, Text } from 'react-native';
 import { styles } from '../styles/Styles';
 import { Image } from 'react-native';
@@ -18,15 +18,18 @@ const Meditation = (props) => {
       style={styles.meditationPhoto}
       />
 
+      
 
-      <View style={{top: 200}}>
-        <Text>Listen and relax</Text>
-      </View>
-
-     
+    
       <TouchableOpacity
         style={styles.playButton}>
         </TouchableOpacity>
+
+
+
+        <View style={{top: 50}}>
+        <Text>Listen and relax</Text>
+      </View>
 
 
 

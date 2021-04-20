@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { styles } from '../styles/Styles';
-import { Button } from 'react-native';
+import { Button } from 'react-native-elements';
 import { Image } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
@@ -15,9 +15,11 @@ const EditAccount = (props) => {
       style={styles.editAccountProfile}
       />
 
-      <View style={{bottom: 90}}>
-       <Button title="Change profile picture"/>
-      </View>
+     
+        <Button 
+        buttonStyle={styles.basicButtons}
+        title="Change profile picture"
+        />
 
 
       <View style={styles.inputView}>
@@ -54,10 +56,12 @@ const EditAccount = (props) => {
         />
       </View>
 
-      <View style={{top: 50}}>
-       <Button title="update profile information" onPress={() => props.navigation.navigate("Temp")}/>
-      </View>
 
+      <Button 
+        buttonStyle={styles.basicButtons}
+        title="Update profile information" onPress={() => props.navigation.navigate("Temp")}
+        />
+     
 
     </View>
   );
