@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { styles } from '../styles/Styles';
+import { colors } from '../styles/Colors'
 import { Button } from 'react-native-elements';
 import { TextInput } from 'react-native-gesture-handler';
 
@@ -8,50 +9,52 @@ const Register = (props) => {
   return (
     <View style={styles.app}>
 
+    <View style={styles.fullWidthWindow}>
+      <View style={styles.smallerWidthWindow}>
       <View style={styles.inputView}>
         <TextInput
-          style={styles.TextInput}
+          style={styles.inputText}
+          textAlign="center"
           placeholder="name"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor={colors.text}
           //onChangeText={(email) => setEmail(email)}
         />
-      </View>
- 
-      <View style={styles.inputView}>
+
         <TextInput
-          style={styles.TextInput}
+          style={styles.inputText}
+          textAlign="center"
           placeholder="email"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor={colors.text}
           //onChangeText={(password) => setPassword(password)}
         />
-      </View>
 
-      <View style={styles.inputView}>
         <TextInput
-          style={styles.TextInput}
+          style={styles.inputText}
+          textAlign="center"
           placeholder="username"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor={colors.text}
           //onChangeText={(password) => setPassword(password)}
         />
-      </View>
 
-      <View style={styles.inputView}>
         <TextInput
-          style={styles.TextInput}
+          style={styles.inputText}
+          textAlign="center"
           placeholder="password"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor={colors.text}
           secureTextEntry={true}
           //onChangeText={(password) => setPassword(password)}
         />
       </View>
 
       <Button 
-        buttonStyle={styles.basicButtons}
+        buttonStyle={styles.button}
+        titleStyle={styles.buttonText}
         title="Create Account"  onPress={() => props.navigation.navigate("Login")} 
         />
 
-
-    </View>
+      </View>
+      </View>
+</View>
   );
 };
 

@@ -2,14 +2,13 @@ import React from 'react';
 import { View } from 'react-native';
 import { styles } from '../styles/Styles';
 import ContentList from '../components/ContentList';
-import Meditation from './Meditation';
 
 const MeditationList = () => {
   // TODO: Make data come from the database
   const data = [
     {
       contentID: '1',
-      title: 'This is a Mediatation Title. It is Very Long.',
+      title: 'Control Your Breathing and Fall Asleep',
       imagePath: require('../../assets/temporary/Meditation1.png'),
       description: 'This is the first meditation.',
       topics: 'Sleep',
@@ -20,7 +19,7 @@ const MeditationList = () => {
     },
     {
       contentID: '2',
-      title: 'Second Item',
+      title: 'Relajarse y Recargar',
       imagePath: require('../../assets/temporary/Meditation2.png'),
       description: 'Esta es la segunda meditación.',
       topics: 'Anxiety,Stress',
@@ -31,7 +30,7 @@ const MeditationList = () => {
     },
     {
       contentID: '3',
-      title: 'Third Item',
+      title: 'Explore Your Thinking',
       imagePath: require('../../assets/temporary/Meditation3.png'),
       description: 'This is the third meditation.',
       topics: 'Abundance,Anxiety,Stress',

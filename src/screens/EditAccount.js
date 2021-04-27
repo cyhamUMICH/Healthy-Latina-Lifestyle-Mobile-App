@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { styles } from '../styles/Styles';
+import { colors } from '../styles/Colors';
 import { Button } from 'react-native-elements';
 import { Image } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
@@ -9,60 +10,57 @@ import { TextInput } from 'react-native-gesture-handler';
 const EditAccount = (props) => {
   return (
     <View style={styles.app}>
-
-      <Image 
-      source={require('../../assets/temporary/Meditation3.png')} 
-      style={styles.editAccountProfile}
-      />
+      <View style={styles.fullWidthWindow}>
+      <View style={styles.smallerWidthWindow}>
+        <Image 
+        source={require('../../assets/temporary/Meditation3.png')} 
+        style={styles.editAccountProfile}
+        />
 
      
         <Button 
-        buttonStyle={styles.basicButtons}
+        buttonStyle={styles.button}
+        titleStyle={styles.buttonText}
         title="Change profile picture"
         />
 
 
       <View style={styles.inputView}>
         <TextInput
-          style={styles.TextInput}
+          style={styles.inputText}
+          textAlign="center"
           placeholder="name"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor={colors.text}
         />
-      </View>
 
-      <View style={styles.inputView}>
         <TextInput
-          style={styles.TextInput}
+          style={styles.inputText}
+          textAlign="center"
           placeholder="username"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor={colors.text}
         />
-      </View>
-
-
-      <View style={styles.inputView}>
+ 
         <TextInput
-          style={styles.TextInput}
+          style={styles.inputText}
+          textAlign="center"
           placeholder="email"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor={colors.text}
         />
       </View>
-
-
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="password"
-          placeholderTextColor="#003f5c"
-        />
-      </View>
-
 
       <Button 
-        buttonStyle={styles.basicButtons}
+        buttonStyle={styles.button}
+        titleStyle={styles.buttonText}
+        title="Change password" onPress={() => {}}
+        />
+
+      <Button 
+        buttonStyle={styles.button}
+        titleStyle={styles.buttonText}
         title="Update profile information" onPress={() => props.navigation.navigate("Temp")}
         />
-     
-
+     </View>
+     </View>
     </View>
   );
 };

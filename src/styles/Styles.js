@@ -1,6 +1,4 @@
-import { CurrentRenderContext } from '@react-navigation/core';
 import { StyleSheet } from 'react-native';
-import { withTheme } from 'react-native-elements';
 import { colors } from './Colors';
 
 export const styles = StyleSheet.create({
@@ -14,29 +12,22 @@ export const styles = StyleSheet.create({
     padding: 10
   },
   inputView: {
-    backgroundColor: colors.accentBackground,
-    borderRadius: 30,
-    marginBottom: 20,
-    alignItems: "center",
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    paddingVertical: 0,
-    marginLeft: 20,
-    marginRight: 20,
-    marginTop: 10,
+    marginVertical: '2%'
   },
-  TextInput: {
-    height: 50,
-    flex: 1,
-    padding: 10,
-    marginLeft: 20,
-    textAlign: 'center',
+  inputText: {
+    borderRadius: 30,
+    backgroundColor: colors.accentBackground,
+    marginBottom: '2%',
+    padding: '2%'
   },
   fullWidthWindow: {
     flex: 1,
     width: '100%',
-    padding: '2%',
-    marginBottom: '4%'
+    paddingTop: '2%',
+    paddingHorizontal: '2%'
+  },
+  smallerWidthWindow: {
+    padding: '10%'
   },
   noContent: {
     alignSelf: 'center'
@@ -98,6 +89,12 @@ export const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: colors.button,
+    marginBottom: '2%'
+  },
+  smallButton: {
+    backgroundColor: colors.button,
+    marginHorizontal: '20%',
+    marginBottom: '2%'
   },
   modalButtonWrapper: {
     marginHorizontal: '2%',
@@ -172,24 +169,21 @@ export const styles = StyleSheet.create({
     bottom: 85,
   },
   editAccountProfile:{
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    width: null,
+    height: null,
+    aspectRatio: 1,
+    borderRadius: 100,
+    marginHorizontal: '15%',
+    marginBottom: '5%',
     alignItems: 'center',
     justifyContent: 'center',
   },
   loginPhoto:{
-    width: 250,
-    height: 250,
+    height: null,
+    width: null,
+    aspectRatio: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    bottom: 50,
-  },
-  basicButtons:{
-    backgroundColor: colors.accentBackground,
-    alignItems: 'center',
-    marginBottom: 10,
-    marginTop: 10
-  },
+    justifyContent: 'center'
+  }
 });
   
