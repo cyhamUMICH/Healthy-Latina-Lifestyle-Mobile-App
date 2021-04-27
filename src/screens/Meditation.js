@@ -17,15 +17,25 @@ const Meditation = (props) => {
       source={require('../../assets/temporary/Meditation1.png')} 
       style={styles.meditationPhoto}
       />
-
-      
+    
 
     
       <TouchableOpacity
+      
         style={styles.playButton}>
+      <Image 
+      source={require('../../assets/play_button.png')} 
+      style={styles.playPhoto}
+      />
+
         </TouchableOpacity>
 
 
+      {/* <Image 
+      source={require('../../assets/play_button.png')} 
+      style={styles.playPhoto}
+      /> */}
+      
 
         <View style={{top: 50}}>
         <Text>Listen and relax</Text>

@@ -249,6 +249,13 @@ export const styles = StyleSheet.create({
     height: 150,
     padding: 1,
     justifyContent: 'center'
-  }
+  },
+  playPhoto:{
+    width: 90,
+    height: 90,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
   
