@@ -96,7 +96,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: '20%',
     marginBottom: '2%'
   },
-  modalButtonWrapper: {
+  horizontalSpaceButtonWrapper: {
     marginHorizontal: '2%',
     marginBottom: '2%'
   },
@@ -183,6 +183,71 @@ export const styles = StyleSheet.create({
     width: null,
     aspectRatio: 1,
     alignItems: 'center',
+    justifyContent: 'center'
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    padding: 8,
+  },
+  timerview: {
+    flex: 0,
+    justifyContent: 'center',
+    textAlign: 'center',
+    fontSize: 140,
+    color: '#444',
+    height: 140,
+    borderRadius: 5,
+    marginBottom: 50,
+    marginTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    backgroundColor: '#FFF',
+    width: 500,
+  },
+  timercomponent: {
+    flex: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    width: 220,
+  },
+  timerselector: {
+    flex: 1,
+    justifyContent: 'center',
+    textAlign: 'center',
+    fontSize: 40,
+    color: '#444',
+  },
+  timerselectortitle: {
+    flex: 0,
+    justifyContent: 'center',
+    textAlign: 'center',
+    fontSize: 24,
+    color: '#0B173B',
+    height: 30,
+    marginBottom: 10,
+  },
+  arrowButton: {
+    flex: 0,
+    justifyContent: 'center',
+    height: 30,
+    width: 30,
+  },
+  timerObject: {
+    flex: 0,
+    width: 70,
+    height: 100,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  picker: {  
+    flex: 0,
+    width: "80%",
+    height: 150,
+    padding: 1,
     justifyContent: 'center'
   }
 });

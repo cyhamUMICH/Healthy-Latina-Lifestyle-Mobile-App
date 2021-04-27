@@ -37,7 +37,7 @@ const DifficultyOptions = (props) => {
     <View style={styles.modalSection}>
       <Text style={styles.modalText}>Difficulty</Text>
       <View style={styles.horizontalButtonLayout}> 
-        <View style={styles.modalButtonWrapper}>       
+        <View style={styles.horizontalSpaceButtonWrapper}>       
           <Button
             buttonStyle={props.difficulty.indexOf('B') > -1 ? styles.selectedFilterButton : styles.button}
             titleStyle={styles.buttonText}
@@ -53,7 +53,7 @@ const DifficultyOptions = (props) => {
             }}
             title="Beginner"/>
         </View>
-        <View style={styles.modalButtonWrapper}> 
+        <View style={styles.horizontalSpaceButtonWrapper}> 
           <Button
             buttonStyle={props.difficulty.indexOf('A') > -1 ? styles.selectedFilterButton : styles.button}
             titleStyle={styles.buttonText}
@@ -83,7 +83,7 @@ const LanguageOptions = (props) => {
     <View style={styles.modalSection}>
       <Text style={styles.modalText}>Language</Text>
       <View style={styles.horizontalButtonLayout}> 
-        <View style={styles.modalButtonWrapper}>       
+        <View style={styles.horizontalSpaceButtonWrapper}>       
           <Button
             buttonStyle={props.language.indexOf('EN') > -1 ? styles.selectedFilterButton : styles.button}
             titleStyle={styles.buttonText}
@@ -99,7 +99,7 @@ const LanguageOptions = (props) => {
             }}
             title="English"/>
         </View>
-        <View style={styles.modalButtonWrapper}> 
+        <View style={styles.horizontalSpaceButtonWrapper}> 
           <Button
             buttonStyle={props.language.indexOf('ES') > -1 ? styles.selectedFilterButton : styles.button}
             titleStyle={styles.buttonText}
@@ -131,7 +131,7 @@ const TopicOptions = (props) => {
       <View style={styles.horizontalButtonLayout}> 
           {
             tempTopics.sort().map(topic =>  
-              <View key={topic} style={styles.modalButtonWrapper}>         
+              <View key={topic} style={styles.horizontalSpaceButtonWrapper}>         
                 <Button
                   buttonStyle={props.topics.indexOf(topic) > -1 ? styles.selectedFilterButton : styles.button}
                   titleStyle={styles.buttonText}
@@ -163,7 +163,7 @@ const DurationOptions = (props) => {
     <View style={styles.modalSection}>
       <Text style={styles.modalText}>Duration</Text>
       <View style={styles.horizontalButtonLayout}> 
-        <View style={styles.modalButtonWrapper}>       
+        <View style={styles.horizontalSpaceButtonWrapper}>       
           <Button
             buttonStyle={props.duration.indexOf('Short') > -1 ? styles.selectedFilterButton : styles.button}
             titleStyle={styles.buttonText}
@@ -179,7 +179,7 @@ const DurationOptions = (props) => {
             }}
             title={durationLimits.filter(duration => duration.id == "Short").map(duration => duration.label)[0]}/>
         </View>
-        <View style={styles.modalButtonWrapper}>       
+        <View style={styles.horizontalSpaceButtonWrapper}>       
           <Button
             buttonStyle={props.duration.indexOf('Medium') > -1 ? styles.selectedFilterButton : styles.button}
             titleStyle={styles.buttonText}
@@ -195,7 +195,7 @@ const DurationOptions = (props) => {
             }}
             title={durationLimits.filter(duration => duration.id == "Medium").map(duration => duration.label)[0]}/>
         </View>
-        <View style={styles.modalButtonWrapper}>       
+        <View style={styles.horizontalSpaceButtonWrapper}>       
           <Button
             buttonStyle={props.duration.indexOf('Long') > -1 ? styles.selectedFilterButton : styles.button}
             titleStyle={styles.buttonText}
@@ -259,7 +259,7 @@ const FilterModal = (props) => {
               /> : null }
 
           <View style={styles.horizontalButtonLayout}>   
-            <View style={styles.modalButtonWrapper}>        
+            <View style={styles.horizontalSpaceButtonWrapper}>        
               <Button
                 buttonStyle={styles.modalButtons}
                 titleStyle={styles.buttonText}
@@ -268,7 +268,7 @@ const FilterModal = (props) => {
                 }}
                 title="Cancel"/>
             </View>
-            <View style={styles.modalButtonWrapper}> 
+            <View style={styles.horizontalSpaceButtonWrapper}> 
               <Button
                 buttonStyle={styles.modalButtons}
                 titleStyle={styles.buttonText}
