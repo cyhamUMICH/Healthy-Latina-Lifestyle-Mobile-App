@@ -142,7 +142,7 @@ const Timer = props => {
     return minutes + ":" + seconds
   }
 
-    return (
+  return (
     <View style={styles.container}>
       <TimerView time = {this.timeToShow(props.time)} />
       <Selectors  minUp = {props.minUp}

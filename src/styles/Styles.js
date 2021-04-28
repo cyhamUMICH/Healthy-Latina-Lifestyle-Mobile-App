@@ -144,7 +144,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    marginVertical: '5%'
+    marginVertical: '1%',
+    height: '30%'
   },
   playButton: {
     backgroundColor: '#FFF',
@@ -196,22 +197,21 @@ export const styles = StyleSheet.create({
     flex: 0,
     justifyContent: 'center',
     textAlign: 'center',
-    fontSize: 140,
+    fontSize: 100,
     color: '#444',
-    height: 140,
+    height: "25%",
     borderRadius: 5,
     marginBottom: 50,
     marginTop: 20,
     paddingLeft: 20,
     paddingRight: 20,
     backgroundColor: '#FFF',
-    width: 500,
   },
   timercomponent: {
     flex: 0,
     flexDirection: 'row',
     justifyContent: 'center',
-    width: 220,
+    width: 200,
   },
   timerselector: {
     flex: 1,
@@ -232,13 +232,13 @@ export const styles = StyleSheet.create({
   arrowButton: {
     flex: 0,
     justifyContent: 'center',
-    height: 30,
+    height: 20,
     width: 30,
   },
   timerObject: {
     flex: 0,
     width: 70,
-    height: 100,
+    height: "76%",
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -246,7 +246,7 @@ export const styles = StyleSheet.create({
   picker: {  
     flex: 0,
     width: "80%",
-    height: 150,
+    height: '20%',
     padding: 1,
     justifyContent: 'center'
   },
