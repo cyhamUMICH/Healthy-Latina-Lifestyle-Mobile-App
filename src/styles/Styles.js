@@ -109,6 +109,12 @@ export const styles = StyleSheet.create({
   selectedFilterButton: {
     backgroundColor: colors.selectedButton
   },
+  selectedFilterButtonText: {
+    color: colors.selectedButtonText
+  },
+  extraLargeSpinner: {
+    transform: [{scale: 2.5}]
+  },
   modalView: {
     justifyContent: 'center',
     alignItems: 'center',

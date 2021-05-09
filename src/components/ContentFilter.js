@@ -40,7 +40,7 @@ const DifficultyOptions = (props) => {
         <View style={styles.horizontalSpaceButtonWrapper}>       
           <Button
             buttonStyle={props.difficulty.indexOf('B') > -1 ? styles.selectedFilterButton : styles.button}
-            titleStyle={styles.buttonText}
+            titleStyle={props.difficulty.indexOf('B') > -1 ? styles.selectedFilterButtonText : styles.buttonText}
             onPress={() => {
               if (props.difficulty.indexOf('B') > -1)
               {
@@ -56,7 +56,7 @@ const DifficultyOptions = (props) => {
         <View style={styles.horizontalSpaceButtonWrapper}> 
           <Button
             buttonStyle={props.difficulty.indexOf('A') > -1 ? styles.selectedFilterButton : styles.button}
-            titleStyle={styles.buttonText}
+            titleStyle={props.difficulty.indexOf('A') > -1 ? styles.selectedFilterButtonText : styles.buttonText}
             onPress={() => {
               if (props.difficulty.indexOf('A') > -1)
               {
@@ -86,7 +86,7 @@ const LanguageOptions = (props) => {
         <View style={styles.horizontalSpaceButtonWrapper}>       
           <Button
             buttonStyle={props.language.indexOf('EN') > -1 ? styles.selectedFilterButton : styles.button}
-            titleStyle={styles.buttonText}
+            titleStyle={props.language.indexOf('EN') > -1 ? styles.selectedFilterButtonText : styles.buttonText}
             onPress={() => {
               if (props.language.indexOf('EN') > -1)
               {
@@ -102,7 +102,7 @@ const LanguageOptions = (props) => {
         <View style={styles.horizontalSpaceButtonWrapper}> 
           <Button
             buttonStyle={props.language.indexOf('ES') > -1 ? styles.selectedFilterButton : styles.button}
-            titleStyle={styles.buttonText}
+            titleStyle={props.language.indexOf('ES') > -1 ? styles.selectedFilterButtonText : styles.buttonText}
             onPress={() => {
               if (props.language.indexOf('ES') > -1)
               {
@@ -134,7 +134,7 @@ const TopicOptions = (props) => {
               <View key={topic} style={styles.horizontalSpaceButtonWrapper}>         
                 <Button
                   buttonStyle={props.topics.indexOf(topic) > -1 ? styles.selectedFilterButton : styles.button}
-                  titleStyle={styles.buttonText}
+                  titleStyle={props.topics.indexOf(topic) > -1 ? styles.selectedFilterButtonText : styles.buttonText}
                   onPress={() => {
                     if (props.topics.indexOf(topic) > -1)
                     {
@@ -166,7 +166,7 @@ const DurationOptions = (props) => {
         <View style={styles.horizontalSpaceButtonWrapper}>       
           <Button
             buttonStyle={props.duration.indexOf('Short') > -1 ? styles.selectedFilterButton : styles.button}
-            titleStyle={styles.buttonText}
+            titleStyle={props.duration.indexOf('Short') > -1 ? styles.selectedFilterButtonText : styles.buttonText}
             onPress={() => {
               if (props.duration.indexOf('Short') > -1)
               {
@@ -182,7 +182,7 @@ const DurationOptions = (props) => {
         <View style={styles.horizontalSpaceButtonWrapper}>       
           <Button
             buttonStyle={props.duration.indexOf('Medium') > -1 ? styles.selectedFilterButton : styles.button}
-            titleStyle={styles.buttonText}
+            titleStyle={props.duration.indexOf('Medium') > -1 ? styles.selectedFilterButtonText : styles.buttonText}
             onPress={() => {
               if (props.duration.indexOf('Medium') > -1)
               {
@@ -198,7 +198,7 @@ const DurationOptions = (props) => {
         <View style={styles.horizontalSpaceButtonWrapper}>       
           <Button
             buttonStyle={props.duration.indexOf('Long') > -1 ? styles.selectedFilterButton : styles.button}
-            titleStyle={styles.buttonText}
+            titleStyle={props.duration.indexOf('Long') > -1 ? styles.selectedFilterButtonText : styles.buttonText}
             onPress={() => {
               if (props.duration.indexOf('Long') > -1)
               {

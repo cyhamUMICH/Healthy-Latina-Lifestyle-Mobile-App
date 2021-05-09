@@ -24,7 +24,8 @@ const ContentCard = ({item}) => {
 
   return (
     <Card containerStyle={styles.card}>
-      <Card.Image source={item.imagePath} style={styles.cardImage}>
+      <Card.Image source={{ uri: item.imagePath }}
+        style={styles.cardImage}>
         <Text style={styles.duration}>{duration}</Text>
       </Card.Image>
       <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
@@ -47,8 +48,7 @@ const Tags = (props) => {
       difficulty = "";
   }
 
-  let topics = props.topics.split(",");
-  let topicTags = topics.sort().map((topic, index) => <Text key={index} style={styles.topicTag}>{topic}</Text>);
+  let topicTags = props.topics.sort().map((topic, index) => <Text key={index} style={styles.topicTag}>{topic}</Text>);
   
   return (
     <View style={styles.tags}>

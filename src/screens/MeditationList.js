@@ -1,53 +1,75 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { styles } from '../styles/Styles';
 import ContentList from '../components/ContentList';
+import LoadingSpinner from '../components/LoadingSpinner';
+import * as firebase from 'firebase/app';
+import "firebase/firestore";
+import "firebase/storage";
 
 const MeditationList = () => {
-  // TODO: Make data come from the database
-  const data = [
-    {
-      contentID: '1',
-      title: 'Control Your Breathing and Fall Asleep',
-      imagePath: require('../../assets/temporary/Meditation1.png'),
-      description: 'This is the first meditation.',
-      topics: 'Sleep',
-      language: 'EN',
-      duration: '360',
-      difficulty: 'B',
-      cost: '0'
-    },
-    {
-      contentID: '2',
-      title: 'Relajarse y Recargar',
-      imagePath: require('../../assets/temporary/Meditation2.png'),
-      description: 'Esta es la segunda meditación.',
-      topics: 'Anxiety,Stress',
-      language: 'ES',
-      duration: '3788',
-      difficulty: 'B',
-      cost: '0'
-    },
-    {
-      contentID: '3',
-      title: 'Explore Your Thinking',
-      imagePath: require('../../assets/temporary/Meditation3.png'),
-      description: 'This is the third meditation.',
-      topics: 'Abundance,Anxiety,Stress',
-      language: 'EN',
-      duration: '600',
-      difficulty: 'A',
-      cost: '3.99'
-    },
-  ];
+  const [data, setData] = useState([]);           
+  const [isLoaded, setIsLoaded] = useState(false);
 
+  useEffect(() => {
+    const fetchList = async () => {
+      const dbh = firebase.firestore();
+      dbh.collection("meditations").get()
+      .then((querySnapshot) => {
+
+        if (querySnapshot.size == 0) {
+          setIsLoaded(true);
+        }
+        else {
+          let countImages = 0;
+          querySnapshot.forEach((doc) => {
+            let newDoc = doc.data();
+            newDoc.contentID = doc.id;
+            
+            // https://firebase.google.com/docs/storage/web/download-files
+            let storage = firebase.storage();
+            let pathReference = storage.ref(newDoc.imagePath);
+            pathReference.getDownloadURL()
+            .then((url) => {
+              newDoc.imagePath = url;
+            })
+            .catch((error) => {
+              newDoc.imagePath = "https://healthylatinalifestylecom.files.wordpress.com/2017/10/cropped-cropped-peackcock-color-healthy-latino-20171.jpg";
+            })
+            .finally(() => {
+              // Add to the data list once the image has been resolved
+              setData(oldList => [...oldList, newDoc]);
+              
+              countImages++;
+
+              // Data is loaded once the number of images is the same as
+              // the number in the snapshot
+              if (querySnapshot.size === countImages) {
+                setIsLoaded(true);
+              }
+            });
+          })
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+    };
   
+    fetchList();  
+  }, []);
+
   return (
     <View style={styles.app}>
+    {
+      isLoaded ? 
       <ContentList 
         contentType="Meditations"
-        data={data}
+        data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
         filterBy="Difficulty,Language,Topic,Duration"></ContentList>
+      
+        : <LoadingSpinner/>
+    }
     </View>
    
   );
