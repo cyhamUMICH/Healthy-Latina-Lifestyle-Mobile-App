@@ -13,5 +13,7 @@ export const colors =
   modalButtons: '#d3d3d3',
   modalBackground: '#fff',
   modalBorder: '#000',
-  transparentButton: 'rgba(52, 52, 52, 0)'
+  transparentButton: 'rgba(52, 52, 52, 0)',
+  minimumSliderColor: '#967eda',
+  maximumSliderColor: '#000'
 };

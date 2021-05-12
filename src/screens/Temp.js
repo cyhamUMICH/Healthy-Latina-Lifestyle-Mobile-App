@@ -12,7 +12,7 @@ const Temp = (props) => {
         <Button title="Home" onPress={() => props.navigation.navigate("Home")} />
         <Button title="Edit Account" onPress={() => props.navigation.navigate("EditAccount")} />
         <Button title="Meditation List" onPress={() => props.navigation.navigate("MeditationList")} />
-        <Button title="Meditation" onPress={() => props.navigation.navigate("Meditation")} />
+        {/* <Button title="Meditation" onPress={() => props.navigation.navigate("Meditation")} /> */}
         <Button title="Timer" onPress={() => props.navigation.navigate("Timer")} />
       </View>
     </View>

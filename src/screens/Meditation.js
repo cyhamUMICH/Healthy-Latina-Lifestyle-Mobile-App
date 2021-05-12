@@ -1,159 +1,39 @@
-import React, { useRef, useEffect, useState } from "react";
-import {
-  View,
-  SafeAreaView,
-  Text,
-  Image,
-  FlatList,
-  Dimensions,
-  Animated,
-  StyleSheet,
-} from "react-native";
-
+import React, { useState } from "react";
+import { View, Text, Image, ScrollView } from "react-native";
 import Controller from "../components/Controller";
-import MySlider from "../components/MySlider";
-import Slider from "../components/MySlider";
+import PlayerSlider from "../components/PlayerSlider";
+import Tags from '../components/Tags';
+import { styles } from '../styles/Styles';
 
-const { width, height } = Dimensions.get("window");
+const goNext = () => {
+  console.log("end");
+};
+const goPrv = () => {
+  console.log("beginning");
+};
 
-const data = [
-  {
-    contentID: '1',
-    title: 'Control Your Breathing and Fall Asleep',
-    imagePath: require('../../assets/temporary/Meditation1.png'),
-    desc: 'This is the first meditation.',
-  },
-  {
-    contentID: '2',
-    title: 'Relajarse y Recargar',
-    imagePath: require('../../assets/temporary/Meditation2.png'),
-    desc: 'Esta es la segunda meditación.',
-  },
-  {
-    contentID: '3',
-    title: 'Explore Your Thinking',
-    imagePath: require('../../assets/temporary/Meditation3.png'),
-    desc: 'This is the third meditation.',
-  },
-];
+const Meditation = ({route}) => {
+  const [currentValue, setCurrentValue] = useState(0);
 
-export default function Meditation() {
-  const scrollX = useRef(new Animated.Value(0)).current;
-
-  const slider = useRef(null);
-  const [songIndex, setSongIndex] = useState(0);
-
-  // for tranlating the album art
-  const position = useRef(Animated.divide(scrollX, width)).current;
-
-  useEffect(() => {
-    // position.addListener(({ value }) => {
-    //   console.log(value);
-    // });
-
-    scrollX.addListener(({ value }) => {
-      const val = Math.round(value / width);
-
-      setSongIndex(val);
-
-      // little buggy
-      //if previous index is not same then only update it
-      // if (val !== songIndex) {
-      //   setSongIndex(val);
-      //   console.log(val);
-      // }
-    });
-
-    return () => {
-      scrollX.removeAllListeners();
-    };
-  }, []);
-
-  const goNext = () => {
-    slider.current.scrollToOffset({
-      offset: (songIndex + 1) * width,
-    });
-  };
-  const goPrv = () => {
-    slider.current.scrollToOffset({
-      offset: (songIndex - 1) * width,
-    });
-  };
-
-  const renderItem = ({ index, item }) => {
-    return (
-      <Animated.View
-        style={{
-          alignItems: "center",
-          width: width,
-          transform: [
-            {
-              translateX: Animated.multiply(
-                Animated.add(position, -index),
-                -100
-              ),
-            },
-          ],
-        }}
-      >
-        <Animated.Image
-          source={item.imagePath}
-          style={{ width: 320, height: 320, borderRadius: 5 }}
-        />
-      </Animated.View>
-    );
-  };
-
+  const item = route.params;
   return (
-    <SafeAreaView style={styles.container}>
-      <SafeAreaView style={{ height: 320 }}>
-        <Animated.FlatList
-          ref={slider}
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={16}
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-            { useNativeDriver: true }
-          )}
-        />
-      </SafeAreaView>
-      <View>
-        <Text style={styles.title}>{data[songIndex].title}</Text>
-      </View>
-
-      <MySlider />
-      
-      <Controller onNext={goNext} onPrv={goPrv} />
-      <Text style={styles.desc}>{data[songIndex].desc}</Text>
-    </SafeAreaView>
+    <View style={styles.fullWidthWindow}>
+      <Image source={{ uri: item.imagePath }}
+        style={styles.cardImage}></Image>
+      <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
+      <Text style={styles.contentTitle}>{item.title}</Text>
+      <ScrollView style={styles.contentDescriptionSpacer}>
+        <Text style={styles.contentDesc}>{item.description}</Text>
+      </ScrollView>
+      <View style={styles.sliderAndController}>
+        <PlayerSlider currentValue={currentValue} setCurrentValue={setCurrentValue} duration={item.duration}/>
+        <Controller onNext={goNext} onPrv={goPrv} currentValue={currentValue} setCurrentValue={setCurrentValue} />
+      </View>     
+    </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 28,
-    textAlign: "center",
-    textTransform: "capitalize",
-  },
-  desc: {
-    fontSize: 18,
-    textAlign: "center",
-    textTransform: "capitalize",
-  },
-  container: {
-    justifyContent: "space-evenly",
-    height: height,
-    maxHeight: 500,
-  },
-});
-
-
-
+export default Meditation;
 
 // import { useLinkProps } from '@react-navigation/native';
 // import React from 'react';

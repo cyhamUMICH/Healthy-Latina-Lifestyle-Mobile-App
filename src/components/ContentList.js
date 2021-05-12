@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import { styles } from '../styles/Styles';
 import FilterModal from '../components/ContentFilter';
+import Tags from '../components/Tags';
 
 const ContentCards = (props) => {
   return (
@@ -10,51 +11,32 @@ const ContentCards = (props) => {
     ? <FlatList 
         style={props.style}
         data={props.filteredList}
-        renderItem={ContentCard}
+        renderItem={(item) => ContentCard(item, props.contentComponent, props.navigation)}
         keyExtractor={item => item.contentID} /> 
     : <Text style={styles.noContent}>No {props.contentType} Match Your Search</Text>
   );
 };
 
-const ContentCard = ({item}) => {
+const ContentCard = ({item}, contentComponent, navigation) => {
   // Convert seconds to HH:MM:SS, then remove HH if 00
   // https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript
   let duration = new Date(item.duration * 1000).toISOString().substr(11, 8);
   duration = (duration.substr(0, 2) == "00") ? duration.substr(3) : duration;
 
   return (
-    <Card containerStyle={styles.card}>
-      <Card.Image source={{ uri: item.imagePath }}
-        style={styles.cardImage}>
-        <Text style={styles.duration}>{duration}</Text>
-      </Card.Image>
-      <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
-      <Card.Divider/>
-      <Card.Title style={styles.cardTitle}>{item.title}</Card.Title>
-    </Card>
-  );
-};
-
-const Tags = (props) => {
-  let difficulty;
-  switch (props.difficulty) {
-    case "B":
-      difficulty = "Beginner";
-      break;
-    case "A": 
-      difficulty = "Advanced";
-      break;
-    default:
-      difficulty = "";
-  }
-
-  let topicTags = props.topics.sort().map((topic, index) => <Text key={index} style={styles.topicTag}>{topic}</Text>);
-  
-  return (
-    <View style={styles.tags}>
-      { difficulty != "" ? <Text style={styles.difficultyTag}>{difficulty}</Text> : null }
-      { topicTags }
-    </View>
+    <TouchableOpacity 
+      activeOpacity={0.7}
+      onPress={() => {navigation.navigate(contentComponent, item)}}>
+      <Card containerStyle={styles.card}>
+        <Card.Image source={{ uri: item.imagePath }}
+          style={styles.cardImage}>
+          <Text style={styles.duration}>{duration}</Text>
+        </Card.Image>
+        <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
+        <Card.Divider/>
+        <Card.Title style={styles.cardTitle}>{item.title}</Card.Title>
+      </Card>
+    </TouchableOpacity>
   );
 };
 
@@ -81,7 +63,9 @@ const ContentList = (props) => {
       <ContentCards 
         style={styles.cardList} 
         contentType={props.contentType}
-        filteredList={filteredList}/>
+        filteredList={filteredList}
+        contentComponent={props.contentComponent}
+        navigation={props.navigation} />
       <FilterModal
         allData={props.data}
         filterBy={filterBy}

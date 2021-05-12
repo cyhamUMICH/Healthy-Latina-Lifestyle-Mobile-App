@@ -87,6 +87,20 @@ export const styles = StyleSheet.create({
     marginRight: '2%',
     marginBottom: '2%'
   },
+  contentTitle: {
+    fontSize: 28,
+    textAlign: "center"
+  },
+  contentDescription: {
+    fontSize: 18
+  },
+  contentDescriptionSpacer: {
+    marginTop: '2%',
+    marginBottom: '5%'
+  },
+  sliderAndController: {
+    marginBottom: '25%'
+  },
   button: {
     backgroundColor: colors.button,
     marginBottom: '2%'
@@ -148,7 +162,7 @@ export const styles = StyleSheet.create({
   },
   horizontalButtonLayout: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     flexWrap: 'wrap',
     marginVertical: '1%'
   },

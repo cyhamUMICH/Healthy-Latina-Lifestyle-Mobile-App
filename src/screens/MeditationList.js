@@ -7,7 +7,7 @@ import * as firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/storage";
 
-const MeditationList = () => {
+const MeditationList = (props) => {
   const [data, setData] = useState([]);           
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -63,12 +63,13 @@ const MeditationList = () => {
     <View style={styles.app}>
     {
       isLoaded ? 
-      <ContentList 
-        contentType="Meditations"
-        data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
-        filterBy="Difficulty,Language,Topic,Duration"></ContentList>
-      
-        : <LoadingSpinner/>
+        <ContentList 
+          contentComponent="Meditation"
+          navigation={props.navigation}
+          contentType="Meditations"
+          data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
+          filterBy="Difficulty,Language,Topic,Duration" />
+        : <LoadingSpinner />
     }
     </View>
    

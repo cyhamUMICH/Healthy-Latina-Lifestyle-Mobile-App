@@ -1,14 +1,15 @@
 import React from "react";
 import { View, TouchableOpacity, StyleSheet } from "react-native";
 import  MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { styles } from '../styles/Styles';
 
-export default function Controller({ onNext, onPrv }) {
+export default function Controller({ currentValue, setCurrentValue, onNext, onPrv }) {
   return (
-    <View style={styles.container}>
+    <View style={styles.horizontalButtonLayout}>
       <TouchableOpacity onPress={onPrv}>
         <MaterialIcons name="skip-previous" size={45} />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => {}}>
         <MaterialIcons name="pause" size={45} />
       </TouchableOpacity>
       <TouchableOpacity onPress={onNext}>
@@ -16,11 +17,4 @@ export default function Controller({ onNext, onPrv }) {
       </TouchableOpacity>
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-});
+};
