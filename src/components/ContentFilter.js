@@ -3,10 +3,6 @@ import { Modal, ScrollView, View, Text } from "react-native";
 import { Button } from 'react-native-elements';
 import { styles } from '../styles/Styles';
 
-const tempTopics = [
-  "Anxiety", "Abundance", "Stress", "Sleep"
-];
-
 const durationLimits = [
   {
     id: "Short",
@@ -130,7 +126,7 @@ const TopicOptions = (props) => {
       <Text style={styles.modalText}>Topics</Text>
       <View style={styles.horizontalButtonLayout}> 
           {
-            tempTopics.sort().map(topic =>  
+            props.topicsList.sort().map(topic =>  
               <View key={topic} style={styles.horizontalSpaceButtonWrapper}>         
                 <Button
                   buttonStyle={props.topics.indexOf(topic) > -1 ? styles.selectedFilterButton : styles.button}
@@ -233,63 +229,64 @@ const FilterModal = (props) => {
       }}>
         <View style={styles.modal}>
           <ScrollView>
-          { props.filterBy.indexOf("Difficulty") > -1 ? 
-            <DifficultyOptions 
-              originalProps={props}
-              difficultyFunction={setNewDifficulty}
-              difficulty={newDifficulty}
-              /> : null }
-          { props.filterBy.indexOf("Language") > -1 ? 
-            <LanguageOptions 
-              originalProps={props}
-              languageFunction={setNewLanguage}
-              language={newLanguage}
-              /> : null }
-          { props.filterBy.indexOf("Topic") > -1 ? 
-            <TopicOptions 
-              originalProps={props}
-              topicsFunction={setNewTopics}
-              topics={newTopics}
-              /> : null }
-          { props.filterBy.indexOf("Duration") > -1 ? 
-            <DurationOptions 
-              originalProps={props}
-              durationFunction={setNewDuration}
-              duration={newDuration}
-              /> : null }
+            { props.filterBy.indexOf("Difficulty") > -1 ? 
+              <DifficultyOptions 
+                originalProps={props}
+                difficultyFunction={setNewDifficulty}
+                difficulty={newDifficulty}
+                /> : null }
+            { props.filterBy.indexOf("Language") > -1 ? 
+              <LanguageOptions 
+                originalProps={props}
+                languageFunction={setNewLanguage}
+                language={newLanguage}
+                /> : null }
+            { props.filterBy.indexOf("Topic") > -1 ? 
+              <TopicOptions 
+                originalProps={props}
+                topicsFunction={setNewTopics}
+                topics={newTopics}
+                topicsList={props.topicsList}
+                /> : null }
+            { props.filterBy.indexOf("Duration") > -1 ? 
+              <DurationOptions 
+                originalProps={props}
+                durationFunction={setNewDuration}
+                duration={newDuration}
+                /> : null }
 
-          <View style={styles.horizontalButtonLayout}>   
-            <View style={styles.horizontalSpaceButtonWrapper}>        
-              <Button
-                buttonStyle={styles.modalButtons}
-                titleStyle={styles.buttonText}
-                onPress={() => {
-                  props.visibleFunction(!props.visible);
-                }}
-                title="Cancel"/>
+            <View style={styles.horizontalButtonLayout}>   
+              <View style={styles.horizontalSpaceButtonWrapper}>        
+                <Button
+                  buttonStyle={styles.modalButtons}
+                  titleStyle={styles.buttonText}
+                  onPress={() => {
+                    props.visibleFunction(!props.visible);
+                  }}
+                  title="Cancel"/>
+              </View>
+              <View style={styles.horizontalSpaceButtonWrapper}> 
+                <Button
+                  buttonStyle={styles.modalButtons}
+                  titleStyle={styles.buttonText}
+                  onPress={() => {
+                    let currentFilterSettings = {
+                      difficultyFilter: newDifficulty,
+                      languageFilter: newLanguage,
+                      topicFilter: newTopics,
+                      durationFilter: newDuration
+                    };
+                    props.filterSettingsFunction(currentFilterSettings);
+                    props.filteredListFunction(getFilteredContent(props.allData, props.filterBy, currentFilterSettings));
+                    props.visibleFunction(!props.visible);
+                  }}
+                  title="Update Filter"/>
+              </View>
             </View>
-            <View style={styles.horizontalSpaceButtonWrapper}> 
-              <Button
-                buttonStyle={styles.modalButtons}
-                titleStyle={styles.buttonText}
-                onPress={() => {
-                  let currentFilterSettings = {
-                    difficultyFilter: newDifficulty,
-                    languageFilter: newLanguage,
-                    topicFilter: newTopics,
-                    durationFilter: newDuration
-                  };
-                  props.filterSettingsFunction(currentFilterSettings);
-                  props.filteredListFunction(getFilteredContent(props.allData, props.filterBy, currentFilterSettings));
-                  props.visibleFunction(!props.visible);
-                }}
-                title="Update Filter"/>
-            </View>
-            </View>
-            </ScrollView>
-        </View>
+          </ScrollView>
+          </View>
       </Modal>
-    </View>
+    </View> 
   );
 };
 

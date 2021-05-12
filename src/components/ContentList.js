@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import { styles } from '../styles/Styles';
 import FilterModal from '../components/ContentFilter';
 import Tags from '../components/Tags';
+import LoadingSpinner from '../components/LoadingSpinner';
+import * as firebase from 'firebase/app';
+import "firebase/firestore";
 
 const ContentCards = (props) => {
   return (
@@ -41,6 +44,39 @@ const ContentCard = ({item}, contentComponent, navigation) => {
 };
 
 const ContentList = (props) => {
+  const [isTopicsLoaded, setIsTopicsLoaded] = useState(false);
+  const [topicsList, setTopicsList] = useState([]);
+  useEffect(() => {
+    const fetchTopicsList = async () => {
+      const dbh = firebase.firestore();
+      dbh.collection("topics").get()
+      .then((querySnapshot) => {
+
+        if (querySnapshot.size == 0) {
+          setIsTopicsLoaded(true);
+        }
+        else {
+          let countTopics = 0;
+          querySnapshot.forEach((doc) => {
+            // Add to the topic list
+            setTopicsList(oldList => [...oldList, doc.data().name]);
+            countTopics++;
+
+            // Data is loaded once all topics are in the list
+            if (querySnapshot.size === countTopics) {
+              setIsTopicsLoaded(true);
+            }
+          })
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+    };
+  
+    fetchTopicsList();  
+  }, []);
+
   const [filteredList, setFilteredList] = useState(props.data);
   const [filterModalVisible, setFilterModalVisible] = useState(false);
   const [filterSettings, setFilterSettings] = useState({
@@ -51,7 +87,8 @@ const ContentList = (props) => {
   });
   const filterBy = props.filterBy.split(',');
 
-  return (     
+  return (
+    isTopicsLoaded ? 
     <View style={styles.fullWidthWindow}>
       <Button 
         buttonStyle={styles.button}
@@ -68,6 +105,7 @@ const ContentList = (props) => {
         navigation={props.navigation} />
       <FilterModal
         allData={props.data}
+        topicsList={topicsList}
         filterBy={filterBy}
         visibleFunction={setFilterModalVisible}
         visible={filterModalVisible}
@@ -76,6 +114,7 @@ const ContentList = (props) => {
         filteredListFunction={setFilteredList}
         filteredList={filteredList}/>
     </View>
+    : <LoadingSpinner />
   );
 };
 
