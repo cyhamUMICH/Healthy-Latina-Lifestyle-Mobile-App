@@ -186,7 +186,7 @@ export const styles = StyleSheet.create({
     borderRadius: 200,
     alignItems: 'center',
     justifyContent: 'center',
-    bottom: 85,
+    left: 50
   },
   editAccountProfile:{
     width: null,
