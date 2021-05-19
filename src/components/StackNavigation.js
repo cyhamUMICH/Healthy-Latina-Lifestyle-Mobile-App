@@ -12,6 +12,7 @@ import EditAccount from '../screens/EditAccount';
 import MeditationList from '../screens/MeditationList';
 import Meditation from '../screens/Meditation';
 import Timer from '../screens/Timer';
+import PasswordReset from '../screens/PasswordReset';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,7 @@ const StackNavigation = () => {
       <Stack.Screen name="MeditationList" component={MeditationList} options={{ title: 'Meditation List'}} />
       <Stack.Screen name="Meditation" component={Meditation} options={{ title: 'Meditation'}} />
       <Stack.Screen name="Timer" component={Timer} options={{ title: 'Timer'}} />
+      <Stack.Screen name="PasswordReset" component={PasswordReset} options={{ title: 'Reset Password', headerRight: null }}/>
     </Stack.Navigator>
   );
 };

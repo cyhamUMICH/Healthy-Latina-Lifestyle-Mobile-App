@@ -5,9 +5,20 @@ import { colors } from '../styles/Colors';
 import { Button } from 'react-native-elements';
 import { Image } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import firebase from 'firebase';
 
 
 const EditAccount = (props) => {
+function deleteAccount(){
+var user = firebase.auth().currentUser;
+
+user.delete().then(function() {
+  // User deleted.
+}, function(error) {
+  // An error happened.
+});
+props.navigation.navigate("Login")}
+
   return (
     <View style={styles.app}>
       <View style={styles.fullWidthWindow}>
@@ -51,7 +62,7 @@ const EditAccount = (props) => {
       <Button 
         buttonStyle={styles.button}
         titleStyle={styles.buttonText}
-        title="Change password" onPress={() => {}}
+        title="Change password" onPress={() => props.navigation.navigate("PasswordReset")}
         />
 
       <Button 
@@ -59,6 +70,11 @@ const EditAccount = (props) => {
         titleStyle={styles.buttonText}
         title="Update profile information" onPress={() => props.navigation.navigate("Temp")}
         />
+        <Button
+                buttonStyle={styles.button}
+                titleStyle={styles.buttonText}
+                title="Delete Account" onPress={() => deleteAccount()}
+                />
      </View>
      </View>
     </View>

@@ -19,6 +19,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="SvnConfiguration">
@@ -35,14 +36,22 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="734" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1620792489283">
+    <state x="734" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1621384856006">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="734" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1620792489283" />
-    <state x="285" y="100" width="1200" height="800" key="AVDManager" timestamp="1620795455303">
+    <state x="734" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621384856006" />
+    <state x="718" y="389" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1621388579070">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="285" y="100" width="1200" height="800" key="AVDManager/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1620795455303" />
+    <state x="718" y="389" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621388579070" />
+    <state x="285" y="100" width="1200" height="800" key="AVDManager" timestamp="1621379814485">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="285" y="100" width="1200" height="800" key="AVDManager/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621379814485" />
     <state x="2205" y="100" width="1200" height="800" key="AVDManager/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1620790480030" />
+    <state x="1920" y="237" width="1723" height="718" key="dock-window-1" timestamp="1620860285871">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="237" width="1723" height="718" key="dock-window-1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1620860285871" />
   </component>
 </project>
