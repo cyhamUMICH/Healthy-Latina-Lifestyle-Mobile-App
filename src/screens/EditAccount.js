@@ -4,11 +4,28 @@ import { styles } from '../styles/Styles';
 import { colors } from '../styles/Colors';
 import { Button } from 'react-native-elements';
 import { Image } from 'react-native';
+import { Alert } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import firebase from 'firebase';
 
 
 const EditAccount = (props) => {
+
+function createTwoButtonAlert(){
+Alert.alert(
+      "Delete Account",
+      "Are you sure you want to delete your account? This CANNOT be undone",
+      [
+        {
+          text: "Cancel",
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => deleteAccount() }
+      ],
+      { cancelable: true }
+    );
+    }
+
 function deleteAccount(){
 var user = firebase.auth().currentUser;
 
@@ -73,7 +90,7 @@ props.navigation.navigate("Login")}
         <Button
                 buttonStyle={styles.button}
                 titleStyle={styles.buttonText}
-                title="Delete Account" onPress={() => deleteAccount()}
+                title="Delete Account" onPress={() => createTwoButtonAlert()}
                 />
      </View>
      </View>
