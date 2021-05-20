@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import { View } from 'react-native';
 import { styles } from '../styles/Styles';
 import { colors } from '../styles/Colors'
 import { Button } from 'react-native-elements';
 import { TextInput } from 'react-native-gesture-handler';
-import firebase from 'firebase'
+import * as firebase from 'firebase'
 import { Text } from 'react-native';
 import 'firebase/firestore';
+import 'firebase/storage';
 
 const Register = (props) => {
 
@@ -15,17 +16,29 @@ const[email, setEmail] = useState('');
 const[username, setUsername] = useState('');
 const[password, setPassword] = useState('');
 
-function createAccount(){
+async function createAccount(){//add first/last name fields for easier searching later I feel
 
 
-firebase.auth()
-.createUserWithEmailAndPassword(email, password)
-.then(() => props.navigation.navigate('Temp'))
+const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password)
+
+const Userid = userCredential.user.uid
+
+const dbh = firebase.firestore().collection('Users').doc(Userid)
+await dbh.set({
+name: name,
+username: username,
+email: email
+})
+.then(() => {
+    console.log("Document successfully written!");
+})
+.catch((error) => {
+    console.error("Error writing document: ", error);
+});
 
 
 
-
-
+props.navigation.navigate('Temp')
 
 }
 
