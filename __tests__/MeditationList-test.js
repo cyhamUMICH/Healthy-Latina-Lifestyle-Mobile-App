@@ -4,12 +4,12 @@ import React from 'react';
 import MeditationList from '../src/screens/MeditationList';
 import renderer from 'react-test-renderer';
 
-test('renders the loading screen', async () => {
+test('Renders Meditation List With the Loading Screen', async () => {
   const tree = renderer.create(<MeditationList />).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
-test('renders the root without loading screen', async () => {
+test('Renders Meditation List Without the Loading Screen', async () => {
   const tree = renderer.create(<MeditationList skipLoadingScreen />).toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -4,12 +4,12 @@ import React from 'react';
 import EditAccount from '../src/screens/EditAccount';
 import renderer from 'react-test-renderer';
 
-test('renders the loading screen', async () => {
+test('Renders Edit Account With the Loading Screen', async () => {
   const tree = renderer.create(<EditAccount />).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
-test('renders the root without loading screen', async () => {
+test('Renders Edit Account Without the Loading Screen', async () => {
   const tree = renderer.create(<EditAccount skipLoadingScreen />).toJSON();
   expect(tree).toMatchSnapshot();
 });

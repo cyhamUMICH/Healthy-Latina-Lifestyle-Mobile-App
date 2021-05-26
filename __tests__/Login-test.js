@@ -4,12 +4,12 @@ import React from 'react';
 import Login from '../src/screens/Login';
 import renderer from 'react-test-renderer';
 
-test('renders the loading screen', async () => {
+test('Renders Login With the Loading Screen', async () => {
   const tree = renderer.create(<Login />).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
-test('renders the root without loading screen', async () => {
+test('Renders Login Without the Loading Screen', async () => {
   const tree = renderer.create(<Login skipLoadingScreen />).toJSON();
   expect(tree).toMatchSnapshot();
 });
