@@ -181,6 +181,24 @@ export const styles = StyleSheet.create({
     shadowRadius: 30,
     shadowOpacity: 0.5,
   },
+  homepageLogo:{
+    width: 80,
+    height: 100,
+    borderRadius: 70,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  homepageRoundButton:{
+    flex:1,
+    flexDirection:'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 66,
+    width: 66,
+    borderRadius: 50,
+    marginHorizontal: 10,
+    backgroundColor: colors.button,
+  },
   meditationPhoto:{
     width: 300,
     height: 300,
@@ -222,7 +240,7 @@ export const styles = StyleSheet.create({
     height: "25%",
     borderRadius: 5,
     marginBottom: 50,
-    marginTop: 20,
+    marginTop: 60,
     paddingLeft: 20,
     paddingRight: 20,
     backgroundColor: '#FFF',
@@ -277,5 +295,65 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  floatingActionButton: {
+    backgroundColor: colors.button,
+    width: 55,
+    height: 55,
+    position: 'absolute',
+    bottom: 55,
+    right: 10,
+    borderRadius: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  plusbutton: {
+    flex: 0,
+    justifyContent: 'center',
+    height: 25,
+    width: 25,
+  },
+
+  uploadactionbutton: {
+    flex: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.button,
+    marginHorizontal: '20%',
+    marginBottom: '2%',
+    marginTop: '2%'
+  },
+
+  uploadbutton: {
+    flex: 0,
+    justifyContent: 'center',
+    height: 25,
+    width: 25,
+  },
+
+  browseactionbutton: {
+    flex: 0,
+    backgroundColor: colors.button,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: '15%'
+  },
+
+  browsebutton: {
+    flex: 0,
+    justifyContent: 'center',
+    height: 25,
+    width: 25,
+  },
+  
+  cameraContainer: {
+    flex: 1,
+    flexDirection: 'row'
+  },
+  fixedRatio: {
+    flex: 1,
+    aspectRatio: 1
+  },
+
+  
 });
   

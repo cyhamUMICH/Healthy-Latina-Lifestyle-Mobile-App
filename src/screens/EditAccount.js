@@ -57,7 +57,7 @@ username: username,
 email: email
 })
 
-props.navigation.navigate("Temp")
+props.navigation.navigate("Home")
 
 }
 
@@ -126,7 +126,7 @@ props.navigation.navigate("Login")}
       <Button 
         buttonStyle={styles.button}
         titleStyle={styles.buttonText}
-        title="Update profile information" onPress={() => createTwoButtonAlertForUpdate()}
+        title="Update profile information" onPress={() => {createTwoButtonAlertForUpdate(); props.navigation.navigate("Home")}}
         />
         <Button
                 buttonStyle={styles.button}

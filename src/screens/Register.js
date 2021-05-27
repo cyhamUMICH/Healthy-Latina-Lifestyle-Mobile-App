@@ -38,7 +38,7 @@ email: email
 
 
 
-props.navigation.navigate('Temp')
+props.navigation.navigate('Home')
 
 }
 

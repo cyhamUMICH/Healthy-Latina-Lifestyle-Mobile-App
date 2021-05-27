@@ -1,11 +1,10 @@
 import * as React from 'react';
 import {Picker} from '@react-native-picker/picker'
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Vibration } from 'react-native';
 import { styles } from '../styles/Styles';
 import TimerView from "../components/timerview.js"
 import Selectors from "../components/selectors.js"
 import ActionButtons from "../components/actionbuttons.js"
-//import {vibrate} from './utils'
 
 export default class App extends React.Component {
   constructor() {
@@ -23,15 +22,14 @@ export default class App extends React.Component {
   }
 
   beginCounter = () => {
-    this.setState(prevState => ({stopped: false}))
-    this.setState(prevState => ({Timer: prevState.Minutes * 60 + prevState.Seconds}))
+    this.setState(prevState => ({stopped: false, Timer: prevState.Minutes * 60 + prevState.Seconds}))
     this.interval = setInterval(this.decrementCounter, 1000)
   }
   
   decrementCounter = () => {
     this.setState(prevState => ({timer: prevState.timer - 1}))
     if (this.state.timer === 0) {
-      //vibrate()
+      Vibration.vibrate([2500, 2500, 2500, 2500])
       this.stopCounter()
     }
   }
@@ -41,9 +39,7 @@ export default class App extends React.Component {
   }
 
   resetCounter = () => {
-    this.setState(prevState => ({timer: prevState.Timer}))
-    this.setState(prevState => ({status: "duration"}))
-    this.setState(prevState => ({stopped: true}))
+    this.setState(prevState => ({timer: prevState.Timer, status: "duration", stopped: true}))
     clearInterval(this.interval)
   }
 

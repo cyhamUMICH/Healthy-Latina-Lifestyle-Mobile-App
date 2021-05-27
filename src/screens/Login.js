@@ -25,7 +25,7 @@ function handleLogon(){
 firebase
 .auth()
 .signInWithEmailAndPassword(username, password)
-.then(res => { props.navigation.navigate("Temp"), setNeed(false)
+.then(res => { props.navigation.navigate("Home"), setNeed(false)
 })
 .catch(error => setNeed(true))
 //console.log(error.toString(error));
