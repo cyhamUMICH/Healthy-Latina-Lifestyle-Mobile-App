@@ -35,3 +35,29 @@
 * Create a meditation (UI and functionality)
 * Fix for built-in timer bugs (disabling start button after timer is running, etc.)
 * Home page (UI and links to other screens)
+
+## Progress Update: 5/26/2021
+#### Completed or Mostly Completed Tasks:
+* Firebase authentication with email for accounts (register and login)
+* Change password UI and functionality
+* Delete account functionality
+* Retrieve meditation list from Firebase Firestore
+* Connect meditation list to meditation pages
+#### Moving to Sprint 2
+* Allow for authentication with Facebook
+* Create a meditation (UI and functionality)
+* Fix for built-in timer bugs (disabling start button after timer is running, etc.)
+* Home page (UI and links to other screens)
+#### New to Sprint 2
+* Research Google Play Store and Apple App Store submissions
+* Create a challenge (UI and functionality)
+* Set featured content (UI and functionality)
+* Research In-App Purchases and implementation for meditations
+* Challenge page UI
+* Challenge list UI and functionality (connect to challenge page, retrieve from Firestore)
+* Filter challenges modal UI and functionality
+* Update profile information (store using Firebase Firestore)
+* Create user groups (UI and functionality)
+* Send messages to user groups (UI and functionality)
+* Share content with user groups (UI and functionality)
+* Send push notifications
