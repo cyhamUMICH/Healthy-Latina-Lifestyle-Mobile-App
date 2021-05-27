@@ -1,79 +1,157 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Renders Meditation List With the Loading Screen 1`] = `
-<View
-  style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#fff",
-      "flex": 1,
-      "justifyContent": "center",
-    }
-  }
->
+Array [
   <View
     style={
       Object {
         "alignItems": "center",
         "backgroundColor": "#fff",
+        "flex": 1,
         "justifyContent": "center",
       }
     }
   >
-    <ActivityIndicator
-      animating={true}
-      color="#00A89D"
-      hidesWhenStopped={true}
-      size="large"
+    <View
       style={
         Object {
-          "transform": Array [
-            Object {
-              "scale": 2.5,
-            },
-          ],
+          "alignItems": "center",
+          "backgroundColor": "#fff",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <ActivityIndicator
+        animating={true}
+        color="#00A89D"
+        hidesWhenStopped={true}
+        size="large"
+        style={
+          Object {
+            "transform": Array [
+              Object {
+                "scale": 2.5,
+              },
+            ],
+          }
+        }
+      />
+    </View>
+  </View>,
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#00A89D",
+        "borderRadius": 100,
+        "bottom": 55,
+        "height": 55,
+        "justifyContent": "center",
+        "opacity": 1,
+        "position": "absolute",
+        "right": 10,
+        "width": 55,
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "flex": 0,
+          "height": 25,
+          "justifyContent": "center",
+          "width": 25,
         }
       }
     />
-  </View>
-</View>
+  </View>,
+]
 `;
 
 exports[`Renders Meditation List Without the Loading Screen 1`] = `
-<View
-  style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#fff",
-      "flex": 1,
-      "justifyContent": "center",
-    }
-  }
->
+Array [
   <View
     style={
       Object {
         "alignItems": "center",
         "backgroundColor": "#fff",
+        "flex": 1,
         "justifyContent": "center",
       }
     }
   >
-    <ActivityIndicator
-      animating={true}
-      color="#00A89D"
-      hidesWhenStopped={true}
-      size="large"
+    <View
       style={
         Object {
-          "transform": Array [
-            Object {
-              "scale": 2.5,
-            },
-          ],
+          "alignItems": "center",
+          "backgroundColor": "#fff",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <ActivityIndicator
+        animating={true}
+        color="#00A89D"
+        hidesWhenStopped={true}
+        size="large"
+        style={
+          Object {
+            "transform": Array [
+              Object {
+                "scale": 2.5,
+              },
+            ],
+          }
+        }
+      />
+    </View>
+  </View>,
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#00A89D",
+        "borderRadius": 100,
+        "bottom": 55,
+        "height": 55,
+        "justifyContent": "center",
+        "opacity": 1,
+        "position": "absolute",
+        "right": 10,
+        "width": 55,
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "flex": 0,
+          "height": 25,
+          "justifyContent": "center",
+          "width": 25,
         }
       }
     />
-  </View>
-</View>
+  </View>,
+]
 `;
