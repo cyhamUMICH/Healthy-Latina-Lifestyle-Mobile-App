@@ -4,12 +4,12 @@ import React from 'react';
 import Timer from '../src/screens/Timer';
 import renderer from 'react-test-renderer';
 
-test('renders the loading screen', async () => {
+test('Renders Timer With the Loading Screen', async () => {
   const tree = renderer.create(<Timer />).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
-test('renders the root without loading screen', async () => {
+test('Renders Timer Without the Loading Screen', async () => {
   const tree = renderer.create(<Timer skipLoadingScreen />).toJSON();
   expect(tree).toMatchSnapshot();
 });

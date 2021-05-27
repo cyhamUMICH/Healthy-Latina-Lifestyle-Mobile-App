@@ -1,0 +1,361 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders Meditation With the Loading Screen 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "paddingHorizontal": "2%",
+      "paddingTop": "2%",
+      "width": "100%",
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "https://healthylatinalifestylecom.files.wordpress.com/2017/10/cropped-cropped-peackcock-color-healthy-latino-20171.jpg",
+      }
+    }
+    style={
+      Object {
+        "alignItems": "center",
+        "borderRadius": 200,
+        "height": 300,
+        "justifyContent": "center",
+        "left": 50,
+        "width": 300,
+      }
+    }
+  />
+  <Text
+    style={
+      Object {
+        "fontSize": 28,
+        "textAlign": "center",
+      }
+    }
+  >
+    Relax and Recharge
+  </Text>
+  <View
+    style={
+      Object {
+        "marginBottom": "25%",
+      }
+    }
+  >
+    <View>
+      <RNCSlider
+        disabled={false}
+        enabled={true}
+        inverted={false}
+        maximumTrackTintColor="#000"
+        maximumValue={340}
+        minimumTrackTintColor="#967eda"
+        minimumValue={0}
+        onChange={[Function]}
+        onRNCSliderSlidingComplete={[Function]}
+        onRNCSliderSlidingStart={null}
+        onRNCSliderValueChange={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        step={1}
+        style={
+          Object {
+            "height": 40,
+          }
+        }
+        thumbImage={
+          Object {
+            "__packager_asset": true,
+            "height": 1,
+            "scale": 1,
+            "uri": "uri",
+            "width": 1,
+          }
+        }
+        value={0}
+      />
+      <View
+        style={
+          Object {
+            "alignSelf": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#242424",
+            }
+          }
+        >
+          00:00
+           | 
+          05:40
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+          "justifyContent": "space-evenly",
+          "marginVertical": "1%",
+        }
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text />
+      </View>
+    </View>
+  </View>
+  <RCTScrollView
+    style={
+      Object {
+        "marginBottom": "5%",
+        "marginTop": "2%",
+      }
+    }
+  >
+    <View>
+      <Text>
+        Deep breathing exercises to help lower your anxiety.
+      </Text>
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`Renders Meditation Without the Loading Screen 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "paddingHorizontal": "2%",
+      "paddingTop": "2%",
+      "width": "100%",
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "https://healthylatinalifestylecom.files.wordpress.com/2017/10/cropped-cropped-peackcock-color-healthy-latino-20171.jpg",
+      }
+    }
+    style={
+      Object {
+        "alignItems": "center",
+        "borderRadius": 200,
+        "height": 300,
+        "justifyContent": "center",
+        "left": 50,
+        "width": 300,
+      }
+    }
+  />
+  <Text
+    style={
+      Object {
+        "fontSize": 28,
+        "textAlign": "center",
+      }
+    }
+  >
+    Relax and Recharge
+  </Text>
+  <View
+    style={
+      Object {
+        "marginBottom": "25%",
+      }
+    }
+  >
+    <View>
+      <RNCSlider
+        disabled={false}
+        enabled={true}
+        inverted={false}
+        maximumTrackTintColor="#000"
+        maximumValue={340}
+        minimumTrackTintColor="#967eda"
+        minimumValue={0}
+        onChange={[Function]}
+        onRNCSliderSlidingComplete={[Function]}
+        onRNCSliderSlidingStart={null}
+        onRNCSliderValueChange={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        step={1}
+        style={
+          Object {
+            "height": 40,
+          }
+        }
+        thumbImage={
+          Object {
+            "__packager_asset": true,
+            "height": 1,
+            "scale": 1,
+            "uri": "undefinedExponentAsset-md5.type",
+            "width": 1,
+          }
+        }
+        value={0}
+      />
+      <View
+        style={
+          Object {
+            "alignSelf": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#242424",
+            }
+          }
+        >
+          00:00
+           | 
+          05:40
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+          "justifyContent": "space-evenly",
+          "marginVertical": "1%",
+        }
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text />
+      </View>
+    </View>
+  </View>
+  <RCTScrollView
+    style={
+      Object {
+        "marginBottom": "5%",
+        "marginTop": "2%",
+      }
+    }
+  >
+    <View>
+      <Text>
+        Deep breathing exercises to help lower your anxiety.
+      </Text>
+    </View>
+  </RCTScrollView>
+</View>
+`;
