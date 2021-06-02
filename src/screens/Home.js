@@ -24,7 +24,7 @@ const Home = (props) => {
               <Image source={require("../../assets/meditation.png")} style={{ height: 43, width: 43 }}/>
             </TouchableOpacity>
             
-            <Text onPress={() => props.navigation.navigate("ChallengeList")}> hi </Text>
+            <Text onPress={() => props.navigation.navigate("ChallengeList")}> Challenge List </Text>
 
 
             </ScrollView>
