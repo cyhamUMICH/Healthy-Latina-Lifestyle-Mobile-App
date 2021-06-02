@@ -6,7 +6,7 @@ import { Button } from 'react-native-elements';
 import { Image } from 'react-native';
 import { Alert } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import firebase from 'firebase';
+import firebase, { auth } from 'firebase';
 import 'firebase/firestore';
 import 'firebase/storage';
 
@@ -48,31 +48,52 @@ Alert.alert(
 }
 
 async function updateProfile(){
+
 var user = firebase.auth().currentUser
 
-const dbh = firebase.firestore().collection('Users').doc(user.uid)
-await dbh.set({
-name: name,
-username: username,
-email: email
-})
+console.log(user.uid)
 
-props.navigation.navigate("Home")
+
+const dbh = firebase.firestore().collection('Users').doc(user.uid)
+
+// await dbh.set({
+// name: name,
+// username: username,
+// email: email
+// })
+
+// props.navigation.navigate("Home")
+
+console.log()
+
 
 }
 
-function deleteAccount(){//also deletes data under their user id from firestore
-var user = firebase.auth().currentUser;
 
-const dbh = firebase.firestore().collection('Users').doc(user.uid)
-dbh.delete()
 
-user.delete().then(function() {
-  // User deleted.
-}, function(error) {
-  // An error happened.
-});
-props.navigation.navigate("Login")}
+
+function deleteAccount(){
+
+
+}
+
+// function deleteAccount(){//also deletes data under their user id from firestore
+// var user = firebase.auth().currentUser;
+
+
+// const dbh = firebase.firestore().collection('Users').doc(user.uid)
+// dbh.delete()
+
+// user.delete().then(function() {
+//   // User deleted.
+
+
+// }, function(error) {
+//   // An error happened.
+// });
+// props.navigation.navigate("Login")}
+
+
 
   return (
     <View style={styles.app}>
