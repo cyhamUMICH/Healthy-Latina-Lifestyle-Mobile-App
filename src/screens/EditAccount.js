@@ -56,42 +56,32 @@ console.log(user.uid)
 
 const dbh = firebase.firestore().collection('Users').doc(user.uid)
 
-// await dbh.set({
-// name: name,
-// username: username,
-// email: email
-// })
+await dbh.set({
+name: name,
+username: username,
+email: email
+})
 
-// props.navigation.navigate("Home")
-
-console.log()
-
+props.navigation.navigate("Home")
 
 }
 
 
+function deleteAccount(){//also deletes data under their user id from firestore
+var user = firebase.auth().currentUser;
 
 
-function deleteAccount(){
+const dbh = firebase.firestore().collection('Users').doc(user.uid)
+dbh.delete()
+
+user.delete().then(function() {
+  // User deleted.
 
 
-}
-
-// function deleteAccount(){//also deletes data under their user id from firestore
-// var user = firebase.auth().currentUser;
-
-
-// const dbh = firebase.firestore().collection('Users').doc(user.uid)
-// dbh.delete()
-
-// user.delete().then(function() {
-//   // User deleted.
-
-
-// }, function(error) {
-//   // An error happened.
-// });
-// props.navigation.navigate("Login")}
+}, function(error) {
+  // An error happened.
+});
+props.navigation.navigate("Login")}
 
 
 
