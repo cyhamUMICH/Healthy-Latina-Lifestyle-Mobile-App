@@ -14,7 +14,7 @@ const Home = (props) => {
        <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            style={{ marginLeft: -200, marginTop: 30 }}
+            style={{ flex: 1 }}
           >
             <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("Timer")}>
               <Image source={require("../../assets/timer.png")} style={{ height: 32, width: 32 }}/>
@@ -26,7 +26,7 @@ const Home = (props) => {
             
             <Text onPress={() => props.navigation.navigate("ChallengeList")}> Challenge List </Text>
 
-
+            <Text onPress={() => props.navigation.navigate("AddContent")}> Add Content </Text>
             </ScrollView>
       {/*<View style={{flex: 1, flexDirection: "column", justifyContent: "space-evenly"}}>
         < Button buttonStyle={styles.smallButton} titleStyle={styles.buttonText} title="Login" onPress={() => props.navigation.navigate("Login")} />

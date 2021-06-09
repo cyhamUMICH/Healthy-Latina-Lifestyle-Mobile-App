@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from './Colors';
-import { Text } from 'react-native';
+import { Dimensions } from 'react-native';
 
 export const styles = StyleSheet.create({
   app: {
@@ -12,6 +12,9 @@ export const styles = StyleSheet.create({
   iconContainer: {
     padding: 10
   },
+  buttonIconRight: {
+    marginLeft: '5%'
+  },
   inputView: {
     marginVertical: '2%'
   },
@@ -19,7 +22,8 @@ export const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: colors.accentBackground,
     marginBottom: '2%',
-    padding: '2%'
+    paddingHorizontal: '5%',
+    paddingVertical: '2%'
   },
   fullWidthWindow: {
     flex: 1,
@@ -122,10 +126,40 @@ export const styles = StyleSheet.create({
     color: colors.text
   },
   selectedFilterButton: {
-    backgroundColor: colors.selectedButton
+    backgroundColor: colors.selectedButton,
+    marginBottom: '2%'
   },
   selectedFilterButtonText: {
     color: colors.selectedButtonText
+  },
+  buttonGroup: {
+    backgroundColor: colors.button
+  },
+  buttonGroupSelected: {
+    backgroundColor: colors.selectedButton,
+    color: colors.selectedButtonText
+  },
+  buttonGroupText: {
+    fontSize: 20,
+    color: colors.text
+  },
+  fileNameText: {
+    fontSize: 20,
+    color: colors.text,
+    marginBottom: '2%'
+  },
+  checkBoxLabel: {
+    fontSize: 20,
+    fontWeight: 'normal',
+    color: colors.text,
+    marginLeft: '2%'
+  },
+  checkBoxContainer: {
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    padding: 0,
+    marginTop: 0,
+    marginBottom:'2%'
   },
   extraLargeSpinner: {
     transform: [{scale: 2.5}]
@@ -224,6 +258,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  uploadedImage: {
+    width: null,
+    height: null,
+    aspectRatio: 16/9,
+    marginBottom: '2%'
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -295,41 +335,24 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  floatingActionView: {
+    flex: 1,
+    flexDirection: 'column-reverse'
+  },
   floatingActionButton: {
     backgroundColor: colors.button,
-    width: 55,
-    height: 55,
-    position: 'absolute',
-    bottom: 55,
-    right: 10,
-    borderRadius: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  plusbutton: {
-    flex: 0,
-    justifyContent: 'center',
-    height: 25,
-    width: 25,
-  },
-
-  uploadactionbutton: {
-    flex: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.button,
-    marginHorizontal: '20%',
+    borderRadius: Dimensions.get('window').height / 2,
+    height: null,
+    width: '12%',
+    aspectRatio: 1,
     marginBottom: '2%',
-    marginTop: '2%'
+    alignSelf: 'flex-end',
   },
-
-  uploadbutton: {
-    flex: 0,
-    justifyContent: 'center',
-    height: 25,
-    width: 25,
+  floatingActionIcon: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-
   browseactionbutton: {
     flex: 0,
     backgroundColor: colors.button,

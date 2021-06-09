@@ -10,7 +10,9 @@ const App = () => {
   // Supress warning about timer that is caused when connecting to firebase
   // It is a bug so it can safely be supressed:
   // https://stackoverflow.com/questions/44603362/setting-a-timer-for-a-long-period-of-time-i-e-multiple-minutes/48778011#48778011
-  LogBox.ignoreLogs(['Setting a timer']);
+  // Supress warning about navigation state:
+  // https://reactnavigation.org/docs/troubleshooting/#i-get-the-warning-non-serializable-values-were-found-in-the-navigation-state
+  LogBox.ignoreLogs(['Setting a timer', 'Non-serializable values were found in the navigation state']);
 
   useEffect(() => {
     var firebaseConfig = {

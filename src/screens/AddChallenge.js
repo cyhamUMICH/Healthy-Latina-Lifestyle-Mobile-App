@@ -6,13 +6,12 @@ import { Button, ButtonGroup, CheckBox } from 'react-native-elements';
 import { GetTopics } from '../components/GetTopics';
 import TopicButtons from '../components/TopicButtons';
 import UploadImage from '../components/UploadImage';
-import UploadAudio from '../components/UploadAudio';
 import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/storage";
 
-const AddMeditation = ({route}) => {
+const AddChallenge = ({route}) => {
   const {topics, navigation} = route.params;
 
   const [title, setTitle] = useState();
@@ -25,9 +24,6 @@ const AddMeditation = ({route}) => {
   const [topicsList, setTopicsList] = useState([]);
   const [selectedTopics, setSelectedTopics] = useState([]);
   const [image, setImage] = useState(null);
-  const [audio, setAudio] = useState(null);
-  const [duration, setDuration] = useState();
-  const [cost, setCost] = useState();
   const [isFeatured, setIsFeatured] = useState(false);
 
   const [isUploadInProgress, setIsUploadInProgress] = useState(false);
@@ -45,93 +41,8 @@ const AddMeditation = ({route}) => {
     }
   }, []);
 
-  const formComplete = () => {
-    return (title && description && selectedLanguage && selectedDifficulty && selectedTopics && image && audio
-      && duration && cost);
-  };
-
-  const validateDuration = () => {
-    return duration && !isNaN(parseInt(duration));
-  }
-
-  const validateCost = () => {
-    return cost && !isNaN(parseFloat(cost));
-  }
-
   const submit = async () => {
-    if (formComplete() && validateDuration() && validateCost()) 
-    {
-      const dbh = firebase.firestore();
-      const docRef = await dbh.collection("meditations").add({
-        title: title,
-        description: description,
-        language: selectedLanguage,
-        difficulty: selectedDifficulty,
-        topics: selectedTopics,
-        duration: parseInt(duration),
-        cost: parseFloat(cost),
-        featured: isFeatured,
-        dateAdded: new Date()
-      });
-      
-      await docRef.update({
-        imagePath: baseImagePath + docRef.id + "__" + image.filename,
-        audioPath: baseAudioPath + docRef.id + "__" + audio.name
-      });
-
-      const imageLoc = firebase.storage().ref().child(baseImagePath.concat(docRef.id).concat("__").concat(image.filename));
-      // Code from: https://medium.com/@ericmorgan1/upload-images-to-firebase-in-expo-c4a7d4c46d06
-      const imageResponse = await fetch(image.uri);
-      const imageBlob = await imageResponse.blob();
-      setIsUploadInProgress(true);
-      let uploadImageStatus = imageLoc.put(imageBlob);
-
-      // Code from: https://firebase.google.com/docs/reference/js/firebase.storage.UploadTask#on
-      uploadImageStatus.on(firebase.storage.TaskEvent.STATE_CHANGED, {
-        'complete': async function() {
-          const audioLoc = firebase.storage().ref().child(baseAudioPath.concat(docRef.id).concat("_").concat(audio.name));
-          // Code from: https://medium.com/@ericmorgan1/upload-images-to-firebase-in-expo-c4a7d4c46d06
-          const audioResponse = await fetch(audio.uri);
-          const audioBlob = await audioResponse.blob();
-          let uploadAudioStatus = audioLoc.put(audioBlob);
-          uploadAudioStatus.on(firebase.storage.TaskEvent.STATE_CHANGED, {
-            'complete': function() {
-              setIsUploadInProgress(false);
-              navigation.goBack();
-              navigation.replace("MeditationList");
-            },
-            'error': function() {
-              Alert.alert(
-                "Error Adding Meditation",
-                "There was an error when uploading the audio.",
-                [
-                  {text: "OK"}
-                ]
-              );
-            }
-          });
-        },
-        'error': function() {
-          Alert.alert(
-            "Error Adding Meditation",
-            "There was an error when uploading the image.",
-            [
-              {text: "OK"}
-            ]
-          );
-        }
-      });
-    }
-    else
-    {
-      Alert.alert(
-        "Error Adding Meditation",
-        "Please complete all of the fields before submitting, and check the format of the duration and cost fields.",
-        [
-          {text: "OK"}
-        ]
-      );
-    }
+    // TODO
   };
 
   return(
@@ -139,7 +50,7 @@ const AddMeditation = ({route}) => {
       {
         isTopicsLoaded && !isUploadInProgress ?
           <View style={styles.fullWidthWindow}>
-            <Text style={styles.contentTitle}>Add Meditation</Text>
+            <Text style={styles.contentTitle}>Add Challenge</Text>
               <View style={styles.fullWidthWindow}>
                 <KeyboardAvoidingView 
                 behavior="padding"
@@ -178,15 +89,6 @@ const AddMeditation = ({route}) => {
                     topics={selectedTopics} 
                     topicsFunction={setSelectedTopics} />
                   <UploadImage image={image} setImage={setImage} />
-                  <UploadAudio audio={audio} setAudio={setAudio} />
-                  <TextInput
-                    style={styles.inputText} textAlign="center"
-                    placeholder="duration (seconds)" placeholderTextColor={colors.text} 
-                    onChangeText={input => setDuration(input)} />
-                  <TextInput
-                    style={styles.inputText} textAlign="center"
-                    placeholder="cost" placeholderTextColor={colors.text} 
-                    onChangeText={input => setCost(input)} />
                   <CheckBox
                     title="Featured"
                     checkedIcon='check-square'
@@ -213,4 +115,4 @@ const AddMeditation = ({route}) => {
   );
 };
 
-export default AddMeditation;
+export default AddChallenge;

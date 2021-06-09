@@ -6,10 +6,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/storage";
-import { TouchableOpacity } from 'react-native';
-import { Image } from 'react-native';
-import { Icon } from 'react-native-elements/dist/icons/Icon';
-import { colors } from '../styles/Colors';
 
 const MeditationList = (props) => {
   const [data, setData] = useState([]);           
@@ -64,7 +60,6 @@ const MeditationList = (props) => {
   }, []);
 
   return (
-    <>
     <View style={styles.app}>
     {
       isLoaded ? 
@@ -77,11 +72,6 @@ const MeditationList = (props) => {
         : <LoadingSpinner />
     }
     </View>
-    
-    <TouchableOpacity style={styles.floatingActionButton} onPress={() => props.navigation.navigate("AddContent")}>
-      <Image source={require('../../assets/add-plus-button.png')} style = {styles.plusbutton}></Image>
-    </TouchableOpacity>
-   </>
   );
 };
 
