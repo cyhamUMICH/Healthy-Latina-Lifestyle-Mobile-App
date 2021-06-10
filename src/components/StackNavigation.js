@@ -14,9 +14,9 @@ import AddContent from '../screens/AddContent';
 import Timer from '../screens/Timer';
 import PasswordReset from '../screens/PasswordReset';
 import AddMeditation from '../screens/AddMeditation';
-import Challenge from '../screens/Challenge';
-import ChallengeList from '../screens/ChallengeList';
-import Groups from '../screens/Groups';
+import AddChallenge from '../screens/AddChallenge';
+import Challenge from '../screens/Challenge'
+import ChallengeList from '../screens/ChallengeList'
 
 const Stack = createStackNavigator();
 
@@ -43,9 +43,9 @@ const StackNavigation = () => {
       <Stack.Screen name="Timer" component={Timer} options={{ title: 'Timer'}} />
       <Stack.Screen name="PasswordReset" component={PasswordReset} options={{ title: 'Reset Password', headerRight: null }}/>
       <Stack.Screen name="AddMeditation" component={AddMeditation} options={{ title: 'Add Meditation'}} />
+      <Stack.Screen name="AddChallenge" component={AddChallenge} options={{ title: 'Add Challenge'}} />
       <Stack.Screen name="Challenge" component={Challenge} options={{ title: 'Challenge'}} />
       <Stack.Screen name="ChallengeList" component={ChallengeList} options={{ title: 'ChallengeList'}} />
-      <Stack.Screen name="Groups" component={Groups} options={{ title: 'Groups'}} />
     </Stack.Navigator>
   );
 };

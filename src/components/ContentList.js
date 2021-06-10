@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import { Card, Button } from 'react-native-elements';
+import { Card, Button, Icon } from 'react-native-elements';
 import { styles } from '../styles/Styles';
+import { colors } from '../styles/Colors';
 import FilterModal from '../components/ContentFilter';
+import { GetTopics } from '../components/GetTopics';
 import Tags from '../components/Tags';
 import LoadingSpinner from '../components/LoadingSpinner';
-import * as firebase from 'firebase/app';
-import "firebase/firestore";
 
 const ContentCards = (props) => {
   return (
@@ -23,8 +23,12 @@ const ContentCards = (props) => {
 const ContentCard = ({item}, contentComponent, navigation) => {
   // Convert seconds to HH:MM:SS, then remove HH if 00
   // https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript
-  let duration = new Date(item.duration * 1000).toISOString().substr(11, 8);
-  duration = (duration.substr(0, 2) == "00") ? duration.substr(3) : duration;
+
+  let duration;
+  if (item.duration){
+    let duration = new Date(item.duration * 1000).toISOString().substr(11, 8);
+    duration = (duration.substr(0, 2) == "00") ? duration.substr(3) : duration;
+  }
 
   return (
     <TouchableOpacity 
@@ -33,7 +37,7 @@ const ContentCard = ({item}, contentComponent, navigation) => {
       <Card containerStyle={styles.card}>
         <Card.Image source={{ uri: item.imagePath }}
           style={styles.cardImage}>
-          <Text style={styles.duration}>{duration}</Text>
+          {item.duration && <Text style={styles.duration}>{duration}</Text>}
         </Card.Image>
         <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
         <Card.Divider/>
@@ -46,35 +50,9 @@ const ContentCard = ({item}, contentComponent, navigation) => {
 const ContentList = (props) => {
   const [isTopicsLoaded, setIsTopicsLoaded] = useState(false);
   const [topicsList, setTopicsList] = useState([]);
+
   useEffect(() => {
-    const fetchTopicsList = async () => {
-      const dbh = firebase.firestore();
-      dbh.collection("topics").get()
-      .then((querySnapshot) => {
-
-        if (querySnapshot.size == 0) {
-          setIsTopicsLoaded(true);
-        }
-        else {
-          let countTopics = 0;
-          querySnapshot.forEach((doc) => {
-            // Add to the topic list
-            setTopicsList(oldList => [...oldList, doc.data().name]);
-            countTopics++;
-
-            // Data is loaded once all topics are in the list
-            if (querySnapshot.size === countTopics) {
-              setIsTopicsLoaded(true);
-            }
-          })
-        }
-      })
-      .catch((error) => {
-        console.log("Error getting documents: ", error);
-      });
-    };
-  
-    fetchTopicsList();  
+    GetTopics(setIsTopicsLoaded, setTopicsList);
   }, []);
 
   const [filteredList, setFilteredList] = useState(props.data);
@@ -113,6 +91,18 @@ const ContentList = (props) => {
         filterSettings={filterSettings}
         filteredListFunction={setFilteredList}
         filteredList={filteredList}/>
+        <View style={styles.floatingActionView}>
+        <TouchableOpacity style={styles.floatingActionButton} 
+          onPress={() => props.navigation.navigate("Add".concat(props.contentComponent), {
+            topics: topicsList, 
+            navigation: props.navigation
+            })}>
+          <View style={styles.floatingActionIcon}>
+            <Icon name="plus" type="font-awesome" color={colors.text} />
+          </View>
+        </TouchableOpacity>
+        </View>
+
     </View>
     : <LoadingSpinner />
   );

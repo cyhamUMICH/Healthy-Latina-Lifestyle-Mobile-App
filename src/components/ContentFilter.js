@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, ScrollView, View, Text } from "react-native";
 import { Button } from 'react-native-elements';
+import TopicButtons from '../components/TopicButtons';
 import { styles } from '../styles/Styles';
 
 const durationLimits = [
@@ -124,28 +125,10 @@ const TopicOptions = (props) => {
   return (
     <View style={styles.modalSection}>
       <Text style={styles.modalText}>Topics</Text>
-      <View style={styles.horizontalButtonLayout}> 
-          {
-            props.topicsList.sort().map(topic =>  
-              <View key={topic} style={styles.horizontalSpaceButtonWrapper}>         
-                <Button
-                  buttonStyle={props.topics.indexOf(topic) > -1 ? styles.selectedFilterButton : styles.button}
-                  titleStyle={props.topics.indexOf(topic) > -1 ? styles.selectedFilterButtonText : styles.buttonText}
-                  onPress={() => {
-                    if (props.topics.indexOf(topic) > -1)
-                    {
-                      props.topicsFunction(props.topics.filter(item => item != topic));
-                    }
-                    else
-                    {
-                      props.topicsFunction(props.topics.concat(topic));
-                    }
-                  }}
-                  title={topic}/>
-              </View>
-            )
-          }     
-      </View>
+      <TopicButtons 
+        topicsList={props.topicsList} 
+        topics={props.topics} 
+        topicsFunction={props.topicsFunction} />
     </View>
   );
 };

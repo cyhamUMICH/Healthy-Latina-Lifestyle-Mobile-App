@@ -3,16 +3,23 @@ import { styles } from '../styles/Styles';
 import { colors } from '../styles/Colors';
 import { View, KeyboardAvoidingView, ScrollView, Text, TextInput, Alert } from 'react-native';
 import { Button, ButtonGroup, CheckBox } from 'react-native-elements';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { GetTopics } from '../components/GetTopics';
 import TopicButtons from '../components/TopicButtons';
 import UploadImage from '../components/UploadImage';
-import UploadAudio from '../components/UploadAudio';
+import ChallengeDays from '../components/ChallengeDays';
 import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/storage";
 
-const AddMeditation = ({route}) => {
+const AddChallenge = ({route}) => {
+  const today = new Date();
+  const defaultStartDate = new Date(today.getFullYear(), today.getMonth(),
+    today.getDate(), 0, 0, 0, 0);
+  const defaultEndDate = new Date(today.getFullYear(), today.getMonth(),
+    today.getDate() + 6, 23, 59, 59, 59);
+
   const {topics, navigation} = route.params;
 
   const [title, setTitle] = useState();
@@ -25,16 +32,38 @@ const AddMeditation = ({route}) => {
   const [topicsList, setTopicsList] = useState([]);
   const [selectedTopics, setSelectedTopics] = useState([]);
   const [image, setImage] = useState(null);
-  const [audio, setAudio] = useState(null);
-  const [duration, setDuration] = useState();
-  const [cost, setCost] = useState();
+  const [startDate, setStartDate] = useState(defaultStartDate);
+  const [showStartDate, setShowStartDate] = useState(false);
+  const [endDate, setEndDate] = useState(defaultEndDate);
+  const [showEndDate, setShowEndDate] = useState(false);
   const [isFeatured, setIsFeatured] = useState(false);
 
+  const [duration, setDuration] = useState();
+
+  const [challengeDaysDates, setChallengeDaysDates] = useState([]);
+  const [challengeDaysDescriptions, setChallengeDaysDescriptions] = useState([]);
+
   const [isUploadInProgress, setIsUploadInProgress] = useState(false);
+  const baseImagePath = "challenges/images/";
 
-  const baseImagePath = "meditations/images/";
-  const baseAudioPath = "meditations/audios/";
-
+  const printDateTime = (date) => {
+    // Add one since getMonth() gives the month index
+    let month = date.getMonth() + 1;
+    // Code from: https://medium.com/front-end-weekly/how-to-convert-24-hours-format-to-12-hours-in-javascript-ca19dfd7419d
+    let hours = date.getHours();
+    let AmOrPm = hours >= 12 ? 'PM' : 'AM';
+    hours = (hours % 12) || 12;
+    hours = (hours < 10) ? '0' + hours : hours;
+  
+    let minutes = date.getMinutes();
+    minutes = (minutes < 10) ? '0' + minutes : minutes;
+  
+    return month + '/' + date.getDate() + '/' + date.getFullYear() 
+      + ' ' + hours + ':' + minutes + ' ' + AmOrPm + ' ' 
+      // Code from: https://stackoverflow.com/questions/1091372/getting-the-clients-time-zone-and-offset-in-javascript
+      + date.toString().match(/\(([A-Za-z\s].*)\)/)[1];
+  };
+  
   useEffect(() => {
     if (topicsList.length === 0) {
       if (topics != null) {
@@ -45,42 +74,61 @@ const AddMeditation = ({route}) => {
         GetTopics(setIsTopicsLoaded, setTopicsList);
       }
     }
-  }, []);
+
+    // Create the dates so the start date is at midnight and end date at 11:59pm
+    // Then, the number of dates the challenge spans can be calculated, even if it
+    //    isn't the whole day (i.e. 1/1/2021 at 4pm to 1/3/2021 at 10am is 3 days)
+    let startDateMidnight = new Date(startDate.getFullYear(), startDate.getMonth(),
+      startDate.getDate(), 0, 0, 0, 0);
+    let endDateEOD = new Date(endDate.getFullYear(), endDate.getMonth(),
+      endDate.getDate(), 23, 59, 59, 59);
+    setDuration(Math.round((endDateEOD.getTime() - startDateMidnight.getTime()) / (1000 * 60 * 60 * 24)));
+  }, [startDate, endDate]);
 
   const formComplete = () => {
-    return (title && description && selectedLanguage && selectedDifficulty && selectedTopics && image && audio
-      && duration && cost);
+    return (title && description && selectedLanguage && selectedDifficulty && selectedTopics && image
+      && startDate && endDate && challengeDaysFormsComplete());
+  };
+  
+  const challengeDaysFormsComplete = () => {
+    for(let i = 0; i < duration; i++) {
+      if (!challengeDaysDates[i] || challengeDaysDescriptions[i] == "" || !challengeDaysDescriptions[i])
+        return false;
+    }
+
+    return true;
   };
 
-  const validateDuration = () => {
-    return duration && !isNaN(parseInt(duration));
-  }
-
-  const validateCost = () => {
-    return cost && !isNaN(parseFloat(cost));
-  }
+  const validateDates = () => {
+    return startDate.getTime() < endDate.getTime();
+  };
 
   const submit = async () => {
-
-    if (formComplete() && validateDuration() && validateCost()) 
-    {
+    if (formComplete() && validateDates()) {
       const dbh = firebase.firestore();
-      const docRef = await dbh.collection("meditations").add({
+      const docRef = await dbh.collection("challenges").add({
         title: title,
         description: description,
         language: selectedLanguage,
         difficulty: selectedDifficulty,
         topics: selectedTopics,
-        duration: parseInt(duration),
-        cost: parseFloat(cost),
+        startDate: startDate,
+        endDate: endDate,
         featured: isFeatured,
         dateAdded: new Date()
       });
       
       await docRef.update({
         imagePath: baseImagePath + docRef.id + "__" + image.filename,
-        audioPath: baseAudioPath + docRef.id + "__" + audio.name
       });
+
+      for(let i = 0; i < duration; i++) {
+        const challengeDayRef = await dbh.collection("challengeDays").add({
+          challenge: docRef,
+          description: challengeDaysDescriptions[i],
+          date: challengeDaysDates[i]
+        });
+      }
 
       const imageLoc = firebase.storage().ref().child(baseImagePath.concat(docRef.id).concat("__").concat(image.filename));
       // Code from: https://medium.com/@ericmorgan1/upload-images-to-firebase-in-expo-c4a7d4c46d06
@@ -91,32 +139,14 @@ const AddMeditation = ({route}) => {
 
       // Code from: https://firebase.google.com/docs/reference/js/firebase.storage.UploadTask#on
       uploadImageStatus.on(firebase.storage.TaskEvent.STATE_CHANGED, {
-        'complete': async function() {
-          const audioLoc = firebase.storage().ref().child(baseAudioPath.concat(docRef.id).concat("_").concat(audio.name));
-          // Code from: https://medium.com/@ericmorgan1/upload-images-to-firebase-in-expo-c4a7d4c46d06
-          const audioResponse = await fetch(audio.uri);
-          const audioBlob = await audioResponse.blob();
-          let uploadAudioStatus = audioLoc.put(audioBlob);
-          uploadAudioStatus.on(firebase.storage.TaskEvent.STATE_CHANGED, {
-            'complete': function() {
-              setIsUploadInProgress(false);
-              navigation.goBack();
-              navigation.replace("MeditationList");
-            },
-            'error': function() {
-              Alert.alert(
-                "Error Adding Meditation",
-                "There was an error when uploading the audio.",
-                [
-                  {text: "OK"}
-                ]
-              );
-            }
-          });
+        'complete': function() {
+          setIsUploadInProgress(false);
+          navigation.goBack();
+          navigation.replace("ChallengeList");
         },
         'error': function() {
           Alert.alert(
-            "Error Adding Meditation",
+            "Error Adding Challenge",
             "There was an error when uploading the image.",
             [
               {text: "OK"}
@@ -125,11 +155,10 @@ const AddMeditation = ({route}) => {
         }
       });
     }
-    else
-    {
+    else {
       Alert.alert(
-        "Error Adding Meditation",
-        "Please complete all of the fields before submitting, and check the format of the duration and cost fields.",
+        "Error Adding Challenge",
+        "Please complete all of the fields before submitting, and check the start date is before the end date.",
         [
           {text: "OK"}
         ]
@@ -142,7 +171,7 @@ const AddMeditation = ({route}) => {
       {
         isTopicsLoaded && !isUploadInProgress ?
           <View style={styles.fullWidthWindow}>
-            <Text style={styles.contentTitle}>Add Meditation</Text>
+            <Text style={styles.contentTitle}>Add Challenge</Text>
               <View style={styles.flexContainer}>
                 <KeyboardAvoidingView 
                 behavior="padding"
@@ -181,15 +210,36 @@ const AddMeditation = ({route}) => {
                     topics={selectedTopics} 
                     topicsFunction={setSelectedTopics} />
                   <UploadImage image={image} setImage={setImage} />
-                  <UploadAudio audio={audio} setAudio={setAudio} />
-                  <TextInput
-                    style={styles.inputText} textAlign="center"
-                    placeholder="duration (seconds)" placeholderTextColor={colors.text} 
-                    onChangeText={input => setDuration(input)} />
-                  <TextInput
-                    style={styles.inputText} textAlign="center"
-                    placeholder="cost" placeholderTextColor={colors.text} 
-                    onChangeText={input => setCost(input)} />
+                  <Text style={styles.cardTitle}>{printDateTime(startDate)}</Text>
+                  <Button
+                    buttonStyle={styles.button}
+                    titleStyle={styles.buttonText} 
+                    onPress={() => {setShowStartDate(true)}} title="Pick Start Date" />
+                  <DateTimePickerModal
+                    date={startDate}
+                    isVisible={showStartDate}
+                    mode="datetime"
+                    onConfirm={(date) => {
+                      setShowStartDate(false);
+                      setStartDate(date);
+                    }}
+                    onCancel={() => setShowStartDate(false)}
+                  />
+                  <Text style={styles.cardTitle}>{printDateTime(endDate)}</Text>
+                  <Button
+                    buttonStyle={styles.button}
+                    titleStyle={styles.buttonText} 
+                    onPress={() => {setShowEndDate(true)}} title="Pick End Date (inclusive)" />
+                  <DateTimePickerModal
+                    date={endDate}
+                    isVisible={showEndDate}
+                    mode="datetime"
+                    onConfirm={(date) => {
+                      setShowEndDate(false);
+                      setEndDate(date);
+                    }}
+                    onCancel={() => setShowEndDate(false)}
+                  />
                   <CheckBox
                     title="Featured"
                     checkedIcon='check-square'
@@ -201,6 +251,13 @@ const AddMeditation = ({route}) => {
                     textStyle={styles.checkBoxLabel}
                     onPress={() => setIsFeatured(!isFeatured)}
                   />
+                  <ChallengeDays 
+                    duration={duration}
+                    startDate={startDate} 
+                    challengeDaysDates={challengeDaysDates}
+                    setChallengeDaysDates={setChallengeDaysDates} 
+                    challengeDaysDescriptions={challengeDaysDescriptions}
+                    setChallengeDaysDescriptions={setChallengeDaysDescriptions} />
                   <Button 
                     title="Submit" 
                     buttonStyle={styles.button}
@@ -216,4 +273,4 @@ const AddMeditation = ({route}) => {
   );
 };
 
-export default AddMeditation;
+export default AddChallenge;

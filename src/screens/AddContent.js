@@ -9,7 +9,18 @@ const AddContent = (props) => {
       <Button 
          buttonStyle={styles.button}
          titleStyle={styles.buttonText}
-         title="Add Meditation" onPress={() => props.navigation.navigate("AddMeditation")} 
+         title="Add Meditation" onPress={() => props.navigation.navigate("AddMeditation", {
+           topics: null,
+           navigation: props.navigation
+         })} 
+          />
+      <Button 
+         buttonStyle={styles.button}
+         titleStyle={styles.buttonText}
+         title="Add Challenge" onPress={() => props.navigation.navigate("AddChallenge", {
+           topics: null,
+           navigation: props.navigation
+         })} 
           />
 
     </View>
