@@ -23,10 +23,15 @@ const Home = (props) => {
             <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("MeditationList")}>
               <Image source={require("../../assets/meditation.png")} style={{ height: 43, width: 43 }}/>
             </TouchableOpacity>
-            
-            <Text onPress={() => props.navigation.navigate("ChallengeList")}> Challenge List </Text>
 
-            <Text onPress={() => props.navigation.navigate("AddContent")}> Add Content </Text>
+            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("ChallengeList")}>
+              <Image source={require("../../assets/calendar-challenge.png")} style={{ height: 43, width: 43 }}/>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("AddContent")}>
+              <Image source={require("../../assets/addContent.png")} style={{ height: 43, width: 43 }}/>
+            </TouchableOpacity>
+  
             </ScrollView>
       {/*<View style={{flex: 1, flexDirection: "column", justifyContent: "space-evenly"}}>
         < Button buttonStyle={styles.smallButton} titleStyle={styles.buttonText} title="Login" onPress={() => props.navigation.navigate("Login")} />

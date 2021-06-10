@@ -241,6 +241,14 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     left: 50
   },
+  challengeVideo:{
+    width: 300,
+    height: 300,
+    borderRadius: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+    left: 50
+  },
   editAccountProfile:{
     width: null,
     height: null,
