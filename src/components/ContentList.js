@@ -23,8 +23,12 @@ const ContentCards = (props) => {
 const ContentCard = ({item}, contentComponent, navigation) => {
   // Convert seconds to HH:MM:SS, then remove HH if 00
   // https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript
-  let duration = new Date(item.duration * 1000).toISOString().substr(11, 8);
-  duration = (duration.substr(0, 2) == "00") ? duration.substr(3) : duration;
+
+  let duration;
+  if (item.duration){
+    let duration = new Date(item.duration * 1000).toISOString().substr(11, 8);
+    duration = (duration.substr(0, 2) == "00") ? duration.substr(3) : duration;
+  }
 
   return (
     <TouchableOpacity 
@@ -33,7 +37,7 @@ const ContentCard = ({item}, contentComponent, navigation) => {
       <Card containerStyle={styles.card}>
         <Card.Image source={{ uri: item.imagePath }}
           style={styles.cardImage}>
-          <Text style={styles.duration}>{duration}</Text>
+          {item.duration && <Text style={styles.duration}>{duration}</Text>}
         </Card.Image>
         <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
         <Card.Divider/>

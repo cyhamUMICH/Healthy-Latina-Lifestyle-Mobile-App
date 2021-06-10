@@ -61,6 +61,7 @@ const AddMeditation = ({route}) => {
   }
 
   const submit = async () => {
+
     if (formComplete() && validateDuration() && validateCost()) 
     {
       const dbh = firebase.firestore();

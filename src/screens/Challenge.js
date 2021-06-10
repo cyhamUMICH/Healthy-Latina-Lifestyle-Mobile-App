@@ -6,13 +6,18 @@ import Tags from '../components/Tags';
 import { styles } from '../styles/Styles';
 
 const Challenge = ({route}) => {
-  const [currentValue, setCurrentValue] = useState(0);
-
   const item = route.params;
   return (
-    <Text>
-      Challenge Page
-    </Text>
+    <View style={styles.fullWidthWindow}>
+      <Image source={{ uri: item.imagePath }}
+        style={styles.meditationPhoto}></Image>
+       <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
+      <Text style={styles.contentTitle}>{item.title}</Text> 
+
+      <ScrollView style={styles.contentDescriptionSpacer}>
+        <Text style={styles.contentDesc}>{item.description}</Text>
+      </ScrollView>
+    </View>
   );
 };
 
