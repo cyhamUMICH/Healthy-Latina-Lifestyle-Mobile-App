@@ -25,6 +25,7 @@ const Home = (props) => {
             </TouchableOpacity>
             
             <Text onPress={() => props.navigation.navigate("ChallengeList")}> Challenge List </Text>
+            <Text onPress={() => props.navigation.navigate("Groups")}> Groups </Text>
 
 
             </ScrollView>

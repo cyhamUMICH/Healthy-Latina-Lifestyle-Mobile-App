@@ -60,7 +60,7 @@ await dbh.set({
 name: name,
 username: username,
 email: email
-})
+}, {merge:true});
 
 props.navigation.navigate("Home")
 
