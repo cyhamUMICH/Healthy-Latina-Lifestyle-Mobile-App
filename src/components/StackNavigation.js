@@ -17,6 +17,7 @@ import AddMeditation from '../screens/AddMeditation';
 import AddChallenge from '../screens/AddChallenge';
 import Challenge from '../screens/Challenge'
 import ChallengeList from '../screens/ChallengeList'
+import Groups from '../screens/Groups'
 
 const Stack = createStackNavigator();
 
@@ -46,6 +47,7 @@ const StackNavigation = () => {
       <Stack.Screen name="AddChallenge" component={AddChallenge} options={{ title: 'Add Challenge'}} />
       <Stack.Screen name="Challenge" component={Challenge} options={{ title: 'Challenge'}} />
       <Stack.Screen name="ChallengeList" component={ChallengeList} options={{ title: 'ChallengeList'}} />
+      <Stack.Screen name="Groups" component={Groups} options={{ title: 'Groups'}} />
     </Stack.Navigator>
   );
 };
