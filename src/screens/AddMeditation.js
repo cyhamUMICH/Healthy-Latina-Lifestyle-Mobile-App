@@ -36,12 +36,14 @@ const AddMeditation = ({route}) => {
   const baseAudioPath = "meditations/audios/";
 
   useEffect(() => {
-    if (topics != null) {
-      setTopicsList(topics);
-      setIsTopicsLoaded(true);
-    }
-    else {
-      GetTopics(setIsTopicsLoaded, setTopicsList);
+    if (topicsList.length === 0) {
+      if (topics != null) {
+        setTopicsList(topics);
+        setIsTopicsLoaded(true);
+      }
+      else {
+        GetTopics(setIsTopicsLoaded, setTopicsList);
+      }
     }
   }, []);
 
@@ -140,7 +142,7 @@ const AddMeditation = ({route}) => {
         isTopicsLoaded && !isUploadInProgress ?
           <View style={styles.fullWidthWindow}>
             <Text style={styles.contentTitle}>Add Meditation</Text>
-              <View style={styles.fullWidthWindow}>
+              <View style={styles.flexContainer}>
                 <KeyboardAvoidingView 
                 behavior="padding"
                 style={styles.inputView}>

@@ -376,7 +376,14 @@ export const styles = StyleSheet.create({
     flex: 1,
     aspectRatio: 1
   },
-
+  divider: {
+    backgroundColor: colors.text, 
+    height: 2, 
+    marginVertical: '2%'
+  },
+  flexContainer: {
+    flex: 1
+  }
   
 });
   
