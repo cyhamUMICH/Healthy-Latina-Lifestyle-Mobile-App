@@ -12,7 +12,8 @@
     "preset": "jest-expo",
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|react-native-vector-icons|@react-native-picker/picker)"
-    ]
+    ],
+    "setupFilesAfterEnv": ["./jest.setup.js"]
   },
   "dependencies": {
     "@firebase/firestore": "^2.3.0",
