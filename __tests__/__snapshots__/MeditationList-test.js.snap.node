@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the loading screen 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitAlignItems": "center",
+      "WebkitBoxAlign": "center",
+      "WebkitBoxPack": "center",
+      "WebkitJustifyContent": "center",
+      "alignItems": "center",
+      "backgroundColor": "rgba(255,255,255,1.00)",
+      "justifyContent": "center",
+      "msFlexAlign": "center",
+      "msFlexPack": "center",
+    }
+  }
+>
+  <div
+    aria-valuemax={1}
+    aria-valuemin={0}
+    className="css-view-1dbjc4n"
+    role="progressbar"
+    style={
+      Object {
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
+        "WebkitBoxPack": "center",
+        "WebkitJustifyContent": "center",
+        "WebkitTransform": "scale(2.5)",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "msFlexAlign": "center",
+        "msFlexPack": "center",
+        "transform": "scale(2.5)",
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n r-animationKeyframes-127358a"
+      style={
+        Object {
+          "WebkitAnimationDuration": "0.75s",
+          "WebkitAnimationIterationCount": "infinite",
+          "WebkitAnimationTimingFunction": "linear",
+          "animationDuration": "0.75s",
+          "animationIterationCount": "infinite",
+          "animationTimingFunction": "linear",
+          "height": "36px",
+          "width": "36px",
+        }
+      }
+    >
+      <svg
+        height="100%"
+        viewBox="0 0 32 32"
+        width="100%"
+      >
+        <circle
+          cx="16"
+          cy="16"
+          fill="none"
+          r="14"
+          strokeWidth="4"
+          style={
+            Object {
+              "opacity": 0.2,
+              "stroke": "#00A89D",
+            }
+          }
+        />
+        <circle
+          cx="16"
+          cy="16"
+          fill="none"
+          r="14"
+          strokeWidth="4"
+          style={
+            Object {
+              "stroke": "#00A89D",
+              "strokeDasharray": 80,
+              "strokeDashoffset": 60,
+            }
+          }
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders the root without loading screen 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitAlignItems": "center",
+      "WebkitBoxAlign": "center",
+      "WebkitBoxPack": "center",
+      "WebkitJustifyContent": "center",
+      "alignItems": "center",
+      "backgroundColor": "rgba(255,255,255,1.00)",
+      "justifyContent": "center",
+      "msFlexAlign": "center",
+      "msFlexPack": "center",
+    }
+  }
+>
+  <div
+    aria-valuemax={1}
+    aria-valuemin={0}
+    className="css-view-1dbjc4n"
+    role="progressbar"
+    style={
+      Object {
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
+        "WebkitBoxPack": "center",
+        "WebkitJustifyContent": "center",
+        "WebkitTransform": "scale(2.5)",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "msFlexAlign": "center",
+        "msFlexPack": "center",
+        "transform": "scale(2.5)",
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n r-animationKeyframes-127358a"
+      style={
+        Object {
+          "WebkitAnimationDuration": "0.75s",
+          "WebkitAnimationIterationCount": "infinite",
+          "WebkitAnimationTimingFunction": "linear",
+          "animationDuration": "0.75s",
+          "animationIterationCount": "infinite",
+          "animationTimingFunction": "linear",
+          "height": "36px",
+          "width": "36px",
+        }
+      }
+    >
+      <svg
+        height="100%"
+        viewBox="0 0 32 32"
+        width="100%"
+      >
+        <circle
+          cx="16"
+          cy="16"
+          fill="none"
+          r="14"
+          strokeWidth="4"
+          style={
+            Object {
+              "opacity": 0.2,
+              "stroke": "#00A89D",
+            }
+          }
+        />
+        <circle
+          cx="16"
+          cy="16"
+          fill="none"
+          r="14"
+          strokeWidth="4"
+          style={
+            Object {
+              "stroke": "#00A89D",
+              "strokeDasharray": 80,
+              "strokeDashoffset": 60,
+            }
+          }
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders Home With the Loading Screen 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Image
+    source={1}
+    style={
+      Object {
+        "alignItems": "center",
+        "borderRadius": 70,
+        "height": 100,
+        "justifyContent": "center",
+        "width": 80,
+      }
+    }
+  />
+  <RCTScrollView
+    horizontal={true}
+    showsHorizontalScrollIndicator={false}
+    style={
+      Object {
+        "marginLeft": -200,
+        "marginTop": 30,
+      }
+    }
+  >
+    <View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 32,
+              "width": 32,
+            }
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 43,
+              "width": 43,
+            }
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`Renders Home Without the Loading Screen 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Image
+    source={1}
+    style={
+      Object {
+        "alignItems": "center",
+        "borderRadius": 70,
+        "height": 100,
+        "justifyContent": "center",
+        "width": 80,
+      }
+    }
+  />
+  <RCTScrollView
+    horizontal={true}
+    showsHorizontalScrollIndicator={false}
+    style={
+      Object {
+        "marginLeft": -200,
+        "marginTop": 30,
+      }
+    }
+  >
+    <View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 32,
+              "width": 32,
+            }
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 43,
+              "width": 43,
+            }
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
