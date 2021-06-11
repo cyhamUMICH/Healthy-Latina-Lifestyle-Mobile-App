@@ -61,7 +61,8 @@ exports[`Renders Login With the Loading Screen 1`] = `
               "backgroundColor": "#00A89D",
               "borderRadius": 30,
               "marginBottom": "2%",
-              "padding": "2%",
+              "paddingHorizontal": "5%",
+              "paddingVertical": "2%",
             }
           }
           textAlign="center"
@@ -82,7 +83,8 @@ exports[`Renders Login With the Loading Screen 1`] = `
               "backgroundColor": "#00A89D",
               "borderRadius": 30,
               "marginBottom": "2%",
-              "padding": "2%",
+              "paddingHorizontal": "5%",
+              "paddingVertical": "2%",
             }
           }
           textAlign="center"
@@ -294,7 +296,8 @@ exports[`Renders Login Without the Loading Screen 1`] = `
               "backgroundColor": "#00A89D",
               "borderRadius": 30,
               "marginBottom": "2%",
-              "padding": "2%",
+              "paddingHorizontal": "5%",
+              "paddingVertical": "2%",
             }
           }
           textAlign="center"
@@ -315,7 +318,8 @@ exports[`Renders Login Without the Loading Screen 1`] = `
               "backgroundColor": "#00A89D",
               "borderRadius": 30,
               "marginBottom": "2%",
-              "padding": "2%",
+              "paddingHorizontal": "5%",
+              "paddingVertical": "2%",
             }
           }
           textAlign="center"

@@ -1,0 +1,1244 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders Add Challenge With the Loading Screen 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#fff",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#00A89D"
+      hidesWhenStopped={true}
+      size="large"
+      style={
+        Object {
+          "transform": Array [
+            Object {
+              "scale": 2.5,
+            },
+          ],
+        }
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`Renders Add Challenge Without the Loading Screen 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "paddingHorizontal": "2%",
+        "paddingTop": "2%",
+        "width": "100%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 28,
+          "textAlign": "center",
+        }
+      }
+    >
+      Add Challenge
+    </Text>
+    <View
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "marginVertical": "2%",
+            },
+            Object {
+              "paddingBottom": 0,
+            },
+          ]
+        }
+      >
+        <RCTScrollView>
+          <View>
+            <TextInput
+              allowFontScaling={true}
+              onChangeText={[Function]}
+              placeholder="title"
+              placeholderTextColor="#000"
+              rejectResponderTermination={true}
+              style={
+                Object {
+                  "backgroundColor": "#00A89D",
+                  "borderRadius": 30,
+                  "marginBottom": "2%",
+                  "paddingHorizontal": "5%",
+                  "paddingVertical": "2%",
+                }
+              }
+              textAlign="center"
+              underlineColorAndroid="transparent"
+            />
+            <TextInput
+              allowFontScaling={true}
+              multiline={true}
+              numberOfLines={6}
+              onChangeText={[Function]}
+              placeholder="description"
+              placeholderTextColor="#000"
+              rejectResponderTermination={true}
+              style={
+                Object {
+                  "backgroundColor": "#00A89D",
+                  "borderRadius": 30,
+                  "marginBottom": "2%",
+                  "paddingHorizontal": "5%",
+                  "paddingVertical": "2%",
+                }
+              }
+              textAlign="left"
+              textAlignVertical="top"
+              underlineColorAndroid="transparent"
+            />
+            <Text
+              style={
+                Object {
+                  "flexWrap": "wrap",
+                  "fontSize": 20,
+                  "lineHeight": 30,
+                  "textAlign": "left",
+                }
+              }
+            >
+              Language
+            </Text>
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#fff",
+                  "borderColor": "#e3e3e3",
+                  "borderRadius": 3,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "marginHorizontal": 10,
+                  "marginVertical": 5,
+                  "overflow": "hidden",
+                }
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "borderRightColor": "#bdc6cf",
+                    "borderRightWidth": 1,
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "flex": 1,
+                      "opacity": 1,
+                    }
+                  }
+                  testID="buttonGroupItem"
+                >
+                  <View
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#00A89D",
+                        "flex": 1,
+                        "justifyContent": "center",
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        Object {
+                          "color": "#000",
+                          "fontSize": 20,
+                          "fontWeight": "500",
+                        }
+                      }
+                      testID="buttonGroupItemText"
+                    >
+                      English
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "flex": 1,
+                      "opacity": 1,
+                    }
+                  }
+                  testID="buttonGroupItem"
+                >
+                  <View
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#00A89D",
+                        "flex": 1,
+                        "justifyContent": "center",
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        Object {
+                          "color": "#000",
+                          "fontSize": 20,
+                          "fontWeight": "500",
+                        }
+                      }
+                      testID="buttonGroupItemText"
+                    >
+                      Spanish
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <Text
+              style={
+                Object {
+                  "flexWrap": "wrap",
+                  "fontSize": 20,
+                  "lineHeight": 30,
+                  "textAlign": "left",
+                }
+              }
+            >
+              Difficulty
+            </Text>
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#fff",
+                  "borderColor": "#e3e3e3",
+                  "borderRadius": 3,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "marginHorizontal": 10,
+                  "marginVertical": 5,
+                  "overflow": "hidden",
+                }
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "borderRightColor": "#bdc6cf",
+                    "borderRightWidth": 1,
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "flex": 1,
+                      "opacity": 1,
+                    }
+                  }
+                  testID="buttonGroupItem"
+                >
+                  <View
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#00A89D",
+                        "flex": 1,
+                        "justifyContent": "center",
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        Object {
+                          "color": "#000",
+                          "fontSize": 20,
+                          "fontWeight": "500",
+                        }
+                      }
+                      testID="buttonGroupItemText"
+                    >
+                      Beginner
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "flex": 1,
+                      "opacity": 1,
+                    }
+                  }
+                  testID="buttonGroupItem"
+                >
+                  <View
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#00A89D",
+                        "flex": 1,
+                        "justifyContent": "center",
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        Object {
+                          "color": "#000",
+                          "fontSize": 20,
+                          "fontWeight": "500",
+                        }
+                      }
+                      testID="buttonGroupItemText"
+                    >
+                      Advanced
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <Text
+              style={
+                Object {
+                  "flexWrap": "wrap",
+                  "fontSize": 20,
+                  "lineHeight": 30,
+                  "textAlign": "left",
+                }
+              }
+            >
+              Topics (Select All)
+            </Text>
+            <View
+              style={
+                Object {
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                  "justifyContent": "space-evenly",
+                  "marginVertical": "1%",
+                }
+              }
+            />
+            <View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "borderRadius": 3,
+                      "overflow": "hidden",
+                    },
+                    Object {
+                      "borderRadius": 3,
+                    },
+                    undefined,
+                    false,
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="button"
+                  accessibilityState={
+                    Object {
+                      "busy": false,
+                      "disabled": false,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "opacity": 1,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#00A89D",
+                        "borderColor": "#2089dc",
+                        "borderRadius": 3,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "marginBottom": "2%",
+                        "padding": 8,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        Object {
+                          "color": "#000",
+                          "fontSize": 18,
+                          "paddingVertical": 1,
+                          "textAlign": "center",
+                        }
+                      }
+                    >
+                      Upload Image
+                    </Text>
+                    <View
+                      style={
+                        Object {
+                          "overflow": "hidden",
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          Object {
+                            "marginLeft": "5%",
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "justifyContent": "center",
+                            }
+                          }
+                        >
+                          <Text />
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <Text
+              style={
+                Object {
+                  "flexWrap": "wrap",
+                  "fontSize": 20,
+                  "lineHeight": 30,
+                  "textAlign": "left",
+                }
+              }
+            >
+              6/10/2021 12:00 AM Eastern Daylight Time
+            </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderRadius": 3,
+                    "overflow": "hidden",
+                  },
+                  Object {
+                    "borderRadius": 3,
+                  },
+                  undefined,
+                  false,
+                ]
+              }
+            >
+              <View
+                accessibilityRole="button"
+                accessibilityState={
+                  Object {
+                    "busy": false,
+                    "disabled": false,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#00A89D",
+                      "borderColor": "#2089dc",
+                      "borderRadius": 3,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": "2%",
+                      "padding": 8,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      Object {
+                        "color": "#000",
+                        "fontSize": 18,
+                        "paddingVertical": 1,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Pick Start Date
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <Modal
+              animationType="none"
+              hardwareAccelerated={false}
+              isVisible={false}
+              onHide={[Function]}
+              transparent={true}
+              visible={false}
+            >
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "backgroundColor": "black",
+                    "bottom": 0,
+                    "height": 1334,
+                    "left": 0,
+                    "opacity": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 750,
+                  }
+                }
+              />
+            </Modal>
+            <Text
+              style={
+                Object {
+                  "flexWrap": "wrap",
+                  "fontSize": 20,
+                  "lineHeight": 30,
+                  "textAlign": "left",
+                }
+              }
+            >
+              6/16/2021 11:59 PM Eastern Daylight Time
+            </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderRadius": 3,
+                    "overflow": "hidden",
+                  },
+                  Object {
+                    "borderRadius": 3,
+                  },
+                  undefined,
+                  false,
+                ]
+              }
+            >
+              <View
+                accessibilityRole="button"
+                accessibilityState={
+                  Object {
+                    "busy": false,
+                    "disabled": false,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#00A89D",
+                      "borderColor": "#2089dc",
+                      "borderRadius": 3,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": "2%",
+                      "padding": 8,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      Object {
+                        "color": "#000",
+                        "fontSize": 18,
+                        "paddingVertical": 1,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Pick End Date (inclusive)
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <Modal
+              animationType="none"
+              hardwareAccelerated={false}
+              isVisible={false}
+              onHide={[Function]}
+              transparent={true}
+              visible={false}
+            >
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "backgroundColor": "black",
+                    "bottom": 0,
+                    "height": 1334,
+                    "left": 0,
+                    "opacity": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 750,
+                  }
+                }
+              />
+            </Modal>
+            <View
+              accessibilityRole="checkbox"
+              accessibilityState={
+                Object {
+                  "checked": false,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderColor": "transparent",
+                  "borderRadius": 3,
+                  "borderWidth": 1,
+                  "margin": 5,
+                  "marginBottom": "2%",
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 0,
+                  "opacity": 1,
+                  "padding": 0,
+                }
+              }
+              testID="checkbox"
+            >
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <Text />
+                <Text
+                  style={
+                    Object {
+                      "color": "#000",
+                      "fontSize": 20,
+                      "fontWeight": "normal",
+                      "marginLeft": "2%",
+                      "marginRight": 10,
+                    }
+                  }
+                  testID="checkboxTitle"
+                >
+                  Featured
+                </Text>
+              </View>
+            </View>
+            <View>
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#000",
+                      "height": 2,
+                      "marginVertical": "2%",
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    Object {
+                      "flexWrap": "wrap",
+                      "fontSize": 20,
+                      "lineHeight": 30,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  Challenge Day 
+                  1
+                  : 
+                  6/10/2021
+                </Text>
+                <TextInput
+                  allowFontScaling={true}
+                  multiline={true}
+                  numberOfLines={6}
+                  onChangeText={[Function]}
+                  placeholder="description"
+                  placeholderTextColor="#000"
+                  rejectResponderTermination={true}
+                  style={
+                    Object {
+                      "backgroundColor": "#00A89D",
+                      "borderRadius": 30,
+                      "marginBottom": "2%",
+                      "paddingHorizontal": "5%",
+                      "paddingVertical": "2%",
+                    }
+                  }
+                  textAlign="left"
+                  textAlignVertical="top"
+                  underlineColorAndroid="transparent"
+                />
+              </View>
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#000",
+                      "height": 2,
+                      "marginVertical": "2%",
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    Object {
+                      "flexWrap": "wrap",
+                      "fontSize": 20,
+                      "lineHeight": 30,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  Challenge Day 
+                  2
+                  : 
+                  6/11/2021
+                </Text>
+                <TextInput
+                  allowFontScaling={true}
+                  multiline={true}
+                  numberOfLines={6}
+                  onChangeText={[Function]}
+                  placeholder="description"
+                  placeholderTextColor="#000"
+                  rejectResponderTermination={true}
+                  style={
+                    Object {
+                      "backgroundColor": "#00A89D",
+                      "borderRadius": 30,
+                      "marginBottom": "2%",
+                      "paddingHorizontal": "5%",
+                      "paddingVertical": "2%",
+                    }
+                  }
+                  textAlign="left"
+                  textAlignVertical="top"
+                  underlineColorAndroid="transparent"
+                />
+              </View>
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#000",
+                      "height": 2,
+                      "marginVertical": "2%",
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    Object {
+                      "flexWrap": "wrap",
+                      "fontSize": 20,
+                      "lineHeight": 30,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  Challenge Day 
+                  3
+                  : 
+                  6/12/2021
+                </Text>
+                <TextInput
+                  allowFontScaling={true}
+                  multiline={true}
+                  numberOfLines={6}
+                  onChangeText={[Function]}
+                  placeholder="description"
+                  placeholderTextColor="#000"
+                  rejectResponderTermination={true}
+                  style={
+                    Object {
+                      "backgroundColor": "#00A89D",
+                      "borderRadius": 30,
+                      "marginBottom": "2%",
+                      "paddingHorizontal": "5%",
+                      "paddingVertical": "2%",
+                    }
+                  }
+                  textAlign="left"
+                  textAlignVertical="top"
+                  underlineColorAndroid="transparent"
+                />
+              </View>
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#000",
+                      "height": 2,
+                      "marginVertical": "2%",
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    Object {
+                      "flexWrap": "wrap",
+                      "fontSize": 20,
+                      "lineHeight": 30,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  Challenge Day 
+                  4
+                  : 
+                  6/13/2021
+                </Text>
+                <TextInput
+                  allowFontScaling={true}
+                  multiline={true}
+                  numberOfLines={6}
+                  onChangeText={[Function]}
+                  placeholder="description"
+                  placeholderTextColor="#000"
+                  rejectResponderTermination={true}
+                  style={
+                    Object {
+                      "backgroundColor": "#00A89D",
+                      "borderRadius": 30,
+                      "marginBottom": "2%",
+                      "paddingHorizontal": "5%",
+                      "paddingVertical": "2%",
+                    }
+                  }
+                  textAlign="left"
+                  textAlignVertical="top"
+                  underlineColorAndroid="transparent"
+                />
+              </View>
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#000",
+                      "height": 2,
+                      "marginVertical": "2%",
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    Object {
+                      "flexWrap": "wrap",
+                      "fontSize": 20,
+                      "lineHeight": 30,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  Challenge Day 
+                  5
+                  : 
+                  6/14/2021
+                </Text>
+                <TextInput
+                  allowFontScaling={true}
+                  multiline={true}
+                  numberOfLines={6}
+                  onChangeText={[Function]}
+                  placeholder="description"
+                  placeholderTextColor="#000"
+                  rejectResponderTermination={true}
+                  style={
+                    Object {
+                      "backgroundColor": "#00A89D",
+                      "borderRadius": 30,
+                      "marginBottom": "2%",
+                      "paddingHorizontal": "5%",
+                      "paddingVertical": "2%",
+                    }
+                  }
+                  textAlign="left"
+                  textAlignVertical="top"
+                  underlineColorAndroid="transparent"
+                />
+              </View>
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#000",
+                      "height": 2,
+                      "marginVertical": "2%",
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    Object {
+                      "flexWrap": "wrap",
+                      "fontSize": 20,
+                      "lineHeight": 30,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  Challenge Day 
+                  6
+                  : 
+                  6/15/2021
+                </Text>
+                <TextInput
+                  allowFontScaling={true}
+                  multiline={true}
+                  numberOfLines={6}
+                  onChangeText={[Function]}
+                  placeholder="description"
+                  placeholderTextColor="#000"
+                  rejectResponderTermination={true}
+                  style={
+                    Object {
+                      "backgroundColor": "#00A89D",
+                      "borderRadius": 30,
+                      "marginBottom": "2%",
+                      "paddingHorizontal": "5%",
+                      "paddingVertical": "2%",
+                    }
+                  }
+                  textAlign="left"
+                  textAlignVertical="top"
+                  underlineColorAndroid="transparent"
+                />
+              </View>
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#000",
+                      "height": 2,
+                      "marginVertical": "2%",
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    Object {
+                      "flexWrap": "wrap",
+                      "fontSize": 20,
+                      "lineHeight": 30,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  Challenge Day 
+                  7
+                  : 
+                  6/16/2021
+                </Text>
+                <TextInput
+                  allowFontScaling={true}
+                  multiline={true}
+                  numberOfLines={6}
+                  onChangeText={[Function]}
+                  placeholder="description"
+                  placeholderTextColor="#000"
+                  rejectResponderTermination={true}
+                  style={
+                    Object {
+                      "backgroundColor": "#00A89D",
+                      "borderRadius": 30,
+                      "marginBottom": "2%",
+                      "paddingHorizontal": "5%",
+                      "paddingVertical": "2%",
+                    }
+                  }
+                  textAlign="left"
+                  textAlignVertical="top"
+                  underlineColorAndroid="transparent"
+                />
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderRadius": 3,
+                    "overflow": "hidden",
+                  },
+                  Object {
+                    "borderRadius": 3,
+                  },
+                  undefined,
+                  false,
+                ]
+              }
+            >
+              <View
+                accessibilityRole="button"
+                accessibilityState={
+                  Object {
+                    "busy": false,
+                    "disabled": false,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#00A89D",
+                      "borderColor": "#2089dc",
+                      "borderRadius": 3,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": "2%",
+                      "padding": 8,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      Object {
+                        "color": "#000",
+                        "fontSize": 18,
+                        "paddingVertical": 1,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Submit
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+  </View>
+</View>
+`;
