@@ -74,11 +74,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="718" y="389" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621388579070" />
-    <state x="285" y="100" width="1200" height="800" key="AVDManager" timestamp="1623364586435">
+    <state x="285" y="100" width="1200" height="800" key="AVDManager" timestamp="1623381126001">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="285" y="100" width="1200" height="800" key="AVDManager/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1623364586435" />
-    <state x="2205" y="100" width="1200" height="800" key="AVDManager/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1620790480030" />
+    <state x="285" y="100" width="1200" height="800" key="AVDManager/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1623381126001" />
+    <state x="2205" y="100" width="1200" height="800" key="AVDManager/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1623374198050" />
+    <state x="779" y="266" key="AndroidProcessChooserDialog" timestamp="1623381332217">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="779" y="266" key="AndroidProcessChooserDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1623381332217" />
     <state x="1920" y="237" width="1723" height="718" key="dock-window-1" timestamp="1620860285871">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

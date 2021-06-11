@@ -123,6 +123,11 @@ props.navigation.navigate("Home")
         titleStyle={styles.buttonText}
         title="Change Group" onPress={() => updateGroupID() }
         />
+        <Button
+                buttonStyle={styles.button}
+                titleStyle={styles.buttonText}
+                title="Chat SCreen" onPress={() => props.navigation.navigate("ChatScreen") }
+                />
 
 <Text> GroupID: {name} </Text>
 <Text> Message: {message} </Text>

@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { styles } from '../styles/Styles';
 import { colors } from '../styles/Colors';
@@ -6,6 +6,7 @@ import { Button } from 'react-native-elements';
 import { Image } from 'react-native';
 import { Alert } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import { Text } from 'react-native';
 import firebase, { auth } from 'firebase';
 import 'firebase/firestore';
 import 'firebase/storage';
@@ -16,6 +17,52 @@ const EditAccount = (props) => {
 const [name, setName] = useState('');
 const [email, setEmail] = useState('');
 const [username, setUsername] = useState('');
+
+const [oldName, setOldName] = useState('');
+const [oldEmail, setOldEmail] = useState('');
+const [oldUsername, setOldUsername] = useState('');
+
+useEffect(() =>{
+    const loadOldName = async () =>{
+    var user = firebase.auth().currentUser
+    await firebase.firestore().collection('Users').doc(user.uid).get()
+    .then(documentSnapshot => getName(documentSnapshot))
+    .then(oldName => setOldName(oldName))
+
+    }
+
+    const loadOldUsername = async () =>{
+
+        var user = firebase.auth().currentUser
+            await firebase.firestore().collection('Users').doc(user.uid).get()
+            .then(documentSnapshot => getUsername(documentSnapshot))
+            .then(oldUsername => setOldUsername(oldUsername))
+
+        }
+
+    const loadOldEmail = async () =>{
+               var user = firebase.auth().currentUser
+                await firebase.firestore().collection('Users').doc(user.uid).get()
+                .then(documentSnapshot => getEmail(documentSnapshot))
+                .then(oldEmail => setOldEmail(oldEmail))
+              }
+
+    const getName = (documentSnapshot) =>{
+    return documentSnapshot.get('name');
+
+    }
+     const getEmail= (documentSnapshot) =>{
+        return documentSnapshot.get('email');
+        }
+
+const getUsername= (documentSnapshot) =>{
+        return documentSnapshot.get('username');
+        }
+
+loadOldEmail();
+loadOldName();
+loadOldUsername();
+})
 
 function createTwoButtonAlertForDelete(){
 Alert.alert(
@@ -35,7 +82,7 @@ Alert.alert(
 function createTwoButtonAlertForUpdate(){
 Alert.alert(
       "Update Account",
-      "This will update all fields above, if you left them blank they will be set to nothing. Are you sure?",
+      "This will update all populated fields above. Are you sure?",
       [
         {
           text: "Cancel",
@@ -47,19 +94,51 @@ Alert.alert(
     );
 }
 
+function  checkValues(){
+ if(name === "")
+        {
+        name => setName(oldName);
+        }
+        if(username)
+        {
+        username => setUsername(oldUsername);
+        }
+        if(email)
+        {
+        email => setEmail(oldEmail);
+        }
+        }
+
 async function updateProfile(){
 
 var user = firebase.auth().currentUser
 
 console.log(user.uid)
 
+var aName = name;
+var aEmail = email;
+var aUsername = username;
+ if(aName === "")
+ {
+ aName = oldName;
+ }
+ if(aEmail === "")
+ {
+ aEmail = oldEmail;
+ }
+ if(aUsername === "")
+ {
+ aUsername = oldUsername;
+ }
+
+//await checkValues();
 
 const dbh = firebase.firestore().collection('Users').doc(user.uid)
 
 await dbh.set({
-name: name,
-username: username,
-email: email
+name: aName,
+username: aUsername,
+email: aEmail
 }, {merge:true});
 
 props.navigation.navigate("Home")
