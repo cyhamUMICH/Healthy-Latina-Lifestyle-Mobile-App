@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders Meditation List With the Loading Screen 1`] = `
+exports[`Renders Challenge List With the Loading Screen 1`] = `
 <View
   style={
     Object {
@@ -39,7 +39,7 @@ exports[`Renders Meditation List With the Loading Screen 1`] = `
 </View>
 `;
 
-exports[`Renders Meditation List Without the Loading Screen 1`] = `
+exports[`Renders Challenge List Without the Loading Screen 1`] = `
 <View
   style={
     Object {

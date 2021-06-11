@@ -28,8 +28,7 @@ exports[`Renders Home With the Loading Screen 1`] = `
     showsHorizontalScrollIndicator={false}
     style={
       Object {
-        "marginLeft": -200,
-        "marginTop": 30,
+        "flex": 1,
       }
     }
   >
@@ -104,6 +103,76 @@ exports[`Renders Home With the Loading Screen 1`] = `
           }
         />
       </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 43,
+              "width": 43,
+            }
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 43,
+              "width": 43,
+            }
+          }
+        />
+      </View>
     </View>
   </RCTScrollView>
 </View>
@@ -137,8 +206,7 @@ exports[`Renders Home Without the Loading Screen 1`] = `
     showsHorizontalScrollIndicator={false}
     style={
       Object {
-        "marginLeft": -200,
-        "marginTop": 30,
+        "flex": 1,
       }
     }
   >
@@ -174,6 +242,76 @@ exports[`Renders Home Without the Loading Screen 1`] = `
             Object {
               "height": 32,
               "width": 32,
+            }
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 43,
+              "width": 43,
+            }
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 43,
+              "width": 43,
             }
           }
         />

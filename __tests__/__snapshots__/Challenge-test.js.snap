@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders Challenge With the Loading Screen 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "paddingHorizontal": "2%",
+      "paddingTop": "2%",
+      "width": "100%",
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "https://healthylatinalifestylecom.files.wordpress.com/2017/10/cropped-cropped-peackcock-color-healthy-latino-20171.jpg",
+      }
+    }
+    style={
+      Object {
+        "alignItems": "center",
+        "borderRadius": 200,
+        "height": 300,
+        "justifyContent": "center",
+        "left": 50,
+        "width": 300,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "flex-start",
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "marginTop": "2%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "backgroundColor": "#89cff0",
+          "borderRadius": 20,
+          "marginBottom": "2%",
+          "marginRight": "2%",
+          "paddingHorizontal": "5%",
+          "paddingVertical": "2%",
+        }
+      }
+    >
+      Advanced
+    </Text>
+    <Text
+      style={
+        Object {
+          "backgroundColor": "#d7efc0",
+          "borderRadius": 20,
+          "marginBottom": "2%",
+          "marginRight": "2%",
+          "paddingHorizontal": "5%",
+          "paddingVertical": "2%",
+        }
+      }
+    >
+      Anxiety
+    </Text>
+  </View>
+  <Text
+    style={
+      Object {
+        "fontSize": 28,
+        "textAlign": "center",
+      }
+    }
+  >
+    June Challenge
+  </Text>
+  <RCTScrollView
+    style={
+      Object {
+        "marginBottom": "5%",
+        "marginTop": "2%",
+      }
+    }
+  >
+    <View>
+      <Text>
+        Challenges for the month of June.
+      </Text>
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`Renders Challenge Without the Loading Screen 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "paddingHorizontal": "2%",
+      "paddingTop": "2%",
+      "width": "100%",
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "https://healthylatinalifestylecom.files.wordpress.com/2017/10/cropped-cropped-peackcock-color-healthy-latino-20171.jpg",
+      }
+    }
+    style={
+      Object {
+        "alignItems": "center",
+        "borderRadius": 200,
+        "height": 300,
+        "justifyContent": "center",
+        "left": 50,
+        "width": 300,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "flex-start",
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "marginTop": "2%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "backgroundColor": "#89cff0",
+          "borderRadius": 20,
+          "marginBottom": "2%",
+          "marginRight": "2%",
+          "paddingHorizontal": "5%",
+          "paddingVertical": "2%",
+        }
+      }
+    >
+      Advanced
+    </Text>
+    <Text
+      style={
+        Object {
+          "backgroundColor": "#d7efc0",
+          "borderRadius": 20,
+          "marginBottom": "2%",
+          "marginRight": "2%",
+          "paddingHorizontal": "5%",
+          "paddingVertical": "2%",
+        }
+      }
+    >
+      Anxiety
+    </Text>
+  </View>
+  <Text
+    style={
+      Object {
+        "fontSize": 28,
+        "textAlign": "center",
+      }
+    }
+  >
+    June Challenge
+  </Text>
+  <RCTScrollView
+    style={
+      Object {
+        "marginBottom": "5%",
+        "marginTop": "2%",
+      }
+    }
+  >
+    <View>
+      <Text>
+        Challenges for the month of June.
+      </Text>
+    </View>
+  </RCTScrollView>
+</View>
+`;
