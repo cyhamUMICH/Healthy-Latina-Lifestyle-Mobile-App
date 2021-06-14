@@ -26,7 +26,7 @@ const ContentCard = ({item}, contentComponent, navigation) => {
 
   let duration;
   if (item.duration){
-    let duration = new Date(item.duration * 1000).toISOString().substr(11, 8);
+    duration = new Date(item.duration * 1000).toISOString().substr(11, 8);
     duration = (duration.substr(0, 2) == "00") ? duration.substr(3) : duration;
   }
 
