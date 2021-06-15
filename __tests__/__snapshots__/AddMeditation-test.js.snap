@@ -501,9 +501,7 @@ exports[`Renders Add Meditation Without the Loading Screen 1`] = `
                               "justifyContent": "center",
                             }
                           }
-                        >
-                          <Text />
-                        </View>
+                        />
                       </View>
                     </View>
                   </View>
@@ -598,9 +596,7 @@ exports[`Renders Add Meditation Without the Loading Screen 1`] = `
                               "justifyContent": "center",
                             }
                           }
-                        >
-                          <Text />
-                        </View>
+                        />
                       </View>
                     </View>
                   </View>
@@ -684,7 +680,6 @@ exports[`Renders Add Meditation Without the Loading Screen 1`] = `
                   }
                 }
               >
-                <Text />
                 <Text
                   style={
                     Object {
