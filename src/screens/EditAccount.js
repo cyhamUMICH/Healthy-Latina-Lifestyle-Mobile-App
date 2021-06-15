@@ -113,6 +113,16 @@ Alert.alert(
     );
 }
 
+function createOneButtonAlertForUnableToUpdateUsername(){
+Alert.alert(
+      "Username Already Taken",
+      "Your desired username is already taken. Your Username was NOT updated",
+      [
+        { text: "OK"}
+      ],
+      { cancelable: true }
+    );
+}
 
 
 function  checkValues(){
@@ -159,6 +169,7 @@ var aUsername = username;
     if(!check && aUsername != oldUsername)
     {
     aUsername =oldUsername;
+    createOneButtonAlertForUnableToUpdateUsername();
     }
  }
 
