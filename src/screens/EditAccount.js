@@ -182,6 +182,7 @@ name: aName,
 username: aUsername,
 email: aEmail
 }, {merge:true});
+user.updateEmail(aEmail);
 
 props.navigation.navigate("Home")
 
