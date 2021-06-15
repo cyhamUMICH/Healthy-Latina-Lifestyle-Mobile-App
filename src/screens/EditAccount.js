@@ -22,6 +22,8 @@ const [oldName, setOldName] = useState('');
 const [oldEmail, setOldEmail] = useState('');
 const [oldUsername, setOldUsername] = useState('');
 
+
+
 useEffect(() =>{
     const loadOldName = async () =>{
     var user = firebase.auth().currentUser
@@ -79,6 +81,23 @@ Alert.alert(
     );
 }
 
+async function checkUsername(user)
+{
+var temp = true;
+const load =async  (user)=>{//loads email from a given username
+
+
+    await firebase.firestore().collection('Users').where('username', '==', user).get()
+            .then(querySnapshot => {
+                if (querySnapshot.size > 0) {
+                temp = false;//this means that it is taken
+                }
+             })
+    }
+await load(user);
+return temp;
+}
+
 function createTwoButtonAlertForUpdate(){
 Alert.alert(
       "Update Account",
@@ -94,6 +113,8 @@ Alert.alert(
     );
 }
 
+
+
 function  checkValues(){
  if(name === "")
         {
@@ -108,6 +129,8 @@ function  checkValues(){
         email => setEmail(oldEmail);
         }
         }
+
+
 
 async function updateProfile(){
 
@@ -129,6 +152,14 @@ var aUsername = username;
  if(aUsername === "")
  {
  aUsername = oldUsername;
+ }
+ else
+ {
+ const check = await checkUsername(aUsername);
+    if(!check && aUsername != oldUsername)
+    {
+    aUsername =oldUsername;
+    }
  }
 
 //await checkValues();

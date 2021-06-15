@@ -66,6 +66,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="845" y="382" key="#Notifications" timestamp="1623712980928">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="845" y="382" key="#Notifications/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1623712980928" />
     <state x="734" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1621384856006">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -74,10 +78,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="718" y="389" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621388579070" />
-    <state x="285" y="100" width="1200" height="800" key="AVDManager" timestamp="1623381126001">
+    <state x="285" y="100" width="1200" height="800" key="AVDManager" timestamp="1623703288436">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="285" y="100" width="1200" height="800" key="AVDManager/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1623381126001" />
+    <state x="285" y="100" width="1200" height="800" key="AVDManager/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1623703288436" />
     <state x="2205" y="100" width="1200" height="800" key="AVDManager/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1623374198050" />
     <state x="779" y="266" key="AndroidProcessChooserDialog" timestamp="1623381332217">
       <screen x="0" y="0" width="1920" height="1040" />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { Text } from 'react-native';
 import { styles } from '../styles/Styles';
@@ -7,8 +7,13 @@ import { Button } from 'react-native-elements';
 import { TextInput } from 'react-native-gesture-handler';
 import { Image } from 'react-native';
 import { Component } from 'react-native';
+import { Alert } from 'react-native';
+
 //import * as firebase from 'firebase/app';
-import firebase from 'firebase';
+import firebase, { auth } from 'firebase';
+import 'firebase/firestore';
+import 'firebase/storage';
+
 //import auth from '@react-native-firebase/auth';
 
 
@@ -17,14 +22,54 @@ import firebase from 'firebase';
 const Login = (props) => {
 
 const[username, setUsername] = useState('');
+const[email, setEmail] = useState('');
 const[password, setPassword] = useState('');
 const[needPassword, setNeed] = useState(false);
 
-function handleLogon(){
+async function loadEmail(user){
+var temp = user;
+const load =async  (user)=>{//loads email from a given username
+
+
+    await firebase.firestore().collection('Users').where('username', '==', user).get()
+            .then(querySnapshot => {
+                if (querySnapshot.size > 0) {
+                    const docSnapshot = querySnapshot.docs[0];
+                    temp = getEmail(docSnapshot);
+                }
+                else {
+                    // decide what you want to do if no results
+                }
+
+
+
+     });
+
+}
+ const getEmail  =(documentSnapshot) =>{
+    // console.log(documentSnapshot.exists());
+         return documentSnapshot.get('email');
+         }
+
+await load(user);
+return temp;
+}
+
+
+async function handleLogon(){
+
+let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;//somehow makes sure that its an email
+var checkEmail = username;
+if (reg.test(checkEmail) === false) {
+
+const temp = await loadEmail(checkEmail);
+checkEmail = temp;
+  }
+
 //if username and password arte in the database,
 firebase
 .auth()
-.signInWithEmailAndPassword(username, password)
+.signInWithEmailAndPassword(checkEmail, password)
 .then(res => { props.navigation.navigate("Home"), setNeed(false)
 })
 .catch(error => setNeed(true))
