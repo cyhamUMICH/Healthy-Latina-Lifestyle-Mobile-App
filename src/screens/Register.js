@@ -15,9 +15,30 @@ const[name, setName] = useState('');
 const[email, setEmail] = useState('');
 const[username, setUsername] = useState('');
 const[password, setPassword] = useState('');
+const[canUse, setCandUse] =useState(false);//opposite
+
+async function checkUsername(user)
+{
+const load =async  (user)=>{//loads email from a given username
+
+
+    await firebase.firestore().collection('Users').where('username', '==', user).get()
+            .then(querySnapshot => {
+                if (querySnapshot.size > 0) {
+                return false;
+                }
+             })
+    }
+await load(user);
+}
 
 async function createAccount(){//add first/last name fields for easier searching later I feel
 
+const check = await checkUsername(username);
+
+if(check)
+{
+console.log(check);
 
 const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password)
 
@@ -39,8 +60,14 @@ email: email
 
 
 props.navigation.navigate('Home')
-
 }
+
+else{
+setCandUse(true);
+}
+}
+
+
 
   return (
     <View style={styles.app}>
@@ -88,7 +115,13 @@ props.navigation.navigate('Home')
         title="Create Account"  onPress={() => createAccount()}
         />
 
+
       </View>
+      <View>
+                {canUse &&
+                <Text style = {styles.usernameText}> Username Already in Use </Text>
+                }
+                </View>
       </View>
 </View>
   );

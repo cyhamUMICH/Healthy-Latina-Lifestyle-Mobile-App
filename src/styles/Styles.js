@@ -402,6 +402,10 @@ export const styles = StyleSheet.create({
   },
   flexContainer: {
     flex: 1
+  },
+  usernameText:{
+   marginHorizontal:'28%',
+   color: 'red'
   }
   
 });
