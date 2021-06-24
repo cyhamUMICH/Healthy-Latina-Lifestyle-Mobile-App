@@ -11,6 +11,7 @@ import EditAccount from '../screens/EditAccount';
 import MeditationList from '../screens/MeditationList';
 import Meditation from '../screens/Meditation';
 import AddContent from '../screens/AddContent';
+import SetTimer from '../screens/SetTimer';
 import Timer from '../screens/Timer';
 import PasswordReset from '../screens/PasswordReset';
 import AddMeditation from '../screens/AddMeditation';
@@ -42,6 +43,7 @@ const StackNavigation = () => {
       <Stack.Screen name="MeditationList" component={MeditationList} options={{ title: 'Meditation List'}} />
       <Stack.Screen name="Meditation" component={Meditation} options={{ title: 'Meditation'}} />
       <Stack.Screen name="AddContent" component={AddContent} options={{title: 'Add Content'}} />
+      <Stack.Screen name="SetTimer" component={SetTimer} options={{ title: 'Timer'}} />
       <Stack.Screen name="Timer" component={Timer} options={{ title: 'Timer'}} />
       <Stack.Screen name="PasswordReset" component={PasswordReset} options={{ title: 'Reset Password', headerRight: null }}/>
       <Stack.Screen name="AddMeditation" component={AddMeditation} options={{ title: 'Add Meditation'}} />

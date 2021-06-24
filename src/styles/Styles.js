@@ -272,70 +272,81 @@ export const styles = StyleSheet.create({
     aspectRatio: 16/9,
     marginBottom: '2%'
   },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
+  timerIntentionPicker: {
+    marginTop: '5%'
+  },
+  timerIntentionView: {
+    marginVertical: '2%',
+    alignSelf: 'flex-start'
+  },
+  timerIntentionText: {
+    textAlign: 'left',
+    fontSize: 18
+  },
+  timerScreen: {
+    marginTop: '10%',
+    alignSelf: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
-    padding: 8,
+    width: '100%',
+    flex: 1
   },
-  timerview: {
-    flex: 0,
-    justifyContent: 'center',
-    textAlign: 'center',
-    fontSize: 100,
-    color: '#444',
-    height: "25%",
-    borderRadius: 5,
-    marginBottom: 50,
-    marginTop: 60,
-    paddingLeft: 20,
-    paddingRight: 20,
-    backgroundColor: '#FFF',
-  },
-  timercomponent: {
-    flex: 0,
+  setTimerDisplayContainer: {
+    alignSelf: 'center',
     flexDirection: 'row',
-    justifyContent: 'center',
-    width: 200,
+    justifyContent: 'space-evenly',
+    marginHorizontal: '10%'
   },
-  timerselector: {
+  setTimerDisplayNumber: {
+    fontSize: 50,
+    flex: 2,
+    textAlign: 'center'
+  },
+  setTimerDisplayColon: {
+    fontSize: 50,
     flex: 1,
-    justifyContent: 'center',
-    textAlign: 'center',
-    fontSize: 40,
-    color: '#444',
+    textAlign: 'center'
   },
-  timerselectortitle: {
-    flex: 0,
-    justifyContent: 'center',
-    textAlign: 'center',
-    fontSize: 24,
-    color: '#0B173B',
-    height: 30,
-    marginBottom: 10,
+  setTimerDisplayLabel: {
+    fontSize: 18,
+    flex: 2,
+    textAlign: 'center'
   },
-  arrowButton: {
-    flex: 0,
-    justifyContent: 'center',
-    height: 20,
-    width: 30,
+  setTimerDisplayLabelSpace: {
+    fontSize: 18,
+    flex: 1,
+    textAlign: 'center'
   },
-  timerObject: {
-    flex: 0,
-    width: 70,
-    height: "76%",
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
+  setTimerButtonsContainer: {
+    marginBottom: '10%'
   },
-  picker: {  
-    flex: 0,
-    width: "80%",
-    height: '20%',
-    padding: 1,
-    justifyContent: 'center'
+  timerButtonsRow: {
+    alignSelf: 'center',
+    flexDirection: 'row',
+    marginTop: '10%'
   },
+  setTimerNumberButton: {
+    backgroundColor: colors.button,
+    borderRadius: Dimensions.get('window').height / 2,
+    height: null,
+    width: '15%',
+    aspectRatio: 1,
+    marginHorizontal: '5%'
+  },
+  setTimerIconButton: {
+    backgroundColor: colors.modalButtons,
+    borderRadius: Dimensions.get('window').height / 2,
+    height: null,
+    width: '15%',
+    aspectRatio: 1,
+    marginHorizontal: '5%'
+  },
+  setTimerNumberButtonText: {
+    fontSize: 30
+  },
+  // Tries to scale icon based on window height
+  timerIconSize: Dimensions.get('window').height / 20,
+  timerIconReducedSize: Dimensions.get('window').height / 25,
+
   playPhoto:{
     width: 90,
     height: 90,
