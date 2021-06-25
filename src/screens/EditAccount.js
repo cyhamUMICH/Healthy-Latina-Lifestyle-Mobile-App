@@ -183,6 +183,9 @@ username: aUsername,
 email: aEmail
 }, {merge:true});
 user.updateEmail(aEmail);
+user.updateProfile({
+  displayName:aUsername
+  });
 
 props.navigation.navigate("Home")
 

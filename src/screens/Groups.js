@@ -18,19 +18,21 @@ const [name, setName] = useState('default');
 const [groupID, setGroupID] = useState('');
 const [newMessage, setNewMessage] = useState('');
 const [message, setMessage] = useState('empty');
+const [userGroups, setUserGroups] = useState([]);
 
 useEffect(() =>{
     const loadData = async () =>{//loads group id
+
     var user = firebase.auth().currentUser
     await firebase.firestore().collection('Users').doc(user.uid).get()
     .then(documentSnapshot => getGroupID(documentSnapshot))
-    .then(name => setName(name))
-
+    .then(groups => setUserGroups(groups))
+    setName(userGroups[0]);
     }
 
     const loadMessage = async () =>{//loads group id
 
-        await firebase.firestore().collection('Groups').doc(name).get()
+        await firebase.firestore().collection('Groups').doc(userGroups[0]).get()
         .then(documentSnapshot => getMessage(documentSnapshot))
         .then(message => setMessage(message))
 
@@ -43,11 +45,9 @@ useEffect(() =>{
      const getMessage= (documentSnapshot) =>{
         return documentSnapshot.get('message');
         }
-
-
 loadData();
 loadMessage();
-})
+}, [name]);
 
 function createTwoButtonAlertForUpdate(){
 Alert.alert(
@@ -126,7 +126,7 @@ props.navigation.navigate("Home")
         <Button
                 buttonStyle={styles.button}
                 titleStyle={styles.buttonText}
-                title="Chat SCreen" onPress={() => props.navigation.navigate("ChatScreen") }
+                title="Chat SCreen" onPress={() => props.navigation.navigate("ChatRoomHome") }
                 />
 
 <Text> GroupID: {name} </Text>

@@ -17,8 +17,8 @@ import AddMeditation from '../screens/AddMeditation';
 import AddChallenge from '../screens/AddChallenge';
 import Challenge from '../screens/Challenge'
 import ChallengeList from '../screens/ChallengeList'
-import Groups from '../screens/Groups'
 import ChatScreen from '../screens/ChatScreen'
+import ChatRoomHome from '../screens/ChatRoomHome'
 
 const Stack = createStackNavigator();
 
@@ -48,8 +48,8 @@ const StackNavigation = () => {
       <Stack.Screen name="AddChallenge" component={AddChallenge} options={{ title: 'Add Challenge'}} />
       <Stack.Screen name="Challenge" component={Challenge} options={{ title: 'Challenge'}} />
       <Stack.Screen name="ChallengeList" component={ChallengeList} options={{ title: 'ChallengeList'}} />
-      <Stack.Screen name="Groups" component={Groups} options={{ title: 'Groups'}} />
-      <Stack.Screen name="ChatScreen" component={ChatScreen} options={{ title: 'Chat Screen'}} />
+      <Stack.Screen name="ChatScreen" component={ChatScreen} options={({ route}) =>({ title: route.params.thread.name})} />
+      <Stack.Screen name="ChatRoomHome" component={ChatRoomHome} options={{ title: 'Chat Rooms'}} />
     </Stack.Navigator>
   );
 };

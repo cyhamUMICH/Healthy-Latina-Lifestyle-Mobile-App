@@ -395,7 +395,17 @@ export const styles = StyleSheet.create({
   usernameText:{
    marginHorizontal:'28%',
    color: 'red'
-  }
+  },
+  container: {
+      backgroundColor: '#f5f5f5',
+      flex: 1,
+    },
+    listTitle: {
+      fontSize: 22,
+    },
+    listDescription: {
+      fontSize: 16,
+    }
   
 });
   

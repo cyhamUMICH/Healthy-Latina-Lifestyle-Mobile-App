@@ -20,21 +20,30 @@ const[canUse, setCandUse] =useState(false);//opposite
 async function checkUsername(user)
 {
 const load =async  (user)=>{//loads email from a given username
-
+console.log('in');
 
     await firebase.firestore().collection('Users').where('username', '==', user).get()
             .then(querySnapshot => {
                 if (querySnapshot.size > 0) {
+                console.log("false");
                 return false;
                 }
+                else
+                {
+                console.log("true");
+                return true;
+                }
+
              })
     }
-await load(user);
+    //console.log("try "+ load(user));
+return load(user);
 }
 
 async function createAccount(){//add first/last name fields for easier searching later I feel
 
-const check = await checkUsername(username);
+const check =  checkUsername(username);
+//console.log(check);
 
 if(check)
 {
@@ -46,6 +55,7 @@ const Userid = userCredential.user.uid
 
 const dbh = firebase.firestore().collection('Users').doc(Userid)
 await dbh.set({
+GroupID:[],
 name: name,
 username: username,
 email: email
@@ -54,10 +64,14 @@ email: email
     console.log("Document successfully written!");
 })
 .catch((error) => {
+setCandUse(true);
     console.error("Error writing document: ", error);
 });
+var user = firebase.auth().currentUser;
 
-
+user.updateProfile({
+  displayName:aUsername
+  });
 
 props.navigation.navigate('Home')
 }
