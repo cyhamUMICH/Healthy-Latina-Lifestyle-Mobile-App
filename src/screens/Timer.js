@@ -1,154 +1,122 @@
-import * as React from 'react';
-import {Picker} from '@react-native-picker/picker'
-import { View, StyleSheet, Text, Vibration } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, ScrollView, Animated, TouchableOpacity, Platform, Vibration } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { styles } from '../styles/Styles';
-import TimerView from "../components/timerview.js"
-import Selectors from "../components/selectors.js"
-import ActionButtons from "../components/actionbuttons.js"
+import { colors } from '../styles/Colors';
+import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
+import DropDownPicker from 'react-native-dropdown-picker';
 
-export default class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      Minutes: 5,
-      Seconds: 0,
-      Timer: 1500,
-      timer: 300,
-      status: "duration",
-      stopped: true,
-      choosenIndex: 0,
-    }
-    this.beginCounter.bind(this)
-  }
+const intentionMessages = {
+  "meditating": "This is a hardcoded message. Meditating...",
+  "yoga": "This is a hardcoded message. Yoga...",
+  "breathing": "This is a hardcoded message. Breathing exercises...",
+  "healing": "This is a hardcoded message. Focusing on healing...",
+  "praying": "This is a hardcoded message. Praying..."
+};
 
-  beginCounter = () => {
-    this.setState(prevState => ({stopped: false, Timer: prevState.Minutes * 60 + prevState.Seconds}))
-    this.interval = setInterval(this.decrementCounter, 1000)
-  }
-  
-  decrementCounter = () => {
-    this.setState(prevState => ({timer: prevState.timer - 1}))
-    if (this.state.timer === 0) {
-      Vibration.vibrate([2500, 2500, 2500, 2500])
-      this.stopCounter()
-    }
-  }
+const Timer = ({route}) => {
+  const duration = route.params.duration;
+  const defaultIsPlaying = route.params.isPlaying;
 
-  stopCounter = () => {
-    clearInterval(this.interval)
-  }
+  const [isPlaying, setIsPlaying] = useState(defaultIsPlaying);
+  const [resetKey, setResetKey] = useState(0);
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [intention, setIntention] = useState(null);
+  const [intentionList, setIntentionList] = useState([
+    {label: 'Meditating', value: 'meditating'},
+    {label: 'Yoga', value: 'yoga'},
+    {label: 'Breathing', value: 'breathing'},
+    {label: 'Healing', value: 'healing'},
+    {label: 'Praying', value: 'praying'}
+  ]);
 
-  resetCounter = () => {
-    this.setState(prevState => ({timer: prevState.Timer, status: "duration", stopped: true}))
-    clearInterval(this.interval)
-  }
-
-  incrementMinutes = () => {
-    if (this.state.Minutes < 59) {
-      this.setState(prevState => ({Minutes: prevState.Minutes + 1}))
-    }
-
-    this.setState(prevState => ({Timer: prevState.Minutes * 60 + prevState.Seconds}))
-
-    if (this.state.stopped) {
-      this.resetCounter()
-    }
-  }
-
-  incrementSeconds = () => {
-    if (this.state.Seconds < 59) {
-      this.setState(prevState => ({Seconds: prevState.Seconds + 1}))
-    }
-
-    this.setState(prevState => ({Timer: prevState.Minutes * 60 + prevState.Seconds}))
+  const formatRemainingTime = (remainingTime) => {
+    // Adapted from https://github.com/vydimitrov/react-countdown-circle-timer
+    let hours = Math.floor(remainingTime / 3600);
+    hours = (hours < 10) ? "0" + hours : hours;
+    let minutes = Math.floor((remainingTime % 3600) / 60);
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    let seconds = remainingTime % 60;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
     
-    if (this.state.stopped) {
-      this.resetCounter()
-    }
-  }
+    return hours + ":" + minutes + ":" + seconds; 
+  }; 
 
-  decrementMinutes = () => {
-    if (this.state.Minutes > 0) {
-      this.setState(prevState => ({Minutes: prevState.Minutes - 1}))
-    }
+  return(
+    <View style={styles.app}>
+      <View style={styles.fullWidthWindow}>
+        <View style={styles.timerScreen}>
+          <CountdownCircleTimer
+            key={resetKey}
+            isPlaying={isPlaying}
+            duration={duration}
+            // Code from https://github.com/vydimitrov/react-countdown-circle-timer/tree/master/packages/mobile#react-native-countdown-circle-timer
+            colors={[
+              ['#004777', 0.4],
+              ['#F7B801', 0.4],
+              ['#A30000', 0.2],
+            ]}
+            trailColor={colors.modalButtons}
+            onComplete={() => {
+              let androidVibration = [0, 400, 500, 400, 500, 400];
+              let iosVibration = [0, 500, 500];
 
-    this.setState(prevState => ({Timer: prevState.Minutes * 60 + prevState.Seconds}))
-  
-    if (this.state.stopped) {
-      this.resetCounter()
-    }
-  }
-
-  decrementSeconds = () => {
-    if (this.state.Seconds > 0) {
-      this.setState(prevState => ({Seconds: prevState.Seconds - 1}))
-    }
-
-    this.setState(prevState => ({Timer: prevState.Minutes * 60 + prevState.Seconds}))
-    
-    if (this.state.stopped) {
-      this.resetCounter()
-    }
-  }
-  
-  render() {
-    return <OnlyUpdateOnEvens timer={this.state.timer} />
-  }
-
-  render() {
-    
-    return (
-      <View style={styles.container}>
-        <Picker style={styles.picker} selectedValue={this.state.language}
-        onValueChange={(itemValue, itemPosition) =>  this.setState({language: itemValue, choosenIndex: itemPosition})}>
-          <Picker.Item label = "Meditation" value = "meditation">
-          </Picker.Item>
-          <Picker.Item label = "Yoga" value = "yoga">
-          </Picker.Item>
-          <Picker.Item label = "Breathing" value = "breathing">
-          </Picker.Item>
-          <Picker.Item label = "Healing" value = "healing">
-          </Picker.Item>
-          <Picker.Item label = "Prayer" value = "prayer">
-          </Picker.Item>
-        </Picker>
-        <Timer time = {this.state.timer} 
-          start = {this.beginCounter} 
-          reset = {this.resetCounter}
-          stop = {this.stopCounter}
-          minUp = {this.incrementMinutes}
-          secUp = {this.incrementSeconds}
-          minDw = {this.decrementMinutes}
-          secDw = {this.decrementSeconds}
-          minval = {this.state.Minutes}
-          secval = {this.state.Seconds}
-        />
+              if (Platform.OS === 'android') {
+                Vibration.vibrate(androidVibration);
+              }
+              else {
+                Vibration.vibrate(iosVibration);
+              }
+            }}
+          >     
+            {({ remainingTime, animatedColor }) => (
+              <Animated.Text style={{ color: animatedColor, fontSize: 30 }}>
+                {formatRemainingTime(remainingTime)}
+              </Animated.Text>
+            )}
+          </CountdownCircleTimer>
+          <View style={styles.timerButtonsRow}>
+            <TouchableOpacity style={styles.setTimerNumberButton} 
+              onPress={() => {
+                setIsPlaying(false);
+                setResetKey(resetKey + 1);
+              }}>
+              <View style={styles.floatingActionIcon}>
+              <Icon name="undo" type="font-awesome" size={styles.timerIconReducedSize} color={colors.text} />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.setTimerNumberButton} 
+              onPress={() => setIsPlaying(!isPlaying)}>
+              <View style={styles.floatingActionIcon}>
+              {isPlaying ? 
+                <Icon name="pause" type="material" size={styles.timerIconSize} color={colors.text} />
+                :            
+                <Icon name="play-arrow" type="material" size={styles.timerIconSize} color={colors.text} />
+              }
+              </View>
+            </TouchableOpacity>
+          </View>
+          <DropDownPicker
+            placeholder="Select an intention..."
+            containerStyle={styles.timerIntentionPicker}
+            textStyle={styles.timerIntentionText}
+            dropDownDirection="BOTTOM"
+            open={pickerOpen}
+            value={intention}
+            items={intentionList}
+            setOpen={setPickerOpen}
+            setValue={setIntention}
+            setItems={setIntentionList}
+          />
+          <ScrollView style={styles.timerIntentionView}>
+            <Text style={styles.timerIntentionText}>
+              {intentionMessages[intention]}
+            </Text>
+          </ScrollView>
+        </View>
       </View>
-    );
-  }
-}
-
-const Timer = props => {
-  timeToShow = (time) => {
-    let seconds = time % 60
-    if (seconds < 10) {
-      seconds = "0" + seconds
-    }
-    let minutes = (time - seconds)/60
-    return minutes + ":" + seconds
-  }
-
-  return (
-    <View style={styles.container}>
-      <TimerView time = {this.timeToShow(props.time)} />
-      <Selectors  minUp = {props.minUp}
-                  minDw = {props.minDw}
-                  secUp = {props.secUp}
-                  secDw = {props.secDw}
-                  minval = {props.minval}
-                  secval = {props.secval}
-                />
-      <ActionButtons start = {props.start} stop = {props.stop} reset = {props.reset}/>
     </View>
   );
-}
+};
+
+export default Timer;

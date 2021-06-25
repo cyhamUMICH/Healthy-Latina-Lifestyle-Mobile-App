@@ -16,7 +16,7 @@ const Home = (props) => {
             showsHorizontalScrollIndicator={false}
             style={{ flex: 1 }}
           >
-            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("Timer")}>
+            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("SetTimer")}>
               <Image source={require("../../assets/timer.png")} style={{ height: 32, width: 32 }}/>
             </TouchableOpacity>
 
