@@ -111,6 +111,7 @@ export const styles = StyleSheet.create({
     marginBottom: '2%'
   },
   smallButton: {
+    borderRadius: 200,
     backgroundColor: colors.button,
     marginHorizontal: '20%',
     marginBottom: '2%'
@@ -420,9 +421,13 @@ export const styles = StyleSheet.create({
   challengePhoto:{
     width: 400,
     height: 300,
+    borderRadius: 5,
     alignItems: 'center',
-    marginHorizontal: '1%',
-    flex: 1
+    justifyContent: 'center',
+    left: 5
+  },
+  challengeContentDescriptionSpacer: {
+    flex:0
   },
 
   
