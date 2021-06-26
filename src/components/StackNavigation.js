@@ -20,6 +20,8 @@ import Challenge from '../screens/Challenge'
 import ChallengeList from '../screens/ChallengeList'
 import ChatScreen from '../screens/ChatScreen'
 import ChatRoomHome from '../screens/ChatRoomHome'
+import Yoga from '../screens/Yoga'
+import YogaList from '../screens/YogaList'
 
 const Stack = createStackNavigator();
 
@@ -52,6 +54,8 @@ const StackNavigation = () => {
       <Stack.Screen name="ChallengeList" component={ChallengeList} options={{ title: 'ChallengeList'}} />
       <Stack.Screen name="ChatScreen" component={ChatScreen} options={({ route}) =>({ title: route.params.thread.name})} />
       <Stack.Screen name="ChatRoomHome" component={ChatRoomHome} options={{ title: 'Chat Rooms'}} />
+      <Stack.Screen name="Yoga" component={Yoga} options={{ title: 'Yoga'}} />
+      <Stack.Screen name="YogaList" component={YogaList} options={{ title: 'YogaList'}} />
     </Stack.Navigator>
   );
 };

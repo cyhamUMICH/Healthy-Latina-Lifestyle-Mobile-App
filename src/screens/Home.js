@@ -31,6 +31,9 @@ const Home = (props) => {
             <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("AddContent")}>
               <Image source={require("../../assets/addContent.png")} style={{ height: 43, width: 43 }}/>
             </TouchableOpacity>
+
+            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("YogaList")}>
+            </TouchableOpacity>
   
             </ScrollView>
       {/*<View style={{flex: 1, flexDirection: "column", justifyContent: "space-evenly"}}>
