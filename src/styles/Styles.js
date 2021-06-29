@@ -111,6 +111,7 @@ export const styles = StyleSheet.create({
     marginBottom: '2%'
   },
   smallButton: {
+    borderRadius: 200,
     backgroundColor: colors.button,
     marginHorizontal: '20%',
     marginBottom: '2%'
@@ -408,15 +409,27 @@ export const styles = StyleSheet.create({
    color: 'red'
   },
   container: {
-      backgroundColor: '#f5f5f5',
-      flex: 1,
-    },
-    listTitle: {
-      fontSize: 22,
-    },
-    listDescription: {
-      fontSize: 16,
-    }
+    backgroundColor: '#f5f5f5',
+    flex: 1,
+  },
+  listTitle: {
+    fontSize: 22,
+  },
+  listDescription: {
+    fontSize: 16,
+  },
+  challengePhoto:{
+    width: 400,
+    height: 300,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    left: 5
+  },
+  challengeContentDescriptionSpacer: {
+    flex:0
+  },
+
   
 });
   
