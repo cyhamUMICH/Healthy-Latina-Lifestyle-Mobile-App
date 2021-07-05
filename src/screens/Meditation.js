@@ -1,10 +1,17 @@
+
 import React, { useEffect, useState } from "react";
 import { View, Text, Image, ScrollView, Alert } from "react-native";
 import { Audio } from 'expo-av';
+
+// import React, { useState } from "react";
+// import { View, Text, Image, ScrollView, Button } from "react-native";
+// import { TouchableOpacity } from "react-native-gesture-handler";
+// >>>>>>> Stashed changes
 import Controller from "../components/Controller";
 import PlayerSlider from "../components/PlayerSlider";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { styles } from '../styles/Styles';
+
 import * as firebase from 'firebase/app';
 import "firebase/storage";
 
@@ -16,6 +23,26 @@ const Meditation = ({route}) => {
   // These must be initialized to null due to the way if conditions are written throughout.
   const [sound, setSound] = useState(null);
   const [soundStatus, setSoundStatus] = useState(null);
+// =======
+// import  MaterialIcons from "react-native-vector-icons/MaterialIcons";
+// import SendContent from '../components/SendContent';
+
+// const goNext = () => {
+//   console.log("go forward 30 seconds");
+// };
+// const goPrv = () => {
+//   console.log("go back 30 seconds");
+// };
+// const goPause = () => {
+//   console.log("paused");
+// }
+// const onShareThis = () => {
+  
+// }
+
+// const Meditation = ({route}, props) => {
+//   const [currentValue, setCurrentValue] = useState(0);
+// >>>>>>> Stashed changes
 
   const item = route.params;
 
@@ -141,10 +168,19 @@ const Meditation = ({route}) => {
   };
 
   return (
+
     <View style={styles.app}>
     {
       isLoaded ?
       <View style={styles.fullWidthWindow}>
+{/* =======
+    <View style={styles.fullWidthWindow}>
+
+      <TouchableOpacity onPress={() => props.navigation.navigate("ShareContent")}>
+        <MaterialIcons name="textsms" size={20}/>
+      </TouchableOpacity>
+
+>>>>>>> Stashed changes */}
 
       <Image source={{ uri: item.imagePath }}
         style={styles.meditationPhoto}></Image>

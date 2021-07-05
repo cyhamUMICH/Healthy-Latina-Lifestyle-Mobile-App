@@ -3,10 +3,10 @@ import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
 import { styles } from '../styles/Styles';
 import { colors } from '../styles/Colors';
-import FilterModal from '../components/ContentFilter';
-import { GetTopics } from '../components/GetTopics';
-import Tags from '../components/Tags';
-import LoadingSpinner from '../components/LoadingSpinner';
+import FilterModal from './ContentFilter';
+import { GetTopics } from './GetTopics';
+import Tags from './Tags';
+import LoadingSpinner from './LoadingSpinner';
 
 
 const ContentCards = (props) => {
@@ -32,25 +32,23 @@ const ContentCard = ({item}, contentComponent, navigation, props) => {
   }
 
   return (
-
-  
     <TouchableOpacity 
       activeOpacity={0.7}
       onPress={() => {navigation.navigate(contentComponent, item)}}>
       <Card containerStyle={styles.card}>
-        <Card.Image source={{ uri: item.imagePath }}
+        {/* <Card.Image source={{ uri: item.imagePath }}
           style={styles.cardImage}>
           {item.duration && <Text style={styles.duration}>{duration}</Text>}
-        </Card.Image>
-        <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
-        <Card.Divider/>
+        </Card.Image> */}
+        {/* <Tags difficulty={item.difficulty} topics={item.topics}></Tags> */}
+        {/* <Card.Divider/> */}
         <Card.Title style={styles.cardTitle}>{item.title}</Card.Title>
       </Card>
     </TouchableOpacity>
   );
 };
 
-const ContentList = (props) => {
+const ChallengeDayList = (props) => {
   const [isTopicsLoaded, setIsTopicsLoaded] = useState(false);
   const [topicsList, setTopicsList] = useState([]);
 
@@ -71,20 +69,23 @@ const ContentList = (props) => {
   return (
     isTopicsLoaded ? 
     <View style={styles.fullWidthWindow}>
-      <Button 
+      <Text style={styles.contentTitle}>
+        Challenge Days
+      </Text>
+      {/* <Button 
         buttonStyle={styles.button}
         titleStyle={styles.buttonText}
         title="Filter"
         onPress={() => {
           setFilterModalVisible(true);
-        }}></Button>
+        }}></Button> */}
       <ContentCards 
         style={styles.cardList} 
         contentType={props.contentType}
         filteredList={filteredList}
         contentComponent={props.contentComponent}
         navigation={props.navigation} />
-      <FilterModal
+      {/* <FilterModal
         allData={props.data}
         topicsList={topicsList}
         filterBy={filterBy}
@@ -93,22 +94,11 @@ const ContentList = (props) => {
         filterSettingsFunction={setFilterSettings}
         filterSettings={filterSettings}
         filteredListFunction={setFilteredList}
-        filteredList={filteredList}/>
-        <View style={styles.floatingActionView}>
-        <TouchableOpacity style={styles.floatingActionButton} 
-          onPress={() => props.navigation.navigate("Add".concat(props.contentComponent), {
-            topics: topicsList, 
-            navigation: props.navigation
-            })}>
-          <View style={styles.floatingActionIcon}>
-            <Icon name="plus" type="font-awesome" color={colors.text} />
-          </View>
-        </TouchableOpacity>
-        </View>
-
+        filteredList={filteredList}/> */}
+        
     </View>
     : <LoadingSpinner />
   );
 };
 
-export default ContentList;
+export default ChallengeDayList;

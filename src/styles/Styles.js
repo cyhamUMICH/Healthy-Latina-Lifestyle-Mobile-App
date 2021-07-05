@@ -429,6 +429,21 @@ export const styles = StyleSheet.create({
   challengeContentDescriptionSpacer: {
     flex:0
   },
+  containerCheck: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  checkboxContainerCheck: {
+    flexDirection: "row",
+    marginBottom: 20,
+  },
+  checkboxCheck: {
+    alignSelf: "center",
+  },
+  labelCheck: {
+    margin: 8,
+  },
 
   
 });

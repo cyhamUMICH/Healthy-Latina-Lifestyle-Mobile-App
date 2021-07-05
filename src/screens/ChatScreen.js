@@ -1,7 +1,7 @@
 //https://heartbeat.fritz.ai/chat-app-with-react-native-part-4-create-chat-ui-screens-with-react-native-gifted-chat-7ef428a60d30
 //https://heartbeat.fritz.ai/chat-app-with-react-native-part-5-create-and-fetch-real-time-messages-with-firestore-86fb012edaf5
 // a lot of what I do here is based heavily on this guide
-import React, { useState,useContect, useEffect } from 'react';
+import React, { useState,useContect, useEffect, View, Button, Text } from 'react';
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 import { colors } from '../styles/Colors';
 import firebase, { auth } from 'firebase';
@@ -81,13 +81,24 @@ useEffect(() => {
   }
 
   return (
-    <GiftedChat
-      messages={messages}
-      onSend={handleSend}
-      user={{ _id: firebase.auth().currentUser.uid }}
-      renderBubble = {renderBubble}
-      alwaysShowSend
-      scrollToBottom
-    />
+
+    <View>
+      {<GiftedChat
+        messages={messages}
+        onSend={handleSend}
+        user={{ _id: firebase.auth().currentUser.uid }}
+        renderBubble = {renderBubble}
+        alwaysShowSend
+        scrollToBottom
+        
+      />}
+
+      <Text>
+        healthylatinalifestylecom
+      </Text>
+
+    </View> 
+
+  
   );
 }

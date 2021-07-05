@@ -60,6 +60,7 @@ const MeditationList = (props) => {
   }, []);
 
   return (
+  
     <View style={styles.app}>
     {
       isLoaded ? 

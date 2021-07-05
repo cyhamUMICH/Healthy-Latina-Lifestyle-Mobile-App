@@ -152,6 +152,7 @@ props.navigation.navigate("Home")
                    titleStyle={styles.buttonText}
                    title="Change Message" onPress={() => updateNewMessage() }
                    />
+  
 
 
            </View>
