@@ -23,6 +23,7 @@ import ChatRoomHome from '../screens/ChatRoomHome'
 import Yoga from '../screens/Yoga'
 import YogaList from '../screens/YogaList'
 import ShareContent from '../screens/ShareContent'
+import Groups from '../screens/Groups'
 
 const Stack = createStackNavigator();
 
@@ -58,7 +59,8 @@ const StackNavigation = () => {
       <Stack.Screen name="Yoga" component={Yoga} options={{ title: 'Yoga'}} />
       <Stack.Screen name="YogaList" component={YogaList} options={{ title: 'YogaList'}} />
       <Stack.Screen name="ShareContent" component={ShareContent} options={{ title: 'ShareContent'}} />
-
+      <Stack.Screen name="Groups" component={Groups} options={{ title: 'Groups'}} />
+      
     </Stack.Navigator>
   );
 };

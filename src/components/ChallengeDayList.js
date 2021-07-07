@@ -9,19 +9,19 @@ import Tags from './Tags';
 import LoadingSpinner from './LoadingSpinner';
 
 
-const ContentCards = (props) => {
+const ChallengeCards = (props) => {
   return (
     (props.filteredList.length != 0) 
     ? <FlatList 
         style={props.style}
         data={props.filteredList}
-        renderItem={(item) => ContentCard(item, props.contentComponent, props.navigation)}
+        renderItem={(item) => ChallengeCard(item, props.contentComponent, props.navigation)}
         keyExtractor={item => item.contentID} /> 
     : <Text style={styles.noContent}>No {props.contentType} Match Your Search</Text>
   );
 };
 
-const ContentCard = ({item}, contentComponent, navigation, props) => {
+const ChallengeCard = ({item}, contentComponent, navigation, props) => {
   // Convert seconds to HH:MM:SS, then remove HH if 00
   // https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript
 
@@ -79,7 +79,7 @@ const ChallengeDayList = (props) => {
         onPress={() => {
           setFilterModalVisible(true);
         }}></Button> */}
-      <ContentCards 
+      <ChallengeCards 
         style={styles.cardList} 
         contentType={props.contentType}
         filteredList={filteredList}

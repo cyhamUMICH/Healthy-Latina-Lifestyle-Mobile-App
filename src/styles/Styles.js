@@ -444,6 +444,13 @@ export const styles = StyleSheet.create({
   labelCheck: {
     margin: 8,
   },
+  sendContentButtonLayout: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    flexWrap: 'wrap',
+    marginVertical: '1%',
+    left: '48%'
+  },
 
   
 });

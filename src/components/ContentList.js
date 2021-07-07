@@ -7,7 +7,9 @@ import FilterModal from '../components/ContentFilter';
 import { GetTopics } from '../components/GetTopics';
 import Tags from '../components/Tags';
 import LoadingSpinner from '../components/LoadingSpinner';
-
+import { Drawer } from 'react-native-paper';
+import { Groups } from '../screens/Groups';
+import SendContent from './SendContent';
 
 const ContentCards = (props) => {
   return (
@@ -44,9 +46,12 @@ const ContentCard = ({item}, contentComponent, navigation, props) => {
         </Card.Image>
         <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
         <Card.Divider/>
+        <SendContent>
+        </SendContent>
         <Card.Title style={styles.cardTitle}>{item.title}</Card.Title>
       </Card>
     </TouchableOpacity>
+    
   );
 };
 
