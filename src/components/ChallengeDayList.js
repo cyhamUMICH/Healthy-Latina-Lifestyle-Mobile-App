@@ -7,6 +7,7 @@ import FilterModal from './ContentFilter';
 import { GetTopics } from './GetTopics';
 import Tags from './Tags';
 import LoadingSpinner from './LoadingSpinner';
+import ChallengeDay from '../screens/ChallengeDay';
 
 
 const ChallengeCards = (props) => {
@@ -34,7 +35,7 @@ const ChallengeCard = ({item}, contentComponent, navigation, props) => {
   return (
     <TouchableOpacity 
       activeOpacity={0.7}
-      onPress={() => {navigation.navigate(contentComponent, item)}}>
+      onPress={() => {props.navigation.navigate("ChallengeDay")}}>
       <Card containerStyle={styles.card}>
         {/* <Card.Image source={{ uri: item.imagePath }}
           style={styles.cardImage}>

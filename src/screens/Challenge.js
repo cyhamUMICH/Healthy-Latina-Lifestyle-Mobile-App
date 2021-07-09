@@ -18,9 +18,8 @@ import { DrawerItemList } from "@react-navigation/drawer";
 const Challenge = ({route}, props) => {
 
   const theContentID = route.params.contentID;
-
-  console.log("content Id id: " + theContentID);
-
+  
+  console.log("Route id: " + route.params.numDays);
 
   const item = route.params;
   const [data, setData] = useState([]);
@@ -28,9 +27,6 @@ const Challenge = ({route}, props) => {
   
   const theStartDate = item.startDate.toDate().toString().slice(4, 15);
   const theEndDate = item.endDate.toDate().toString().slice(4, 15);
-
-  const challengeLength = (item.endDate.toDate().getDate() - item.startDate.toDate().getDate()) + 1;
-
 
   useEffect(() => {
     const fetchList = async () => {
@@ -49,6 +45,8 @@ const Challenge = ({route}, props) => {
           querySnapshot.forEach((doc) => {
             let newDoc = doc.data();
             newDoc.contentID = doc.id;
+
+
             console.log("Linked to" + newDoc.contentID);
             const chalref = newDoc.challenge.id;
             console.log("Challenge ID is " + chalref);
@@ -70,22 +68,17 @@ const Challenge = ({route}, props) => {
               newDoc.description = "Relax";
             })
             .finally(() => {
-              // Add to the data list once the image has been resolved
-              
-
-              // Data is loaded once the number of images is the same as
-              // the number in the snapshot
-              // if (querySnapshot.size === countChallenges) {
-              //   setIsLoaded(true);
-              // }
-
-              
+        
 
               if(chalref == theContentID){
+              countChallenges++;
+              setData(oldList => [...oldList, newDoc]);
+              }
+
+              if(countChallenges == route.params.numDays){
                 
-                setData(oldList => [...oldList, newDoc]);
-                countChallenges++;
-                console.log("Num of challenges" + countChallenges);
+                console.log("this is new doc" + newDoc.description)
+                
                 console.log("challenge matches with challenge day" + theContentID);
                 setIsLoaded(true);
               }
@@ -113,7 +106,7 @@ const Challenge = ({route}, props) => {
       <Text style={styles.contentDesc}>{item.description}{"\n"}</Text>
       <Text>Challenge starts on: {theStartDate}</Text>
       <Text>Challenge ends on: {theEndDate}</Text>
-      <Text>This challenge is {challengeLength} days long {"\n"}</Text>
+      <Text>This challenge is {route.params.numDays} day(s) long {"\n"}</Text>
       <View style={styles.app}>
     {
       isLoaded ? 

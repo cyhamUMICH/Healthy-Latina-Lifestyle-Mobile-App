@@ -4,7 +4,7 @@ import Controller from "../components/Controller";
 import PlayerSlider from "../components/PlayerSlider";
 import Tags from '../components/Tags';
 import { styles } from '../styles/Styles';
-import ChallengeDayList from "./ChallengeDayList";
+import ChallengeDayList from "../components/ChallengeDayList";
 
 const goNext = () => {
   console.log("go forward 30 seconds");
@@ -16,7 +16,7 @@ const goPause = () => {
   console.log("paused");
 }
 
-const ChallengeDay = ({route}) => {
+const ChallengeDay = ({route}, props) => {
   const [currentValue, setCurrentValue] = useState(0);
 
   const item = route.params;

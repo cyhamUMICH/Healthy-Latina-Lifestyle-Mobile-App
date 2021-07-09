@@ -24,6 +24,7 @@ import Yoga from '../screens/Yoga'
 import YogaList from '../screens/YogaList'
 import ShareContent from '../screens/ShareContent'
 import Groups from '../screens/Groups'
+import SendContent from '../components/SendContent';
 
 const Stack = createStackNavigator();
 
@@ -60,6 +61,8 @@ const StackNavigation = () => {
       <Stack.Screen name="YogaList" component={YogaList} options={{ title: 'YogaList'}} />
       <Stack.Screen name="ShareContent" component={ShareContent} options={{ title: 'ShareContent'}} />
       <Stack.Screen name="Groups" component={Groups} options={{ title: 'Groups'}} />
+      <Stack.Screen name="SendContent" component={SendContent} options={{ title: 'SendContent'}} />
+
       
     </Stack.Navigator>
   );

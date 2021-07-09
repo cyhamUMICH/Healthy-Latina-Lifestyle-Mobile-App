@@ -7,7 +7,7 @@ import ShareContent from '../screens/ShareContent';
 import ContentList from "./ContentList";
 import { Icon } from "react-native-elements";
 
-export default function SendContent() {
+export default function SendContent(props) {
   return (
     <View style={styles.sendContentButtonLayout}>
       <TouchableOpacity onPress={() => {navigation.navigate("ChatRoomHome")}}>
