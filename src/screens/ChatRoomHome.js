@@ -92,6 +92,7 @@ const ChatRoomHome =(props)=> {
 
   return(
     <View style={styles.app}>
+    <View style={styles.fullWidthWindow}>
       { isLoaded ?
         <View>
           <FlatList
@@ -116,14 +117,26 @@ const ChatRoomHome =(props)=> {
               </TouchableOpacity>
             )}
           />
-          <Button
-            buttonStyle={styles.button}
-            titleStyle={styles.buttonText}
-            title="Create Room" onPress={() => CreateRoom()}
-            />
         </View>
       : <LoadingSpinner />
       }
+
+                   </View>
+      <View style = {styles.smallerWidthWindow}>
+      <View style = {styles.chatHorizontalLayout}>
+                <Button
+                  buttonStyle={styles.chatButton}
+                  titleStyle={styles.buttonText}
+                  title="Create Room" onPress={() => props.navigation.navigate("CreateRoom")}
+                  />
+
+                     <Button
+                      buttonStyle={styles.chatButton}
+                      titleStyle={styles.buttonText}
+                      title="Join Room" onPress={() => props.navigation.navigate("JoinRoom")}
+                      />
+                   </View>
+                   </View>
       </View>
   );
   // ...rest of the component

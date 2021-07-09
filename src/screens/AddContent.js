@@ -22,6 +22,14 @@ const AddContent = (props) => {
            navigation: props.navigation
          })} 
           />
+          <Button
+                   buttonStyle={styles.button}
+                   titleStyle={styles.buttonText}
+                   title="Add Yoga" onPress={() => props.navigation.navigate("AddYoga", {
+                     topics: null,
+                     navigation: props.navigation
+                   })}
+                    />
 
     </View>
   );
