@@ -429,7 +429,6 @@ export const styles = StyleSheet.create({
   challengeContentDescriptionSpacer: {
     flex:0
   },
-<<<<<<< Updated upstream
   containerCheck: {
     flex: 1,
     alignItems: "center",
@@ -452,13 +451,11 @@ export const styles = StyleSheet.create({
     marginVertical: '1%',
     left: '48%'
   },
-=======
   chatHorizontalLayout:{
   flex: 0,
   flexDirection: 'row',
   justifyContent: 'space-around',
   width: '100%',
->>>>>>> Stashed changes
 
   },
   chatButton: {

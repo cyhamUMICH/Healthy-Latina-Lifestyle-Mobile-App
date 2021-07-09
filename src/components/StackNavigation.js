@@ -22,15 +22,12 @@ import ChatScreen from '../screens/ChatScreen'
 import ChatRoomHome from '../screens/ChatRoomHome'
 import Yoga from '../screens/Yoga'
 import YogaList from '../screens/YogaList'
-<<<<<<< Updated upstream
 import ShareContent from '../screens/ShareContent'
 import Groups from '../screens/Groups'
 import SendContent from '../components/SendContent';
-=======
 import CreateRoom from '../screens/CreateRoom'
 import JoinRoom from '../screens/JoinRoom'
 import AddYoga from '../screens/AddYoga'
->>>>>>> Stashed changes
 
 const Stack = createStackNavigator();
 
