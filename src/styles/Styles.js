@@ -445,11 +445,14 @@ export const styles = StyleSheet.create({
     margin: 8,
   },
   sendContentButtonLayout: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    flexWrap: 'wrap',
+    // flexDirection: 'row',
+    // justifyContent: 'space-evenly',
+    // flexWrap: 'wrap',
     marginVertical: '1%',
-    left: '48%'
+    justifyContent: 'center',
+    left: 30,
+    alignSelf: "center"
+
   },
   chatHorizontalLayout:{
   flex: 0,
@@ -460,7 +463,6 @@ export const styles = StyleSheet.create({
   },
   chatButton: {
       backgroundColor: colors.button,
-      },
-  
+  },
 });
   

@@ -9,7 +9,6 @@ import Tags from '../components/Tags';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Drawer } from 'react-native-paper';
 import { Groups } from '../screens/Groups';
-import SendContent from './SendContent';
 
 const ContentCards = (props) => {
   return (
@@ -24,6 +23,8 @@ const ContentCards = (props) => {
 };
 
 const ContentCard = ({item}, contentComponent, navigation, props) => {
+
+  console.log("the content component for all" + contentComponent)
   // Convert seconds to HH:MM:SS, then remove HH if 00
   // https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript
 
@@ -36,7 +37,7 @@ const ContentCard = ({item}, contentComponent, navigation, props) => {
   return (
 
   
-    <TouchableOpacity 
+    <TouchableOpacity
       activeOpacity={0.7}
       onPress={() => {navigation.navigate(contentComponent, item)}}>
       <Card containerStyle={styles.card}>
@@ -46,9 +47,22 @@ const ContentCard = ({item}, contentComponent, navigation, props) => {
         </Card.Image>
         <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
         <Card.Divider/>
-        <SendContent>
-        </SendContent>
-        <Card.Title style={styles.cardTitle}>{item.title}</Card.Title>
+
+        <View style={styles.horizontalButtonLayout}>
+        
+          <View>
+            <Card.Title style={styles.cardTitle}>{item.title}</Card.Title>
+          </View>
+
+          <View>
+
+          <TouchableOpacity onPress={() => {navigation.navigate("ChatRoomHome")}}>
+            <Icon name="send" type="font-awesome" color={colors.text} />
+          </TouchableOpacity>
+          </View>
+
+        </View>
+
       </Card>
     </TouchableOpacity>
     

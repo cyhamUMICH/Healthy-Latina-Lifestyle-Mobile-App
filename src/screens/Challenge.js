@@ -18,7 +18,7 @@ import { DrawerItemList } from "@react-navigation/drawer";
 const Challenge = ({route}, props) => {
 
   const theContentID = route.params.contentID;
-  
+
   console.log("Route id: " + route.params.numDays);
 
   const item = route.params;
@@ -76,6 +76,8 @@ const Challenge = ({route}, props) => {
               }
 
               if(countChallenges == route.params.numDays){
+
+                console.log("START DATE IS:" + newDoc.date);
                 
                 console.log("this is new doc" + newDoc.description)
                 
@@ -113,7 +115,7 @@ const Challenge = ({route}, props) => {
         <ChallengeDayList 
           contentComponent="ChallengeDay"
           navigation={props.navigation}
-          contentType="Challenges"
+          contentType="challengeDays"
           data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
           filterBy="Difficulty,Language,Topic" />
         : <LoadingSpinner />

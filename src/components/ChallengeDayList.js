@@ -26,6 +26,12 @@ const ChallengeCard = ({item}, contentComponent, navigation, props) => {
   // Convert seconds to HH:MM:SS, then remove HH if 00
   // https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript
 
+  console.log("The content component is" + contentComponent);
+  console.log("The content item is" + item);
+
+
+
+
   let duration;
   if (item.duration){
     duration = new Date(item.duration * 1000).toISOString().substr(11, 8);
@@ -34,8 +40,7 @@ const ChallengeCard = ({item}, contentComponent, navigation, props) => {
 
   return (
     <TouchableOpacity 
-      activeOpacity={0.7}
-      onPress={() => {props.navigation.navigate("ChallengeDay")}}>
+      onPress={() => {navigation.navigate(contentComponent, item)}}>
       <Card containerStyle={styles.card}>
         {/* <Card.Image source={{ uri: item.imagePath }}
           style={styles.cardImage}>
