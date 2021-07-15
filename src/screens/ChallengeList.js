@@ -6,7 +6,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/storage";
-import ChallengeDayList from '../components/ChallengeDayList';
 
 const ChallengeList = (props) => {
   const [data, setData] = useState([]);           

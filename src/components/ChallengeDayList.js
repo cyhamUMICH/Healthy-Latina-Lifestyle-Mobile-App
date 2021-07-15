@@ -7,7 +7,6 @@ import FilterModal from './ContentFilter';
 import { GetTopics } from './GetTopics';
 import Tags from './Tags';
 import LoadingSpinner from './LoadingSpinner';
-import ChallengeDay from '../screens/ChallengeDay';
 
 
 const ChallengeCards = (props) => {

@@ -10,7 +10,6 @@ import { TextInput } from 'react-native-gesture-handler';
 import firebase, { auth } from 'firebase';
 import 'firebase/firestore';
 import 'firebase/storage';
-import { ContentList } from '../components/ContentList';
 
 
 const Groups = (props) => {
