@@ -90,31 +90,31 @@ const ContentList = (props) => {
   return (
     isTopicsLoaded ? 
     <View style={styles.fullWidthWindow}>
-      <Button 
-        buttonStyle={styles.button}
-        titleStyle={styles.buttonText}
-        title="Filter"
-        onPress={() => {
-          setFilterModalVisible(true);
-        }}></Button>
-      <ContentCards 
-        style={styles.cardList} 
-        contentType={props.contentType}
-        filteredList={filteredList}
-        contentComponent={props.contentComponent}
-        navigation={props.navigation} />
-      <FilterModal
-        allData={props.data}
-        topicsList={topicsList}
-        filterBy={filterBy}
-        visibleFunction={setFilterModalVisible}
-        visible={filterModalVisible}
-        filterSettingsFunction={setFilterSettings}
-        filterSettings={filterSettings}
-        filteredListFunction={setFilteredList}
-        filteredList={filteredList}/>
-        <View style={styles.floatingActionView}>
-        <TouchableOpacity style={styles.floatingActionButton} 
+      <View style={styles.floatingActionView}>
+        <Button 
+          buttonStyle={styles.button}
+          titleStyle={styles.buttonText}
+          title="Filter"
+          onPress={() => {
+            setFilterModalVisible(true);
+          }}></Button>
+        <ContentCards 
+          style={styles.cardList} 
+          contentType={props.contentType}
+          filteredList={filteredList}
+          contentComponent={props.contentComponent}
+          navigation={props.navigation} />
+        <FilterModal
+          allData={props.data}
+          topicsList={topicsList}
+          filterBy={filterBy}
+          visibleFunction={setFilterModalVisible}
+          visible={filterModalVisible}
+          filterSettingsFunction={setFilterSettings}
+          filterSettings={filterSettings}
+          filteredListFunction={setFilteredList}
+          filteredList={filteredList}/>
+        <TouchableOpacity style={styles.floatingActionButtonBottomRight} 
           onPress={() => props.navigation.navigate("Add".concat(props.contentComponent), {
             topics: topicsList, 
             navigation: props.navigation
@@ -123,8 +123,7 @@ const ContentList = (props) => {
             <Icon name="plus" type="font-awesome" color={colors.text} />
           </View>
         </TouchableOpacity>
-        </View>
-
+      </View>
     </View>
     : <LoadingSpinner />
   );

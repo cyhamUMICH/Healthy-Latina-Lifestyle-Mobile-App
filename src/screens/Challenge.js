@@ -6,6 +6,7 @@ import Tags from '../components/Tags';
 import { styles } from '../styles/Styles';
 import { Button } from 'react-native-elements';
 import ContentList from '../components/ContentList';
+import SetFeatured from "../components/SetFeatured";
 import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
 import "firebase/firestore";
@@ -99,31 +100,31 @@ const Challenge = ({route}, props) => {
 
   
   return (
-    <View style={styles.fullWidthWindow}>
-     
-      <Image source={{ uri: item.imagePath }}
-        style={styles.challengePhoto}></Image>
-       <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
-      <Text style={styles.contentTitle}>{item.title}</Text> 
-      <Text style={styles.contentDesc}>{item.description}{"\n"}</Text>
-      <Text>Challenge starts on: {theStartDate}</Text>
-      <Text>Challenge ends on: {theEndDate}</Text>
-      <Text>This challenge is {route.params.numDays} day(s) long {"\n"}</Text>
-      <View style={styles.app}>
-    {
-      isLoaded ? 
-        <ChallengeDayList 
-          contentComponent="ChallengeDay"
-          navigation={props.navigation}
-          contentType="challengeDays"
-          data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
-          filterBy="Difficulty,Language,Topic" />
+    <View style={styles.app}>
+      {
+        isLoaded ? 
+        <View style={styles.fullWidthWindow}>
+          <View style={styles.floatingActionView}>
+            <Image source={{ uri: item.imagePath }}
+              style={styles.challengePhoto}></Image>
+            <SetFeatured firebaseCollectionName="challenges" item={item} />
+            <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
+            <Text style={styles.contentTitle}>{item.title}</Text> 
+            <Text style={styles.contentDesc}>{item.description}{"\n"}</Text>
+            <Text>Challenge starts on: {theStartDate}</Text>
+            <Text>Challenge ends on: {theEndDate}</Text>
+            <Text>This challenge is {route.params.numDays} day(s) long {"\n"}</Text>
+            <ChallengeDayList 
+              contentComponent="ChallengeDay"
+              navigation={props.navigation}
+              contentType="challengeDays"
+              data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
+              filterBy="Difficulty,Language,Topic" />
+          </View>
+        </View>
         : <LoadingSpinner />
-    }
-    </View>
-
-    </View>
-
+        }
+        </View>
   );
 };
 

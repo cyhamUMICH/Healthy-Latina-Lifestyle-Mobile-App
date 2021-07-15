@@ -104,7 +104,7 @@ export const styles = StyleSheet.create({
     marginBottom: '5%'
   },
   sliderAndController: {
-    marginBottom: '25%'
+    marginBottom: '2%',
   },
   button: {
     backgroundColor: colors.button,
@@ -234,13 +234,12 @@ export const styles = StyleSheet.create({
     marginHorizontal: 10,
     backgroundColor: colors.button,
   },
-  meditationPhoto:{
-    width: 300,
-    height: 300,
-    borderRadius: 200,
-    alignItems: 'center',
-    justifyContent: 'center',
-    left: 50
+  meditationPhoto: {
+    width: "80%",
+    height: null,
+    aspectRatio: 1,
+    borderRadius: Dimensions.get('window').height / 2,
+    alignSelf: 'center'
   },
   challengeVideo:{
     width: 300,
@@ -355,18 +354,31 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  // Tries to scale icon based on window height
+  setFeaturedIconSize: Dimensions.get('window').height / 25,
   floatingActionView: {
     flex: 1,
-    flexDirection: 'column-reverse'
+    marginBottom: '2%'
   },
-  floatingActionButton: {
+  floatingActionButtonTopRight: {
     backgroundColor: colors.button,
     borderRadius: Dimensions.get('window').height / 2,
     height: null,
     width: '12%',
     aspectRatio: 1,
-    marginBottom: '2%',
-    alignSelf: 'flex-end',
+    position: 'absolute',
+    top: 0,
+    right: 0
+  },
+  floatingActionButtonBottomRight: {
+    backgroundColor: colors.button,
+    borderRadius: Dimensions.get('window').height / 2,
+    height: null,
+    width: '12%',
+    aspectRatio: 1,
+    position: 'absolute',
+    bottom: 0,
+    right: 0
   },
   floatingActionIcon: {
     flex: 1,
@@ -419,12 +431,11 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   challengePhoto:{
-    width: 400,
-    height: 300,
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    left: 5
+    width: "90%",
+    height: null,
+    aspectRatio: 16/9,
+    borderRadius: Dimensions.get('window').height / 75,
+    alignSelf: 'center'
   },
   challengeContentDescriptionSpacer: {
     flex:0
