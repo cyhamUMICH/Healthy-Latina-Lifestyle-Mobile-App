@@ -84,8 +84,8 @@ useEffect(() => {
 
   return (
 
-    <View>
-      {<GiftedChat
+    
+      <GiftedChat
         messages={messages}
         onSend={handleSend}
         user={{ _id: firebase.auth().currentUser.uid }}
@@ -93,13 +93,9 @@ useEffect(() => {
         alwaysShowSend
         scrollToBottom
         
-      />}
+      />
 
-      <Text>
-        healthylatinalifestylecom
-      </Text>
-
-    </View> 
+      
 
   
   );

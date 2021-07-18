@@ -47,22 +47,16 @@ const ContentCard = ({item}, contentComponent, navigation, props) => {
         </Card.Image>
         <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
         <Card.Divider/>
-
         <View style={styles.horizontalButtonLayout}>
-        
           <View>
             <Card.Title style={styles.cardTitle}>{item.title}</Card.Title>
           </View>
-
           <View>
-
-          <TouchableOpacity onPress={() => {navigation.navigate("ChatRoomHome")}}>
-            <Icon name="send" type="font-awesome" color={colors.text} />
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => {navigation.navigate("ChatRoomHome")}}>
+              <Icon name="send" type="font-awesome" color={colors.text} />
+            </TouchableOpacity>
           </View>
-
         </View>
-
       </Card>
     </TouchableOpacity>
     

@@ -13,6 +13,13 @@ const SideMenu = (props) => {
          title="Chat Rooms"  onPress={() => props.navigation.navigate("ChatRoomHome")}
           />
 
+        <Button
+         buttonStyle={styles.basicButtons}
+         title="My Journal"  onPress={() => props.navigation.navigate("JournalEntries")}
+          />
+
+
+
         <Button 
         buttonStyle={styles.basicButtons}
         title="Edit Account"  onPress={() => props.navigation.navigate("EditAccount")} 

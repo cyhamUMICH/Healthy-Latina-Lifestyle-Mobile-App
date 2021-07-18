@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { View, Button } from 'react-native';
 import { styles } from '../styles/Styles';
 import ContentList from '../components/ContentList';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -61,6 +61,7 @@ const ChallengeList = (props) => {
 
   return (
     <View style={styles.app}>
+      
     {
       isLoaded ? 
         <ContentList 
