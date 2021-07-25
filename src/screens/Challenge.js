@@ -15,9 +15,6 @@ import ChallengeButtons from "../components/ChallengeDayList";
 import { Checkbox } from 'react-native-paper';
 import ChallengeDayList from '../components/ChallengeDayList';
 
-import { DrawerItemList } from "@react-navigation/drawer";
-import ChallengeDay from "./ChallengeDay";
-
 
 const Challenge = ({route}, props) => {
 
@@ -34,13 +31,13 @@ const Challenge = ({route}, props) => {
 
   useEffect(() => {
 
-
     const fetchList = async () => {
       const dbh = firebase.firestore();
       
-      dbh.collection("challengeDays").get()
+      dbh.collection("challengeDays").orderBy('date').get()
       .then((querySnapshot) => {
 
+        
         // console.log("Snapshot size:" + querySnapshot.size)
 
         if (querySnapshot.size == 0) {
@@ -48,10 +45,16 @@ const Challenge = ({route}, props) => {
         }
         else {
           let countChallenges = 0;
+        
+
+
           querySnapshot.forEach((doc) => {
             let newDoc = doc.data();
             newDoc.contentID = doc.id;
 
+            
+
+            // console.log("START DATE IS:" + newDoc.date.toDate());
 
             // console.log("Linked to" + newDoc.contentID);
             const chalref = newDoc.challenge.id;
@@ -61,50 +64,43 @@ const Challenge = ({route}, props) => {
     
             // https://firebase.google.com/docs/storage/web/download-files
             let storage = firebase.storage();
-            let pathReference = storage.ref(newDoc.description);
+            let pathReference = storage.ref(newDoc.title);
+
+            console.log("PATH REF IS: " + pathReference);
             
-            pathReference.getDownloadURL()
-            .then((url) => {
-              newDoc.description = url;
-            })
-            .catch((error) => {
-              newDoc.description = "Relax";
-            })
-            .finally(() => {
-        
-
-              if(chalref == theContentID){
+           if(chalref == theContentID){
+             
               countChallenges++;
-
-              // const thisDate = newDoc.data.toDate();
-              // const theLargest = 0;
-
-
-              
-              // if(thisDate > theLargest){
-              //   theLargest = thisDate;
-              // }
-              
-              // console.log("START DATE IS:" + newDoc.date);
-              // console.log("LARGEST DATE IS:" + theLargest);
-
-              console.log(newDoc.date.toDate().toString());
+              console.log("ADDED DATE" + newDoc.date.toDate());
 
               setData(oldList => [...oldList, newDoc]);
 
-              }
+            }
 
-              if(countChallenges == route.params.numDays){
+            if(countChallenges == route.params.numDays){
 
-                
-                
-                // console.log("this is new doc" + newDoc.description)
-                
-                // console.log("challenge matches with challenge day" + theContentID);
-                setIsLoaded(true);
-              }
+              setIsLoaded(true);
+            }
+          
+            // pathReference.getDownloadURL()
 
-            });
+           
+            // .then((url) => {
+            //   newDoc.description = url;
+           
+            //   console.log("hello");
+            // })
+            // .catch((error) => {
+            //   newDoc.description = "Relax";
+            // })
+            // .finally(() => {
+
+
+            //   console.log("START DATE IS:" + newDoc.date.toDate());
+              
+      
+
+            // });
           })
         }
       })
@@ -112,6 +108,7 @@ const Challenge = ({route}, props) => {
         console.log("Error getting documents: ", error);
       });
     };
+
   
     fetchList();  
   }, []);

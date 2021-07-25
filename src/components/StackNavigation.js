@@ -29,7 +29,9 @@ import CreateRoom from '../screens/CreateRoom'
 import JoinRoom from '../screens/JoinRoom'
 import AddYoga from '../screens/AddYoga'
 import Journal from '../screens/Journal'
-import JournalEntries from '../screens/JournalEntries'
+import JournalEntry from '../screens/JournalEntry'
+import JournalEntryList from '../screens/JournalEntryList'
+import AddJournalPrompt from '../screens/AddJournalPrompt';
 
 const Stack = createStackNavigator();
 
@@ -71,7 +73,11 @@ const StackNavigation = () => {
       <Stack.Screen name="JoinRoom" component={JoinRoom} options={{ title: 'Join Existing Room', headerRight: null }}/>
       <Stack.Screen name="AddYoga" component={AddYoga} options={{ title: 'Add Yoga' }}/>
       <Stack.Screen name="Journal" component={Journal} options={{ title: 'Journal' }}/>
-      <Stack.Screen name="JournalEntries" component={JournalEntries} options={{ title: 'Journal Entries' }}/>
+      <Stack.Screen name="JournalEntry" component={JournalEntry} options={{ title: 'Journal Entry' }}/>
+      <Stack.Screen name="JournalEntryList" component={JournalEntryList} options={{ title: 'Journal Entry List' }}/>
+      <Stack.Screen name="AddJournalPrompt" component={AddJournalPrompt} options={{ title: 'Add Journal Prompt' }}/>
+
+
 
 
     </Stack.Navigator>

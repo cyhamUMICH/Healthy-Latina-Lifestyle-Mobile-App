@@ -475,5 +475,9 @@ export const styles = StyleSheet.create({
   chatButton: {
       backgroundColor: colors.button,
   },
+  challengeDayTitle: {
+    fontSize: 24,
+    textAlign: "center"
+  },
 });
   

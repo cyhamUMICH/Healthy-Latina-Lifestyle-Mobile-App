@@ -7,14 +7,14 @@ import * as firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/storage";
 
-const Journal = (props) => {
+const JournalEntry = (props) => {
 
   return (
     <View style={styles.app}>
-        <Text>Journal Entries will be stored here</Text>
+        <Text> Journal Entry will be viewed here</Text>
     
     </View>
   );
 };
 
-export default Journal;
+export default JournalEntry;

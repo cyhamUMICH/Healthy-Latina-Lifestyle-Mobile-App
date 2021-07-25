@@ -11,6 +11,7 @@ import { Drawer } from 'react-native-paper';
 import { Groups } from '../screens/Groups';
 
 const ContentCards = (props) => {
+
   return (
     (props.filteredList.length != 0) 
     ? <FlatList 
@@ -22,7 +23,7 @@ const ContentCards = (props) => {
   );
 };
 
-const ContentCard = ({item}, contentComponent, navigation, props) => {
+const ContentCard = ({item}, contentComponent, navigation) => {
 
   console.log("the content component for all" + contentComponent)
   // Convert seconds to HH:MM:SS, then remove HH if 00
@@ -52,9 +53,13 @@ const ContentCard = ({item}, contentComponent, navigation, props) => {
             <Card.Title style={styles.cardTitle}>{item.title}</Card.Title>
           </View>
           <View>
-            <TouchableOpacity onPress={() => {navigation.navigate("ChatRoomHome")}}>
+
+
+            <TouchableOpacity onPress={() => {navigation.navigate("ChatRoomHome", item)}}>
               <Icon name="send" type="font-awesome" color={colors.text} />
             </TouchableOpacity>
+
+
           </View>
         </View>
       </Card>

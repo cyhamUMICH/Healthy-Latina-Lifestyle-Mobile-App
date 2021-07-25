@@ -15,11 +15,10 @@ const SideMenu = (props) => {
 
         <Button
          buttonStyle={styles.basicButtons}
-         title="My Journal"  onPress={() => props.navigation.navigate("JournalEntries")}
+         title="My Journal"  onPress={() => props.navigation.navigate("JournalEntryList")}
           />
 
-
-
+          
         <Button 
         buttonStyle={styles.basicButtons}
         title="Edit Account"  onPress={() => props.navigation.navigate("EditAccount")} 

@@ -4,7 +4,6 @@ import Controller from "../components/Controller";
 import PlayerSlider from "../components/PlayerSlider";
 import Tags from '../components/Tags';
 import { styles } from '../styles/Styles';
-import ChallengeDayList from "../components/ChallengeDayList";
 
 
 const ChallengeDay = ({route}, props) => {

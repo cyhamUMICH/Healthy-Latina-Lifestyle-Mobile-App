@@ -13,6 +13,8 @@ const ChatRoomHome =(props)=> {
   const [usersGroups, setUsersGroups] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
+
+
   const fetchUsersGroups = async () => {
     const dbh = firebase.firestore();
     dbh.collection("Users").doc(firebase.auth().currentUser.uid).get()
