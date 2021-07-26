@@ -4,6 +4,7 @@ import { List, Divider } from 'react-native-paper';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { styles } from '../styles/Styles';
 import firebase from 'firebase';
+import { Alert } from 'react-native';
 import { Button } from 'react-native-elements';
 import 'firebase/firestore';
 import 'firebase/storage';
@@ -12,6 +13,32 @@ const ChatRoomHome =(props)=> {
   const [threads, setThreads] = useState([]);
   const [usersGroups, setUsersGroups] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+
+function createTwoButtonAlertForDelete(item){
+Alert.alert(
+      "Delete Room",
+      "This will remove you from the selected chat room. You can rejoin later if you have the room code",
+      [
+        {
+          text: "Cancel",
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => deleteChat(item) }
+      ],
+      { cancelable: true }
+    );
+}
+
+async function deleteChat(item){
+var id = item._id;
+
+const dbh = firebase.firestore();
+await dbh.collection("Users").doc(firebase.auth().currentUser.uid).update({
+GroupID: firebase.firestore.FieldValue.arrayRemove(id)
+}
+);
+setUsersGroups([]);
+}
 
   const fetchUsersGroups = async () => {
     const dbh = firebase.firestore();
@@ -42,7 +69,8 @@ const ChatRoomHome =(props)=> {
     {
       const dbh = firebase.firestore();
       // Code from: https://stackoverflow.com/questions/62524946/firestore-check-if-id-exists-against-an-array-of-ids
-      dbh.collection("Groups").where(firebase.firestore.FieldPath.documentId(), "in", usersGroups).get()
+      dbh.collection("Groups").where(firebase.firestore.FieldPath.documentId(), "in", usersGroups)
+      .get()
       .then((querySnapshot) => {
         if (querySnapshot.size == 0) {
           setIsLoaded(true);
@@ -66,7 +94,7 @@ const ChatRoomHome =(props)=> {
     }
   };
 
-  async function CreateRoom() {
+  /*async function CreateRoom() {
     var user = firebase.auth().currentUser;
     var docID;
     await firebase.firestore().collection("Groups").add({
@@ -85,7 +113,7 @@ const ChatRoomHome =(props)=> {
     setIsLoaded(false);
     setUsersGroups([]);
   }
-
+*/
   useEffect(() => { 
     fetchRooms();
   }, [usersGroups]);
@@ -105,14 +133,15 @@ const ChatRoomHome =(props)=> {
               onPress= {() => props.navigation.navigate("ChatScreen", {
                 thread: item
               })}
+              onLongPress = {() => createTwoButtonAlertForDelete(item)}
               >
               <List.Item
                 title={item.name}
-                //description='Item description'
+                description= {"Group Code: " + item._id}
                 titleNumberOfLines={1}
                 titleStyle={styles.listTitle}
-                //descriptionStyle={styles.listDescription}
-                //descriptionNumberOfLines={1}
+                descriptionStyle={styles.listDescription}
+                descriptionNumberOfLines={1}
               />
               </TouchableOpacity>
             )}

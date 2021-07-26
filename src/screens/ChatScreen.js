@@ -12,8 +12,6 @@ export default function ChatScreen({route}) {
 const { thread } = route.params;
   const [messages, setMessages] = useState([]);
 
-
-
 function getStuff(documentSnapshot){
                 return documentSnapshot.get('username');
                 }
@@ -84,8 +82,7 @@ useEffect(() => {
 
   return (
 
-    <View>
-      {<GiftedChat
+      <GiftedChat
         messages={messages}
         onSend={handleSend}
         user={{ _id: firebase.auth().currentUser.uid }}
@@ -93,13 +90,8 @@ useEffect(() => {
         alwaysShowSend
         scrollToBottom
         
-      />}
+      />
 
-      <Text>
-        healthylatinalifestylecom
-      </Text>
-
-    </View> 
 
   
   );
