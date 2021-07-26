@@ -45,7 +45,7 @@ const AddJournalPrompt = ({route}, props) => {
   };
 
 
-  const submit = async (props) => {
+  const submit = async () => {
 
     if (formComplete()) 
     {
@@ -59,7 +59,6 @@ const AddJournalPrompt = ({route}, props) => {
         featured: isFeatured,
         dateAdded: new Date()
       });
-      props.navigation.navigate("Home");
     }
     else
     {

@@ -77,9 +77,6 @@ const StackNavigation = () => {
       <Stack.Screen name="JournalEntryList" component={JournalEntryList} options={{ title: 'Journal Entry List' }}/>
       <Stack.Screen name="AddJournalPrompt" component={AddJournalPrompt} options={{ title: 'Add Journal Prompt' }}/>
 
-
-
-
     </Stack.Navigator>
   );
 };

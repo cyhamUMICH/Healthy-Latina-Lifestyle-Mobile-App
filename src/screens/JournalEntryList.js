@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button} from 'react-native';
 import { styles } from '../styles/Styles';
 import ContentList from '../components/ContentList';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -12,6 +12,11 @@ const JournalEntryList = (props) => {
   return (
     <View style={styles.app}>
         <Text> List of Journal Entries will be stored here</Text>
+
+        <Button
+        title="You can edit an entry"
+        onPress={()=>{props.navigation.navigate("JournalEntry")}}/>
+
     
     </View>
   );

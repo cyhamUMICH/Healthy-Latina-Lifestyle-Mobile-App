@@ -11,11 +11,11 @@ const Journal = (props) => {
 
   return (
     <View style={styles.app}>
-        <Text>Journal Prompts and writing space will be here</Text>
-    
-
-        {/* <Button onPress={() => {props.navigation.navigate("ChallengeDay")}}
-        title="gdsi">  </Button> */}
+        <Text>Journal Prompts will be here</Text>
+        <Button
+        title="After you picked prompt press here"
+        onPress={() => {props.navigation.navigate("JournalEntry")}}></Button>
+  
     </View>
   );
 };
