@@ -39,7 +39,6 @@ GroupID: firebase.firestore.FieldValue.arrayRemove(id)
 );
 setUsersGroups([]);
 }
-
   const fetchUsersGroups = async () => {
     const dbh = firebase.firestore();
     dbh.collection("Users").doc(firebase.auth().currentUser.uid).get()

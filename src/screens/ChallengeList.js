@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { View, Button } from 'react-native';
 import { styles } from '../styles/Styles';
 import ContentList from '../components/ContentList';
 import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/storage";
-import ChallengeDayList from '../components/ChallengeDayList';
 
 const ChallengeList = (props) => {
   const [data, setData] = useState([]);           
@@ -62,6 +61,7 @@ const ChallengeList = (props) => {
 
   return (
     <View style={styles.app}>
+      
     {
       isLoaded ? 
         <ContentList 

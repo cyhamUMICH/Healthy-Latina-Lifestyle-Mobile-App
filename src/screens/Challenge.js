@@ -6,6 +6,7 @@ import Tags from '../components/Tags';
 import { styles } from '../styles/Styles';
 import { Button } from 'react-native-elements';
 import ContentList from '../components/ContentList';
+import SetFeatured from "../components/SetFeatured";
 import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
 import "firebase/firestore";
@@ -13,13 +14,13 @@ import "firebase/storage";
 import ChallengeButtons from "../components/ChallengeDayList";
 import { Checkbox } from 'react-native-paper';
 import ChallengeDayList from '../components/ChallengeDayList';
-import { DrawerItemList } from "@react-navigation/drawer";
+
 
 const Challenge = ({route}, props) => {
 
   const theContentID = route.params.contentID;
-  
-  console.log("Route id: " + route.params.numDays);
+
+  // console.log("Route id: " + route.params.numDays);
 
   const item = route.params;
   const [data, setData] = useState([]);
@@ -29,61 +30,77 @@ const Challenge = ({route}, props) => {
   const theEndDate = item.endDate.toDate().toString().slice(4, 15);
 
   useEffect(() => {
+
     const fetchList = async () => {
       const dbh = firebase.firestore();
       
-      dbh.collection("challengeDays").get()
+      dbh.collection("challengeDays").orderBy('date').get()
       .then((querySnapshot) => {
 
-        console.log("Snapshot size:" + querySnapshot.size)
+        
+        // console.log("Snapshot size:" + querySnapshot.size)
 
         if (querySnapshot.size == 0) {
           setIsLoaded(true);
         }
         else {
           let countChallenges = 0;
+        
+
+
           querySnapshot.forEach((doc) => {
             let newDoc = doc.data();
             newDoc.contentID = doc.id;
 
+            
 
-            console.log("Linked to" + newDoc.contentID);
+            // console.log("START DATE IS:" + newDoc.date.toDate());
+
+            // console.log("Linked to" + newDoc.contentID);
             const chalref = newDoc.challenge.id;
-            console.log("Challenge ID is " + chalref);
+            // console.log("Challenge ID is " + chalref);
             //chalref is the challenge ID
-            //theContentID is what the day is linked to 
-            
-            
-            
-
+            //theContentID is what the day is linked to           
+    
             // https://firebase.google.com/docs/storage/web/download-files
             let storage = firebase.storage();
-            let pathReference = storage.ref(newDoc.description);
+            let pathReference = storage.ref(newDoc.title);
+
+            console.log("PATH REF IS: " + pathReference);
             
-            pathReference.getDownloadURL()
-            .then((url) => {
-              newDoc.description = url;
-            })
-            .catch((error) => {
-              newDoc.description = "Relax";
-            })
-            .finally(() => {
-        
-
-              if(chalref == theContentID){
+           if(chalref == theContentID){
+             
               countChallenges++;
+              console.log("ADDED DATE" + newDoc.date.toDate());
+
               setData(oldList => [...oldList, newDoc]);
-              }
 
-              if(countChallenges == route.params.numDays){
-                
-                console.log("this is new doc" + newDoc.description)
-                
-                console.log("challenge matches with challenge day" + theContentID);
-                setIsLoaded(true);
-              }
+            }
 
-            });
+            if(countChallenges == route.params.numDays){
+
+              setIsLoaded(true);
+            }
+          
+            // pathReference.getDownloadURL()
+
+           
+            // .then((url) => {
+            //   newDoc.description = url;
+           
+            //   console.log("hello");
+            // })
+            // .catch((error) => {
+            //   newDoc.description = "Relax";
+            // })
+            // .finally(() => {
+
+
+            //   console.log("START DATE IS:" + newDoc.date.toDate());
+              
+      
+
+            // });
           })
         }
       })
@@ -91,37 +108,40 @@ const Challenge = ({route}, props) => {
         console.log("Error getting documents: ", error);
       });
     };
+
   
     fetchList();  
   }, []);
 
   
   return (
-    <View style={styles.fullWidthWindow}>
-     
-      <Image source={{ uri: item.imagePath }}
-        style={styles.challengePhoto}></Image>
-       <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
-      <Text style={styles.contentTitle}>{item.title}</Text> 
-      <Text style={styles.contentDesc}>{item.description}{"\n"}</Text>
-      <Text>Challenge starts on: {theStartDate}</Text>
-      <Text>Challenge ends on: {theEndDate}</Text>
-      <Text>This challenge is {route.params.numDays} day(s) long {"\n"}</Text>
-      <View style={styles.app}>
-    {
-      isLoaded ? 
-        <ChallengeDayList 
-          contentComponent="ChallengeDay"
-          navigation={props.navigation}
-          contentType="Challenges"
-          data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
-          filterBy="Difficulty,Language,Topic" />
-        : <LoadingSpinner />
-    }
-    </View>
 
-    </View>
-
+    <View style={styles.app}>
+       {
+         isLoaded ? 
+         <View style={styles.fullWidthWindow}>
+           <View style={styles.floatingActionView}>
+             <Image source={{ uri: item.imagePath }}
+               style={styles.challengePhoto}></Image>
+             <SetFeatured firebaseCollectionName="challenges" item={item} />
+             <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
+             <Text style={styles.contentTitle}>{item.title}</Text> 
+             <Text style={styles.contentDesc}>{item.description}{"\n"}</Text>
+             <Text>Challenge starts on: {theStartDate}</Text>
+             <Text>Challenge ends on: {theEndDate}</Text>
+             <Text>This challenge is {route.params.numDays} day(s) long {"\n"}</Text>
+             <ChallengeDayList 
+               contentComponent="ChallengeDay"
+               navigation={props.navigation}
+               contentType="challengeDays"
+               data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
+               filterBy="Difficulty,Language,Topic" />
+           </View>
+         </View>
+         : <LoadingSpinner />
+     }
+     </View>
+ 
   );
 };
 

@@ -18,16 +18,20 @@ import AddMeditation from '../screens/AddMeditation';
 import AddChallenge from '../screens/AddChallenge';
 import Challenge from '../screens/Challenge'
 import ChallengeList from '../screens/ChallengeList'
+import ChallengeDay from '../screens/ChallengeDay'
 import ChatScreen from '../screens/ChatScreen'
 import ChatRoomHome from '../screens/ChatRoomHome'
 import Yoga from '../screens/Yoga'
 import YogaList from '../screens/YogaList'
 import ShareContent from '../screens/ShareContent'
 import Groups from '../screens/Groups'
-import SendContent from '../components/SendContent';
 import CreateRoom from '../screens/CreateRoom'
 import JoinRoom from '../screens/JoinRoom'
 import AddYoga from '../screens/AddYoga'
+import Journal from '../screens/Journal'
+import JournalEntry from '../screens/JournalEntry'
+import JournalEntryList from '../screens/JournalEntryList'
+import AddJournalPrompt from '../screens/AddJournalPrompt';
 
 const Stack = createStackNavigator();
 
@@ -58,16 +62,20 @@ const StackNavigation = () => {
       <Stack.Screen name="AddChallenge" component={AddChallenge} options={{ title: 'Add Challenge'}} />
       <Stack.Screen name="Challenge" component={Challenge} options={{ title: 'Challenge'}} />
       <Stack.Screen name="ChallengeList" component={ChallengeList} options={{ title: 'ChallengeList'}} />
+      <Stack.Screen name="ChallengeDay" component={ChallengeDay} options={{ title: 'ChallengeDay'}} />
       <Stack.Screen name="ChatScreen" component={ChatScreen} options={({ route}) =>({ title: route.params.thread.name})} />
       <Stack.Screen name="ChatRoomHome" component={ChatRoomHome} options={{ title: 'Chat Rooms'}} />
       <Stack.Screen name="Yoga" component={Yoga} options={{ title: 'Yoga'}} />
       <Stack.Screen name="YogaList" component={YogaList} options={{ title: 'YogaList'}} />
       <Stack.Screen name="ShareContent" component={ShareContent} options={{ title: 'ShareContent'}} />
       <Stack.Screen name="Groups" component={Groups} options={{ title: 'Groups'}} />
-      <Stack.Screen name="SendContent" component={SendContent} options={{ title: 'SendContent'}} />
       <Stack.Screen name="CreateRoom" component={CreateRoom} options={{ title: 'Create New Room', headerRight: null }}/>
       <Stack.Screen name="JoinRoom" component={JoinRoom} options={{ title: 'Join Existing Room', headerRight: null }}/>
       <Stack.Screen name="AddYoga" component={AddYoga} options={{ title: 'Add Yoga' }}/>
+      <Stack.Screen name="Journal" component={Journal} options={{ title: 'Journal' }}/>
+      <Stack.Screen name="JournalEntry" component={JournalEntry} options={{ title: 'Journal Entry' }}/>
+      <Stack.Screen name="JournalEntryList" component={JournalEntryList} options={{ title: 'Journal Entry List' }}/>
+      <Stack.Screen name="AddJournalPrompt" component={AddJournalPrompt} options={{ title: 'Add Journal Prompt' }}/>
     </Stack.Navigator>
   );
 };

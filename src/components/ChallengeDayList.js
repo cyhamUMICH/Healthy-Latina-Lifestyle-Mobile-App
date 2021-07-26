@@ -7,7 +7,6 @@ import FilterModal from './ContentFilter';
 import { GetTopics } from './GetTopics';
 import Tags from './Tags';
 import LoadingSpinner from './LoadingSpinner';
-import ChallengeDay from '../screens/ChallengeDay';
 
 
 const ChallengeCards = (props) => {
@@ -22,9 +21,15 @@ const ChallengeCards = (props) => {
   );
 };
 
-const ChallengeCard = ({item}, contentComponent, navigation, props) => {
+const ChallengeCard = ({item}, contentComponent, navigation) => {
   // Convert seconds to HH:MM:SS, then remove HH if 00
   // https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript
+
+  console.log("The content component is" + contentComponent);
+  console.log("The content item is" + item);
+
+
+
 
   let duration;
   if (item.duration){
@@ -34,8 +39,7 @@ const ChallengeCard = ({item}, contentComponent, navigation, props) => {
 
   return (
     <TouchableOpacity 
-      activeOpacity={0.7}
-      onPress={() => {props.navigation.navigate("ChallengeDay")}}>
+        onPress={() => {this.props.navigation.navigate(contentComponent, item)}}>
       <Card containerStyle={styles.card}>
         {/* <Card.Image source={{ uri: item.imagePath }}
           style={styles.cardImage}>
@@ -70,7 +74,7 @@ const ChallengeDayList = (props) => {
   return (
     isTopicsLoaded ? 
     <View style={styles.fullWidthWindow}>
-      <Text style={styles.contentTitle}>
+      <Text style={styles.challengeDayTitle}>
         Challenge Days
       </Text>
       {/* <Button 
