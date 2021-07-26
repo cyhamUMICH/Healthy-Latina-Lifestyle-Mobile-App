@@ -68,7 +68,7 @@ const YogaList = (props) => {
           navigation={props.navigation}
           contentType="yoga"
           data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
-          filterBy="Difficulty,Language,Topic" />
+          filterBy="Difficulty,Language,Topic,Duration" />
         : <LoadingSpinner />
     }
     </View>
