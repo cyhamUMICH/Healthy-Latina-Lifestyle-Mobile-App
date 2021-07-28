@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { View, Text, Image, ScrollView, Alert } from "react-native";
-import { Video } from 'expo-av';
+import { Video, Audio } from 'expo-av';
 import Controller from "../components/Controller";
 import PlayerSlider from "../components/PlayerSlider";
 import SetFeatured from "../components/SetFeatured";
@@ -18,6 +18,7 @@ const Course = ({route}) => {
   const [isBuffering, setIsBuffering] = useState(false);
   const [isVideoError, setIsVideoError] = useState(false);
   // These must be initialized to null due to the way if conditions are written throughout.
+
   const video = useRef(null);
   const [videoStatus, setVideoStatus] = useState(null);
 

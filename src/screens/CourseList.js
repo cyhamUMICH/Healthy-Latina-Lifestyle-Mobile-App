@@ -66,7 +66,7 @@ const CourseList = (props) => {
         <ContentList 
           contentComponent="Course"
           navigation={props.navigation}
-          contentType="courses"
+          contentType="Courses"
           data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
           filterBy="Difficulty,Language,Topic,Duration" />
         : <LoadingSpinner />

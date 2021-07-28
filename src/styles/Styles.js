@@ -263,6 +263,20 @@ export const styles = StyleSheet.create({
     borderRadius: Dimensions.get('window').height / 75,
     alignSelf: 'center'
   },
+  courseVideo: {
+    width: "90%",
+    height: null,
+    aspectRatio: 16/9,
+    borderRadius: Dimensions.get('window').height / 75,
+    alignSelf: 'center'
+  },
+  coursePhoto: {
+    width: "90%",
+    height: null,
+    aspectRatio: 16/9,
+    borderRadius: Dimensions.get('window').height / 75,
+    alignSelf: 'center'
+  },
   bufferingText: {
     marginLeft: "5%",
     fontSize: 18
