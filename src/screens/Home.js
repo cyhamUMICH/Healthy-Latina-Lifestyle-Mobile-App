@@ -37,6 +37,9 @@ const Home = (props) => {
 
             <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("Journal")}>
             </TouchableOpacity>
+
+            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("PodcastList")}>
+            </TouchableOpacity>
   
             </ScrollView>
       {/*<View style={{flex: 1, flexDirection: "column", justifyContent: "space-evenly"}}>

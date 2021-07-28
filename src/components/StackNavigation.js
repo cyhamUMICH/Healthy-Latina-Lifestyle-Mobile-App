@@ -32,6 +32,8 @@ import Journal from '../screens/Journal'
 import JournalEntry from '../screens/JournalEntry'
 import JournalEntryList from '../screens/JournalEntryList'
 import AddJournalPrompt from '../screens/AddJournalPrompt';
+import PodcastList from '../screens/PodcastList';
+import Podcast from '../screens/Podcast';
 
 const Stack = createStackNavigator();
 
@@ -76,6 +78,9 @@ const StackNavigation = () => {
       <Stack.Screen name="JournalEntry" component={JournalEntry} options={{ title: 'Journal Entry' }}/>
       <Stack.Screen name="JournalEntryList" component={JournalEntryList} options={{ title: 'Journal Entry List' }}/>
       <Stack.Screen name="AddJournalPrompt" component={AddJournalPrompt} options={{ title: 'Add Journal Prompt' }}/>
+      <Stack.Screen name="PodcastList" component={PodcastList} options={{ title: 'Podcast List' }}/>
+      <Stack.Screen name="Podcast" component={Podcast} options={{ title: 'Podcast' }}/>
+      
     </Stack.Navigator>
   );
 };
