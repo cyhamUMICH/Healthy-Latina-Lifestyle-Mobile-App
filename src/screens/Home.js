@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from 'react-native-elements';
+import { Button, Icon } from 'react-native-elements';
 import { Stylesheet, Text, View, Image, ScrollView, TouchableOpacity, FlatList, TextInput } from 'react-native';
 import { styles } from '../styles/Styles'; 
 
@@ -16,20 +16,36 @@ const Home = (props) => {
             showsHorizontalScrollIndicator={false}
             style={{ flex: 1 }}
           >
-            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("Timer")}>
-              <Image source={require("../../assets/timer.png")} style={{ height: 32, width: 32 }}/>
+           <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("SetTimer")}>
+            <Icon name="timer" type="Ionicons" />
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("MeditationList")}>
-              <Image source={require("../../assets/meditation.png")} style={{ height: 43, width: 43 }}/>
+            <Icon name="meditation" type="material-community" />
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("ChallengeList")}>
-              <Image source={require("../../assets/calendar-challenge.png")} style={{ height: 43, width: 43 }}/>
+            <Icon name="calendar" type="font-awesome" />
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("AddContent")}>
-              <Image source={require("../../assets/addContent.png")} style={{ height: 43, width: 43 }}/>
+            <Icon name="addfile" type="antdesign" />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("CourseList")}>
+            <Icon name="file-video-o" type="font-awesome" />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("YogaList")}>
+            <Icon name="yoga" type="material-community" />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("PodcastList")}>
+            <Icon name="podcast" type="material-community" />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("Journal")}>
+            <Icon name="book" type="antdesign" />
             </TouchableOpacity>
   
             </ScrollView>

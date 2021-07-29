@@ -8,11 +8,17 @@ const SideMenu = (props) => {
   return (
     <DrawerContentScrollView {...props}>
 
-    <Button
-            buttonStyle={styles.basicButtons}
-            title="See Group"  onPress={() => props.navigation.navigate("Groups")}
-            />
+        <Button
+         buttonStyle={styles.basicButtons}
+         title="Chat Rooms"  onPress={() => props.navigation.navigate("ChatRoomHome")}
+          />
 
+        <Button
+         buttonStyle={styles.basicButtons}
+         title="My Journal"  onPress={() => props.navigation.navigate("JournalEntryList")}
+          />
+
+          
         <Button 
         buttonStyle={styles.basicButtons}
         title="Edit Account"  onPress={() => props.navigation.navigate("EditAccount")} 

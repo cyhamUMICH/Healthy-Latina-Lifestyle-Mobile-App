@@ -1,23 +1,147 @@
-import React, { useState } from "react";
-import { View, Text, Image, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, Image, ScrollView, CheckBox, ButtonGroup} from "react-native";
 import Controller from "../components/Controller";
 import PlayerSlider from "../components/PlayerSlider";
 import Tags from '../components/Tags';
 import { styles } from '../styles/Styles';
+import { Button } from 'react-native-elements';
+import ContentList from '../components/ContentList';
+import SetFeatured from "../components/SetFeatured";
+import LoadingSpinner from '../components/LoadingSpinner';
+import * as firebase from 'firebase/app';
+import "firebase/firestore";
+import "firebase/storage";
+import ChallengeButtons from "../components/ChallengeDayList";
+import { Checkbox } from 'react-native-paper';
+import ChallengeDayList from '../components/ChallengeDayList';
 
-const Challenge = ({route}) => {
+
+const Challenge = ({route}, props) => {
+
+  const theContentID = route.params.contentID;
+
+  // console.log("Route id: " + route.params.numDays);
+
   const item = route.params;
-  return (
-    <View style={styles.fullWidthWindow}>
-      <Image source={{ uri: item.imagePath }}
-        style={styles.meditationPhoto}></Image>
-       <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
-      <Text style={styles.contentTitle}>{item.title}</Text> 
+  const [data, setData] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  const theStartDate = item.startDate.toDate().toString().slice(4, 15);
+  const theEndDate = item.endDate.toDate().toString().slice(4, 15);
 
-      <ScrollView style={styles.contentDescriptionSpacer}>
-        <Text style={styles.contentDesc}>{item.description}</Text>
-      </ScrollView>
-    </View>
+  useEffect(() => {
+
+    const fetchList = async () => {
+      const dbh = firebase.firestore();
+      
+      dbh.collection("challengeDays").orderBy('date').get()
+      .then((querySnapshot) => {
+
+        
+        // console.log("Snapshot size:" + querySnapshot.size)
+
+        if (querySnapshot.size == 0) {
+          setIsLoaded(true);
+        }
+        else {
+          let countChallenges = 0;
+        
+
+
+          querySnapshot.forEach((doc) => {
+            let newDoc = doc.data();
+            newDoc.contentID = doc.id;
+
+            
+
+            // console.log("START DATE IS:" + newDoc.date.toDate());
+
+            // console.log("Linked to" + newDoc.contentID);
+            const chalref = newDoc.challenge.id;
+            // console.log("Challenge ID is " + chalref);
+            //chalref is the challenge ID
+            //theContentID is what the day is linked to           
+    
+            // https://firebase.google.com/docs/storage/web/download-files
+            let storage = firebase.storage();
+            let pathReference = storage.ref(newDoc.title);
+
+            console.log("PATH REF IS: " + pathReference);
+            
+           if(chalref == theContentID){
+             
+              countChallenges++;
+              console.log("ADDED DATE" + newDoc.date.toDate());
+
+              setData(oldList => [...oldList, newDoc]);
+
+            }
+
+            if(countChallenges == route.params.numDays){
+
+              setIsLoaded(true);
+            }
+          
+            // pathReference.getDownloadURL()
+
+           
+            // .then((url) => {
+            //   newDoc.description = url;
+           
+            //   console.log("hello");
+            // })
+            // .catch((error) => {
+            //   newDoc.description = "Relax";
+            // })
+            // .finally(() => {
+
+
+            //   console.log("START DATE IS:" + newDoc.date.toDate());
+              
+      
+
+            // });
+          })
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+    };
+
+  
+    fetchList();  
+  }, []);
+
+  
+  return (
+
+    <View style={styles.app}>
+       {
+         isLoaded ? 
+         <View style={styles.fullWidthWindow}>
+           <View style={styles.floatingActionView}>
+             <Image source={{ uri: item.imagePath }}
+               style={styles.challengePhoto}></Image>
+             <SetFeatured firebaseCollectionName="challenges" item={item} />
+             <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
+             <Text style={styles.contentTitle}>{item.title}</Text> 
+             <Text style={styles.contentDesc}>{item.description}{"\n"}</Text>
+             <Text>Challenge starts on: {theStartDate}</Text>
+             <Text>Challenge ends on: {theEndDate}</Text>
+             <Text>This challenge is {route.params.numDays} day(s) long {"\n"}</Text>
+             <ChallengeDayList 
+               contentComponent="ChallengeDay"
+               navigation={props.navigation}
+               contentType="challengeDays"
+               data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
+               filterBy="Difficulty,Language,Topic" />
+           </View>
+         </View>
+         : <LoadingSpinner />
+     }
+     </View>
+ 
   );
 };
 

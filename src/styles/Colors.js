@@ -17,5 +17,6 @@ export const colors =
   modalBorder: '#000',
   transparentButton: 'rgba(52, 52, 52, 0)',
   minimumSliderColor: '#967eda',
-  maximumSliderColor: '#000'
+  maximumSliderColor: '#000',
+  journalTextBackground: '#F3F3F3',
 };

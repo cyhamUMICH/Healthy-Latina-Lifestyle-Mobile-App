@@ -7,8 +7,11 @@ import FilterModal from '../components/ContentFilter';
 import { GetTopics } from '../components/GetTopics';
 import Tags from '../components/Tags';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { Drawer } from 'react-native-paper';
+import { Groups } from '../screens/Groups';
 
 const ContentCards = (props) => {
+
   return (
     (props.filteredList.length != 0) 
     ? <FlatList 
@@ -21,6 +24,8 @@ const ContentCards = (props) => {
 };
 
 const ContentCard = ({item}, contentComponent, navigation) => {
+
+  console.log("the content component for all" + contentComponent)
   // Convert seconds to HH:MM:SS, then remove HH if 00
   // https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript
 
@@ -31,7 +36,9 @@ const ContentCard = ({item}, contentComponent, navigation) => {
   }
 
   return (
-    <TouchableOpacity 
+
+  
+    <TouchableOpacity
       activeOpacity={0.7}
       onPress={() => {navigation.navigate(contentComponent, item)}}>
       <Card containerStyle={styles.card}>
@@ -41,9 +48,23 @@ const ContentCard = ({item}, contentComponent, navigation) => {
         </Card.Image>
         <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
         <Card.Divider/>
-        <Card.Title style={styles.cardTitle}>{item.title}</Card.Title>
+        <View style={styles.horizontalButtonLayout}>
+          <View>
+            <Card.Title style={styles.cardTitle}>{item.title}</Card.Title>
+          </View>
+          <View>
+
+
+            <TouchableOpacity onPress={() => {navigation.navigate("ChatRoomHome", item)}}>
+              <Icon name="send" type="font-awesome" color={colors.text} />
+            </TouchableOpacity>
+
+
+          </View>
+        </View>
       </Card>
     </TouchableOpacity>
+    
   );
 };
 
@@ -68,31 +89,31 @@ const ContentList = (props) => {
   return (
     isTopicsLoaded ? 
     <View style={styles.fullWidthWindow}>
-      <Button 
-        buttonStyle={styles.button}
-        titleStyle={styles.buttonText}
-        title="Filter"
-        onPress={() => {
-          setFilterModalVisible(true);
-        }}></Button>
-      <ContentCards 
-        style={styles.cardList} 
-        contentType={props.contentType}
-        filteredList={filteredList}
-        contentComponent={props.contentComponent}
-        navigation={props.navigation} />
-      <FilterModal
-        allData={props.data}
-        topicsList={topicsList}
-        filterBy={filterBy}
-        visibleFunction={setFilterModalVisible}
-        visible={filterModalVisible}
-        filterSettingsFunction={setFilterSettings}
-        filterSettings={filterSettings}
-        filteredListFunction={setFilteredList}
-        filteredList={filteredList}/>
-        <View style={styles.floatingActionView}>
-        <TouchableOpacity style={styles.floatingActionButton} 
+      <View style={styles.floatingActionView}>
+        <Button 
+          buttonStyle={styles.button}
+          titleStyle={styles.buttonText}
+          title="Filter"
+          onPress={() => {
+            setFilterModalVisible(true);
+          }}></Button>
+        <ContentCards 
+          style={styles.cardList} 
+          contentType={props.contentType}
+          filteredList={filteredList}
+          contentComponent={props.contentComponent}
+          navigation={props.navigation} />
+        <FilterModal
+          allData={props.data}
+          topicsList={topicsList}
+          filterBy={filterBy}
+          visibleFunction={setFilterModalVisible}
+          visible={filterModalVisible}
+          filterSettingsFunction={setFilterSettings}
+          filterSettings={filterSettings}
+          filteredListFunction={setFilteredList}
+          filteredList={filteredList}/>
+        <TouchableOpacity style={styles.floatingActionButtonBottomRight} 
           onPress={() => props.navigation.navigate("Add".concat(props.contentComponent), {
             topics: topicsList, 
             navigation: props.navigation
@@ -101,8 +122,7 @@ const ContentList = (props) => {
             <Icon name="plus" type="font-awesome" color={colors.text} />
           </View>
         </TouchableOpacity>
-        </View>
-
+      </View>
     </View>
     : <LoadingSpinner />
   );
