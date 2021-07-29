@@ -58,15 +58,25 @@ exports[`Renders Home With the Loading Screen 1`] = `
           }
         }
       >
-        <Image
-          source={1}
+        <View
           style={
             Object {
-              "height": 32,
-              "width": 32,
+              "overflow": "hidden",
             }
           }
-        />
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            />
+          </View>
+        </View>
       </View>
       <View
         accessible={true}
@@ -93,15 +103,27 @@ exports[`Renders Home With the Loading Screen 1`] = `
           }
         }
       >
-        <Image
-          source={1}
+        <View
           style={
             Object {
-              "height": 43,
-              "width": 43,
+              "overflow": "hidden",
             }
           }
-        />
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text />
+            </View>
+          </View>
+        </View>
       </View>
       <View
         accessible={true}
@@ -128,15 +150,25 @@ exports[`Renders Home With the Loading Screen 1`] = `
           }
         }
       >
-        <Image
-          source={1}
+        <View
           style={
             Object {
-              "height": 43,
-              "width": 43,
+              "overflow": "hidden",
             }
           }
-        />
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            />
+          </View>
+        </View>
       </View>
       <View
         accessible={true}
@@ -163,15 +195,213 @@ exports[`Renders Home With the Loading Screen 1`] = `
           }
         }
       >
-        <Image
-          source={1}
+        <View
           style={
             Object {
-              "height": 43,
-              "width": 43,
+              "overflow": "hidden",
             }
           }
-        />
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text />
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text />
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text />
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text />
+            </View>
+          </View>
+        </View>
       </View>
     </View>
   </RCTScrollView>
@@ -236,15 +466,25 @@ exports[`Renders Home Without the Loading Screen 1`] = `
           }
         }
       >
-        <Image
-          source={1}
+        <View
           style={
             Object {
-              "height": 32,
-              "width": 32,
+              "overflow": "hidden",
             }
           }
-        />
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            />
+          </View>
+        </View>
       </View>
       <View
         accessible={true}
@@ -271,15 +511,27 @@ exports[`Renders Home Without the Loading Screen 1`] = `
           }
         }
       >
-        <Image
-          source={1}
+        <View
           style={
             Object {
-              "height": 43,
-              "width": 43,
+              "overflow": "hidden",
             }
           }
-        />
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text />
+            </View>
+          </View>
+        </View>
       </View>
       <View
         accessible={true}
@@ -306,15 +558,25 @@ exports[`Renders Home Without the Loading Screen 1`] = `
           }
         }
       >
-        <Image
-          source={1}
+        <View
           style={
             Object {
-              "height": 43,
-              "width": 43,
+              "overflow": "hidden",
             }
           }
-        />
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            />
+          </View>
+        </View>
       </View>
       <View
         accessible={true}
@@ -341,15 +603,213 @@ exports[`Renders Home Without the Loading Screen 1`] = `
           }
         }
       >
-        <Image
-          source={1}
+        <View
           style={
             Object {
-              "height": 43,
-              "width": 43,
+              "overflow": "hidden",
             }
           }
-        />
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text />
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text />
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text />
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00A89D",
+            "borderRadius": 50,
+            "flex": 1,
+            "flexDirection": "row",
+            "height": 66,
+            "justifyContent": "center",
+            "marginHorizontal": 10,
+            "opacity": 1,
+            "width": 66,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text />
+            </View>
+          </View>
+        </View>
       </View>
     </View>
   </RCTScrollView>

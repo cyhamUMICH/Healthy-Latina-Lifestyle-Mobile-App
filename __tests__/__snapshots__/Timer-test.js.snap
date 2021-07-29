@@ -243,9 +243,7 @@ exports[`Renders Timer With the Loading Screen 1`] = `
                       "justifyContent": "center",
                     }
                   }
-                >
-                  <Text />
-                </View>
+                />
               </View>
             </View>
           </View>
@@ -606,9 +604,7 @@ exports[`Renders Timer Without the Loading Screen 1`] = `
                       "justifyContent": "center",
                     }
                   }
-                >
-                  <Text />
-                </View>
+                />
               </View>
             </View>
           </View>
