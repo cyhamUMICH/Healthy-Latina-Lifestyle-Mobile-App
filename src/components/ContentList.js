@@ -40,7 +40,18 @@ const ContentCard = ({item}, contentComponent, navigation) => {
   
     <TouchableOpacity
       activeOpacity={0.7}
-      onPress={() => {navigation.navigate(contentComponent, item)}}>
+      onPress={() => {
+        // Add any content that will require another layer of navigation to this if condition.
+        if(contentComponent === "Challenge") {
+          navigation.navigate(contentComponent, {
+            item: item,
+            navigation: navigation
+          });
+        }
+        else {
+          navigation.navigate(contentComponent, item);
+        }
+      }}>
       <Card containerStyle={styles.card}>
         <Card.Image source={{ uri: item.imagePath }}
           style={styles.cardImage}>
