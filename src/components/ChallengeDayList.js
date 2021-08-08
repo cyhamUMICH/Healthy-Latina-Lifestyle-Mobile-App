@@ -5,6 +5,7 @@ import { styles } from '../styles/Styles';
 import { colors } from '../styles/Colors';
 import Tags from './Tags';
 import LoadingSpinner from './LoadingSpinner';
+import defaultImage from '../../assets/logo-icon.png';
 
 
 const ChallengeCards = (props) => {
@@ -39,7 +40,7 @@ const ChallengeCard = ({item}, contentComponent, navigation) => {
     <TouchableOpacity 
         onPress={() => {navigation.navigate(contentComponent, item)}}>
       <Card containerStyle={styles.card}>
-        {/* <Card.Image source={{ uri: item.imagePath }}
+        {/* <Card.Image source={{ uri: item.imagePath ? item.imagePath : Image.resolveAssetSource(defaultImage).uri }}
           style={styles.cardImage}>
           {item.duration && <Text style={styles.duration}>{duration}</Text>}
         </Card.Image> */}

@@ -9,6 +9,7 @@ import { styles } from '../styles/Styles';
 
 import * as firebase from 'firebase/app';
 import "firebase/storage";
+import defaultImage from '../../assets/logo-icon.png';
 
 const JUMP_IN_MILLISECONDS = 30000;
 
@@ -149,7 +150,7 @@ const Course = ({route}) => {
       <View style={styles.fullWidthWindow}>
         <View style={styles.floatingActionView}>
           { isVideoError ?
-            <Image source={{ uri: item.imagePath }} style={styles.coursePhoto} />
+            <Image source={{ uri: item.imagePath ? item.imagePath : Image.resolveAssetSource(defaultImage).uri }} style={styles.coursePhoto} />
           :
             <Video
               ref={video}

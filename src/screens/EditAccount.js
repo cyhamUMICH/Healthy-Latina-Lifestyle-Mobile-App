@@ -187,7 +187,7 @@ user.updateProfile({
   displayName:aUsername
   });
 
-props.navigation.navigate("Home")
+props.navigation.navigate("Home", { navigation: props.navigation })
 
 }
 
@@ -262,7 +262,7 @@ props.navigation.navigate("Login")}
       <Button 
         buttonStyle={styles.button}
         titleStyle={styles.buttonText}
-        title="Update profile information" onPress={() => {createTwoButtonAlertForUpdate(); props.navigation.navigate("Home")}}
+        title="Update profile information" onPress={() => {createTwoButtonAlertForUpdate(); props.navigation.navigate("Home", { navigation: props.navigation })}}
         />
         <Button
                 buttonStyle={styles.button}

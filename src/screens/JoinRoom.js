@@ -45,7 +45,7 @@ await dbh.set({
 GroupID: firebase.firestore.FieldValue.arrayUnion(code)
 }, {merge:true});
 
-props.navigation.navigate("Home")
+props.navigation.navigate("Home", { navigation: props.navigation })
 }
 else if (!bool)
 {

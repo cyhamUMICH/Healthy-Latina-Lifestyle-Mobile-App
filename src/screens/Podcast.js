@@ -9,6 +9,7 @@ import { styles } from '../styles/Styles';
 
 import * as firebase from 'firebase/app';
 import "firebase/storage";
+import defaultImage from '../../assets/logo-icon.png';
 
 const JUMP_IN_MILLISECONDS = 30000;
 
@@ -149,7 +150,7 @@ const Podcast = ({route}) => {
       isLoaded ?
       <View style={styles.fullWidthWindow}>
         <View style={styles.floatingActionView}>
-          <Image source={{ uri: item.imagePath }} style={styles.meditationPhoto} />
+          <Image source={{ uri: item.imagePath ? item.imagePath : Image.resolveAssetSource(defaultImage).uri }} style={styles.meditationPhoto} />
           <SetFeatured firebaseCollectionName="podcasts" item={item} />
           <Text style={styles.contentTitle}>{item.title}</Text>
           <View style={styles.sliderAndController}>

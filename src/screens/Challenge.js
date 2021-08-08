@@ -14,6 +14,7 @@ import "firebase/storage";
 import ChallengeButtons from "../components/ChallengeDayList";
 import { Checkbox } from 'react-native-paper';
 import ChallengeDayList from '../components/ChallengeDayList';
+import defaultImage from '../../assets/logo-icon.png';
 
 
 const Challenge = ({route}, props) => {
@@ -122,7 +123,7 @@ const Challenge = ({route}, props) => {
          isLoaded ? 
          <View style={styles.fullWidthWindow}>
            <View style={styles.floatingActionView}>
-             <Image source={{ uri: item.imagePath }}
+             <Image source={{ uri: item.imagePath ? item.imagePath : Image.resolveAssetSource(defaultImage).uri }}
                style={styles.challengePhoto}></Image>
              <SetFeatured firebaseCollectionName="challenges" item={item} />
              <Tags difficulty={item.difficulty} topics={item.topics}></Tags>

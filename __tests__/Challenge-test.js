@@ -23,7 +23,7 @@ const mockedParams = {
       "description": "Challenges for the month of June.",
       "difficulty": "A",
       "featured": true,
-      "imagePath": "https://healthylatinalifestylecom.files.wordpress.com/2017/10/cropped-cropped-peackcock-color-healthy-latino-20171.jpg",
+      "imagePath": "",
       "language": "EN",
       "title": "June Challenge",
       "topics": [

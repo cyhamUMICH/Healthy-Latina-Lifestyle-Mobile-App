@@ -19,4 +19,5 @@ export const colors =
   minimumSliderColor: '#967eda',
   maximumSliderColor: '#000',
   journalTextBackground: '#F3F3F3',
+  partialTransparent: '#F3F3F399'
 };

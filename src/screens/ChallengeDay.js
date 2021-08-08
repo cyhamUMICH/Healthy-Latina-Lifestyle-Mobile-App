@@ -4,7 +4,7 @@ import Controller from "../components/Controller";
 import PlayerSlider from "../components/PlayerSlider";
 import Tags from '../components/Tags';
 import { styles } from '../styles/Styles';
-
+import defaultImage from '../../assets/logo-icon.png';
 
 const ChallengeDay = ({route}, props) => {
   // const [currentValue, setCurrentValue] = useState(0);
@@ -17,7 +17,7 @@ const ChallengeDay = ({route}, props) => {
     
     </View>
     // <View style={styles.fullWidthWindow}>
-    //   {/* <Image source={{ uri: item.imagePath }}
+    //   {/* <Image source={{ uri: item.imagePath ? item.imagePath : Image.resolveAssetSource(defaultImage).uri }}
     //     style={styles.meditationPhoto}></Image> */}
     //   {/* <Tags difficulty={item.difficulty} topics={item.topics}></Tags> */}
     //   <Text style={styles.contentTitle}>{item.title}</Text>

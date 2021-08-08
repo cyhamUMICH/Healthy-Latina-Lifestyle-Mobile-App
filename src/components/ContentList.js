@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
 import { styles } from '../styles/Styles';
 import { colors } from '../styles/Colors';
@@ -9,6 +9,7 @@ import Tags from '../components/Tags';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Drawer } from 'react-native-paper';
 import { Groups } from '../screens/Groups';
+import defaultImage from '../../assets/logo-icon.png';
 
 const ContentCards = (props) => {
 
@@ -53,7 +54,7 @@ const ContentCard = ({item}, contentComponent, navigation) => {
         }
       }}>
       <Card containerStyle={styles.card}>
-        <Card.Image source={{ uri: item.imagePath }}
+        <Card.Image source={{ uri: item.imagePath ? item.imagePath : Image.resolveAssetSource(defaultImage).uri }}
           style={styles.cardImage}>
           {item.duration && <Text style={styles.duration}>{duration}</Text>}
         </Card.Image>
