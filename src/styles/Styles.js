@@ -551,5 +551,18 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: "center"
   },
+  theChallengeTitle: {
+    fontSize: 24,
+    textAlign: "center"
+  },
+  theChallengeDesc: {
+    fontSize: 18
+  },
+  emptyJournalButton: {
+    bottom: 20
+  },
+  journalCardList: {
+    
+  },
 });
   

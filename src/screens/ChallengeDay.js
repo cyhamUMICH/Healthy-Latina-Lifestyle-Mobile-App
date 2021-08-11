@@ -8,7 +8,9 @@ import defaultImage from '../../assets/logo-icon.png';
 
 const ChallengeDay = ({route}, props) => {
   // const [currentValue, setCurrentValue] = useState(0);
-
+  const item = route.params;
+  console.log("for challenge day " + item.title);
+  console.log("for challenge day the photo is " + item.imagePath);
   // const item = route.params;
   return (
 
