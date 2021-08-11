@@ -1,9 +1,8 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest"
@@ -37,7 +36,7 @@
     "firebase": "^7.24.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+    "react-native": "~0.63.4",
     "react-native-countdown-circle-timer": "^2.5.3",
     "react-native-document-picker": "^3.5.4",
     "react-native-dropdown-picker": "^5.1.21",
@@ -53,14 +52,20 @@
     "react-native-svg": "12.1.0",
     "react-native-track-player": "^1.2.7",
     "react-native-video": "^5.1.1",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "expo-splash-screen": "~0.8.0",
+    "expo-updates": "~0.4.0",
+    "react-native-unimodules": "~0.12.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "firebase-mock": "^2.3.2",
     "jest": "^26.6.3",
     "jest-expo": "^40.0.0",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "babel-jest": "~25.2.6"
   },
-  "private": true
+  "private": true,
+  "name": "Healthy-Latina-Lifestyle-Mobile-App",
+  "version": "1.0.0"
 }
