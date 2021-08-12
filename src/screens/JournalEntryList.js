@@ -13,6 +13,8 @@ const JournalEntryList = (props) => {
   const [data, setData] = useState([]);           
   const [isLoaded, setIsLoaded] = useState(false);
 
+
+
   useEffect(() => {
     const fetchList = async () => {
       const dbh = firebase.firestore();
@@ -27,16 +29,18 @@ const JournalEntryList = (props) => {
           querySnapshot.forEach((doc) => {
             let newDoc = doc.data();
             newDoc.contentID = doc.id;
+
+            // console.log("GERRE NOW" + newDoc.journalPrompt.id)
             
             // https://firebase.google.com/docs/storage/web/download-files
             let storage = firebase.storage();
-            let pathReference = storage.ref(newDoc.difficulty);
+            let pathReference = storage.ref(newDoc.theText);
             pathReference.getDownloadURL()
             .then((url) => {
-              newDoc.difficulty = url;
+              newDoc.theText = url;
             })
             .catch((error) => {
-              newDoc.difficulty = "";
+              newDoc.theText = "";
             })
             .finally(() => {
               // Add to the data list once the image has been resolved
@@ -66,7 +70,7 @@ const JournalEntryList = (props) => {
     <View style={styles.app}>
     {
       isLoaded ? 
-        <UserJournalEntryList 
+        <UserJournalEntryList
           contentComponent="JournalEntry"
           navigation={props.navigation}
           contentType="journalEntry"
@@ -74,6 +78,7 @@ const JournalEntryList = (props) => {
           filterBy="Difficulty,Language,Topic,Duration" />
         : <LoadingSpinner />
     }
+    
     </View>
   );
 };
