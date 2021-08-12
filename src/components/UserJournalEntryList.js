@@ -7,6 +7,9 @@ import FilterModal from '../components/ContentFilter';
 import { GetTopics } from '../components/GetTopics';
 import Tags from '../components/Tags';
 import LoadingSpinner from '../components/LoadingSpinner';
+import * as firebase from 'firebase/app';
+import "firebase/firestore";
+import "firebase/storage";
 import { Drawer } from 'react-native-paper';
 import { Groups } from '../screens/Groups';
 import defaultImage from '../../assets/logo-icon.png';
@@ -27,25 +30,22 @@ const UserJournalEntryCards = (props) => {
 
 const UserJournalEntryCard = ({item}, contentComponent, navigation) => {
 
-  console.log("the content component for all" + contentComponent)
- 
+
   return (
-
-
-    <TouchableOpacity
-      activeOpacity={0.7}
-      onPress={() => {navigation.navigate(contentComponent, item)}}>
       <Card containerStyle={styles.card}>
         <View style={styles.horizontalButtonLayout}>
           <View>
-            <Card.Title style={styles.cardTitle}>{item.text}</Card.Title>
-            <Text> {item.description} {item.dateAdded.toDate().toString().slice(4, 15)}</Text>
-            <Text> Edit Delete </Text>
+            <Card.Title style={styles.cardTitle}>{item.journalPromptTitle}</Card.Title>
+            <Text style={styles.journalCardDesc}> {"Last edited: " + item.dateEntryAdded.toDate().toString().slice(4, 15)} </Text>
+            <Button title="edit"
+            onPress={() => {navigation.navigate(contentComponent, item)}}>
+            </Button>
+            <Button title="delete" >
+            </Button>
           </View>
         </View>
       </Card>
-    </TouchableOpacity>
-  );
+  ); 
 };
 
 const UserJournalEntryList = (props) => {
@@ -71,14 +71,24 @@ const UserJournalEntryList = (props) => {
     <View style={styles.fullWidthWindow}>
       <View style={styles.floatingActionView}>
        
-        <UserJournalEntryCards
+        <UserJournalEntryCards 
           style={styles.journalCardList} 
           contentType={props.contentType}
           filteredList={filteredList}
           contentComponent={props.contentComponent}
           navigation={props.navigation} />
         
-    
+        <FilterModal
+          allData={props.data}
+          topicsList={topicsList}
+          filterBy={filterBy}
+          visibleFunction={setFilterModalVisible}
+          visible={filterModalVisible}
+          filterSettingsFunction={setFilterSettings}
+          filterSettings={filterSettings}
+          filteredListFunction={setFilteredList}
+          filteredList={filteredList}/>
+
         
       </View>
     </View>
