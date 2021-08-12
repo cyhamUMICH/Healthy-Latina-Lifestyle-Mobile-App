@@ -24,12 +24,50 @@ const JournalEntry = ({route}, props) => {
       console.log("HERE LOOK!" + item.contentID);
       console.log("USER!" + route);
 
+
+      const dbh = firebase.firestore();
+
+    // dbh.collection("journalPrompts")
+    // .get()
+    // .then(function(querySnapshot) {
+    //     querySnapshot.forEach(function(doc) {
+    //         // doc.data() is never undefined for query doc snapshots
+    //         if(doc.id == item.contentID){
+    //         console.log("MATCH" + doc.id, " => ", doc.data());
+          
+         
+
+    //         console.log("TITLE" + doc.data().title);
+
+
+    //         }
+    //     });
+    // })
+    // .catch(function(error) {
+    //     console.log("Error getting documents: ", error);
+    // });
+
+
+
+    const cityRef = dbh.collection('journalPrompts').doc(item.contentID);
+    const doc = await cityRef.get();
+
+    if (!doc.exists) {
+      console.log('No such document!');
+    } else {
+      console.log('Document data:', doc.data());
+    }
+
+
+
+
       if(formComplete()){
         const dbh = firebase.firestore();
         const docRef = await dbh.collection("journalEntry").add({
-          text: text,
-          journalPrompt: "journalPrompt" + contentID,
-          dateAdded: new Date()
+          theText: text,
+          dateEntryAdded: new Date(),
+          journalPromptTitle: doc.data().title, 
+          journalPromptDesc: doc.data().description
         });
 
       }
