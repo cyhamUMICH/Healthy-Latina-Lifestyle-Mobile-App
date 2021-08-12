@@ -38,8 +38,8 @@ const JournalPromptCard = ({item}, contentComponent, navigation) => {
       <Card containerStyle={styles.card}>
         <View style={styles.horizontalButtonLayout}>
           <View>
-            <Card.Title style={styles.cardTitle}>{item.title}</Card.Title>
-            <Text> {item.description} </Text>
+            <Card.Title style={styles.journalCardTitle}>{item.title}</Card.Title>
+            <Text style={styles.journalCardDesc}> {item.description} </Text>
           </View>
         </View>
       </Card>

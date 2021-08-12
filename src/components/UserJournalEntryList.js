@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, Image, FlatList, TouchableOpacity, Alert } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
 import { styles } from '../styles/Styles';
 import { colors } from '../styles/Colors';
@@ -24,9 +24,41 @@ const UserJournalEntryCards = (props) => {
         data={props.filteredList}
         renderItem={(item) => UserJournalEntryCard(item, props.contentComponent, props.navigation)}
         keyExtractor={item => item.contentID} /> 
-    : <Text style={styles.noContent}>No {props.contentType} Match Your Search</Text>
+    : <Text style={styles.noContent}>You have no journal entries</Text>
   );
 };
+
+
+const deleteEntry = async (item) => {
+
+const dbh = firebase.firestore();
+const toDeleteRef = await dbh.collection('journalEntry').doc(item.contentID).delete();
+
+Alert.alert(
+  "Journal entry is deleted"
+);
+
+
+
+}
+
+const deleteButton = async (item, navigation) => {
+
+Alert.alert(
+  "Are you sure you want to delete this journal entry?",
+  "This action cannot be undone.",
+  [
+    {
+      text: "No"
+    },
+    {
+      text: "Yes",
+      onPress: () => {deleteEntry(item, navigation)}
+    }
+  ]
+);
+
+}
 
 const UserJournalEntryCard = ({item}, contentComponent, navigation) => {
 
@@ -35,12 +67,13 @@ const UserJournalEntryCard = ({item}, contentComponent, navigation) => {
       <Card containerStyle={styles.card}>
         <View style={styles.horizontalButtonLayout}>
           <View>
-            <Card.Title style={styles.cardTitle}>{item.journalPromptTitle}</Card.Title>
+            <Card.Title style={styles.journalCardTitle}>{item.journalPromptTitle}</Card.Title>
             <Text style={styles.journalCardDesc}> {"Last edited: " + item.dateEntryAdded.toDate().toString().slice(4, 15)} </Text>
             <Button title="edit"
             onPress={() => {navigation.navigate(contentComponent, item)}}>
             </Button>
-            <Button title="delete" >
+            <Button title="delete"
+            onPress={() => {deleteButton(item, navigation)}} >
             </Button>
           </View>
         </View>

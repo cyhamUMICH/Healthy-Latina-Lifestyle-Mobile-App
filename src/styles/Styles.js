@@ -564,5 +564,17 @@ export const styles = StyleSheet.create({
   journalCardList: {
     
   },
+  journalCardTitle: {
+    textAlign: 'center',
+    flexWrap: 'wrap',
+    fontSize: 20,
+    lineHeight: 30
+  },
+  journalCardDesc: {
+    textAlign: 'center',
+    flexWrap: 'wrap',
+    fontSize: 14,
+    lineHeight: 30
+  },
 });
   

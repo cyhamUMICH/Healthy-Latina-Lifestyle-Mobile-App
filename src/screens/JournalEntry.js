@@ -59,6 +59,8 @@ const JournalEntry = ({route}, props) => {
     }
 
 
+    var user = firebase.auth().currentUser;
+    console.log("USER " + user.uid);
 
 
       if(formComplete()){
@@ -67,7 +69,9 @@ const JournalEntry = ({route}, props) => {
           theText: text,
           dateEntryAdded: new Date(),
           journalPromptTitle: doc.data().title, 
-          journalPromptDesc: doc.data().description
+          journalPromptDesc: doc.data().description,
+          userID: user.uid,
+          journalPromptID: doc.id,
         });
 
       }
@@ -80,6 +84,7 @@ const JournalEntry = ({route}, props) => {
           ]
         );
       }
+
     };
 
     
