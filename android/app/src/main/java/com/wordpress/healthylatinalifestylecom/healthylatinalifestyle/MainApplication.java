@@ -11,6 +11,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
 import com.wordpress.healthylatinalifestylecom.healthylatinalifestyle.generated.BasePackageList;
 
 import org.unimodules.adapters.react.ReactAdapterPackage;
