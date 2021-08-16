@@ -32,6 +32,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: '2%'
   },
   smallerWidthWindow: {
+    flex: 1,
     padding: '10%'
   },
   noContent: {

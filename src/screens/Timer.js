@@ -7,11 +7,11 @@ import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 const intentionMessages = {
-  "meditating": "This is a hardcoded message. Meditating...",
-  "yoga": "This is a hardcoded message. Yoga...",
-  "breathing": "This is a hardcoded message. Breathing exercises...",
-  "healing": "This is a hardcoded message. Focusing on healing...",
-  "praying": "This is a hardcoded message. Praying..."
+  "meditating": "Meditations are your quiet time, learning how to be present with yourself and giving your brain and body a moment of quiet.",
+  "yoga": "Yoga is another form of meditation using movement to connect your body with breath and guided poses.",
+  "breathing": "Your deeper connection to self using your deep connection to life (breath)...",
+  "healing": "Finding your source of light and breath for recovery and release...",
+  "praying": "Moment of focus on intention and self-reflection."
 };
 
 const Timer = ({route}) => {
