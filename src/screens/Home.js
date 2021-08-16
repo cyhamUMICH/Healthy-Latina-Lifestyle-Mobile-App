@@ -47,7 +47,7 @@ const homeButtons = [
     iconType: "material-community"
   },
   {
-    name: "Journal Promptsdsfdsf",
+    name: "Journal Prompts",
     page: "Journal",
     iconName: "book",
     iconType: "antdesign"
@@ -95,7 +95,18 @@ const Home = (props) => {
       <View style={styles.homeFeaturedView}>
         <TouchableOpacity
           activeOpacity={0.7}
-          onPress={() => {navigation.navigate(contentComponent, item)}}>
+          onPress={() => {
+            // Add any content that will require another layer of navigation to this if condition.
+            if(contentComponent === "Challenge") {
+              navigation.navigate(contentComponent, {
+                item: item,
+                navigation: navigation
+              });
+            }
+            else {
+              navigation.navigate(contentComponent, item);
+            }
+          }}>
           <ImageBackground source={{ uri: item.imagePath ? item.imagePath : Image.resolveAssetSource(defaultImage).uri }}
             style={styles.homeFeaturedImage}>
             <Text 

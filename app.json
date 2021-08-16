@@ -17,13 +17,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.wordpress.healthylatinalifestylecom.healthylatinalifestyle"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo-adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.wordpress.healthylatinalifestylecom.healthylatinalifestyle"
     },
     "web": {
       "favicon": "./assets/logo-favicon.png"

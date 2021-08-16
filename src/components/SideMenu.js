@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Alert } from 'react-native';
 import { DrawerContentScrollView } from '@react-navigation/drawer';
 import { styles } from '../styles/Styles';
 import { Button } from 'react-native-elements';
+import firebase from 'firebase';
 
 const SideMenu = (props) => {
   return (
@@ -26,7 +27,19 @@ const SideMenu = (props) => {
 
         <Button 
         buttonStyle={styles.basicButtons}
-        title="Log out"  onPress={() => props.navigation.navigate("Login")} 
+        title="Log out"  onPress={() => {
+          firebase.auth().signOut().then(() => {
+            props.navigation.navigate("Login");
+          })
+          .catch((error) => {
+            Alert.alert(
+              "Error Logging Out",
+              "There was an error when logging out of your account.",
+              [
+                {text: "OK"}
+              ]
+            );
+          })}}
         />
 
     </DrawerContentScrollView>
