@@ -560,7 +560,7 @@ export const styles = StyleSheet.create({
     fontSize: 18
   },
   emptyJournalButton: {
-    bottom: 20
+    backgroundColor: colors.button,
   },
   journalCardList: {
     

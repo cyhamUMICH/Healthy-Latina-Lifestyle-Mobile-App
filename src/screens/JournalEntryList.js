@@ -44,15 +44,49 @@ const JournalEntryList = (props) => {
             })
             .finally(() => {
               // Add to the data list once the image has been resolved
-              setData(oldList => [...oldList, newDoc]);
+
+              var user = firebase.auth().currentUser;
+
+              console.log("on the entry" + newDoc.userID)
+              console.log("on the user" + user.uid)
+
+            
+
+          const getThis = async () => {
+
+            const userRef = dbh.collection('Users').doc(user.uid)
+            const userStuff = await userRef.get()
+            const num = userStuff.data().journalEntryNum
+
+            console.log("user stuff" + userStuff.data().journalEntryNum)
+
+              if(newDoc.userID == user.uid){
               
+              setData(oldList => [...oldList, newDoc]);
               countImages++;
+
+              
+              }
+              else{
+                
+              }
+
+               if (countImages == num) {
+                setIsLoaded(true);
+              }
+
+            }
+
+            getThis();
+            
+              
 
               // Data is loaded once the number of images is the same as
               // the number in the snapshot
-              if (querySnapshot.size === countImages) {
-                setIsLoaded(true);
-              }
+              // if (querySnapshot.size === countImages) {
+              //   setIsLoaded(true);
+              // }
+            
             });
           })
         }

@@ -95,19 +95,12 @@ const JournalPromptList = (props) => {
           filteredList={filteredList}/>
 
         <Button
-            style={styles.emptyJournalButton}
+            buttonStyle={styles.emptyJournalButton}
+            titleStyle={styles.buttonText}
             title="Empty Journal Prompt" 
             onPress={() => props.navigation.navigate("JournalEntry", "null")}
           />
-        <TouchableOpacity style={styles.floatingActionButtonBottomRight} 
-          onPress={() => props.navigation.navigate("Add".concat(props.contentComponent), {
-            topics: topicsList, 
-            navigation: props.navigation
-            })}>
-          <View style={styles.floatingActionIcon}>
-            <Icon name="plus" type="font-awesome" color={colors.text} />
-          </View>
-        </TouchableOpacity>
+        
         
       </View>
     </View>
