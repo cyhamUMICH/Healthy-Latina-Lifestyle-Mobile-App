@@ -67,10 +67,9 @@ checkEmail = temp;
   }
 
 //if username and password arte in the database,
-firebase
-.auth()
-.signInWithEmailAndPassword(checkEmail, password)
-.then(res => { props.navigation.navigate("Home"), setNeed(false)
+firebase.auth().signInWithEmailAndPassword(checkEmail, password)
+.then(res => {
+  props.navigation.navigate("Home", { navigation: props.navigation }), setNeed(false)
 })
 .catch(error => setNeed(true))
 //console.log(error.toString(error));

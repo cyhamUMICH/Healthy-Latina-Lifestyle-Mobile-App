@@ -59,7 +59,8 @@ GroupID:[],
 name: name,
 username: username,
 email: email,
-admin: false
+admin: false,
+journalEntryNum: 0,
 })
 .then(() => {
     console.log("Document successfully written!");

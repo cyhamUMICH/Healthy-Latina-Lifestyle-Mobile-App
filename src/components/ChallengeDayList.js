@@ -3,10 +3,9 @@ import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
 import { styles } from '../styles/Styles';
 import { colors } from '../styles/Colors';
-import FilterModal from './ContentFilter';
-import { GetTopics } from './GetTopics';
 import Tags from './Tags';
 import LoadingSpinner from './LoadingSpinner';
+import defaultImage from '../../assets/logo-icon.png';
 
 
 const ChallengeCards = (props) => {
@@ -26,8 +25,8 @@ const ChallengeCard = ({item}, contentComponent, navigation) => {
   // https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript
 
   console.log("The content component is" + contentComponent);
-  console.log("The content item is" + item);
-  console.log("The content navigation is" + navigation);
+
+  console.log("The content item is" + item.title);
 
 
 
@@ -42,7 +41,7 @@ const ChallengeCard = ({item}, contentComponent, navigation) => {
     <TouchableOpacity 
         onPress={() => {navigation.navigate(contentComponent, item)}}>
       <Card containerStyle={styles.card}>
-        {/* <Card.Image source={{ uri: item.imagePath }}
+        {/* <Card.Image source={{ uri: item.imagePath ? item.imagePath : Image.resolveAssetSource(defaultImage).uri }}
           style={styles.cardImage}>
           {item.duration && <Text style={styles.duration}>{duration}</Text>}
         </Card.Image> */}
@@ -55,55 +54,18 @@ const ChallengeCard = ({item}, contentComponent, navigation) => {
 };
 
 const ChallengeDayList = (props) => {
-  const [isTopicsLoaded, setIsTopicsLoaded] = useState(false);
-  const [topicsList, setTopicsList] = useState([]);
-
-  useEffect(() => {
-    GetTopics(setIsTopicsLoaded, setTopicsList);
-  }, []);
-
-  const [filteredList, setFilteredList] = useState(props.data);
-  const [filterModalVisible, setFilterModalVisible] = useState(false);
-  const [filterSettings, setFilterSettings] = useState({
-    difficultyFilter: [],
-    languageFilter: [],
-    topicFilter: [],
-    durationFilter: []
-  });
-  const filterBy = props.filterBy.split(',');
-
   return (
-    isTopicsLoaded ? 
     <View style={styles.fullWidthWindow}>
       <Text style={styles.challengeDayTitle}>
         Challenge Days
       </Text>
-      {/* <Button 
-        buttonStyle={styles.button}
-        titleStyle={styles.buttonText}
-        title="Filter"
-        onPress={() => {
-          setFilterModalVisible(true);
-        }}></Button> */}
       <ChallengeCards 
         style={styles.cardList} 
         contentType={props.contentType}
-        filteredList={filteredList}
+        filteredList={props.data}
         contentComponent={props.contentComponent}
         navigation={props.navigation} />
-      {/* <FilterModal
-        allData={props.data}
-        topicsList={topicsList}
-        filterBy={filterBy}
-        visibleFunction={setFilterModalVisible}
-        visible={filterModalVisible}
-        filterSettingsFunction={setFilterSettings}
-        filterSettings={filterSettings}
-        filteredListFunction={setFilteredList}
-        filteredList={filteredList}/> */}
-        
     </View>
-    : <LoadingSpinner />
   );
 };
 

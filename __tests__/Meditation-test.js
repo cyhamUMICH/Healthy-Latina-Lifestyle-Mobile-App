@@ -18,7 +18,7 @@ const mockedParams = {
       "difficulty": "A",
       "duration": 340,
       "featured": true,
-      "imagePath": "https://healthylatinalifestylecom.files.wordpress.com/2017/10/cropped-cropped-peackcock-color-healthy-latino-20171.jpg",
+      "imagePath": "",
       "language": "EN",
       "title": "Relax and Recharge",
       "topics": [

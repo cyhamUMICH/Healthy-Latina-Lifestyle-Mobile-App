@@ -190,6 +190,7 @@ exports[`Renders Register With the Loading Screen 1`] = `
         </View>
       </View>
     </View>
+    <View />
   </View>
 </View>
 `;
@@ -384,6 +385,7 @@ exports[`Renders Register Without the Loading Screen 1`] = `
         </View>
       </View>
     </View>
+    <View />
   </View>
 </View>
 `;

@@ -30,6 +30,22 @@ const AddContent = (props) => {
             navigation: props.navigation
           })}
           />
+           <Button
+          buttonStyle={styles.button}
+          titleStyle={styles.buttonText}
+          title="Add Podcast" onPress={() => props.navigation.navigate("AddPodcast", {
+            topics: null,
+            navigation: props.navigation
+          })}
+          />
+          <Button
+          buttonStyle={styles.button}
+          titleStyle={styles.buttonText}
+          title="Add Course" onPress={() => props.navigation.navigate("AddCourse", {
+            topics: null,
+            navigation: props.navigation
+          })}
+          />
           <Button
           buttonStyle={styles.button}
           titleStyle={styles.buttonText}

@@ -75,7 +75,7 @@ const dbh = firebase.firestore().collection('Groups').doc(name)
 await dbh.set({
 message: newMessage,
 })
-props.navigation.navigate("Home")
+props.navigation.navigate("Home", { navigation: props.navigation })
 
 
 }
@@ -97,7 +97,7 @@ const dbh2 = firebase.firestore().collection('Groups').doc(groupID)
 
 await dbh2.set({
 }, {merge:true});
-props.navigation.navigate("Home")
+props.navigation.navigate("Home", { navigation: props.navigation })
 
 }
 

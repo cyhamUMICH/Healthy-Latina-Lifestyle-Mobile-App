@@ -4,179 +4,38 @@ exports[`Renders Meditation With the Loading Screen 1`] = `
 <View
   style={
     Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
       "flex": 1,
-      "paddingHorizontal": "2%",
-      "paddingTop": "2%",
-      "width": "100%",
+      "justifyContent": "center",
     }
   }
 >
-  <Image
-    source={
-      Object {
-        "uri": "https://healthylatinalifestylecom.files.wordpress.com/2017/10/cropped-cropped-peackcock-color-healthy-latino-20171.jpg",
-      }
-    }
-    style={
-      Object {
-        "alignItems": "center",
-        "borderRadius": 200,
-        "height": 300,
-        "justifyContent": "center",
-        "left": 50,
-        "width": 300,
-      }
-    }
-  />
-  <Text
-    style={
-      Object {
-        "fontSize": 28,
-        "textAlign": "center",
-      }
-    }
-  >
-    Relax and Recharge
-  </Text>
   <View
     style={
       Object {
-        "marginBottom": "25%",
+        "alignItems": "center",
+        "backgroundColor": "#fff",
+        "justifyContent": "center",
       }
     }
   >
-    <View>
-      <RNCSlider
-        disabled={false}
-        enabled={true}
-        inverted={false}
-        maximumTrackTintColor="#000"
-        maximumValue={340}
-        minimumTrackTintColor="#967eda"
-        minimumValue={0}
-        onChange={[Function]}
-        onRNCSliderSlidingComplete={[Function]}
-        onRNCSliderSlidingStart={null}
-        onRNCSliderValueChange={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        step={1}
-        style={
-          Object {
-            "height": 40,
-          }
-        }
-        thumbImage={
-          Object {
-            "__packager_asset": true,
-            "height": 1,
-            "scale": 1,
-            "uri": "uri",
-            "width": 1,
-          }
-        }
-        value={0}
-      />
-      <View
-        style={
-          Object {
-            "alignSelf": "center",
-          }
-        }
-      >
-        <Text
-          style={
-            Object {
-              "color": "#242424",
-            }
-          }
-        >
-          00:00
-           | 
-          05:40
-        </Text>
-      </View>
-    </View>
-    <View
+    <ActivityIndicator
+      animating={true}
+      color="#00A89D"
+      hidesWhenStopped={true}
+      size="large"
       style={
         Object {
-          "flexDirection": "row",
-          "flexWrap": "wrap",
-          "justifyContent": "space-evenly",
-          "marginVertical": "1%",
+          "transform": Array [
+            Object {
+              "scale": 2.5,
+            },
+          ],
         }
       }
-    >
-      <View
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "opacity": 1,
-          }
-        }
-      >
-        <Text />
-      </View>
-      <View
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "opacity": 1,
-          }
-        }
-      >
-        <Text />
-      </View>
-      <View
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "opacity": 1,
-          }
-        }
-      >
-        <Text />
-      </View>
-    </View>
+    />
   </View>
-  <RCTScrollView
-    style={
-      Object {
-        "marginBottom": "5%",
-        "marginTop": "2%",
-      }
-    }
-  >
-    <View>
-      <Text>
-        Deep breathing exercises to help lower your anxiety.
-      </Text>
-    </View>
-  </RCTScrollView>
 </View>
 `;
 
@@ -184,109 +43,47 @@ exports[`Renders Meditation Without the Loading Screen 1`] = `
 <View
   style={
     Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
       "flex": 1,
-      "paddingHorizontal": "2%",
-      "paddingTop": "2%",
-      "width": "100%",
+      "justifyContent": "center",
     }
   }
 >
-  <Image
-    source={
-      Object {
-        "uri": "https://healthylatinalifestylecom.files.wordpress.com/2017/10/cropped-cropped-peackcock-color-healthy-latino-20171.jpg",
-      }
-    }
-    style={
-      Object {
-        "alignItems": "center",
-        "borderRadius": 200,
-        "height": 300,
-        "justifyContent": "center",
-        "left": 50,
-        "width": 300,
-      }
-    }
-  />
-  <Text
-    style={
-      Object {
-        "fontSize": 28,
-        "textAlign": "center",
-      }
-    }
-  >
-    Relax and Recharge
-  </Text>
   <View
     style={
       Object {
-        "marginBottom": "25%",
+        "flex": 1,
+        "paddingHorizontal": "2%",
+        "paddingTop": "2%",
+        "width": "100%",
       }
     }
   >
-    <View>
-      <RNCSlider
-        disabled={false}
-        enabled={true}
-        inverted={false}
-        maximumTrackTintColor="#000"
-        maximumValue={340}
-        minimumTrackTintColor="#967eda"
-        minimumValue={0}
-        onChange={[Function]}
-        onRNCSliderSlidingComplete={[Function]}
-        onRNCSliderSlidingStart={null}
-        onRNCSliderValueChange={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        step={1}
-        style={
-          Object {
-            "height": 40,
-          }
-        }
-        thumbImage={
-          Object {
-            "__packager_asset": true,
-            "height": 1,
-            "scale": 1,
-            "uri": "undefinedExponentAsset-md5.type",
-            "width": 1,
-          }
-        }
-        value={0}
-      />
-      <View
-        style={
-          Object {
-            "alignSelf": "center",
-          }
-        }
-      >
-        <Text
-          style={
-            Object {
-              "color": "#242424",
-            }
-          }
-        >
-          00:00
-           | 
-          05:40
-        </Text>
-      </View>
-    </View>
     <View
       style={
         Object {
-          "flexDirection": "row",
-          "flexWrap": "wrap",
-          "justifyContent": "space-evenly",
-          "marginVertical": "1%",
+          "flex": 1,
+          "marginBottom": "2%",
         }
       }
     >
+      <Image
+        source={
+          Object {
+            "uri": "https://healthylatinalifestylecom.files.wordpress.com/2017/10/cropped-cropped-peackcock-color-healthy-latino-20171.jpg",
+          }
+        }
+        style={
+          Object {
+            "alignSelf": "center",
+            "aspectRatio": 1,
+            "borderRadius": 667,
+            "height": null,
+            "width": "80%",
+          }
+        }
+      />
       <View
         accessible={true}
         focusable={true}
@@ -299,63 +96,192 @@ exports[`Renders Meditation Without the Loading Screen 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           Object {
+            "aspectRatio": 1,
+            "backgroundColor": "#00A89D",
+            "borderRadius": 667,
+            "height": null,
             "opacity": 1,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "width": "12%",
           }
         }
       >
-        <Text />
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "overflow": "hidden",
+              }
+            }
+          >
+            <View>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  }
+                }
+              />
+            </View>
+          </View>
+        </View>
       </View>
-      <View
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+      <Text
         style={
           Object {
-            "opacity": 1,
+            "fontSize": 28,
+            "textAlign": "center",
           }
         }
       >
-        <Text />
-      </View>
+        Relax and Recharge
+      </Text>
       <View
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "opacity": 1,
+            "marginBottom": "2%",
           }
         }
       >
-        <Text />
+        <View>
+          <RNCSlider
+            disabled={false}
+            enabled={true}
+            inverted={false}
+            maximumTrackTintColor="#000"
+            maximumValue={340}
+            minimumTrackTintColor="#967eda"
+            minimumValue={0}
+            onChange={[Function]}
+            onRNCSliderSlidingComplete={[Function]}
+            onRNCSliderSlidingStart={null}
+            onRNCSliderValueChange={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            step={1}
+            style={
+              Object {
+                "height": 40,
+              }
+            }
+            thumbImage={
+              Object {
+                "__packager_asset": true,
+                "height": 1,
+                "scale": 1,
+                "uri": "uri",
+                "width": 1,
+              }
+            }
+            value={0}
+          />
+          <View
+            style={
+              Object {
+                "alignSelf": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#242424",
+                }
+              }
+            >
+              00:00
+               | 
+              05:40
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+              "justifyContent": "space-evenly",
+              "marginVertical": "1%",
+            }
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          />
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          />
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          />
+        </View>
       </View>
+      <RCTScrollView
+        style={
+          Object {
+            "marginBottom": "5%",
+            "marginTop": "2%",
+          }
+        }
+      >
+        <View>
+          <Text>
+            Deep breathing exercises to help lower your anxiety.
+          </Text>
+        </View>
+      </RCTScrollView>
     </View>
   </View>
-  <RCTScrollView
-    style={
-      Object {
-        "marginBottom": "5%",
-        "marginTop": "2%",
-      }
-    }
-  >
-    <View>
-      <Text>
-        Deep breathing exercises to help lower your anxiety.
-      </Text>
-    </View>
-  </RCTScrollView>
 </View>
 `;

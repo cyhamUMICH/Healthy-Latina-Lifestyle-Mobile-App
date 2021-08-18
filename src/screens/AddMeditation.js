@@ -92,7 +92,7 @@ const AddMeditation = ({route}) => {
       // Code from: https://firebase.google.com/docs/reference/js/firebase.storage.UploadTask#on
       uploadImageStatus.on(firebase.storage.TaskEvent.STATE_CHANGED, {
         'complete': async function() {
-          const audioLoc = firebase.storage().ref().child(baseAudioPath.concat(docRef.id).concat("_").concat(audio.name));
+          const audioLoc = firebase.storage().ref().child(baseAudioPath.concat(docRef.id).concat("__").concat(audio.name));
           // Code from: https://medium.com/@ericmorgan1/upload-images-to-firebase-in-expo-c4a7d4c46d06
           const audioResponse = await fetch(audio.uri);
           const audioBlob = await audioResponse.blob();

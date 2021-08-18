@@ -14,15 +14,17 @@ import "firebase/storage";
 import ChallengeButtons from "../components/ChallengeDayList";
 import { Checkbox } from 'react-native-paper';
 import ChallengeDayList from '../components/ChallengeDayList';
+import defaultImage from '../../assets/logo-icon.png';
 
 
 const Challenge = ({route}, props) => {
 
-  const theContentID = route.params.contentID;
-
   // console.log("Route id: " + route.params.numDays);
 
-  const item = route.params;
+  const item = route.params.item;
+  const navigation = route.params.navigation;
+  const theContentID = item.contentID;
+  
   const [data, setData] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   
@@ -77,7 +79,7 @@ const Challenge = ({route}, props) => {
 
             }
 
-            if(countChallenges == route.params.numDays){
+            if(countChallenges == item.numDays){
 
               setIsLoaded(true);
             }
@@ -121,7 +123,7 @@ const Challenge = ({route}, props) => {
          isLoaded ? 
          <View style={styles.fullWidthWindow}>
            <View style={styles.floatingActionView}>
-             <Image source={{ uri: item.imagePath }}
+             <Image source={{ uri: item.imagePath ? item.imagePath : Image.resolveAssetSource(defaultImage).uri }}
                style={styles.challengePhoto}></Image>
              <SetFeatured firebaseCollectionName="challenges" item={item} />
              <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
@@ -129,13 +131,12 @@ const Challenge = ({route}, props) => {
              <Text style={styles.contentDesc}>{item.description}{"\n"}</Text>
              <Text>Challenge starts on: {theStartDate}</Text>
              <Text>Challenge ends on: {theEndDate}</Text>
-             <Text>This challenge is {route.params.numDays} day(s) long {"\n"}</Text>
+             <Text>This challenge is {item.numDays} day(s) long {"\n"}</Text>
              <ChallengeDayList 
                contentComponent="ChallengeDay"
-               navigation={props.navigation}
+               navigation={navigation}
                contentType="challengeDays"
-               data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
-               filterBy="Difficulty,Language,Topic" />
+               data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)} />
            </View>
          </View>
          : <LoadingSpinner />

@@ -6,7 +6,7 @@ import { Button, ButtonGroup, CheckBox } from 'react-native-elements';
 import { GetTopics } from '../components/GetTopics';
 import TopicButtons from '../components/TopicButtons';
 import UploadImage from '../components/UploadImage';
-import UploadAudio from '../components/UploadAudio';
+import UploadVideo from '../components/UploadVideo';
 import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
 import "firebase/firestore";
@@ -92,7 +92,7 @@ const AddYoga = ({route}) => {
       // Code from: https://firebase.google.com/docs/reference/js/firebase.storage.UploadTask#on
       uploadImageStatus.on(firebase.storage.TaskEvent.STATE_CHANGED, {
         'complete': async function() {
-          const videoLoc = firebase.storage().ref().child(baseVideoPath.concat(docRef.id).concat("_").concat(video.name));
+          const videoLoc = firebase.storage().ref().child(baseVideoPath.concat(docRef.id).concat("__").concat(video.name));
           // Code from: https://medium.com/@ericmorgan1/upload-images-to-firebase-in-expo-c4a7d4c46d06
           const videoResponse = await fetch(video.uri);
           const videoBlob = await videoResponse.blob();
@@ -105,7 +105,7 @@ const AddYoga = ({route}) => {
             },
             'error': function() {
               Alert.alert(
-                "Error Adding Meditation",
+                "Error Adding Yoga Video",
                 "There was an error when uploading the video.",
                 [
                   {text: "OK"}
@@ -116,7 +116,7 @@ const AddYoga = ({route}) => {
         },
         'error': function() {
           Alert.alert(
-            "Error Adding Meditation",
+            "Error Adding Yoga Video",
             "There was an error when uploading the image.",
             [
               {text: "OK"}
@@ -128,7 +128,7 @@ const AddYoga = ({route}) => {
     else
     {
       Alert.alert(
-        "Error Adding Meditation",
+        "Error Adding Yoga Video",
         "Please complete all of the fields before submitting, and check the format of the duration and cost fields.",
         [
           {text: "OK"}

@@ -94,3 +94,25 @@
 * In-App purchases for yoga videoes
 * Course list UI and functionality (connect to course page, retrieve from Firestore)
 * In-App purchases for courses
+
+## Progress Update: 7/29/2021
+#### Tasks Left
+* Finalize application styling (keyboard avoiding views, error alerts, drawer menu, etc.)
+* Clean up code (indentation, unused imports, unused styles, etc.)
+* Fix navigation (logging in should reset stack)
+* Add featured content to home page
+* Finish functionality for creating groups
+* Finish functionality for sharing content with groups
+* Challenge page
+* Course list and course page
+* Functionality to create a course
+* Podcast list and podcast page
+* Functionality to create a podcast
+* Journal prompt list and journal prompt page
+* Add a new journal entry
+* View an existing journal entry
+* Edit an existing journal entry
+* Delete an existing journal entry
+* Functionality to create a journal prompt
+* Send push notifications
+* In-App purchases for meditations, courses, and yoga videos

@@ -631,9 +631,7 @@ exports[`Renders Set Timer With the Loading Screen 1`] = `
                         "justifyContent": "center",
                       }
                     }
-                  >
-                    <Text />
-                  </View>
+                  />
                 </View>
               </View>
             </View>
@@ -727,9 +725,7 @@ exports[`Renders Set Timer With the Loading Screen 1`] = `
                         "justifyContent": "center",
                       }
                     }
-                  >
-                    <Text />
-                  </View>
+                  />
                 </View>
               </View>
             </View>
@@ -1372,9 +1368,7 @@ exports[`Renders Set Timer Without the Loading Screen 1`] = `
                         "justifyContent": "center",
                       }
                     }
-                  >
-                    <Text />
-                  </View>
+                  />
                 </View>
               </View>
             </View>
@@ -1468,9 +1462,7 @@ exports[`Renders Set Timer Without the Loading Screen 1`] = `
                         "justifyContent": "center",
                       }
                     }
-                  >
-                    <Text />
-                  </View>
+                  />
                 </View>
               </View>
             </View>

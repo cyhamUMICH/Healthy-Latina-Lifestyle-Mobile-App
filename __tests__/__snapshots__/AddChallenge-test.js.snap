@@ -518,7 +518,7 @@ exports[`Renders Add Challenge Without the Loading Screen 1`] = `
                 }
               }
             >
-              6/24/2021 12:00 AM Eastern Daylight Time
+              7/29/2021 12:00 AM Eastern Daylight Time
             </Text>
             <View
               style={
@@ -598,7 +598,7 @@ exports[`Renders Add Challenge Without the Loading Screen 1`] = `
                 }
               }
             >
-              6/30/2021 11:59 PM Eastern Daylight Time
+              8/4/2021 11:59 PM Eastern Daylight Time
             </Text>
             <View
               style={
@@ -755,7 +755,7 @@ exports[`Renders Add Challenge Without the Loading Screen 1`] = `
                   Challenge Day 
                   1
                   : 
-                  6/24/2021
+                  7/29/2021
                 </Text>
                 <TextInput
                   allowFontScaling={true}
@@ -808,7 +808,7 @@ exports[`Renders Add Challenge Without the Loading Screen 1`] = `
                   Challenge Day 
                   2
                   : 
-                  6/25/2021
+                  7/30/2021
                 </Text>
                 <TextInput
                   allowFontScaling={true}
@@ -861,7 +861,7 @@ exports[`Renders Add Challenge Without the Loading Screen 1`] = `
                   Challenge Day 
                   3
                   : 
-                  6/26/2021
+                  7/31/2021
                 </Text>
                 <TextInput
                   allowFontScaling={true}
@@ -914,7 +914,7 @@ exports[`Renders Add Challenge Without the Loading Screen 1`] = `
                   Challenge Day 
                   4
                   : 
-                  6/27/2021
+                  8/1/2021
                 </Text>
                 <TextInput
                   allowFontScaling={true}
@@ -967,7 +967,7 @@ exports[`Renders Add Challenge Without the Loading Screen 1`] = `
                   Challenge Day 
                   5
                   : 
-                  6/28/2021
+                  8/2/2021
                 </Text>
                 <TextInput
                   allowFontScaling={true}
@@ -1020,7 +1020,7 @@ exports[`Renders Add Challenge Without the Loading Screen 1`] = `
                   Challenge Day 
                   6
                   : 
-                  6/29/2021
+                  8/3/2021
                 </Text>
                 <TextInput
                   allowFontScaling={true}
@@ -1073,7 +1073,7 @@ exports[`Renders Add Challenge Without the Loading Screen 1`] = `
                   Challenge Day 
                   7
                   : 
-                  6/30/2021
+                  8/4/2021
                 </Text>
                 <TextInput
                   allowFontScaling={true}

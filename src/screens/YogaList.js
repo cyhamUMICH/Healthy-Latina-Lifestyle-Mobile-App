@@ -34,7 +34,7 @@ const YogaList = (props) => {
               newDoc.imagePath = url;
             })
             .catch((error) => {
-              newDoc.imagePath = "https://healthylatinalifestylecom.files.wordpress.com/2017/10/cropped-cropped-peackcock-color-healthy-latino-20171.jpg";
+              newDoc.imagePath = "";
             })
             .finally(() => {
               // Add to the data list once the image has been resolved
@@ -68,7 +68,7 @@ const YogaList = (props) => {
           navigation={props.navigation}
           contentType="yoga"
           data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
-          filterBy="Difficulty,Language,Topic" />
+          filterBy="Difficulty,Language,Topic,Duration" />
         : <LoadingSpinner />
     }
     </View>

@@ -32,6 +32,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: '2%'
   },
   smallerWidthWindow: {
+    flex: 1,
     padding: '10%'
   },
   noContent: {
@@ -217,22 +218,62 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.5,
   },
   homepageLogo:{
-    width: 80,
-    height: 100,
-    borderRadius: 70,
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: '40%',
+    height: null,
+    aspectRatio: 4/3,
+    alignSelf: 'center'
   },
-  homepageRoundButton:{
-    flex:1,
-    flexDirection:'row',
+  homeRoundButtonSection: {
+    flex: 1,
+    marginBottom: '4%'
+  },
+  homeFeaturedSection: {
+    flex: 5
+  },
+  homeItemSeparator: {
+    // Percentage doesn't work, so try to scale it based on screen size
+    width: Dimensions.get('window').width / 75
+  },
+  homeRoundButton: {
+    flex: 1,
+    alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 66,
-    width: 66,
-    borderRadius: 50,
-    marginHorizontal: 10,
-    backgroundColor: colors.button,
+    borderRadius: Dimensions.get('window').height / 2,
+    width: '100%',
+    height: null,
+    aspectRatio: 1,
+    backgroundColor: colors.button
+  },
+  // Tries to scale icon based on window height
+  homeIconSize: Dimensions.get('window').height / 20,
+  homeFeaturedContentTypeView: {
+    flex: 1,
+    marginBottom: '2%'
+  },
+  homeFeaturedView: {
+    flex: 1,
+    height: Dimensions.get('window').height / 5
+  },
+  homeFeaturedTitle: {
+    alignSelf: 'flex-end',
+    width: '100%',
+    fontSize: 18,
+    paddingHorizontal: '2%',
+    paddingVertical: '1%',
+    backgroundColor: colors.partialTransparent
+  },
+  homeFeaturedImage: {
+    // Make sure full 16:9 images appear
+    // https://stackoverflow.com/questions/29642685/maintain-aspect-ratio-of-image-with-full-width-in-react-native
+    height: '100%',
+    width: null,
+    aspectRatio: 16/9,
+    // Add overflow: 'hidden' if borderRadius isn't visible
+    // https://reactnative.dev/docs/view-style-props
+    borderRadius: Dimensions.get('window').height / 75,
+    overflow: 'hidden',
+    flexDirection: 'row'
   },
   meditationPhoto: {
     width: "80%",
@@ -248,6 +289,38 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     left: 50
+  },
+  yogaVideo: {
+    width: "90%",
+    height: null,
+    aspectRatio: 16/9,
+    borderRadius: Dimensions.get('window').height / 75,
+    alignSelf: 'center'
+  },
+  yogaPhoto: {
+    width: "90%",
+    height: null,
+    aspectRatio: 16/9,
+    borderRadius: Dimensions.get('window').height / 75,
+    alignSelf: 'center'
+  },
+  courseVideo: {
+    width: "90%",
+    height: null,
+    aspectRatio: 16/9,
+    borderRadius: Dimensions.get('window').height / 75,
+    alignSelf: 'center'
+  },
+  coursePhoto: {
+    width: "90%",
+    height: null,
+    aspectRatio: 16/9,
+    borderRadius: Dimensions.get('window').height / 75,
+    alignSelf: 'center'
+  },
+  bufferingText: {
+    marginLeft: "5%",
+    fontSize: 18
   },
   editAccountProfile:{
     width: null,
@@ -478,6 +551,31 @@ export const styles = StyleSheet.create({
   challengeDayTitle: {
     fontSize: 24,
     textAlign: "center"
+  },
+  theChallengeTitle: {
+    fontSize: 24,
+    textAlign: "center"
+  },
+  theChallengeDesc: {
+    fontSize: 18
+  },
+  emptyJournalButton: {
+    backgroundColor: colors.button,
+  },
+  journalCardList: {
+    
+  },
+  journalCardTitle: {
+    textAlign: 'center',
+    flexWrap: 'wrap',
+    fontSize: 20,
+    lineHeight: 30
+  },
+  journalCardDesc: {
+    textAlign: 'center',
+    flexWrap: 'wrap',
+    fontSize: 14,
+    lineHeight: 30
   },
 });
   
