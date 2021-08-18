@@ -26,8 +26,36 @@ Alert.alert(
       { cancelable: true }
     );
 }
+function createOneButtonAlertForChatNotExist(){
+Alert.alert(
+      "Group Does not exist",
+      "That Group ID does not exist. Make sure you're entering the correct Information",
+      [
+        { text: "OK"}
+      ],
+      { cancelable: true }
+    );
+}
+
+async function realRoom()
+{
+const dbh = firebase.firestore();
+await dbh.collection("Groups").doc(code).get()
+.then((doc) =>{
+    if(doc.exists){
+    return true;
+    }
+    else
+    {createOneButtonAlertForChatNotExist()}
+    })
+}
 
 async function joinRoom(){
+
+var room = false;
+room = await realRoom();
+if(room)
+{
 var bool = false;
  const dbh = firebase.firestore();
     await dbh.collection("Users").doc(firebase.auth().currentUser.uid).get()
@@ -50,6 +78,7 @@ props.navigation.navigate("Home")
 else if (!bool)
 {
 createOneButtonAlertForChatMax();
+}
 }
 }
 

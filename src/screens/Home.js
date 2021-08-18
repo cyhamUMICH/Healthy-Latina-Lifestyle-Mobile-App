@@ -1,9 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'react-native-elements';
 import { Stylesheet, Text, View, Image, ScrollView, TouchableOpacity, FlatList, TextInput } from 'react-native';
-import { styles } from '../styles/Styles'; 
+import { styles } from '../styles/Styles';
+import firebase, { auth } from 'firebase';
+import 'firebase/firestore';
+import 'firebase/storage';
 
 const Home = (props) => {
+
+const [admin, setAdmin] = useState(false);
+useEffect(() =>{
+    const loadAdmin = async () =>{
+    var user = firebase.auth().currentUser
+    await firebase.firestore().collection('Users').doc(user.uid).get()
+    .then(documentSnapshot => getAdmin(documentSnapshot))
+    .then(admin => setAdmin(admin))
+
+    }
+
+
+    const getAdmin = (documentSnapshot) =>{
+    return documentSnapshot.get('admin');
+
+    }
+
+loadAdmin();
+},[])
   
   return (
     <View style={styles.app}>
@@ -28,15 +50,18 @@ const Home = (props) => {
               <Image source={require("../../assets/calendar-challenge.png")} style={{ height: 43, width: 43 }}/>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("AddContent")}>
-              <Image source={require("../../assets/addContent.png")} style={{ height: 43, width: 43 }}/>
-            </TouchableOpacity>
-
             <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("YogaList")}>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("Journal")}>
             </TouchableOpacity>
+
+
+             {admin &&
+             <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("AddContent")}>
+               <Image source={require("../../assets/addContent.png")} style={{ height: 43, width: 43 }}/>
+             </TouchableOpacity>
+             }
   
             </ScrollView>
       {/*<View style={{flex: 1, flexDirection: "column", justifyContent: "space-evenly"}}>

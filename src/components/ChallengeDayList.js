@@ -11,7 +11,7 @@ import LoadingSpinner from './LoadingSpinner';
 
 const ChallengeCards = (props) => {
   return (
-    (props.filteredList.length != 0) 
+    (props.filteredList.length != 0)
     ? <FlatList 
         style={props.style}
         data={props.filteredList}
@@ -27,6 +27,7 @@ const ChallengeCard = ({item}, contentComponent, navigation) => {
 
   console.log("The content component is" + contentComponent);
   console.log("The content item is" + item);
+  console.log("The content navigation is" + navigation);
 
 
 
@@ -39,7 +40,7 @@ const ChallengeCard = ({item}, contentComponent, navigation) => {
 
   return (
     <TouchableOpacity 
-        onPress={() => {this.props.navigation.navigate(contentComponent, item)}}>
+        onPress={() => {navigation.navigate(contentComponent, item)}}>
       <Card containerStyle={styles.card}>
         {/* <Card.Image source={{ uri: item.imagePath }}
           style={styles.cardImage}>
