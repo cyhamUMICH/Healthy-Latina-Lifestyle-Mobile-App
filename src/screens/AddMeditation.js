@@ -31,6 +31,7 @@ const AddMeditation = ({route}) => {
   const [isFeatured, setIsFeatured] = useState(false);
 
   const [isUploadInProgress, setIsUploadInProgress] = useState(false);
+  const [progressPercent, setProgressPercent] = useState(0);
 
   const baseImagePath = "meditations/images/";
   const baseAudioPath = "meditations/audios/";
@@ -93,11 +94,17 @@ const AddMeditation = ({route}) => {
       uploadImageStatus.on(firebase.storage.TaskEvent.STATE_CHANGED, {
         'complete': async function() {
           const audioLoc = firebase.storage().ref().child(baseAudioPath.concat(docRef.id).concat("__").concat(audio.name));
+          const audioURI = (audio.uri.substr(0,7) != "file://") ? "file://" + audio.uri : audio.uri;
           // Code from: https://medium.com/@ericmorgan1/upload-images-to-firebase-in-expo-c4a7d4c46d06
-          const audioResponse = await fetch(audio.uri);
+          const audioResponse = await fetch(audioURI);
           const audioBlob = await audioResponse.blob();
           let uploadAudioStatus = audioLoc.put(audioBlob);
           uploadAudioStatus.on(firebase.storage.TaskEvent.STATE_CHANGED, {
+            'next': function(snapshot) {
+              // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+              var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              setProgressPercent(progress);
+            },
             'complete': function() {
               setIsUploadInProgress(false);
               navigation.goBack();
@@ -210,7 +217,7 @@ const AddMeditation = ({route}) => {
               </KeyboardAvoidingView>
             </View>
           </View>
-        : <LoadingSpinner />
+        : <LoadingSpinner progress={isUploadInProgress ? progressPercent : null} />
       }
     </View>
   );

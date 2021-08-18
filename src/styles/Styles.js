@@ -164,7 +164,8 @@ export const styles = StyleSheet.create({
     marginBottom:'2%'
   },
   extraLargeSpinner: {
-    transform: [{scale: 2.5}]
+    transform: [{scale: 2.5}],
+    paddingBottom: '5%'
   },
   modalView: {
     justifyContent: 'center',

@@ -31,6 +31,7 @@ const AddYoga = ({route}) => {
   const [isFeatured, setIsFeatured] = useState(false);
 
   const [isUploadInProgress, setIsUploadInProgress] = useState(false);
+  const [progressPercent, setProgressPercent] = useState(0);
 
   const baseImagePath = "yoga/images/";
   const baseVideoPath = "yoga/videos/";
@@ -93,11 +94,17 @@ const AddYoga = ({route}) => {
       uploadImageStatus.on(firebase.storage.TaskEvent.STATE_CHANGED, {
         'complete': async function() {
           const videoLoc = firebase.storage().ref().child(baseVideoPath.concat(docRef.id).concat("__").concat(video.name));
+          const videoURI = (video.uri.substr(0,7) != "file://") ? "file://" + video.uri : video.uri;
           // Code from: https://medium.com/@ericmorgan1/upload-images-to-firebase-in-expo-c4a7d4c46d06
-          const videoResponse = await fetch(video.uri);
+          const videoResponse = await fetch(videoURI);
           const videoBlob = await videoResponse.blob();
           let uploadVideoStatus = videoLoc.put(videoBlob);
           uploadVideoStatus.on(firebase.storage.TaskEvent.STATE_CHANGED, {
+            'next': function(snapshot) {
+              // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+              var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              setProgressPercent(progress);
+            },
             'complete': function() {
               setIsUploadInProgress(false);
               navigation.goBack();
@@ -210,7 +217,7 @@ const AddYoga = ({route}) => {
               </KeyboardAvoidingView>
             </View>
           </View>
-        : <LoadingSpinner />
+        : <LoadingSpinner progress={isUploadInProgress ? progressPercent : null} />
       }
     </View>
   );
