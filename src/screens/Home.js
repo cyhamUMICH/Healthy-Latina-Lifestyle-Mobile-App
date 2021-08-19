@@ -125,7 +125,6 @@ const Home = (props) => {
     );
   };
 
-
   useEffect(() => {
     const resetAll = () => {
       setIsLoaded(false);
@@ -206,50 +205,7 @@ const Home = (props) => {
     <View style={styles.app}>
       {isLoaded ? 
       <View style={styles.fullWidthWindow}>
-        <Image
-        source={require('../../assets/logo-icon.png')} 
-        style={styles.homepageLogo}
-        />  
-       <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            style={{ flex: 1 }}
-          >
-            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("SetTimer")}>
-              <Image source={require("../../assets/timer.png")} style={{ height: 32, width: 32 }}/>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("MeditationList")}>
-              <Image source={require("../../assets/meditation.png")} style={{ height: 43, width: 43 }}/>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("ChallengeList")}>
-              <Image source={require("../../assets/calendar-challenge.png")} style={{ height: 43, width: 43 }}/>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("YogaList")}>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("Journal")}>
-            </TouchableOpacity>
-
-
-             {admin &&
-             <TouchableOpacity style={styles.homepageRoundButton} onPress={() => props.navigation.navigate("AddContent")}>
-               <Image source={require("../../assets/addContent.png")} style={{ height: 43, width: 43 }}/>
-             </TouchableOpacity>
-             }
-  
-            </ScrollView>
-      {/*<View style={{flex: 1, flexDirection: "column", justifyContent: "space-evenly"}}>
-        < Button buttonStyle={styles.smallButton} titleStyle={styles.buttonText} title="Login" onPress={() => props.navigation.navigate("Login")} />
-        <Button buttonStyle={styles.smallButton} titleStyle={styles.buttonText} title="Register" onPress={() => props.navigation.navigate("Register")} />
-  <Button buttonStyle={styles.smallButton} titleStyle={styles.buttonText} title="Edit Account" onPress={() => props.navigation.navigate("EditAccount")} /> */}
-      {/*} <Button buttonStyle={styles.smallButton} titleStyle={styles.buttonText} title="Meditation List" onPress={() => props.navigation.navigate("MeditationList")} />
-         <Button title="Meditation" onPress={() => props.navigation.navigate("Meditation")} /> 
-        <Button buttonStyle={styles.smallButton} titleStyle={styles.buttonText} title="Timer" onPress={() => props.navigation.navigate("Timer")} /> */}
-</View> 
-
+        <Image 
           source={require('../../assets/logo-icon.png')} 
           style={styles.homepageLogo} />
         <View style={styles.homeRoundButtonSection}>

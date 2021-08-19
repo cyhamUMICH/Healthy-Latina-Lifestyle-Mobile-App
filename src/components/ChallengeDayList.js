@@ -10,7 +10,7 @@ import defaultImage from '../../assets/logo-icon.png';
 
 const ChallengeCards = (props) => {
   return (
-    (props.filteredList.length != 0)
+    (props.filteredList.length != 0) 
     ? <FlatList 
         style={props.style}
         data={props.filteredList}
@@ -25,7 +25,6 @@ const ChallengeCard = ({item}, contentComponent, navigation) => {
   // https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript
 
   console.log("The content component is" + contentComponent);
-
   console.log("The content item is" + item.title);
 
 

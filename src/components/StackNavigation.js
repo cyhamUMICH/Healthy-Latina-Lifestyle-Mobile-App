@@ -32,7 +32,6 @@ import Journal from '../screens/Journal'
 import JournalEntry from '../screens/JournalEntry'
 import JournalEntryList from '../screens/JournalEntryList'
 import AddJournalPrompt from '../screens/AddJournalPrompt';
-import UpdatePicture from '../screens/UpdatePicture';
 import PodcastList from '../screens/PodcastList';
 import Podcast from '../screens/Podcast';
 import AddPodcast from '../screens/AddPodcast';

@@ -59,7 +59,6 @@ GroupID:[],
 name: name,
 username: username,
 email: email,
-admin: false,
 journalEntryNum: 0,
 })
 .then(() => {
