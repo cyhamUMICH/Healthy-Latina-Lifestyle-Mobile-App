@@ -58,7 +58,8 @@ await dbh.set({
 GroupID:[],
 name: name,
 username: username,
-email: email
+email: email,
+journalEntryNum: 0,
 })
 .then(() => {
     console.log("Document successfully written!");

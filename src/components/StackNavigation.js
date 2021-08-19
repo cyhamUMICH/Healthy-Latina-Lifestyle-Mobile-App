@@ -38,6 +38,7 @@ import AddPodcast from '../screens/AddPodcast';
 import Course from '../screens/Course';
 import CourseList from '../screens/CourseList';
 import AddCourse from '../screens/AddCourse';
+import SavedEntry from '../screens/SavedEntry';
 
 const Stack = createStackNavigator();
 
@@ -88,7 +89,8 @@ const StackNavigation = () => {
       <Stack.Screen name="CourseList" component={CourseList} options={{ title: 'Courses' }}/>
       <Stack.Screen name="Course" component={Course} options={{ title: 'Course' }}/>
       <Stack.Screen name="AddCourse" component={AddCourse} options={{ title: 'Add Course' }}/>
-      
+      <Stack.Screen name="SavedEntry" component={SavedEntry} options={{ title: 'Saved Entry' }}/>
+
     </Stack.Navigator>
   );
 };
