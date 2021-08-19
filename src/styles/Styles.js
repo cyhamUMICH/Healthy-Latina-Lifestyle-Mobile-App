@@ -9,6 +9,25 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  drawerContentContainer: {
+    flex: 1, 
+    justifyContent: 'space-between'
+  },
+  drawerTopItemsView: {
+    justifyContent: 'flex-start'
+  },
+  drawerButton: {
+    backgroundColor: colors.button,
+    marginHorizontal: '2%',
+    marginBottom: '2%',
+    justifyContent: 'flex-start'
+  },
+  // Tries to scale icon based on window height
+  drawerIconSize: Dimensions.get('window').height / 30,
+  drawerIconContainer: {
+    width: '15%',
+    marginRight: '2%'
+  },
   iconContainer: {
     padding: 10
   },

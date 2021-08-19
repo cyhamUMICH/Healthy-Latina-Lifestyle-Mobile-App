@@ -1,33 +1,64 @@
 import React from 'react';
-import { Alert } from 'react-native';
+import { Alert, View } from 'react-native';
 import { DrawerContentScrollView } from '@react-navigation/drawer';
-import { styles } from '../styles/Styles';
-import { Button } from 'react-native-elements';
+import { Button, Icon } from 'react-native-elements';
 import firebase from 'firebase';
+import { colors } from '../styles/Colors';
+import { styles } from '../styles/Styles';
 
 const SideMenu = (props) => {
   return (
-    <DrawerContentScrollView {...props}>
-
+    <DrawerContentScrollView {...props} contentContainerStyle={styles.drawerContentContainer}>
+      <View style={styles.drawerTopItemsView}>
         <Button
-         buttonStyle={styles.basicButtons}
-         title="Chat Rooms"  onPress={() => props.navigation.navigate("ChatRoomHome")}
-          />
-
-        <Button
-         buttonStyle={styles.basicButtons}
-         title="My Journal"  onPress={() => props.navigation.navigate("JournalEntryList")}
-          />
-
-          
-        <Button 
-        buttonStyle={styles.basicButtons}
-        title="Edit Account"  onPress={() => props.navigation.navigate("EditAccount")} 
+          icon={
+            <Icon name="comments" type="font-awesome"
+              size={styles.drawerIconSize}
+              containerStyle={styles.drawerIconContainer}
+              color={colors.text} 
+            />
+          }
+          buttonStyle={styles.drawerButton}
+          title="Chat Rooms"  onPress={() => props.navigation.navigate("ChatRoomHome")}
+          titleStyle={styles.buttonText}
         />
-
+        <Button
+          icon={
+            <Icon name="book"type="font-awesome"
+              size={styles.drawerIconSize} 
+              containerStyle={styles.drawerIconContainer}
+              color={colors.text} 
+            />
+          }
+          buttonStyle={styles.drawerButton}
+          title="My Journal"  onPress={() => props.navigation.navigate("JournalEntryList")}
+          titleStyle={styles.buttonText}
+        />
         <Button 
-        buttonStyle={styles.basicButtons}
-        title="Log out"  onPress={() => {
+          icon={
+            <Icon name="user" type="font-awesome" 
+              size={styles.drawerIconSize}
+              containerStyle={styles.drawerIconContainer}
+              color={colors.text} 
+            />
+          }
+          buttonStyle={styles.drawerButton}
+          title="Edit Account"  onPress={() => props.navigation.navigate("EditAccount")} 
+          titleStyle={styles.buttonText}
+        />
+      </View>      
+      <Button
+        icon={
+          <Icon name="sign-out" type="font-awesome"
+            size={styles.drawerIconSize}
+            containerStyle={styles.drawerIconContainer}
+            color={colors.text}
+          />
+        }
+        buttonStyle={styles.drawerButton}
+        title="Log Out"  
+        titleStyle={styles.buttonText}
+        onPress={() => {
           firebase.auth().signOut().then(() => {
             props.navigation.navigate("Login");
           })
@@ -40,8 +71,7 @@ const SideMenu = (props) => {
               ]
             );
           })}}
-        />
-
+      />
     </DrawerContentScrollView>
   );
 };
