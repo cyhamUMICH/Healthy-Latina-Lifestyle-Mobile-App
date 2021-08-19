@@ -11,53 +11,60 @@ import "firebase/storage";
 import { color } from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
 import { throwIfAudioIsDisabled } from 'expo-av/build/Audio/AudioAvailability';
-import { func } from 'prop-types';
-
 
 const SavedEntry = ({route}, item) => {
 
+    const [entryText, setEntryText] = useState('');
+    const [text, setText] = useState('');
+    const [isEditable, setIsEditable] = useState(false);
 
 
     const theItem = route.params;
-    let theEntry = "";
-
     const dbh = firebase.firestore();
 
-  
-        dbh
-        .collection('journalEntry')
-        .get()
-        .then(snapshot => {
-          snapshot
-            .docs
-            .forEach(doc => {
-              if(doc.id == theItem.contentID){
-                console.log(doc.data().theText) 
-              }
-            });
+    const findIfNull = async () => {
+
+      const myRef = dbh.collection('journalEntry').doc(theItem.contentID);
+      await myRef.update({theText: text})
+      await myRef.update({dateEntryEdited: new Date()})
+
+    };
+
+
+    dbh
+    .collection('journalEntry')
+    .get()
+    .then(snapshot => {
+      snapshot
+        .docs
+        .forEach(doc => {
+          if(doc.id == theItem.contentID){
+            console.log(doc.data().theText) 
+            setEntryText(doc.data().theText)
+          }
         });
+    });
      
     
 
     return (
       <View style={styles.app}>
 
-          <View
-          style={{
-              marginTop: '15%',
-              marginBottom: '8%',
-              bottom: 100,
-             }}>
-          <Text>{theItem.journalPromptTitle}</Text>
-          <Text>{theItem.journalPromptDesc}</Text>
-          
-          
-         
+        <View style={styles.journalTitles}>
       
+            <Text style={styles.journalCardTitle}>
+                {theItem.journalPromptTitle}
+            </Text>  
+
+            <Text style={styles.journalCardDesc}>
+                {theItem.journalPromptDesc}
+            </Text>
+
+            <Text style={styles.journalCardDesc}> 
+              {"Last edited: " + theItem.dateEntryEdited.toDate().toString().slice(4, 15)} 
+            </Text>
+          
           </View>
-
-
-        
 
           <View
           style={{ 
@@ -77,17 +84,39 @@ const SavedEntry = ({route}, item) => {
        
           <TextInput
             multiline={true}
+            editable={isEditable}
             numberOfLines={3}
             style={{height: 40}, {fontSize: 20}, {width: 400}}
             // placeholder="Journal Entry goes here"
-            // onChangeText={text => setText(text)}
-            defaultValue={theEntry}
+            onChangeText={input => setText(input)}
+            defaultValue={entryText}
           />
 
-         
+          {/* <Text
+            style={{height: 40}, {fontSize: 20}, {width: 400}}>
+            {entryText}
+          </Text> */}
 
-
+        
           </View>
+
+          <View style={styles.horizontalButtonLayout}>
+
+            <Button
+              disabled={isEditable}
+              title="Edit"
+              onPress={()=>{setIsEditable(true)}}
+            />
+
+            <Button
+              disabled={!isEditable}
+              title="Save"
+              onPress={()=>{findIfNull(), setIsEditable(false)}}
+            />
+
+          </View> 
+
+          
 
           
       </View>

@@ -597,5 +597,10 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 30
   },
+  journalTitles: {
+    marginTop: '20%',
+    marginBottom: '0%',
+    bottom: 90,
+  }
 });
   

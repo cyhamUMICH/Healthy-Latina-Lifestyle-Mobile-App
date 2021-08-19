@@ -40,15 +40,12 @@ const JournalEntry = ({route}, props) => {
             text: "OK",
             onPress: () => {props.navigation.navigate("Home")}
           }
-        
         ]
       );
-    
     };
 
 
     const submitWithoutPrompt = async (props) => {
-
 
         const dbh = firebase.firestore();
         const docRef = dbh.collection('journalPrompts').doc("undefined");
@@ -58,9 +55,10 @@ const JournalEntry = ({route}, props) => {
     
           if(formComplete()){
             const dbh = firebase.firestore();
-            const docRef = await dbh.collection("journalEntry").add({
+            await dbh.collection("journalEntry").add({
               theText: text,
               dateEntryAdded: new Date(),
+              dateEntryEdited: new Date(),
               journalPromptTitle: " ", 
               journalPromptDesc: " ",
               userID: user.uid,
@@ -69,7 +67,7 @@ const JournalEntry = ({route}, props) => {
             const userRef = dbh.collection('Users').doc(user.uid);
             const userDoc = await userRef.get();
             const num = userDoc.data().journalEntryNum;
-            const updateEntryNum = await userRef.update({journalEntryNum: num+1})
+            await userRef.update({journalEntryNum: num+1})
             saveMessage(props)
           }
           else{
@@ -96,9 +94,10 @@ const JournalEntry = ({route}, props) => {
 
           if(formComplete()){
             const dbh = firebase.firestore();
-            const docRef = await dbh.collection("journalEntry").add({
+            await dbh.collection("journalEntry").add({
               theText: text,
               dateEntryAdded: new Date(),
+              dateEntryEdited: new Date(),
               journalPromptTitle: doc.data().title, 
               journalPromptDesc: doc.data().description,
               userID: user.uid,
@@ -108,7 +107,7 @@ const JournalEntry = ({route}, props) => {
             const userRef = dbh.collection('Users').doc(user.uid);
             const userDoc = await userRef.get();
             const num = userDoc.data().journalEntryNum;
-            const updateEntryNum = await userRef.update({journalEntryNum: num+1})
+            await userRef.update({journalEntryNum: num+1})
             saveMessage(props)
 
           }
@@ -129,15 +128,18 @@ const JournalEntry = ({route}, props) => {
     return (
       <View style={styles.app}>
 
-          <View
-          style={{
-              marginTop: '15%',
-              marginBottom: '8%',
-              bottom: 100,
-             }}>
-          <Text>{item.description}</Text>
+          <View style={styles.journalTitles} >
+
+          <Text style={styles.journalCardTitle}>
+            {item.title}
+          </Text>    
+          <Text style={styles.journalCardDesc}>
+              {item.description}
+          </Text>
           
           </View>
+
+
           <View
           style={{ 
             backgroundColor: colors.journalTextBackground, 
@@ -161,9 +163,6 @@ const JournalEntry = ({route}, props) => {
             placeholder="Journal Entry goes here"
             onChangeText={input => setText(input)}
           />
-
-
-
           </View>
 
           <Button

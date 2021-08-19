@@ -8,6 +8,7 @@ import * as firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/storage";
 import defaultImage from '../../assets/logo-icon.png';
+import { Button } from 'react-native-elements/dist/buttons/Button';
 
 const homeButtons = [
   {

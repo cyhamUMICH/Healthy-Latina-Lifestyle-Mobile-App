@@ -77,8 +77,8 @@ const UserJournalEntryCard = ({item}, contentComponent, navigation) => {
         <View style={styles.horizontalButtonLayout}>
           <View>
             <Card.Title style={styles.journalCardTitle}>{item.journalPromptTitle}</Card.Title>
-            <Text style={styles.journalCardDesc}> {"Last edited: " + item.dateEntryAdded.toDate().toString().slice(4, 15)} </Text>
-           
+            <Text style={styles.journalCardDesc}> {"Created: " + item.dateEntryAdded.toDate().toString().slice(4, 15)} </Text>
+            
             <View style={styles.horizontalButtonLayout}>
               <Button title="View"
               buttonStyle={styles.emptyJournalButton}
