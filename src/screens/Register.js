@@ -8,6 +8,7 @@ import * as firebase from 'firebase'
 import { Text } from 'react-native';
 import 'firebase/firestore';
 import 'firebase/storage';
+import { Alert } from 'react-native';
 
 const Register = (props) => {
 
@@ -16,6 +17,17 @@ const[email, setEmail] = useState('');
 const[username, setUsername] = useState('');
 const[password, setPassword] = useState('');
 const[canUse, setCandUse] =useState(false);//opposite
+
+function createOneButtonAlertForNotValidEmail(){
+Alert.alert(
+      "Invalid Email",
+      "Please enter an unused Email Address, or enter a valid email",
+      [
+        { text: "OK"}
+      ],
+      { cancelable: true }
+    );
+}
 
 async function checkUsername(user)
 {
@@ -47,35 +59,58 @@ const check =  checkUsername(username);
 
 if(check)
 {
-console.log(check);
+//console.log(check);
 
-const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password)
+let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;//somehow makes sure that its an email
+var checkEmail = email;
+if (reg.test(checkEmail) === false) {
 
-const Userid = userCredential.user.uid
+createOneButtonAlertForNotValidEmail()
 
-const dbh = firebase.firestore().collection('Users').doc(Userid)
-await dbh.set({
-GroupID:[],
-name: name,
-username: username,
-email: email,
-journalEntryNum: 0,
-})
-.then(() => {
-    console.log("Document successfully written!");
-})
-.catch((error) => {
-setCandUse(true);
-    console.error("Error writing document: ", error);
-});
-var user = firebase.auth().currentUser;
+  }
+else
+  {
 
-user.updateProfile({
-  displayName:aUsername
-  });
 
-props.navigation.navigate('Home')
+        const userCredential = firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((temp) => {
+        console.log("oof");
+        const Userid = temp.user.uid
+
+        const dbh = firebase.firestore().collection('Users').doc(Userid)
+        dbh.set({
+        GroupID:[],
+        name: name,
+        username: username,
+        email: email,
+        journalEntryNum: 0,
+        admin: false,
+        })
+        .then(() => {
+            console.log("Document successfully written!");
+        })
+        .catch((error) => {
+        setCandUse(true);
+            console.error("Error writing document: ", error);
+        });
+        var user = firebase.auth().currentUser;
+
+        user.updateProfile({
+          displayName:username
+          });
+          props.navigation.navigate('Home');
+          })
+          .catch((error) => {
+          console.log(error);
+          createOneButtonAlertForNotValidEmail()
+          })
+          }
+
+
+
 }
+
+
 
 else{
 setCandUse(true);

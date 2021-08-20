@@ -10,6 +10,9 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { Drawer } from 'react-native-paper';
 import { Groups } from '../screens/Groups';
 import defaultImage from '../../assets/logo-icon.png';
+import * as firebase from 'firebase/app';
+import "firebase/firestore";
+import "firebase/storage";
 
 const ContentCards = (props) => {
 
@@ -83,9 +86,25 @@ const ContentCard = ({item}, contentComponent, navigation) => {
 const ContentList = (props) => {
   const [isTopicsLoaded, setIsTopicsLoaded] = useState(false);
   const [topicsList, setTopicsList] = useState([]);
+  const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
     GetTopics(setIsTopicsLoaded, setTopicsList);
+    const loadAdmin = async () =>{
+                var user = firebase.auth().currentUser
+                await firebase.firestore().collection('Users').doc(user.uid).get()
+                .then(documentSnapshot => getAdmin(documentSnapshot))
+                .then(admin => setAdmin(admin))
+
+                }
+
+
+                const getAdmin = (documentSnapshot) =>{
+                return documentSnapshot.get('admin');
+
+                }
+
+            loadAdmin();
   }, []);
 
   const [filteredList, setFilteredList] = useState(props.data);
@@ -125,6 +144,7 @@ const ContentList = (props) => {
           filterSettings={filterSettings}
           filteredListFunction={setFilteredList}
           filteredList={filteredList}/>
+          {admin &&
         <TouchableOpacity style={styles.floatingActionButtonBottomRight} 
           onPress={() => props.navigation.navigate("Add".concat(props.contentComponent), {
             topics: topicsList, 
@@ -134,6 +154,7 @@ const ContentList = (props) => {
             <Icon name="plus" type="font-awesome" color={colors.text} />
           </View>
         </TouchableOpacity>
+        }
       </View>
     </View>
     : <LoadingSpinner />

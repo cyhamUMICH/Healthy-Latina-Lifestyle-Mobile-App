@@ -10,7 +10,7 @@ import "firebase/storage";
 import defaultImage from '../../assets/logo-icon.png';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 
-const homeButtons = [
+const homeButtonsAdmin = [
   {
     name: "Timer",
     page: "SetTimer",
@@ -61,6 +61,51 @@ const homeButtons = [
   },
 ];
 
+const homeButtons = [
+  {
+    name: "Timer",
+    page: "SetTimer",
+    iconName: "timer",
+    iconType: "Ionicons"
+  },
+  {
+    name: "Meditations",
+    page: "MeditationList",
+    iconName: "meditation",
+    iconType: "material-community"
+  },
+  {
+    name: "Challenges",
+    page: "ChallengeList",
+    iconName: "calendar",
+    iconType: "font-awesome"
+  },
+  {
+    name: "Courses",
+    page: "CourseList",
+    iconName: "file-video-o",
+    iconType: "font-awesome"
+  },
+  {
+    name: "Yoga Videos",
+    page: "YogaList",
+    iconName: "yoga",
+    iconType: "material-community"
+  },
+  {
+    name: "Podcasts",
+    page: "PodcastList",
+    iconName: "podcast",
+    iconType: "material-community"
+  },
+  {
+    name: "Journal Prompts",
+    page: "Journal",
+    iconName: "book",
+    iconType: "antdesign"
+  },
+];
+
 const Home = (props) => {
   const isFocused = useIsFocused();
 
@@ -79,6 +124,7 @@ const Home = (props) => {
     journalPrompts: false
   });
   const [isLoaded, setIsLoaded] = useState(false);
+  const [admin, setAdmin] = useState(false);
   
   const homeButton = ({item}) => {
     return(
@@ -190,6 +236,21 @@ const Home = (props) => {
       await fetchFeatured("podcasts", setPodcasts);
       await fetchFeatured("journalPrompts", setJournalPrompts);
     };
+    const loadAdmin = async () =>{
+            var user = firebase.auth().currentUser
+            await firebase.firestore().collection('Users').doc(user.uid).get()
+            .then(documentSnapshot => getAdmin(documentSnapshot))
+            .then(admin => setAdmin(admin))
+
+            }
+
+
+            const getAdmin = (documentSnapshot) =>{
+            return documentSnapshot.get('admin');
+
+            }
+
+        loadAdmin();
   
     if (isFocused) {
       resetAll();
@@ -209,6 +270,7 @@ const Home = (props) => {
         <Image 
           source={require('../../assets/logo-icon.png')} 
           style={styles.homepageLogo} />
+          {!admin &&
         <View style={styles.homeRoundButtonSection}>
           <FlatList
             horizontal={true}
@@ -217,6 +279,17 @@ const Home = (props) => {
             keyExtractor={item => item.name} 
             ItemSeparatorComponent={renderSeparatorItem} />
         </View>
+        }
+        {admin &&
+                <View style={styles.homeRoundButtonSection}>
+                  <FlatList
+                    horizontal={true}
+                    data={homeButtonsAdmin}
+                    renderItem={homeButton}
+                    keyExtractor={item => item.name}
+                    ItemSeparatorComponent={renderSeparatorItem} />
+                </View>
+                }
         <View style={styles.homeFeaturedSection}>
           <ScrollView>
             { meditations.length > 0 ?
