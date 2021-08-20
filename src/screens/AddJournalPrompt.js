@@ -57,7 +57,8 @@ const AddJournalPrompt = ({route}, props) => {
         difficulty: selectedDifficulty,
         topics: selectedTopics,
         featured: isFeatured,
-        dateAdded: new Date()
+        dateAdded: new Date(),
+        imagePath: "meditations/images/test.png"
       });
     }
     else
