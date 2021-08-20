@@ -10,6 +10,7 @@ import { styles } from '../styles/Styles';
 import * as firebase from 'firebase/app';
 import "firebase/storage";
 import defaultImage from '../../assets/logo-icon.png';
+import CourseSectionList from "../components/CourseSectionList";
 
 const JUMP_IN_MILLISECONDS = 30000;
 
@@ -24,6 +25,68 @@ const Course = ({route}) => {
   const [videoStatus, setVideoStatus] = useState(null);
 
   const item = route.params;
+  const theContentID = item.contentID;
+
+  useEffect(() => {
+
+    const fetchList = async () => {
+      const dbh = firebase.firestore();
+      
+      dbh.collection("courseSections").orderBy('date').get()
+      .then((querySnapshot) => {
+
+        console.log("Snapshot size:" + querySnapshot.size)
+
+        if (querySnapshot.size == 0) {
+          setIsLoaded(true);
+        }
+        else {
+          let countCourses = 0;
+      
+          querySnapshot.forEach((doc) => {
+            let newDoc = doc.data();
+            newDoc.contentID = doc.id;
+
+            const courseRef = newDoc.course.id;          
+    
+            // https://firebase.google.com/docs/storage/web/download-files
+            let storage = firebase.storage();
+            let pathReference = storage.ref(newDoc.title);
+
+            console.log("PATH REF IS: " + pathReference);
+            
+           if(courseRef == theContentID){
+             
+              countCourses++;
+              console.log("ADDED DATE" + newDoc.date.toDate());
+
+              setData(oldList => [...oldList, newDoc]);
+
+            }
+
+            if(countCourses == item.numSections){
+
+              setIsLoaded(true);
+              
+            }
+          
+          })
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+    };
+  
+    fetchList();  
+  }, []);
+
+
+
+
+
+
+
 
   const playbackStatusUpdateCallback = (playbackStatus) => {
     // Don't try to update the status if not loaded anymore.
@@ -178,7 +241,16 @@ const Course = ({route}) => {
           }
           <ScrollView style={styles.contentDescriptionSpacer}>
             <Text style={styles.contentDesc}>{item.description}</Text>
+           
+            <CourseSectionList 
+               contentComponent="CourseSection"
+               navigation={navigation}
+               contentType="courseSections"
+               data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)} />
+        
           </ScrollView>
+
+        
         </View>
       </View>
     </View>

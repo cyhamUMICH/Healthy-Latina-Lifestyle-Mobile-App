@@ -66,21 +66,7 @@ const SavedEntry = ({route}, item) => {
           
           </View>
 
-          <View
-          style={{ 
-            backgroundColor: colors.journalTextBackground, 
-            borderBottomColor: '#CCCCCC',  
-            borderTopColor: '#CCCCCC',
-            borderLeftColor: '#CCCCCC',
-            borderRightColor: '#CCCCCC',
-            borderBottomWidth: 1, 
-            borderTopWidth: 1,
-            borderLeftWidth: 1,
-            borderRightWidth: 1,
-            bottom:50,
-            height: 500
-           }}  
-           >
+          <View style={styles.journalEntrySpace}>
        
           <TextInput
             multiline={true}
@@ -91,13 +77,6 @@ const SavedEntry = ({route}, item) => {
             onChangeText={input => setText(input)}
             defaultValue={entryText}
           />
-
-          {/* <Text
-            style={{height: 40}, {fontSize: 20}, {width: 400}}>
-            {entryText}
-          </Text> */}
-
-        
           </View>
 
           <View style={styles.horizontalButtonLayout}>
@@ -116,9 +95,7 @@ const SavedEntry = ({route}, item) => {
 
           </View> 
 
-          
 
-          
       </View>
     );
   };

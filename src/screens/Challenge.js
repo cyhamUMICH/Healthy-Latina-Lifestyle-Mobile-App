@@ -47,18 +47,11 @@ const Challenge = ({route}, props) => {
         }
         else {
           let countChallenges = 0;
-        
-
-
+      
           querySnapshot.forEach((doc) => {
             let newDoc = doc.data();
             newDoc.contentID = doc.id;
 
-            
-
-            // console.log("START DATE IS:" + newDoc.date.toDate());
-
-            // console.log("Linked to" + newDoc.contentID);
             const chalref = newDoc.challenge.id;
             // console.log("Challenge ID is " + chalref);
             //chalref is the challenge ID
@@ -84,25 +77,6 @@ const Challenge = ({route}, props) => {
               setIsLoaded(true);
             }
           
-            // pathReference.getDownloadURL()
-
-           
-            // .then((url) => {
-            //   newDoc.description = url;
-           
-            //   console.log("hello");
-            // })
-            // .catch((error) => {
-            //   newDoc.description = "Relax";
-            // })
-            // .finally(() => {
-
-
-            //   console.log("START DATE IS:" + newDoc.date.toDate());
-              
-      
-
-            // });
           })
         }
       })

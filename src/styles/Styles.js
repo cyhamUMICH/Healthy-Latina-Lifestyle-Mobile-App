@@ -601,6 +601,19 @@ export const styles = StyleSheet.create({
     marginTop: '20%',
     marginBottom: '0%',
     bottom: 90,
+  },
+  journalEntrySpace:{
+    backgroundColor: colors.journalTextBackground, 
+    borderBottomColor: '#CCCCCC',  
+    borderTopColor: '#CCCCCC',
+    borderLeftColor: '#CCCCCC',
+    borderRightColor: '#CCCCCC',
+    borderBottomWidth: 1, 
+    borderTopWidth: 1,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    bottom:"8%",
+    height: "60%"
   }
 });
   
