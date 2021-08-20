@@ -37,13 +37,14 @@ const CourseSectionList = (props) => {
     <View style={styles.fullWidthWindow}>
       <Text style={styles.challengeDayTitle}>
         Course Sections
+        </Text>
       <CourseCards 
             style={styles.cardList} 
             contentType={props.contentType}
             filteredList={props.data}
             contentComponent={props.contentComponent}
             navigation={props.navigation} />
-      </Text>
+
     </View>
   );
 };

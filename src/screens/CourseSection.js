@@ -13,7 +13,8 @@ const CourseSection = ({route}, props) => {
   return (
 
     <View style={styles.app}>
-        <Text>Course Section</Text>
+        <Text style={styles.courseTitle}>{item.title}</Text>
+        <Text style={styles.courseDesc}>{item.description}</Text>
     </View>
 
   );

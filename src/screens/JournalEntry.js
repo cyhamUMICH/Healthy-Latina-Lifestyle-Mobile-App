@@ -130,12 +130,12 @@ const JournalEntry = ({route}, props) => {
 
           <View style={styles.journalTitles} >
 
-          <Text style={styles.journalCardTitle}>
-            {item.title}
-          </Text>    
-          <Text style={styles.journalCardDesc}>
-              {item.description}
-          </Text>
+            <Text style={styles.journalCardTitle}>
+              {item.title}
+            </Text>    
+            <Text style={styles.journalCardDesc}>
+                {item.description}
+            </Text>
           
           </View>
 

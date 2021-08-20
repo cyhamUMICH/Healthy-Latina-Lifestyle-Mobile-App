@@ -50,20 +50,16 @@ const Course = ({route}) => {
             let newDoc = doc.data();
             newDoc.contentID = doc.id;
 
-            const courseRef = newDoc.course.id;          
-    
+            const courseRef = newDoc.course.id;   
+
             // https://firebase.google.com/docs/storage/web/download-files
             let storage = firebase.storage();
             let pathReference = storage.ref(newDoc.title);
-
-            console.log("PATH REF IS: " + pathReference);
             
-           if(courseRef == theContentID){
-             
-              countCourses++;
-              console.log("ADDED DATE" + newDoc.date.toDate());
+            if(courseRef == theContentID){
 
-              setData(oldList => [...oldList, newDoc]);
+                countCourses++;
+                setData(oldList => [...oldList, newDoc]);
 
             }
 
@@ -83,12 +79,6 @@ const Course = ({route}) => {
   
     fetchList();  
   }, []);
-
-
-
-
-
-
 
 
   const playbackStatusUpdateCallback = (playbackStatus) => {
@@ -242,18 +232,13 @@ const Course = ({route}) => {
                 <Controller isPlaying={isPlaying} quickForward={quickForward} quickBackward={quickBackward} playPause={playPause} />
             </View> 
           }
-          <ScrollView style={styles.contentDescriptionSpacer}>
-            <Text style={styles.contentDesc}>{item.description}</Text>
-           
-            <CourseSectionList 
+       
+          <Text style={styles.contentDesc}>{item.description}</Text>
+          <CourseSectionList 
                contentComponent="CourseSection"
                navigation={navigation}
                contentType="courseSections"
                data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)} />
-        
-          </ScrollView>
-
-        
         </View>
       </View>
     </View>
