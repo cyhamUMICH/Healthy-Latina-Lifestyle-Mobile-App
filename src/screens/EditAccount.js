@@ -7,6 +7,7 @@ import { Image } from 'react-native';
 import { Alert } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { Text } from 'react-native';
+import UploadImage from '../components/UploadImage';
 import firebase, { auth } from 'firebase';
 import 'firebase/firestore';
 import 'firebase/storage';
@@ -17,11 +18,17 @@ const EditAccount = (props) => {
 const [name, setName] = useState('');
 const [email, setEmail] = useState('');
 const [username, setUsername] = useState('');
+const [imagePath, setImagePath] = useState('UserInfo/profilePictures/Meditation3.png');
+const [trueImagePath, setTrueImagePath] = useState('UserInfo/profilePictures/Meditation3.png');
 
 const [oldName, setOldName] = useState('');
 const [oldEmail, setOldEmail] = useState('');
 const [oldUsername, setOldUsername] = useState('');
 
+const [isUploadInProgress, setIsUploadInProgress] = useState(false);
+
+const [image, setImage] = useState(null);
+const baseImagePath = "UserInfo/profilePictures/";
 
 
 useEffect(() =>{
@@ -49,6 +56,25 @@ useEffect(() =>{
                 .then(oldEmail => setOldEmail(oldEmail))
               }
 
+               const loadImagePath = async () =>{
+                             var user = firebase.auth().currentUser
+                              await firebase.firestore().collection('Users').doc(user.uid).get()
+                              .then(documentSnapshot => getImagePath(documentSnapshot))
+                              .then(imagePath => setImagePath(imagePath))
+                              let storage = firebase.storage();
+                                          let pathReference = storage.ref(imagePath);
+                                          pathReference.getDownloadURL()
+                                          .then((url) => {
+                                            setTrueImagePath ( url);
+
+                            })
+                            }
+
+                  const getImagePath = (documentSnapshot) =>{
+                  return documentSnapshot.get('imagePath');
+
+                  }
+
     const getName = (documentSnapshot) =>{
     return documentSnapshot.get('name');
 
@@ -64,6 +90,8 @@ const getUsername= (documentSnapshot) =>{
 loadOldEmail();
 loadOldName();
 loadOldUsername();
+loadImagePath();
+console.log(imagePath);
 })
 
 function createTwoButtonAlertForDelete(){
@@ -117,6 +145,17 @@ function createOneButtonAlertForUnableToUpdateUsername(){
 Alert.alert(
       "Username Already Taken",
       "Your desired username is already taken. Your Username was NOT updated",
+      [
+        { text: "OK"}
+      ],
+      { cancelable: true }
+    );
+}
+
+function createOneButtonAlertForSuccessPicture(){
+Alert.alert(
+      "Picture Updated",
+      "Your picture has been updated",
       [
         { text: "OK"}
       ],
@@ -208,6 +247,44 @@ user.delete().then(function() {
 });
 props.navigation.navigate("Login")}
 
+async function changePicture()
+{
+var user = firebase.auth().currentUser;
+var oldImagePath = imagePath;
+
+const dbh = firebase.firestore().collection('Users').doc(user.uid)
+
+await dbh.set({
+imagePath: baseImagePath + user.uid + "__" + image.filename,
+}, {merge:true});
+
+const imageLoc = firebase.storage().ref().child(baseImagePath.concat(user.uid).concat("__").concat(image.filename));
+      // Code from: https://medium.com/@ericmorgan1/upload-images-to-firebase-in-expo-c4a7d4c46d06
+      const imageResponse = await fetch(image.uri);
+      const imageBlob = await imageResponse.blob();
+      setIsUploadInProgress(true);
+      let uploadImageStatus = imageLoc.put(imageBlob);
+
+      // Code from: https://firebase.google.com/docs/reference/js/firebase.storage.UploadTask#on
+      uploadImageStatus.on(firebase.storage.TaskEvent.STATE_CHANGED, {
+        'complete': async function() {
+
+            },
+        'error': function() {
+          Alert.alert(
+            "Error Adding Picture",
+            "There was an error when uploading the image.",
+            [
+              {text: "OK"}
+            ]
+          );
+        }
+      });
+      // add in delete old image here i think
+      createOneButtonAlertForSuccessPicture();
+      props.navigation.navigate("Home");
+}
+
 
 
   return (
@@ -215,15 +292,18 @@ props.navigation.navigate("Login")}
       <View style={styles.fullWidthWindow}>
       <View style={styles.smallerWidthWindow}>
         <Image 
-        source={require('../../assets/temporary/Meditation3.png')} 
+        source={{uri: trueImagePath? trueImagePath : Image.resolveAssetSource(defaultImage).uri}}
         style={styles.editAccountProfile}
         />
+
+        <UploadImage image={image} setImage={setImage} />
 
      
         <Button 
         buttonStyle={styles.button}
         titleStyle={styles.buttonText}
         title="Change profile picture"
+        onPress= {() => changePicture()}
         />
 
 

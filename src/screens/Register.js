@@ -85,6 +85,7 @@ else
         email: email,
         journalEntryNum: 0,
         admin: false,
+        imagePath: 'UserInfo/profilePictures/Meditation3.png',
         })
         .then(() => {
             console.log("Document successfully written!");
