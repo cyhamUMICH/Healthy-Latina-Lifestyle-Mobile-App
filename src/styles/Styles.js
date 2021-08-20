@@ -581,6 +581,7 @@ export const styles = StyleSheet.create({
   },
   emptyJournalButton: {
     backgroundColor: colors.button,
+    marginBottom: '2%'
   },
   journalCardList: {
     

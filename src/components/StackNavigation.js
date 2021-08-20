@@ -80,7 +80,7 @@ const StackNavigation = () => {
       <Stack.Screen name="CreateRoom" component={CreateRoom} options={{ title: 'Create New Room', headerRight: null }}/>
       <Stack.Screen name="JoinRoom" component={JoinRoom} options={{ title: 'Join Existing Room', headerRight: null }}/>
       <Stack.Screen name="AddYoga" component={AddYoga} options={{ title: 'Add Yoga' }}/>
-      <Stack.Screen name="Journal" component={Journal} options={{ title: 'Journal' }}/>
+      <Stack.Screen name="Journal" component={Journal} options={{ title: 'Journal Prompts' }}/>
       <Stack.Screen name="JournalEntry" component={JournalEntry} options={{ title: 'Journal Entry' }}/>
       <Stack.Screen name="JournalEntryList" component={JournalEntryList} options={{ title: 'Journal Entries' }}/>
       <Stack.Screen name="AddJournalPrompt" component={AddJournalPrompt} options={{ title: 'Add Journal Prompt' }}/>
