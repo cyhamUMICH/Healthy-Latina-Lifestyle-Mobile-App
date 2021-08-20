@@ -24,8 +24,11 @@ const Course = ({route}) => {
   const video = useRef(null);
   const [videoStatus, setVideoStatus] = useState(null);
 
-  const item = route.params;
+  const item = route.params.item;
+  const navigation = route.params.navigation;
   const theContentID = item.contentID;
+
+  const [data, setData] = useState([]);
 
   useEffect(() => {
 

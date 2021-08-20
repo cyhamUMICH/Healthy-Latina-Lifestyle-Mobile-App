@@ -46,7 +46,7 @@ const ContentCard = ({item}, contentComponent, navigation) => {
       activeOpacity={0.7}
       onPress={() => {
         // Add any content that will require another layer of navigation to this if condition.
-        if(contentComponent === "Challenge") {
+        if(contentComponent === "Challenge" || contentComponent === "Course") {
           navigation.navigate(contentComponent, {
             item: item,
             navigation: navigation
