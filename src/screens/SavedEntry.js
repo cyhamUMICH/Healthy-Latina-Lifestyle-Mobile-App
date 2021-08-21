@@ -44,59 +44,47 @@ const SavedEntry = ({route}, item) => {
           }
         });
     });
-     
-    
 
     return (
-      <View style={styles.app}>
-
-        <View style={styles.journalTitles}>
-      
-            <Text style={styles.journalTitle}>
-                {theItem.journalPromptTitle}
-            </Text>  
-
-            <Text style={styles.journalDesc}>
-                {theItem.journalPromptDesc}
-            </Text>
-
-            <Text style={styles.journalDesc}> 
-              {"Last edited: " + theItem.dateEntryEdited.toDate().toString().slice(4, 15)} 
-            </Text>
-          
-          </View>
-
-          <View style={styles.journalEntrySpace}>
-       
-          <TextInput
-            multiline={true}
-            editable={isEditable}
-            numberOfLines={3}
-            style={{height: 40}, {fontSize: 20}, {width: 400}}
-            // placeholder="Journal Entry goes here"
-            onChangeText={input => setText(input)}
-            defaultValue={entryText}
-          />
-          </View>
-
-          <View style={styles.horizontalButtonLayout}>
-
+        <View style={styles.app}>
+        <View style={styles.fullWidthWindow}>
+          <View style={styles.floatingActionView}>
+            <ScrollView style={styles.journalTitles}>
+              <Text style={styles.journalTitle}>
+                  {theItem.journalPromptTitle}
+              </Text> 
+              <Text style={styles.journalDesc}>
+                  {theItem.journalPromptDesc}
+              </Text>
+              <Text style={styles.journalDesc}> 
+                    {"Last edited: " + theItem.dateEntryEdited.toDate().toString().slice(4, 15)} 
+               </Text>
+            </ScrollView>
+            <View style={styles.journalEntrySpace}>
+                <TextInput
+                multiline={true}
+                editable={isEditable}
+                numberOfLines={3}
+                style={{height: 40}, {fontSize: 20}, {width: 400}}
+                onChangeText={input => setText(input)}
+                defaultValue={entryText}
+              />
+            </View>
+        <View style={styles.horizontalButtonLayout}>
             <Button
               disabled={isEditable}
               title="Edit"
               onPress={()=>{setIsEditable(true)}}
             />
-
             <Button
               disabled={!isEditable}
               title="Save"
               onPress={()=>{findIfNull(), setIsEditable(false)}}
             />
-
           </View> 
-
-
-      </View>
+          </View>
+        </View>
+        </View>
     );
   };
 

@@ -78,7 +78,6 @@ const Register = (props) => {
                 name: name,
                 username: username,
                 email: email,
-                journalEntryNum: 0,
                 admin: false,
                 imagePath: 'UserInfo/profilePictures/ProfilePicture.png',
               })

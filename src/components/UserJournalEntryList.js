@@ -25,13 +25,8 @@ const UserJournalEntryCards = (props) => {
 const deleteEntry = async (item, navigation) => {
 
     const dbh = firebase.firestore();
-    const toDeleteRef = await dbh.collection('journalEntry').doc(item.contentID).delete();
+    await dbh.collection('journalEntry').doc(item.contentID).delete();
 
-    var user = firebase.auth().currentUser;
-    const userRef = dbh.collection('Users').doc(user.uid);
-    const userDoc = await userRef.get();
-    const num = userDoc.data().journalEntryNum;
-    const updateEntryNum = await userRef.update({journalEntryNum: num-1})
 
     Alert.alert(
       "Journal entry is deleted"
@@ -97,14 +92,6 @@ const UserJournalEntryList = (props) => {
   }, []);
 
   const [filteredList, setFilteredList] = useState(props.data);
-  // const [filterModalVisible, setFilterModalVisible] = useState(false);
-  // const [filterSettings, setFilterSettings] = useState({
-  //   difficultyFilter: [],
-  //   languageFilter: [],
-  //   topicFilter: [],
-  //   durationFilter: []
-  // });
-  // const filterBy = props.filterBy.split(',');
 
   return (
     isTopicsLoaded ? 

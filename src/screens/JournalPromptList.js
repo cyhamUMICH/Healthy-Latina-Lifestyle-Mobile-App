@@ -44,9 +44,7 @@ const JournalPromptList = (props) => {
                 setData(oldList => [...oldList, newDoc]);
                 
                 countImages++;
-
-                // Data is loaded once the number of images is the same as
-                // the number in the snapshot
+                
                 if (querySnapshot.size === countImages) {
                   setIsLoaded(true);
                 }
@@ -58,8 +56,6 @@ const JournalPromptList = (props) => {
               setData(oldList => [...oldList, newDoc]);
               countImages++;
 
-              // Data is loaded once the number of images is the same as
-              // the number in the snapshot
               if (querySnapshot.size === countImages) {
                 setIsLoaded(true);
               }

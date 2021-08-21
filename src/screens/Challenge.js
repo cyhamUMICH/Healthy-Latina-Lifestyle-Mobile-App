@@ -18,9 +18,7 @@ import defaultImage from '../../assets/logo-icon.png';
 
 
 const Challenge = ({route}, props) => {
-
-  // console.log("Route id: " + route.params.numDays);
-
+  
   const item = route.params.item;
   const navigation = route.params.navigation;
   const theContentID = item.contentID;
@@ -39,9 +37,6 @@ const Challenge = ({route}, props) => {
       dbh.collection("challengeDays").orderBy('date').get()
       .then((querySnapshot) => {
 
-        
-        // console.log("Snapshot size:" + querySnapshot.size)
-
         if (querySnapshot.size == 0) {
           setIsLoaded(true);
         }
@@ -52,22 +47,16 @@ const Challenge = ({route}, props) => {
             let newDoc = doc.data();
             newDoc.contentID = doc.id;
 
-            const chalref = newDoc.challenge.id;
-            // console.log("Challenge ID is " + chalref);
-            //chalref is the challenge ID
-            //theContentID is what the day is linked to           
+            const chalref = newDoc.challenge.id;       
     
             // https://firebase.google.com/docs/storage/web/download-files
             let storage = firebase.storage();
             let pathReference = storage.ref(newDoc.title);
 
-            console.log("PATH REF IS: " + pathReference);
-            
            if(chalref == theContentID){
              
               countChallenges++;
-              console.log("ADDED DATE" + newDoc.date.toDate());
-
+        
               setData(oldList => [...oldList, newDoc]);
 
             }

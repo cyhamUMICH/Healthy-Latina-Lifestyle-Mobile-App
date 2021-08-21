@@ -61,10 +61,6 @@ const JournalEntry = ({route}, props) => {
               userID: user.uid,
               journalPromptID: doc.id,
             });
-            const userRef = dbh.collection('Users').doc(user.uid);
-            const userDoc = await userRef.get();
-            const num = userDoc.data().journalEntryNum;
-            await userRef.update({journalEntryNum: num+1})
             saveMessage(props)
           }
           else{
@@ -100,13 +96,7 @@ const JournalEntry = ({route}, props) => {
               userID: user.uid,
               journalPromptID: doc.id,
             });
-
-            const userRef = dbh.collection('Users').doc(user.uid);
-            const userDoc = await userRef.get();
-            const num = userDoc.data().journalEntryNum;
-            await userRef.update({journalEntryNum: num+1})
             saveMessage(props)
-
           }
           else{
             Alert.alert(
@@ -120,8 +110,7 @@ const JournalEntry = ({route}, props) => {
 
     };
 
-    
-
+  
     return (
       <View style={styles.app}>
         <View style={styles.fullWidthWindow}>

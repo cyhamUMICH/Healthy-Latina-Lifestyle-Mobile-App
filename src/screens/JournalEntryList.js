@@ -30,8 +30,6 @@ const JournalEntryList = (props) => {
             let newDoc = doc.data();
             newDoc.contentID = doc.id;
 
-            // console.log("GERRE NOW" + newDoc.journalPrompt.id)
-            
             // https://firebase.google.com/docs/storage/web/download-files
             let storage = firebase.storage();
             let pathReference = storage.ref(newDoc.theText);
@@ -63,18 +61,11 @@ const JournalEntryList = (props) => {
               
               setData(oldList => [...oldList, newDoc]);
              
-              
               }
               else{
-                console.log("wwrong")
+                
               }
 
-              //  if (countImages > 1) {
-              //   setIsLoaded(true);
-              // }
-
-              //  Data is loaded once the number of images is the same as
-              // the number in the snapshot
               if (querySnapshot.size === countImages) {
                 setIsLoaded(true);
               }
@@ -84,7 +75,7 @@ const JournalEntryList = (props) => {
             getThis();
             
              
-              
+          
             });
             
           })
