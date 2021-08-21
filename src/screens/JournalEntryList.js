@@ -19,6 +19,8 @@ const JournalEntryList = (props) => {
       dbh.collection("journalEntry").get()
       .then((querySnapshot) => {
 
+        console.log("query snapshot" + querySnapshot.size)
+
         if (querySnapshot.size == 0) {
           setIsLoaded(true);
         }
@@ -48,8 +50,6 @@ const JournalEntryList = (props) => {
               console.log("on the entry" + newDoc.userID)
               console.log("on the user" + user.uid)
 
-            
-
           const getThis = async () => {
 
             const userRef = dbh.collection('Users').doc(user.uid)
@@ -58,34 +58,35 @@ const JournalEntryList = (props) => {
 
             console.log("user stuff" + userStuff.data().journalEntryNum)
 
+            countImages++;
               if(newDoc.userID == user.uid){
               
               setData(oldList => [...oldList, newDoc]);
-              countImages++;
-
+             
               
               }
               else{
-                
+                console.log("wwrong")
               }
 
-               if (countImages == num) {
+              //  if (countImages > 1) {
+              //   setIsLoaded(true);
+              // }
+
+              //  Data is loaded once the number of images is the same as
+              // the number in the snapshot
+              if (querySnapshot.size === countImages) {
                 setIsLoaded(true);
               }
-
+         
             }
 
             getThis();
             
+             
               
-
-              // Data is loaded once the number of images is the same as
-              // the number in the snapshot
-              // if (querySnapshot.size === countImages) {
-              //   setIsLoaded(true);
-              // }
-            
             });
+            
           })
         }
       })

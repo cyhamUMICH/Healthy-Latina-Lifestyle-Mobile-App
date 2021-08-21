@@ -39,10 +39,6 @@ const deleteEntry = async (item, navigation) => {
 
     navigation.navigate("Home");
 
-
-
-
-
 }
 
 const deleteButton = async (item, navigation) => {
@@ -101,14 +97,14 @@ const UserJournalEntryList = (props) => {
   }, []);
 
   const [filteredList, setFilteredList] = useState(props.data);
-  const [filterModalVisible, setFilterModalVisible] = useState(false);
-  const [filterSettings, setFilterSettings] = useState({
-    difficultyFilter: [],
-    languageFilter: [],
-    topicFilter: [],
-    durationFilter: []
-  });
-  const filterBy = props.filterBy.split(',');
+  // const [filterModalVisible, setFilterModalVisible] = useState(false);
+  // const [filterSettings, setFilterSettings] = useState({
+  //   difficultyFilter: [],
+  //   languageFilter: [],
+  //   topicFilter: [],
+  //   durationFilter: []
+  // });
+  // const filterBy = props.filterBy.split(',');
 
   return (
     isTopicsLoaded ? 

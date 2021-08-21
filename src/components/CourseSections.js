@@ -5,8 +5,7 @@ import { View, Text, TextInput } from 'react-native';
 import { Divider } from 'react-native-elements';
 
 const CourseSections = (props) => {
-
-
+  
   let elements = []
 
   for(let i = 0; i < props.numSections; i++) {
