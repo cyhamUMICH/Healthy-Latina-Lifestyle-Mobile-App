@@ -144,7 +144,7 @@ const Home = (props) => {
           activeOpacity={0.7}
           onPress={() => {
             // Add any content that will require another layer of navigation to this if condition.
-            if(contentComponent === "Challenge" || contentComponent === "Course") {
+            if(contentComponent === "Challenge" || contentComponent === "Course" || contentComponent === "JournalEntry") {
               navigation.navigate(contentComponent, {
                 item: item,
                 navigation: navigation

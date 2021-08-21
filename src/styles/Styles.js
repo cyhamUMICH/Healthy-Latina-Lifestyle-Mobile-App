@@ -606,6 +606,10 @@ export const styles = StyleSheet.create({
   theChallengeDesc: {
     fontSize: 18
   },
+  journalButtonContainerStyle: {
+    flex: 1, 
+    marginHorizontal: '5%'
+  },
   emptyJournalButton: {
     backgroundColor: colors.button,
     marginBottom: '2%'
@@ -613,6 +617,12 @@ export const styles = StyleSheet.create({
   journalCardList: {
     marginVertical: '2%',
     marginBottom: '4%'
+  },
+  journalCardTitle: {
+    textAlign: 'center',
+    flexWrap: 'wrap',
+    fontSize: 20,
+    lineHeight: 30
   },
   journalTitle: {
     textAlign: 'center',

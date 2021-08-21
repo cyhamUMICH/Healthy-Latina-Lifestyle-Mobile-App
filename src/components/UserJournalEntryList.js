@@ -29,21 +29,28 @@ const deleteEntry = async (item, navigation) => {
 
 
     Alert.alert(
-      "Journal entry is deleted"
+      "Journal Entry Deleted",
+      "The journal entry has been deleted successfully.",
+      [
+        {
+          text: "OK",
+          style: "cancel"
+        }
+      ]
     );
-
-    navigation.navigate("Home");
+    navigation.replace("JournalEntryList");
 
 }
 
 const deleteButton = async (item, navigation) => {
 
 Alert.alert(
-  "Are you sure you want to delete this journal entry?",
-  "This action cannot be undone.",
+  "Delete Journal Entry",
+  "Are you sure you want to delete this journal entry? This action cannot be undone.",
   [
     {
-      text: "No"
+      text: "No",
+      style: "cancel"
     },
     {
       text: "Yes",
@@ -58,25 +65,28 @@ const UserJournalEntryCard = ({item}, contentComponent, navigation) => {
 
   return (
       <Card containerStyle={styles.card}>
-        <View style={styles.horizontalButtonLayout}>
-          <View>
-            <Card.Title style={styles.cardTitle}>{item.journalPromptTitle}</Card.Title>
+        <View>
+          <View style={styles.cardTitleView}>
+            <Card.Title style={styles.journalCardTitle}>{item.journalPromptTitle}</Card.Title>
+          </View>
+          <View style={styles.journalCardDescView}>
             <Text style={styles.journalDesc}> {"Created: " + item.dateEntryAdded.toDate().toString().slice(4, 15)} </Text>
-            
-            <View style={styles.horizontalButtonLayout}>
-              <Button title="View"
+          </View>
+          <View style={styles.horizontalButtonLayout}>
+            <Button title="View"
+              containerStyle={styles.journalButtonContainerStyle}
               buttonStyle={styles.emptyJournalButton}
               titleStyle={styles.buttonText}
-              onPress={() => {navigation.navigate("SavedEntry", item)}}>
-              </Button>
+              onPress={() => {navigation.navigate("SavedEntry", {
+                item: item,
+                navigation: navigation
+              })}} />
 
-              <Button title="Delete"
+            <Button title="Delete"
+              containerStyle={styles.journalButtonContainerStyle}
               buttonStyle={styles.emptyJournalButton}
               titleStyle={styles.buttonText}
-              onPress={() => {deleteButton(item, navigation)}} >
-              </Button>
-            </View>
-
+              onPress={() => {deleteButton(item, navigation)}} />
           </View>
         </View>
       </Card>

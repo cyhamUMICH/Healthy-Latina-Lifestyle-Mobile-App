@@ -16,7 +16,7 @@ const JournalEntryList = (props) => {
   useEffect(() => {
     const fetchList = async () => {
       const dbh = firebase.firestore();
-      dbh.collection("journalEntry").get()
+      dbh.collection("journalEntry").where("userID", "==", firebase.auth().currentUser.uid).get()
       .then((querySnapshot) => {
 
         console.log("query snapshot" + querySnapshot.size)
@@ -25,60 +25,18 @@ const JournalEntryList = (props) => {
           setIsLoaded(true);
         }
         else {
-          let countImages = 0;
+          let count = 0;
           querySnapshot.forEach((doc) => {
             let newDoc = doc.data();
             newDoc.contentID = doc.id;
+            
+            setData(oldList => [...oldList, newDoc]);
+            count++;
 
-            // https://firebase.google.com/docs/storage/web/download-files
-            let storage = firebase.storage();
-            let pathReference = storage.ref(newDoc.theText);
-            pathReference.getDownloadURL()
-            .then((url) => {
-              newDoc.theText = url;
-            })
-            .catch((error) => {
-              newDoc.theText = "";
-            })
-            .finally(() => {
-              // Add to the data list once the image has been resolved
-
-              var user = firebase.auth().currentUser;
-
-              console.log("on the entry" + newDoc.userID)
-              console.log("on the user" + user.uid)
-
-          const getThis = async () => {
-
-            const userRef = dbh.collection('Users').doc(user.uid)
-            const userStuff = await userRef.get()
-            const num = userStuff.data().journalEntryNum
-
-            console.log("user stuff" + userStuff.data().journalEntryNum)
-
-            countImages++;
-              if(newDoc.userID == user.uid){
-              
-              setData(oldList => [...oldList, newDoc]);
-             
-              }
-              else{
-                
-              }
-
-              if (querySnapshot.size === countImages) {
-                setIsLoaded(true);
-              }
-         
+            if (querySnapshot.size === count) {
+              setIsLoaded(true);
             }
-
-            getThis();
-            
-             
-          
-            });
-            
-          })
+          });
         }
       })
       .catch((error) => {
@@ -98,7 +56,7 @@ const JournalEntryList = (props) => {
           contentComponent="JournalEntry"
           navigation={props.navigation}
           contentType="journalEntry"
-          data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
+          data={data.sort((docA, docB) => docB.dateEntryEdited - docA.dateEntryEdited)}
           filterBy="Difficulty,Language,Topic,Duration" />
         : <LoadingSpinner />
     }

@@ -8,41 +8,44 @@ import "firebase/firestore";
 import "firebase/storage";
 import SetFeatured from '../components/SetFeatured';
 
-const JournalEntry = ({route}, props) => {
+const JournalEntry = ({route}) => {
     const [text, setText] = useState();
-    const item = route.params;
+    const {item, navigation } = route.params;
 
 
     const formComplete = () => {
       return text;
     };
 
-    const findIfNull = async (props) => {
+    const findIfNull = async () => {
 
       if(item.description == null){
-       submitWithoutPrompt(props)
+       submitWithoutPrompt()
       }
       else{
-        submitWithPrompt(props)
+        submitWithPrompt()
       }
     
     };
 
-    const saveMessage = async (props) => {
+    const saveMessage = async () => {
 
       Alert.alert(
         "Saved",
         "The Journal Entry has saved successfully.",
         [
           {
-            text: "OK"
+            text: "OK",
+            style: 'cancel'
           }
         ]
       );
+
+      navigation.pop();
     };
 
 
-    const submitWithoutPrompt = async (props) => {
+    const submitWithoutPrompt = async () => {
 
         const dbh = firebase.firestore();
         const docRef = dbh.collection('journalPrompts').doc("undefined");
@@ -61,7 +64,7 @@ const JournalEntry = ({route}, props) => {
               userID: user.uid,
               journalPromptID: doc.id,
             });
-            saveMessage(props)
+            saveMessage()
           }
           else{
             Alert.alert(
@@ -76,7 +79,7 @@ const JournalEntry = ({route}, props) => {
 
     };
 
-    const submitWithPrompt = async (props) => {
+    const submitWithPrompt = async () => {
 
         const dbh = firebase.firestore();
 
@@ -96,7 +99,7 @@ const JournalEntry = ({route}, props) => {
               userID: user.uid,
               journalPromptID: doc.id,
             });
-            saveMessage(props)
+            saveMessage()
           }
           else{
             Alert.alert(
@@ -123,7 +126,11 @@ const JournalEntry = ({route}, props) => {
                 {item.description}
               </Text>
             </ScrollView>
-            <SetFeatured firebaseCollectionName="journalPrompts" item={item} />
+            {item.title !== "" ? 
+              <SetFeatured firebaseCollectionName="journalPrompts" item={item} />
+              :
+              null
+            }
             <View style={styles.journalEntrySpace} >
               <TextInput
                 multiline={true}
@@ -135,7 +142,7 @@ const JournalEntry = ({route}, props) => {
               title="Save"
               buttonStyle={styles.button}
               titleStyle={styles.buttonText}
-              onPress={()=>{findIfNull(props)}}/>
+              onPress={()=>{findIfNull()}}/>
           </View>
         </View>
       </View>

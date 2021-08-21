@@ -67,7 +67,7 @@ export default function ChatScreen({route}) {
     await getContent(currentMessage)
     .then((item) => {
       // Add any content that will require another layer of navigation to this if condition.
-      if(currentMessage.contentComponent === "Challenge" || currentMessage.contentComponent === "Course") {
+      if(currentMessage.contentComponent === "Challenge" || currentMessage.contentComponent === "Course" || currentMessage.contentComponent === "JournalEntry") {
         navigation.navigate(currentMessage.contentComponent, {
           item: item,
           navigation: navigation

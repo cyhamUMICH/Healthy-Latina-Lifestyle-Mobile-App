@@ -1,49 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
+import { Button } from 'react-native-elements';
 import { styles } from '../styles/Styles';
-import { colors } from '../styles/Colors';
-import ContentList from '../components/ContentList';
-import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
-import { Alert } from 'react-native';
 import "firebase/firestore";
 import "firebase/storage";
-import { color } from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
-import { throwIfAudioIsDisabled } from 'expo-av/build/Audio/AudioAvailability';
 
-const SavedEntry = ({route}, item) => {
+const SavedEntry = ({route}) => {
 
-    const [entryText, setEntryText] = useState('');
     const [text, setText] = useState('');
     const [isEditable, setIsEditable] = useState(false);
 
 
-    const theItem = route.params;
-    const dbh = firebase.firestore();
+    const theItem = route.params.item;
+    const navigation = route.params.navigation;
 
     const findIfNull = async () => {
-
+      const dbh = firebase.firestore();
       const myRef = dbh.collection('journalEntry').doc(theItem.contentID);
       await myRef.update({theText: text})
       await myRef.update({dateEntryEdited: new Date()})
 
+      // Refresh entry list to update the saved entry and move it to the top
+      navigation.replace("JournalEntryList");
     };
 
-
-    dbh
-    .collection('journalEntry')
-    .get()
-    .then(snapshot => {
-      snapshot
-        .docs
-        .forEach(doc => {
-          if(doc.id == theItem.contentID){
-            console.log(doc.data().theText) 
-            setEntryText(doc.data().theText)
-          }
-        });
-    });
+    useEffect(() => {
+      setText(theItem.theText)
+    }, []);
 
     return (
         <View style={styles.app}>
@@ -65,18 +50,24 @@ const SavedEntry = ({route}, item) => {
                 multiline={true}
                 editable={isEditable}
                 numberOfLines={3}
-                style={{height: 40}, {fontSize: 20}, {width: 400}}
+                style={styles.journalEntryTextInput}
+                value={text}
                 onChangeText={input => setText(input)}
-                defaultValue={entryText}
               />
             </View>
         <View style={styles.horizontalButtonLayout}>
             <Button
+              containerStyle={styles.journalButtonContainerStyle}
+              buttonStyle={styles.emptyJournalButton}
+              titleStyle={styles.buttonText}
               disabled={isEditable}
               title="Edit"
               onPress={()=>{setIsEditable(true)}}
             />
             <Button
+              containerStyle={styles.journalButtonContainerStyle}
+              buttonStyle={styles.emptyJournalButton}
+              titleStyle={styles.buttonText}
               disabled={!isEditable}
               title="Save"
               onPress={()=>{findIfNull(), setIsEditable(false)}}

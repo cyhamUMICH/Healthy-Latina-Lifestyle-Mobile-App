@@ -34,7 +34,10 @@ const JournalPromptCard = ({item}, contentComponent, navigation, shareContent) =
     <TouchableOpacity
       activeOpacity={0.7}
       onPress={() => {
-        navigation.navigate(contentComponent, item);
+        navigation.navigate(contentComponent, {
+          item: item,
+          navigation: navigation
+        });
       }}>
       <Card containerStyle={styles.card}>
         <View style={styles.horizontalButtonLayout}>
@@ -231,7 +234,13 @@ const JournalPromptContentList = (props) => {
           buttonStyle={styles.emptyJournalButton}
           titleStyle={styles.buttonText}
           title="Empty Journal Prompt" 
-          onPress={() => props.navigation.navigate("JournalEntry", "null")}
+          onPress={() => props.navigation.navigate("JournalEntry", {
+            item: {
+              title: "",
+              description: null
+            },
+            navigation: props.navigation
+          })}
         />
         {admin &&
           <TouchableOpacity style={styles.floatingActionButtonBottomRight} 
