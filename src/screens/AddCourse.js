@@ -11,6 +11,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/storage";
+import CourseSections from '../components/CourseSections';
 
 const AddCourse = ({route}) => {
   const {topics, navigation} = route.params;
@@ -29,6 +30,9 @@ const AddCourse = ({route}) => {
   const [duration, setDuration] = useState();
   const [cost, setCost] = useState();
   const [isFeatured, setIsFeatured] = useState(false);
+  const [numSections, setNumSections] = useState();
+  const [courseSectionDesc, setCourseSectionDesc] = useState();
+  const [courseSectionTitle, setCourseSectionTitle] = useState();
 
   const [isUploadInProgress, setIsUploadInProgress] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
@@ -197,6 +201,17 @@ const AddCourse = ({route}) => {
                     style={styles.inputText} textAlign="center"
                     placeholder="cost" placeholderTextColor={colors.text}
                     onChangeText={input => setCost(input)} />
+                  <TextInput
+                    style={styles.inputText} textAlign="center"
+                    placeholder="number of sections" placeholderTextColor={colors.text}
+                    onChangeText={input => setNumSections(input)} />
+                  <CourseSections
+                    numSections={numSections}
+                    courseSectionDesc={courseSectionDesc}
+                    setCourseSectionDesc={setCourseSectionDesc}
+                    courseSectionTitle={courseSectionTitle}
+                    setCourseSectionTitle={setCourseSectionTitle}
+                  />
                   <CheckBox
                     title="Featured"
                     checkedIcon='check-square'
