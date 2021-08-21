@@ -8,6 +8,7 @@ import "firebase/firestore";
 
 const SetFeatured = (props) => {
   const [isFeatured, setIsFeatured] = useState(props.item.featured);
+  const [admin, setAdmin] = useState(false);
 
   const submit = async (newValue) => {
     const dbh = firebase.firestore();
@@ -39,24 +40,46 @@ const SetFeatured = (props) => {
     });
   };
 
+  useEffect(() => {
+    const loadAdmin = async () =>{
+      var user = firebase.auth().currentUser
+        if (user) {
+          await firebase.firestore().collection('Users').doc(user.uid).get()
+            .then(documentSnapshot => getAdmin(documentSnapshot))
+            .then(admin => setAdmin(admin));
+        }
+        else {
+          setAdmin(false);
+        }
+    };
+    
+    const getAdmin = (documentSnapshot) =>{
+      return documentSnapshot.get('admin');
+    };
+
+    loadAdmin();
+  },[]);
+
   return(
-    <TouchableOpacity style={styles.floatingActionButtonTopRight} 
-      onPress={async () => {
-        // Update Firestore
-        await submit(!isFeatured);
-        // Update the item so change persists in app even without refreshing the content list data from Firestore
-        props.item.featured = !isFeatured;
-        setIsFeatured(!isFeatured);
-      }}>
-      <View style={styles.floatingActionIcon}>
-        { isFeatured ?
-          <Icon name="star" type="material" 
-            color={colors.text} size={styles.setFeaturedIconSize}/> 
-         :
-          <Icon name="star-outline" type="material" color={colors.text} size={styles.setFeaturedIconSize}/> 
-         }
-      </View>
-    </TouchableOpacity>
+    admin ?
+      <TouchableOpacity style={styles.floatingActionButtonTopRight} 
+        onPress={async () => {
+          // Update Firestore
+          await submit(!isFeatured);
+          // Update the item so change persists in app even without refreshing the content list data from Firestore
+          props.item.featured = !isFeatured;
+          setIsFeatured(!isFeatured);
+        }}>
+        <View style={styles.floatingActionIcon}>
+          { isFeatured ?
+            <Icon name="star" type="material" 
+              color={colors.text} size={styles.setFeaturedIconSize}/> 
+          :
+            <Icon name="star-outline" type="material" color={colors.text} size={styles.setFeaturedIconSize}/> 
+          }
+        </View>
+      </TouchableOpacity>
+    : null
   );
 };
 

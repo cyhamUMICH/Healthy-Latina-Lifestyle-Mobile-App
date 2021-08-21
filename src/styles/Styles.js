@@ -56,7 +56,8 @@ export const styles = StyleSheet.create({
   },
   noContent: {
     alignSelf: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginBottom: '2%'
   },
   cardList: {
     marginVertical: '2%',
@@ -611,37 +612,43 @@ export const styles = StyleSheet.create({
     marginBottom: '2%'
   },
   journalCardList: {
-    
+    marginVertical: '2%',
+    marginBottom: '4%'
   },
-  journalCardTitle: {
+  journalTitle: {
     textAlign: 'center',
     flexWrap: 'wrap',
-    fontSize: 20,
-    lineHeight: 30
+    fontSize: 28
+  },
+  journalDesc: {
+    textAlign: 'center',
+    flexWrap: 'wrap',
+    fontSize: 14
   },
   journalCardDesc: {
-    textAlign: 'center',
+    textAlign: 'left',
     flexWrap: 'wrap',
-    fontSize: 14,
-    lineHeight: 30
+    fontSize: 14
+  },
+  journalCardDescView: {
+    marginBottom: '5%'
   },
   journalTitles: {
-    marginTop: '20%',
-    marginBottom: '0%',
-    bottom: 90,
+    flex: 1,
+    marginVertical: '2%'
   },
   journalEntrySpace:{
+    flex: 6,
     backgroundColor: colors.journalTextBackground, 
-    borderBottomColor: '#CCCCCC',  
-    borderTopColor: '#CCCCCC',
-    borderLeftColor: '#CCCCCC',
-    borderRightColor: '#CCCCCC',
-    borderBottomWidth: 1, 
-    borderTopWidth: 1,
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    bottom:"8%",
-    height: "60%"
+    borderColor: colors.journalTextBorder,
+    borderWidth: 1,
+    marginBottom: '2%'
+  },
+  journalEntryTextInput:
+  {
+    height: '100%',
+    textAlign: 'left',
+    textAlignVertical: 'top'
   },
   courseTitle:{
     textAlign: 'center',

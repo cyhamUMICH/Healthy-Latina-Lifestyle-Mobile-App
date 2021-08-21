@@ -6,9 +6,9 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/storage";
-import JournalPromptList from '../components/JournalPromptList';
+import JournalPromptContentList from '../components/JournalPromptContentList';
 
-const Journal = (props) => {
+const JournalPromptList = (props) => {
   const [data, setData] = useState([]);           
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -27,20 +27,35 @@ const Journal = (props) => {
             let newDoc = doc.data();
             newDoc.contentID = doc.id;
             
-            // https://firebase.google.com/docs/storage/web/download-files
-            let storage = firebase.storage();
-            let pathReference = storage.ref(newDoc.difficulty);
-            pathReference.getDownloadURL()
-            .then((url) => {
-              newDoc.difficulty = url;
-            })
-            .catch((error) => {
-              newDoc.difficulty = "";
-            })
-            .finally(() => {
+            if (newDoc.imagePath !== "") {
+              // https://firebase.google.com/docs/storage/web/download-files
+              let storage = firebase.storage();
+              let pathReference = storage.ref(newDoc.imagePath);
+              pathReference.getDownloadURL()
+              .then((url) => {
+                newDoc.imagePath = url;
+              })
+              .catch((error) => {
+                newDoc.imagePath = "";
+              })
+              .finally(() => {
+                console.log(newDoc.imagePath);
+                // Add to the data list once the image has been resolved
+                setData(oldList => [...oldList, newDoc]);
+                
+                countImages++;
+
+                // Data is loaded once the number of images is the same as
+                // the number in the snapshot
+                if (querySnapshot.size === countImages) {
+                  setIsLoaded(true);
+                }
+              });
+            }
+            else {
+              newDoc.imagePath = "";
               // Add to the data list once the image has been resolved
               setData(oldList => [...oldList, newDoc]);
-              
               countImages++;
 
               // Data is loaded once the number of images is the same as
@@ -48,7 +63,7 @@ const Journal = (props) => {
               if (querySnapshot.size === countImages) {
                 setIsLoaded(true);
               }
-            });
+            }
           })
         }
       })
@@ -65,16 +80,14 @@ const Journal = (props) => {
     <View style={styles.app}>
     {
       isLoaded ? 
-        <JournalPromptList 
-          contentComponent="JournalEntry"
+        <JournalPromptContentList 
           navigation={props.navigation}
-          contentType="Journal Prompts"
           data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
-          filterBy="Difficulty,Language,Topic,Duration" />
+          filterBy="Difficulty,Language,Topic" />
         : <LoadingSpinner />
     }
     </View>
   );
 };
 
-export default Journal;
+export default JournalPromptList;

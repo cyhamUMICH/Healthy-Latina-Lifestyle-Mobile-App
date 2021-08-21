@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, ScrollView } from 'react-native';
+import { Button } from 'react-native-elements';
 import { styles } from '../styles/Styles';
-import { colors } from '../styles/Colors';
-import ContentList from '../components/ContentList';
-import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
 import { Alert } from 'react-native';
 import "firebase/firestore";
 import "firebase/storage";
-import { color } from 'react-native-reanimated';
-import { ScrollView } from 'react-native-gesture-handler';
 import SetFeatured from '../components/SetFeatured';
 
 const JournalEntry = ({route}, props) => {
@@ -35,12 +31,11 @@ const JournalEntry = ({route}, props) => {
     const saveMessage = async (props) => {
 
       Alert.alert(
-        "Save",
-        "Journal Entry is saved",
+        "Saved",
+        "The Journal Entry has saved successfully.",
         [
           {
-            text: "OK",
-            onPress: () => {props.navigation.navigate("Home")}
+            text: "OK"
           }
         ]
       );
@@ -129,25 +124,31 @@ const JournalEntry = ({route}, props) => {
 
     return (
       <View style={styles.app}>
-          <View style={styles.journalTitles} >
-            <Text style={styles.journalCardTitle}>
-              {item.title}
-            </Text>    
-            <Text style={styles.journalCardDesc}>
+        <View style={styles.fullWidthWindow}>
+          <View style={styles.floatingActionView}>
+            <ScrollView style={styles.journalTitles} >
+              <Text style={styles.journalTitle}>
+                {item.title}
+              </Text>    
+              <Text style={styles.journalDesc}>
                 {item.description}
-            </Text>
+              </Text>
+            </ScrollView>
+            <SetFeatured firebaseCollectionName="journalPrompts" item={item} />
+            <View style={styles.journalEntrySpace} >
+              <TextInput
+                multiline={true}
+                style={styles.journalEntryTextInput}
+                placeholder="Write your thoughts here..."
+                onChangeText={input => setText(input)}/>
+            </View>
+            <Button
+              title="Save"
+              buttonStyle={styles.button}
+              titleStyle={styles.buttonText}
+              onPress={()=>{findIfNull(props)}}/>
           </View>
-          <SetFeatured firebaseCollectionName="journalPrompts" item={item} />
-          <View style={styles.journalEntrySpace} >
-          <TextInput
-            multiline={true}
-            style={{height: 40}, {fontSize: 20}, {width: 400}}
-            placeholder="Journal Entry goes here"
-            onChangeText={input => setText(input)}/>
-          </View>
-          <Button
-          title="Save"
-          onPress={()=>{findIfNull(props)}}/>
+        </View>
       </View>
     );
   };

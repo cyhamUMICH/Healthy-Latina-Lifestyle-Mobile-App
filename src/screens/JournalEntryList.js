@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { styles } from '../styles/Styles';
-import ContentList from '../components/ContentList';
 import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/storage";
-import JournalPromptList from '../components/JournalPromptList';
 import UserJournalEntryList from '../components/UserJournalEntryList';
 
 const JournalEntryList = (props) => {

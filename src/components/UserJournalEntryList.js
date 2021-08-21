@@ -2,18 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, FlatList, TouchableOpacity, Alert } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
 import { styles } from '../styles/Styles';
-import { colors } from '../styles/Colors';
-import FilterModal from '../components/ContentFilter';
 import { GetTopics } from '../components/GetTopics';
-import Tags from '../components/Tags';
 import LoadingSpinner from '../components/LoadingSpinner';
 import * as firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/storage";
-import { Drawer } from 'react-native-paper';
-import { Groups } from '../screens/Groups';
-import defaultImage from '../../assets/logo-icon.png';
-import { ScrollView } from 'react-native-gesture-handler';
 
 const UserJournalEntryCards = (props) => {
 
@@ -76,8 +69,8 @@ const UserJournalEntryCard = ({item}, contentComponent, navigation) => {
       <Card containerStyle={styles.card}>
         <View style={styles.horizontalButtonLayout}>
           <View>
-            <Card.Title style={styles.journalCardTitle}>{item.journalPromptTitle}</Card.Title>
-            <Text style={styles.journalCardDesc}> {"Created: " + item.dateEntryAdded.toDate().toString().slice(4, 15)} </Text>
+            <Card.Title style={styles.cardTitle}>{item.journalPromptTitle}</Card.Title>
+            <Text style={styles.journalDesc}> {"Created: " + item.dateEntryAdded.toDate().toString().slice(4, 15)} </Text>
             
             <View style={styles.horizontalButtonLayout}>
               <Button title="View"
@@ -128,19 +121,6 @@ const UserJournalEntryList = (props) => {
           filteredList={filteredList}
           contentComponent={props.contentComponent}
           navigation={props.navigation} />
-        
-        <FilterModal
-          allData={props.data}
-          topicsList={topicsList}
-          filterBy={filterBy}
-          visibleFunction={setFilterModalVisible}
-          visible={filterModalVisible}
-          filterSettingsFunction={setFilterSettings}
-          filterSettings={filterSettings}
-          filteredListFunction={setFilteredList}
-          filteredList={filteredList}/>
-
-        
       </View>
     </View>
     : <LoadingSpinner />

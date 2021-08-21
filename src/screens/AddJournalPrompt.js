@@ -58,8 +58,11 @@ const AddJournalPrompt = ({route}, props) => {
         topics: selectedTopics,
         featured: isFeatured,
         dateAdded: new Date(),
-        imagePath: "meditations/images/test.png"
+        imagePath: ""
       });
+
+      navigation.goBack();
+      navigation.replace("JournalPromptList");
     }
     else
     {

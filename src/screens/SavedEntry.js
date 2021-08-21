@@ -52,15 +52,15 @@ const SavedEntry = ({route}, item) => {
 
         <View style={styles.journalTitles}>
       
-            <Text style={styles.journalCardTitle}>
+            <Text style={styles.journalTitle}>
                 {theItem.journalPromptTitle}
             </Text>  
 
-            <Text style={styles.journalCardDesc}>
+            <Text style={styles.journalDesc}>
                 {theItem.journalPromptDesc}
             </Text>
 
-            <Text style={styles.journalCardDesc}> 
+            <Text style={styles.journalDesc}> 
               {"Last edited: " + theItem.dateEntryEdited.toDate().toString().slice(4, 15)} 
             </Text>
           

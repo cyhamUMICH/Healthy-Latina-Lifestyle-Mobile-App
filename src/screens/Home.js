@@ -49,7 +49,7 @@ const homeButtonsAdmin = [
   },
   {
     name: "Journal Prompts",
-    page: "Journal",
+    page: "JournalPromptList",
     iconName: "book",
     iconType: "antdesign"
   },
@@ -100,7 +100,7 @@ const homeButtons = [
   },
   {
     name: "Journal Prompts",
-    page: "Journal",
+    page: "JournalPromptList",
     iconName: "book",
     iconType: "antdesign"
   },
@@ -201,23 +201,29 @@ const Home = (props) => {
             let newDoc = doc.data();
             newDoc.contentID = doc.id;
             
-            // https://firebase.google.com/docs/storage/web/download-files
-            let storage = firebase.storage();
-            
-            let pathReference = storage.ref(newDoc.imagePath);
-            
-            pathReference.getDownloadURL()
-            .then((url) => {
-              newDoc.imagePath = url;
-            })
-            .catch((error) => {
-              newDoc.imagePath = "";
-            })
-            .finally(() => {
-              // Add to the data list once the image has been resolved
-              setDataFunction(oldList => [...oldList, newDoc]);
-            });
+            if (newDoc.imagePath !== "") {
+              // https://firebase.google.com/docs/storage/web/download-files
+              let storage = firebase.storage();
+                          
+              let pathReference = storage.ref(newDoc.imagePath);
 
+              pathReference.getDownloadURL()
+              .then((url) => {
+                newDoc.imagePath = url;
+              })
+              .catch((error) => {
+                newDoc.imagePath = "";
+              })
+              .finally(() => {
+                // Add to the data list once the image has been resolved
+                setDataFunction(oldList => [...oldList, newDoc]);
+              });
+            }
+            else {
+              newDoc.imagePath = "";
+               // Add to the data list once the image has been resolved
+               setDataFunction(oldList => [...oldList, newDoc]);
+            }
 
           })
         }
@@ -364,7 +370,7 @@ const Home = (props) => {
                 <FlatList
                   horizontal={true}
                   data={journalPrompts.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
-                  renderItem={(item) => contentRenderItem(item, "Journal", props.navigation)}
+                  renderItem={(item) => contentRenderItem(item, "JournalEntry", props.navigation)}
                   keyExtractor={item => item.contentID}
                   ItemSeparatorComponent={renderSeparatorItem} />
               </View>

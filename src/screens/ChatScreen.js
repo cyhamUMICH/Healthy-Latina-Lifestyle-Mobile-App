@@ -24,7 +24,6 @@ export default function ChatScreen({route}) {
         if (doc.exists) {
           let newDoc = doc.data();
           newDoc.contentID = doc.id;
-          
           // if the image is attached, send that one along
           if (currentMessage.image) {
             newDoc.imagePath = currentMessage.image;
@@ -33,19 +32,25 @@ export default function ChatScreen({route}) {
           // else if the image isn't attached, try to get it again
           // This might happen if there was a problem getting the image upon sending the content (Firebase Storage network error, etc.)
           else {
-            // https://firebase.google.com/docs/storage/web/download-files
-            let storage = firebase.storage();
-            let pathReference = storage.ref(newDoc.imagePath);
-            pathReference.getDownloadURL()
-            .then((url) => {
-              newDoc.imagePath = url;
-            })
-            .catch((error) => {
+            if (newDoc.imagePath !== "") {
+              // https://firebase.google.com/docs/storage/web/download-files
+              let storage = firebase.storage();
+              let pathReference = storage.ref(newDoc.imagePath);
+              pathReference.getDownloadURL()
+              .then((url) => {
+                newDoc.imagePath = url;
+              })
+              .catch((error) => {
+                newDoc.imagePath = "";
+              })
+              .finally(() => {
+                resolve(newDoc);
+              });
+            }
+            else {
               newDoc.imagePath = "";
-            })
-            .finally(() => {
               resolve(newDoc);
-            });
+            }
           }
         }
         else {
