@@ -241,20 +241,22 @@ const Home = (props) => {
       await fetchFeatured("journalPrompts", setJournalPrompts);
     };
     const loadAdmin = async () =>{
-            var user = firebase.auth().currentUser
-            await firebase.firestore().collection('Users').doc(user.uid).get()
+      var user = firebase.auth().currentUser
+        if (user) {
+          await firebase.firestore().collection('Users').doc(user.uid).get()
             .then(documentSnapshot => getAdmin(documentSnapshot))
-            .then(admin => setAdmin(admin))
+            .then(admin => setAdmin(admin));
+        }
+        else {
+          setAdmin(false);
+        }
+    };
 
-            }
+    const getAdmin = (documentSnapshot) =>{
+      return documentSnapshot.get('admin');
+    };
 
-
-            const getAdmin = (documentSnapshot) =>{
-            return documentSnapshot.get('admin');
-
-            }
-
-        loadAdmin();
+    loadAdmin();
   
     if (isFocused) {
       resetAll();

@@ -15,7 +15,7 @@ const CourseCards = (props) => {
             data={props.filteredList}
             renderItem={(item) => CourseCard(item, props.contentComponent, props.navigation)}
             keyExtractor={item => item.contentID} /> 
-        : <Text style={styles.noContent}>No {props.contentType} Match Your Search</Text>
+        : <Text style={styles.noContent}>No {props.contentType} Exist</Text>
     );
 };
 

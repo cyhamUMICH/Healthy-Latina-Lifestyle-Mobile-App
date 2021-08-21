@@ -55,7 +55,8 @@ export const styles = StyleSheet.create({
     padding: '10%'
   },
   noContent: {
-    alignSelf: 'center'
+    alignSelf: 'center',
+    textAlign: 'center'
   },
   cardList: {
     marginVertical: '2%',
@@ -349,12 +350,14 @@ export const styles = StyleSheet.create({
     fontSize: 18
   },
   editAccountProfile:{
+    flex: 1,
     width: null,
     height: null,
     aspectRatio: 1,
-    borderRadius: 100,
+    borderRadius: Dimensions.get('window').height / 2,
     marginHorizontal: '15%',
     marginBottom: '5%',
+    alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -369,6 +372,13 @@ export const styles = StyleSheet.create({
     width: null,
     height: null,
     aspectRatio: 16/9,
+    marginBottom: '2%'
+  },
+  uploadedProfileImage: {
+    width: null,
+    height: null,
+    aspectRatio: 1,
+    borderRadius: Dimensions.get('window').height / 2,
     marginBottom: '2%'
   },
   timerIntentionPicker: {

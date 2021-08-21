@@ -1,5 +1,6 @@
 import React from 'react';
 import { Alert, View } from 'react-native';
+import { CommonActions } from '@react-navigation/native';
 import { DrawerContentScrollView } from '@react-navigation/drawer';
 import { Button, Icon } from 'react-native-elements';
 import firebase from 'firebase';
@@ -60,7 +61,16 @@ const SideMenu = (props) => {
         titleStyle={styles.buttonText}
         onPress={() => {
           firebase.auth().signOut().then(() => {
+            // Navigate first, then reset to make sure the drawer has closed properly
             props.navigation.navigate("Login");
+            props.navigation.dispatch(
+              CommonActions.reset({
+                index: 1,
+                routes: [
+                  { name: 'Login' },
+                ],
+              })
+            );
           })
           .catch((error) => {
             Alert.alert(

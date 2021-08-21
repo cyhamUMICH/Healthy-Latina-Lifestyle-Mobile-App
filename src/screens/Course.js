@@ -237,7 +237,7 @@ const Course = ({route}) => {
           <CourseSectionList 
                contentComponent="CourseSection"
                navigation={navigation}
-               contentType="courseSections"
+               contentType="Course Sections"
                data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)} />
         </View>
       </View>

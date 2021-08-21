@@ -24,7 +24,7 @@ const UserJournalEntryCards = (props) => {
         data={props.filteredList}
         renderItem={(item) => UserJournalEntryCard(item, props.contentComponent, props.navigation)}
         keyExtractor={item => item.contentID} /> 
-    : <Text style={styles.noContent}>You have no journal entries</Text>
+    : <Text style={styles.noContent}>You have no journal entries.</Text>
   );
 };
 

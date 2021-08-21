@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList, TouchableOpacity } from 'react-native';
+import { View, FlatList, TouchableOpacity, Text } from 'react-native';
 import { List, Divider } from 'react-native-paper';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { styles } from '../styles/Styles';
@@ -116,29 +116,38 @@ setUsersGroups([]);
       { isLoaded ?
         <View style={styles.fullWidthWindow}>
           <View>
-            <FlatList
-              data={threads}
-              keyExtractor={(item) => item._id}
-              ItemSeparatorComponent={() => <Divider />}
-              renderItem={({ item }) => (
-                <TouchableOpacity
-                  onPress= {() => props.navigation.navigate("ChatScreen", {
-                    thread: item,
-                    navigation: props.navigation
-                  })}
-                  onLongPress = {() => askCopyOrDelete(item)}
-                >
-                  <List.Item
-                    title={item.name}
-                    description= {"Group Code: " + item._id}
-                    titleNumberOfLines={1}
-                    titleStyle={styles.listTitle}
-                    descriptionStyle={styles.listDescription}
-                    descriptionNumberOfLines={1}
-                  />
-                </TouchableOpacity>
-              )}
-            />
+            {
+              threads.length == 0
+              ?
+              <Text style={styles.noContent}>You are not currently in any groups.
+                {"\n"}
+                You may create a room or join an existing one.
+              </Text>
+              :
+              <FlatList
+                data={threads}
+                keyExtractor={(item) => item._id}
+                ItemSeparatorComponent={() => <Divider />}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    onPress= {() => props.navigation.navigate("ChatScreen", {
+                      thread: item,
+                      navigation: props.navigation
+                    })}
+                    onLongPress = {() => askCopyOrDelete(item)}
+                  >
+                    <List.Item
+                      title={item.name}
+                      description= {"Group Code: " + item._id}
+                      titleNumberOfLines={1}
+                      titleStyle={styles.listTitle}
+                      descriptionStyle={styles.listDescription}
+                      descriptionNumberOfLines={1}
+                    />
+                  </TouchableOpacity>
+                )}
+              />            
+            }
           </View>
           <View style = {styles.smallerWidthWindow}>
             <View style = {styles.chatHorizontalLayout}>

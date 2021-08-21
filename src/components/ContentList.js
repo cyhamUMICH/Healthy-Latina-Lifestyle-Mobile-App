@@ -217,20 +217,22 @@ const ContentList = (props) => {
   useEffect(() => {
     GetTopics(setIsTopicsLoaded, setTopicsList);
     const loadAdmin = async () =>{
-                var user = firebase.auth().currentUser
-                await firebase.firestore().collection('Users').doc(user.uid).get()
-                .then(documentSnapshot => getAdmin(documentSnapshot))
-                .then(admin => setAdmin(admin))
+      var user = firebase.auth().currentUser
+        if (user) {
+          await firebase.firestore().collection('Users').doc(user.uid).get()
+            .then(documentSnapshot => getAdmin(documentSnapshot))
+            .then(admin => setAdmin(admin));
+        }
+        else {
+          setAdmin(false);
+        }
+    };
+    
+    const getAdmin = (documentSnapshot) =>{
+      return documentSnapshot.get('admin');
+    };
 
-                }
-
-
-                const getAdmin = (documentSnapshot) =>{
-                return documentSnapshot.get('admin');
-
-                }
-
-            loadAdmin();
+    loadAdmin();
   }, []);
 
   useEffect(() => {

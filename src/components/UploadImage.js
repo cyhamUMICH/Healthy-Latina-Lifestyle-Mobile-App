@@ -22,7 +22,7 @@ const UploadImage = (props) => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [16, 9],
+      aspect: (props.isProfilePicture) ? [1, 1] : [16, 9],
       quality: 1
     });
 
@@ -46,7 +46,8 @@ const UploadImage = (props) => {
         }
         iconRight
         onPress={pickImage} />
-      {props.image && <Image source={{ uri: props.image.uri }} style={styles.uploadedImage} />}
+      {props.image && <Image source={{ uri: props.image.uri }} 
+        style={props.isProfilePicture ? styles.uploadedProfileImage : styles.uploadedImage} />}
     </View>
   );
 };
