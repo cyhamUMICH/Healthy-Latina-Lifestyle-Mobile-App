@@ -304,19 +304,18 @@ export const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   meditationPhoto: {
-    width: "80%",
+    width: "90%",
     height: null,
-    aspectRatio: 1,
-    borderRadius: Dimensions.get('window').height / 2,
+    aspectRatio: 16/9,
+    borderRadius: Dimensions.get('window').height / 75,
     alignSelf: 'center'
   },
   challengeVideo:{
-    width: 300,
-    height: 300,
-    borderRadius: 200,
-    alignItems: 'center',
-    justifyContent: 'center',
-    left: 50
+    width: "90%",
+    height: null,
+    aspectRatio: 16/9,
+    borderRadius: Dimensions.get('window').height / 75,
+    alignSelf: 'center'
   },
   yogaVideo: {
     width: "90%",
