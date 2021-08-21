@@ -68,7 +68,7 @@ const Journal = (props) => {
         <JournalPromptList 
           contentComponent="JournalEntry"
           navigation={props.navigation}
-          contentType="journalPrompts"
+          contentType="Journal Prompts"
           data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)}
           filterBy="Difficulty,Language,Topic,Duration" />
         : <LoadingSpinner />

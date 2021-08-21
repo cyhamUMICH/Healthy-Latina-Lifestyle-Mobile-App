@@ -66,6 +66,9 @@ export const styles = StyleSheet.create({
     marginTop: 0,
     marginBottom: '2%'
   },
+  cardTitleView: {
+    flex: 1
+  },
   cardTitle: {
     textAlign: 'left',
     flexWrap: 'wrap',
@@ -216,6 +219,9 @@ export const styles = StyleSheet.create({
   },
   modalText: {
     fontSize: 18
+  },
+  groupSelectorErrorTextView: {
+    paddingBottom: '5%'
   },
   horizontalButtonLayout: {
     flexDirection: 'row',
@@ -559,14 +565,25 @@ export const styles = StyleSheet.create({
 
   },
   chatHorizontalLayout:{
-  flex: 0,
-  flexDirection: 'row',
-  justifyContent: 'space-around',
-  width: '100%',
-
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
   },
   chatButton: {
-      backgroundColor: colors.button,
+    backgroundColor: colors.button,
+  },
+  chatButtonContainer: {
+    alignSelf: 'flex-end'
+  },
+  chatImage: {
+    marginLeft: '2%',
+    marginTop: '2%',
+    aspectRatio: 16/9,
+    width: '50%',
+    height: null,
+    borderRadius: Dimensions.get('window').height / 75,
+    resizeMode: 'cover'
   },
   challengeDayTitle: {
     fontSize: 24,

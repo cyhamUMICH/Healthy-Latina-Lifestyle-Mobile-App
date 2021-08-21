@@ -6,6 +6,7 @@ import { styles } from '../styles/Styles';
 import firebase from 'firebase';
 import { Alert } from 'react-native';
 import { Button } from 'react-native-elements';
+import Clipboard from '@react-native-community/clipboard';
 import 'firebase/firestore';
 import 'firebase/storage';
 
@@ -14,9 +15,22 @@ const ChatRoomHome =(props)=> {
   const [usersGroups, setUsersGroups] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-function createTwoButtonAlertForDelete(item){
-Alert.alert(
-      "Delete Room",
+  const askCopyOrDelete = (item) => {
+    Alert.alert(
+      "",
+      "Would you like to leave this room or copy the group code?",
+      [
+        { text: "Leave Room", onPress: () => createTwoButtonAlertForDelete(item) },
+        { text: "Copy Group Code", 
+          style: 'cancel',onPress: () => Clipboard.setString(item._id) }
+      ],
+      { cancelable: true }
+    );
+  };
+
+  const createTwoButtonAlertForDelete = (item) => {
+    Alert.alert(
+      "Leave Room",
       "This will remove you from the selected chat room. You can rejoin later if you have the room code",
       [
         {
@@ -27,7 +41,7 @@ Alert.alert(
       ],
       { cancelable: true }
     );
-}
+  };
 
 async function deleteChat(item){
 var id = item._id;
@@ -93,80 +107,60 @@ setUsersGroups([]);
     }
   };
 
-  /*async function CreateRoom() {
-    var user = firebase.auth().currentUser;
-    var docID;
-    await firebase.firestore().collection("Groups").add({
-      name: 'Room ' + threads.length,
-      message:'default'
-    })
-    .then(docRef => docID = docRef.id);
-
-    await firebase.firestore().collection("Users").doc(user.uid).set({
-      GroupID:firebase.firestore.FieldValue.arrayUnion(docID)
-    }, {merge:true});
-
-    // Update usersGroups to be empty, so the new group will appear on the list.
-    // Changing usersGroups will trigger useEffect, so fetchRooms will be called.
-    // This function calls fetchUsersGroups when usersGroups is empty which will update the list.
-    setIsLoaded(false);
-    setUsersGroups([]);
-  }
-*/
   useEffect(() => { 
     fetchRooms();
   }, [usersGroups]);
 
   return(
     <View style={styles.app}>
-    <View style={styles.fullWidthWindow}>
       { isLoaded ?
-        <View>
-          <FlatList
-            data={threads}
-            keyExtractor={(item) => item._id}
-            ItemSeparatorComponent={() => <Divider />}
-            renderItem={({ item }) => (
-
-              <TouchableOpacity
-              onPress= {() => props.navigation.navigate("ChatScreen", {
-                thread: item
-              })}
-              onLongPress = {() => createTwoButtonAlertForDelete(item)}
-              >
-              <List.Item
-                title={item.name}
-                description= {"Group Code: " + item._id}
-                titleNumberOfLines={1}
-                titleStyle={styles.listTitle}
-                descriptionStyle={styles.listDescription}
-                descriptionNumberOfLines={1}
-              />
-              </TouchableOpacity>
-            )}
-          />
-        </View>
-      : <LoadingSpinner />
-      }
-
-                   </View>
-      <View style = {styles.smallerWidthWindow}>
-      <View style = {styles.chatHorizontalLayout}>
-                <Button
-                  buttonStyle={styles.chatButton}
-                  titleStyle={styles.buttonText}
-                  title="Create Room" onPress={() => props.navigation.navigate("CreateRoom")}
+        <View style={styles.fullWidthWindow}>
+          <View>
+            <FlatList
+              data={threads}
+              keyExtractor={(item) => item._id}
+              ItemSeparatorComponent={() => <Divider />}
+              renderItem={({ item }) => (
+                <TouchableOpacity
+                  onPress= {() => props.navigation.navigate("ChatScreen", {
+                    thread: item,
+                    navigation: props.navigation
+                  })}
+                  onLongPress = {() => askCopyOrDelete(item)}
+                >
+                  <List.Item
+                    title={item.name}
+                    description= {"Group Code: " + item._id}
+                    titleNumberOfLines={1}
+                    titleStyle={styles.listTitle}
+                    descriptionStyle={styles.listDescription}
+                    descriptionNumberOfLines={1}
                   />
+                </TouchableOpacity>
+              )}
+            />
+          </View>
+          <View style = {styles.smallerWidthWindow}>
+            <View style = {styles.chatHorizontalLayout}>
+              <Button
+                containerStyle={styles.chatButtonContainer}
+                buttonStyle={styles.chatButton}
+                titleStyle={styles.buttonText}
+                title="Create Room" onPress={() => props.navigation.navigate("CreateRoom")}
+                />
 
-                     <Button
-                      buttonStyle={styles.chatButton}
-                      titleStyle={styles.buttonText}
-                      title="Join Room" onPress={() => props.navigation.navigate("JoinRoom")}
-                      />
-                   </View>
-                   </View>
+              <Button
+                containerStyle={styles.chatButtonContainer}
+                buttonStyle={styles.chatButton}
+                titleStyle={styles.buttonText}
+                title="Join Room" onPress={() => props.navigation.navigate("JoinRoom")}
+                />
+            </View>
+          </View>
       </View>
+      : <LoadingSpinner />
+    }
+  </View>
   );
-  // ...rest of the component
 }
 export default ChatRoomHome;

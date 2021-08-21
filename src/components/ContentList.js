@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, Image, FlatList, TouchableOpacity, Alert } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
+import { useIsFocused } from "@react-navigation/native";
 import { styles } from '../styles/Styles';
 import { colors } from '../styles/Colors';
 import FilterModal from '../components/ContentFilter';
+import ShareContentGroupSelector from './ShareContentGroupSelector';
 import { GetTopics } from '../components/GetTopics';
 import Tags from '../components/Tags';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { Drawer } from 'react-native-paper';
-import { Groups } from '../screens/Groups';
 import defaultImage from '../../assets/logo-icon.png';
 import * as firebase from 'firebase/app';
 import "firebase/firestore";
@@ -21,15 +21,13 @@ const ContentCards = (props) => {
     ? <FlatList 
         style={props.style}
         data={props.filteredList}
-        renderItem={(item) => ContentCard(item, props.contentComponent, props.navigation)}
+        renderItem={(item) => ContentCard(item, props.contentComponent, props.navigation, props.shareContent)}
         keyExtractor={item => item.contentID} /> 
     : <Text style={styles.noContent}>No {props.contentType} Match Your Search</Text>
   );
 };
 
-const ContentCard = ({item}, contentComponent, navigation) => {
-
-  console.log("the content component for all" + contentComponent)
+const ContentCard = ({item}, contentComponent, navigation, shareContent) => {
   // Convert seconds to HH:MM:SS, then remove HH if 00
   // https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript
 
@@ -64,17 +62,13 @@ const ContentCard = ({item}, contentComponent, navigation) => {
         <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
         <Card.Divider/>
         <View style={styles.horizontalButtonLayout}>
-          <View>
+          <View style={styles.cardTitleView}>
             <Card.Title style={styles.cardTitle}>{item.title}</Card.Title>
           </View>
           <View>
-
-
-            <TouchableOpacity onPress={() => {navigation.navigate("ChatRoomHome", item)}}>
+            <TouchableOpacity onPress={() => {shareContent(item);}}>
               <Icon name="send" type="font-awesome" color={colors.text} />
             </TouchableOpacity>
-
-
           </View>
         </View>
       </Card>
@@ -84,9 +78,141 @@ const ContentCard = ({item}, contentComponent, navigation) => {
 };
 
 const ContentList = (props) => {
+  const isFocused = useIsFocused();
+
   const [isTopicsLoaded, setIsTopicsLoaded] = useState(false);
   const [topicsList, setTopicsList] = useState([]);
+  const [groupsLoaded, setIsGroupsLoaded] = useState(false);
+  const [groupsList, setGroupsList] = useState([]);
+  const [sendItem, setSendItem] = useState(null);
+  const [groupsModalVisible, setGroupsModalVisible] = useState(false);
   const [admin, setAdmin] = useState(false);
+
+  const fetchUsersGroups = () => {
+    return new Promise((resolve, reject) => {
+      const dbh = firebase.firestore();
+      dbh.collection("Users").doc(firebase.auth().currentUser.uid).get()
+      .then((doc) => {
+        if (doc.exists) {
+          if (doc.data().GroupID && doc.data().GroupID.length !== 0) {
+            resolve(doc.data().GroupID);
+          }
+        } 
+        else {
+          reject("Error retrieving the user data.");
+        }
+      })
+      .catch((error) => {
+        reject("Error retrieving the data: " + error);
+      });
+    });
+  };
+  
+  const fetchRooms = (usersGroups) => {
+    return new Promise((resolve, reject) => {
+      const dbh = firebase.firestore();
+      // Code from: https://stackoverflow.com/questions/62524946/firestore-check-if-id-exists-against-an-array-of-ids
+      dbh.collection("Groups").where(firebase.firestore.FieldPath.documentId(), "in", usersGroups)
+      .get()
+      .then((querySnapshot) => {
+        if (querySnapshot.size > 0) {
+          let groupsArray = [];
+          querySnapshot.forEach((doc) => {
+            let newDoc = doc.data();
+            newDoc._id = doc.id;
+            groupsArray.push(newDoc);
+          });
+          resolve(groupsArray);
+        }
+      })
+      .catch((error) => {
+        reject("Error retrieving the data: " + error);
+      })
+      .finally(() => {
+        setIsGroupsLoaded(true);
+      });
+    });
+  };  
+
+  const GetGroups = async () => {
+    setIsGroupsLoaded(false);
+    await fetchUsersGroups()
+    .then((userGroups) => {
+      fetchRooms(userGroups)
+      .then((groupsArray) => {
+        setGroupsList(groupsArray);
+      })
+      .catch((error) => {
+        Alert.alert(
+          "Error Sharing Content",
+          "An error has occurred, and you will not be able to share content. " + error,
+          [
+            {text: "OK"}
+          ]
+        );
+      });
+    })
+    .catch((error) => {
+      Alert.alert(
+        "Error Sharing Content",
+        "An error has occurred, and you will not be able to share content. " + error,
+        [
+          {text: "OK"}
+        ]
+      );
+    });
+  };
+
+  const shareContent = (item) => {
+    let contentCollection;
+    let contentTypeSingular;
+    switch (props.contentType.toLowerCase()) {
+      case 'meditations': 
+        contentCollection = 'meditations';
+        contentTypeSingular = 'meditation';
+        break;
+      case 'challenges': 
+        contentCollection = 'challenges'; 
+        contentTypeSingular = 'challenge';
+        break;
+      case 'courses': 
+        contentCollection = 'courses'; 
+        contentTypeSingular = "course";
+        break;
+      case 'yoga videos': 
+        contentCollection = 'yoga'; 
+        contentTypeSingular = "yoga video";
+        break;
+      case 'podcasts': 
+        contentCollection = 'podcasts'; 
+        contentTypeSingular = "podcast";
+        break;
+      case 'journal prompts': 
+        contentCollection = 'journalPrompts';
+        contentTypeSingular = "journal prompt";
+        break;
+      default: contentCollection = ""; contentTypeSingular = "";
+    }
+
+    if (contentCollection == "") {
+      Alert.alert(
+        "Error Sharing Content",
+        "An error has occurred. You cannot share this content. " + error,
+        [
+          {text: "OK"}
+        ]
+      );
+    }
+    else {
+      setSendItem({
+        item: item,
+        contentType: contentTypeSingular,
+        contentCollection: contentCollection,
+        contentComponent: props.contentComponent
+      });
+      setGroupsModalVisible(true);
+    }
+  };
 
   useEffect(() => {
     GetTopics(setIsTopicsLoaded, setTopicsList);
@@ -106,6 +232,12 @@ const ContentList = (props) => {
 
             loadAdmin();
   }, []);
+
+  useEffect(() => {
+    if (isFocused) {
+      GetGroups();
+    }
+  }, [isFocused]);
 
   const [filteredList, setFilteredList] = useState(props.data);
   const [filterModalVisible, setFilterModalVisible] = useState(false);
@@ -133,7 +265,8 @@ const ContentList = (props) => {
           contentType={props.contentType}
           filteredList={filteredList}
           contentComponent={props.contentComponent}
-          navigation={props.navigation} />
+          navigation={props.navigation} 
+          shareContent={shareContent} />
         <FilterModal
           allData={props.data}
           topicsList={topicsList}
@@ -144,6 +277,11 @@ const ContentList = (props) => {
           filterSettings={filterSettings}
           filteredListFunction={setFilteredList}
           filteredList={filteredList}/>
+        <ShareContentGroupSelector
+          visibleFunction={setGroupsModalVisible}
+          visible={groupsModalVisible}
+          groupsList={groupsList} 
+          sendItem={sendItem} />
           {admin &&
         <TouchableOpacity style={styles.floatingActionButtonBottomRight} 
           onPress={() => props.navigation.navigate("Add".concat(props.contentComponent), {

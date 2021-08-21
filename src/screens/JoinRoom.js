@@ -27,30 +27,74 @@ Alert.alert(
     );
 }
 
+const checkValidRoom = () => {
+  if (code == "") {
+    Alert.alert(
+      "Invalid Group Code",
+      "An invalid group code was entered: " + code,
+      [
+        { text: "OK"}
+      ],
+      { cancelable: true }
+    );
+  }
+  else {
+    const dbh = firebase.firestore();
+    dbh.collection("Groups").doc(code).get()
+    .then((doc) => {
+  
+      if (doc.exists) {
+        joinRoom();
+      }
+      else {
+        Alert.alert(
+          "Invalid Group Code",
+          "An invalid group code was entered: " + code,
+          [
+            { text: "OK"}
+          ],
+          { cancelable: true }
+        );
+      }
+    })
+    .catch((error) => {
+      Alert.alert(
+        "Error Joining Room",
+        "An error has occurred. Please try again."
+        [
+          { text: "OK"}
+        ],
+        { cancelable: true }
+      );
+    });
+  }
+};
+
 async function joinRoom(){
 var bool = false;
- const dbh = firebase.firestore();
-    await dbh.collection("Users").doc(firebase.auth().currentUser.uid).get()
-    .then((doc) => {
-      if (doc.exists) {
-        if (!doc.data().GroupID || doc.data().GroupID.length <= 10) {
-          bool = true;
-        }
+  const dbh = firebase.firestore();
+  await dbh.collection("Users").doc(firebase.auth().currentUser.uid).get()
+  .then((doc) => {
+    if (doc.exists) {
+      if (!doc.data().GroupID || doc.data().GroupID.length <= 10) {
+        bool = true;
       }
-      })
-if(bool){
-var user = firebase.auth().currentUser;
-const dbh = firebase.firestore().collection('Users').doc(firebase.auth().currentUser.uid)
-await dbh.set({
-GroupID: firebase.firestore.FieldValue.arrayUnion(code)
-}, {merge:true});
+    }
+  });
+  if(bool){
+    var user = firebase.auth().currentUser;
+    const dbh = firebase.firestore().collection('Users').doc(firebase.auth().currentUser.uid)
+    await dbh.set({
+      GroupID: firebase.firestore.FieldValue.arrayUnion(code)
+      }, {merge:true});
 
-props.navigation.navigate("Home", { navigation: props.navigation })
-}
-else if (!bool)
-{
-createOneButtonAlertForChatMax();
-}
+    props.navigation.goBack();
+    props.navigation.replace("ChatRoomHome");
+  }
+  else if (!bool)
+  {
+    createOneButtonAlertForChatMax();
+  }
 }
 
 return(
@@ -68,7 +112,7 @@ return(
              <Button
                     buttonStyle={styles.button}
                     titleStyle={styles.buttonText}
-                    title="Join Room"  onPress={() => joinRoom()}
+                    title="Join Room"  onPress={() => checkValidRoom()}
                     />
      </View>
      </View>

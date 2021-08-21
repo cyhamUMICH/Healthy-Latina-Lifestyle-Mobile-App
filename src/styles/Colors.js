@@ -2,6 +2,7 @@ export const colors =
 {
   appBackground: '#fff',
   text: '#000',
+  leftChatText: '#fff',
   inputPlaceholder: '#0005',
   spinner: '#00A89D',
   accentBackground: '#00A89D',
