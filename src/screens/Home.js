@@ -203,7 +203,9 @@ const Home = (props) => {
             
             // https://firebase.google.com/docs/storage/web/download-files
             let storage = firebase.storage();
+            
             let pathReference = storage.ref(newDoc.imagePath);
+            
             pathReference.getDownloadURL()
             .then((url) => {
               newDoc.imagePath = url;
@@ -215,6 +217,8 @@ const Home = (props) => {
               // Add to the data list once the image has been resolved
               setDataFunction(oldList => [...oldList, newDoc]);
             });
+
+
           })
         }
       })

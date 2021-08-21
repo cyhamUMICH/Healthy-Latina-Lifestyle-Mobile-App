@@ -11,6 +11,7 @@ import { Drawer } from 'react-native-paper';
 import { Groups } from '../screens/Groups';
 import defaultImage from '../../assets/logo-icon.png';
 import { ScrollView } from 'react-native-gesture-handler';
+import SetFeatured from './SetFeatured';
 
 const JournalPromptCards = (props) => {
 
@@ -31,7 +32,6 @@ const JournalPromptCard = ({item}, contentComponent, navigation) => {
  
   return (
 
-
     <TouchableOpacity
       activeOpacity={0.7}
       onPress={() => {navigation.navigate(contentComponent, item)}}>
@@ -41,6 +41,9 @@ const JournalPromptCard = ({item}, contentComponent, navigation) => {
             <Card.Title style={styles.journalCardTitle}>{item.title}</Card.Title>
             <Text style={styles.journalCardDesc}> {item.description} </Text>
           </View>
+          <TouchableOpacity onPress={() => {navigation.navigate("ChatRoomHome", item)}}>
+              <Icon name="send" type="font-awesome" color={colors.text} />
+            </TouchableOpacity>
         </View>
       </Card>
     </TouchableOpacity>
