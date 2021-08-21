@@ -14,10 +14,10 @@ import 'firebase/storage';
 
 const CreateRoom =(props)=> {
 
-const[code, setCode] = useState('');
+  const[code, setCode] = useState('');
 
-function createOneButtonAlertForChatMax(){
-Alert.alert(
+  function createOneButtonAlertForChatMax(){
+    Alert.alert(
       "Group Maximum Reached",
       "You are cxurrently at the max allowed chat rooms per user (10). Please Leave a chat room to join another",
       [
@@ -25,9 +25,9 @@ Alert.alert(
       ],
       { cancelable: true }
     );
-}
+  }
 
-async function CreateRoom() {
+  async function CreateRoom() {
     var user = firebase.auth().currentUser;
     var docID;
     await firebase.firestore().collection("Groups").add({
@@ -37,9 +37,9 @@ async function CreateRoom() {
     .then(docRef => docID = docRef.id);
   }
 
-async function createRoom(){
-var bool = false;
- const dbh = firebase.firestore();
+  async function createRoom(){
+    var bool = false;
+    const dbh = firebase.firestore();
     await dbh.collection("Users").doc(firebase.auth().currentUser.uid).get()
     .then((doc) => {
       if (doc.exists) {
@@ -47,48 +47,50 @@ var bool = false;
           bool = true;
         }
       }
+      });
+
+    if(bool){
+      var user = firebase.auth().currentUser;
+      var docID;
+      await firebase.firestore().collection("Groups").add({
+        name: code,
+        message:'default'
       })
-if(bool){
-var user = firebase.auth().currentUser;
-var docID;
-    await firebase.firestore().collection("Groups").add({
-      name: code,
-      message:'default'
-    })
-    .then(docRef => docID = docRef.id);
+      .then(docRef => docID = docRef.id);
 
-const dbh = firebase.firestore().collection('Users').doc(firebase.auth().currentUser.uid)
-await dbh.set({
-GroupID: firebase.firestore.FieldValue.arrayUnion(docID)
-}, {merge:true});
+      const dbh = firebase.firestore().collection('Users').doc(firebase.auth().currentUser.uid)
+      await dbh.set({
+        GroupID: firebase.firestore.FieldValue.arrayUnion(docID)
+      }, {merge:true});
 
-props.navigation.navigate("Home", { navigation: props.navigation })
-}
-else if (!bool)
-{
-createOneButtonAlertForChatMax();
-}
-}
+      props.navigation.goBack();
+      props.navigation.replace("ChatRoomHome");
+    }
+    else if (!bool)
+    {
+      createOneButtonAlertForChatMax();
+    }
+  }
 
-return(
+  return(
     <View style={styles.app}>
-    <View style={styles.fullWidthWindow}>
-    <View style={styles.inputView}>
-            <TextInput
-              style={styles.inputText}
-              textAlign="center"
-              placeholder="Room Name"
-              placeholderTextColor={colors.text}
-              onChangeText={code => setCode(code)}
-            />
-            </View>
-             <Button
-                    buttonStyle={styles.button}
-                    titleStyle={styles.buttonText}
-                    title="Create Room"  onPress={() => createRoom()}
-                    />
-     </View>
-     </View>
+      <View style={styles.fullWidthWindow}>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.inputText}
+            textAlign="center"
+            placeholder="Room Name"
+            placeholderTextColor={colors.text}
+            onChangeText={code => setCode(code)}
+          />
+        </View>
+        <Button
+          buttonStyle={styles.button}
+          titleStyle={styles.buttonText}
+          title="Create Room"  onPress={() => createRoom()}
+          />
+      </View>
+    </View>
   );
 }
 export default CreateRoom;
