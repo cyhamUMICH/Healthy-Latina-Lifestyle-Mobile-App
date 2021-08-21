@@ -4,6 +4,7 @@ import { Text } from 'react-native';
 import { styles } from '../styles/Styles';
 import { colors } from '../styles/Colors';
 import { Button } from 'react-native-elements';
+import { CommonActions } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 import { Image } from 'react-native';
 import { Component } from 'react-native';
@@ -21,7 +22,7 @@ const[email, setEmail] = useState('');
 function createOneButtonAlertForNotValidEmail(){
 Alert.alert(
       "Invalid Email",
-      "Please enter an email address associated with an account, or enter a valid email",
+      "Please enter a valid email address associated with an account.",
       [
         { text: "OK"}
       ],
@@ -30,21 +31,36 @@ Alert.alert(
 }
 
 function createOneButtonAlertForSentEmail(){
-Alert.alert(
-      "Email Sent",
-      "An email has been sent to the account associated with that email. Please use the link provided to update your password",
-      [
-        { text: "OK"}
-      ],
-      { cancelable: true }
-    );
+  Alert.alert(
+    "Email Sent",
+    "An email has been sent to the account associated with that email. Please use the link provided to update your password." +
+      (firebase.auth().currentUser !== null ? "\n\nNote: You will be logged out now." : ""),
+    [
+      { 
+        text: "OK",
+        onPress: () => {
+          if (firebase.auth().currentUser !== null) {
+            firebase.auth().signOut().then(() => {
+              props.navigation.dispatch(
+                CommonActions.reset({
+                  index: 1,
+                  routes: [
+                    { name: 'Login' },
+                  ],
+                })
+              );
+            });
+          }
+        }
+      }
+    ]
+  );
 }
 
 function sendEmail(){
 firebase
 .auth()
 .sendPasswordResetEmail(email)
-.then(() => props.navigation.navigate('Login'))
 
 createOneButtonAlertForSentEmail();
 

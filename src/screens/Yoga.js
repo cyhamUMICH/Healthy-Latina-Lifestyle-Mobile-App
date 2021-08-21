@@ -42,8 +42,8 @@ const Yoga = ({route}) => {
   const setupVideo = async () => {
     if (!item.videoPath) {
       Alert.alert(
-        "Error Getting Video",
-        "There was an error when retrieving the video.current.",
+        "Error Retrieving Video",
+        "There was an error when retrieving the video.",
         [
           {text: "OK"}
         ]
@@ -59,8 +59,8 @@ const Yoga = ({route}) => {
       pathReference.getDownloadURL()
       .catch((error) => {
         Alert.alert(
-          "Error Getting Video",
-          "There was an error when retrieving the video.current.",
+          "Error Retrieving Video",
+          "There was an error when retrieving the video.",
           [
             {text: "OK"}
           ]
@@ -154,7 +154,7 @@ const Yoga = ({route}) => {
             <Video
               ref={video}
               posterSource={{
-                uri: item.imagePath
+                uri: item.imagePath ? item.imagePath : Image.resolveAssetSource(defaultImage).uri
               }}
               usePoster={true}
               style={styles.yogaVideo}

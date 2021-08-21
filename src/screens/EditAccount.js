@@ -309,7 +309,7 @@ const EditAccount = (props) => {
           <Button 
             buttonStyle={styles.button}
             titleStyle={styles.buttonText}
-            title="Change profile picture"
+            title="Change Profile Picture"
             onPress= {() => changePicture()}
           />
           <View style={styles.inputView}>

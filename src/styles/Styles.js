@@ -658,20 +658,6 @@ export const styles = StyleSheet.create({
     height: '100%',
     textAlign: 'left',
     textAlignVertical: 'top'
-  },
-  courseTitle:{
-    textAlign: 'center',
-    flexWrap: 'wrap',
-    fontSize: 20,
-    lineHeight: 30,
-    bottom: "35%"
-  },
-  courseDesc:{
-    textAlign: 'center',
-    flexWrap: 'wrap',
-    fontSize: 16,
-    lineHeight: 30,
-    bottom: "5%"
   }
 });
   

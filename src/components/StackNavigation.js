@@ -73,7 +73,7 @@ const StackNavigation = () => {
       <Stack.Screen name="ChallengeDay" component={ChallengeDay} options={{ title: 'Challenge Day'}} />
       <Stack.Screen name="ChatScreen" component={ChatScreen} options={({ route}) =>({ title: route.params.thread.name })} />
       <Stack.Screen name="ChatRoomHome" component={ChatRoomHome} options={{ title: 'Chat Rooms'}} />
-      <Stack.Screen name="Yoga" component={Yoga} options={{ title: 'Yoga'}} />
+      <Stack.Screen name="Yoga" component={Yoga} options={{ title: 'Yoga Video'}} />
       <Stack.Screen name="YogaList" component={YogaList} options={{ title: 'Yoga Videos'}} />
       <Stack.Screen name="ShareContent" component={ShareContent} options={{ title: 'ShareContent'}} />
       <Stack.Screen name="Groups" component={Groups} options={{ title: 'Groups'}} />

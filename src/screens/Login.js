@@ -46,31 +46,36 @@ const Login = (props) => {
 
   async function handleLogon(){
 
-    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;//somehow makes sure that its an email
-    var checkEmail = username;
-    if (reg.test(checkEmail) === false) {
-      const temp = await loadEmail(checkEmail);
-      checkEmail = temp;
+    if (username == "" || password == "") {
+      setNeed(true);
     }
+    else {
+      let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;//somehow makes sure that its an email
+      var checkEmail = username;
+      if (reg.test(checkEmail) === false) {
+        const temp = await loadEmail(checkEmail);
+        checkEmail = temp;
+      }
 
-    //if username and password arte in the database,
-    firebase.auth().signInWithEmailAndPassword(checkEmail, password)
-    .then(res => {
-      props.navigation.dispatch(
-        CommonActions.reset({
-          index: 1,
-          routes: [
-            { name: 'Home',
-              params: {navigation: props.navigation} 
-            },
-          ],
-        })
-      );
-      setNeed(false);
-    })
-    .catch(error => setNeed(true))
-    //console.log(error.toString(error));
-
+      //if username and password arte in the database,
+      firebase.auth().signInWithEmailAndPassword(checkEmail, password)
+      .then(res => {
+        props.navigation.dispatch(
+          CommonActions.reset({
+            index: 1,
+            routes: [
+              { name: 'Home',
+                params: {navigation: props.navigation} 
+              },
+            ],
+          })
+        );
+        setNeed(false);
+      })
+      .catch(error => setNeed(true))
+      //console.log(error.toString(error));
+    }
+  
     //else if they aren't add winvalid username/password.
   }
 
