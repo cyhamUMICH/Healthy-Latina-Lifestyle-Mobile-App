@@ -88,8 +88,8 @@ const Challenge = ({route}, props) => {
              <Tags difficulty={item.difficulty} topics={item.topics}></Tags>
              <Text style={styles.contentTitle}>{item.title}</Text> 
              <Text style={styles.contentDesc}>{item.description}{"\n"}</Text>
-             <Text>Challenge starts on: {theStartDate}.</Text>
-             <Text>Challenge ends on: {theEndDate}.</Text>
+             <Text>This challenge starts on {theStartDate}.</Text>
+             <Text>This challenge ends on {theEndDate}.</Text>
              <Text>This challenge is {duration} day(s) long.</Text>
              <ChallengeDayList 
                contentComponent="ChallengeDay"
