@@ -7,7 +7,6 @@ import { Divider } from 'react-native-elements';
 const CourseSections = (props) => {
   
   let elements = []
-
   for(let i = 0; i < props.numSections; i++) {
     elements.push(
       <View key={i} style={styles.flexContainer}>
@@ -18,18 +17,18 @@ const CourseSections = (props) => {
           placeholder="title" placeholderTextColor={colors.text}
           multiline textAlignVertical="top" numberOfLines={6} 
           onChangeText={input => {
-            let tempTitleArr = [...props.courseSectionTitle];
+            let tempTitleArr = [...props.courseSectionTitles];
             tempTitleArr[i] = input;
-            props.setCourseSectionTitle(tempTitleArr);
+            props.setCourseSectionTitles(tempTitleArr);
           }} />
         <TextInput 
           style={styles.inputText} textAlign="left"
           placeholder="description" placeholderTextColor={colors.text}
           multiline textAlignVertical="top" numberOfLines={6} 
           onChangeText={input => {
-            let tempDescriptionsArr = [...props.courseSectionDesc];
+            let tempDescriptionsArr = [...props.courseSectionDescs];
             tempDescriptionsArr[i] = input;
-            props.setCourseSectionDesc(tempDescriptionsArr);
+            props.setCourseSectionDescs(tempDescriptionsArr);
           }} />
       </View>
     );

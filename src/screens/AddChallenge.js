@@ -124,7 +124,7 @@ const AddChallenge = ({route}) => {
 
       for(let i = 0; i < duration; i++) {
         const challengeDayRef = await dbh.collection("challengeDays").add({
-          challenge: docRef,
+          challengeID: docRef.id,
           description: challengeDaysDescriptions[i],
           date: challengeDaysDates[i]
         });

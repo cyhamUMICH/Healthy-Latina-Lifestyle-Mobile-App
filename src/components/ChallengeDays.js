@@ -9,9 +9,9 @@ const printDate = (date) => {
     // Add one since getMonth() gives the month index
     let month = date.getMonth() + 1;
   
-    return month + '/' + date.getDate() + '/' + date.getFullYear();;
+    return month + '/' + date.getDate() + '/' + date.getFullYear();
   }
-}
+};
 
 const ChallengeDays = (props) => {
   useEffect(() => {

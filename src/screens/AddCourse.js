@@ -31,8 +31,8 @@ const AddCourse = ({route}) => {
   const [cost, setCost] = useState();
   const [isFeatured, setIsFeatured] = useState(false);
   const [numSections, setNumSections] = useState();
-  const [courseSectionDesc, setCourseSectionDesc] = useState();
-  const [courseSectionTitle, setCourseSectionTitle] = useState();
+  const [courseSectionDescs, setCourseSectionDescs] = useState([]);
+  const [courseSectionTitles, setCourseSectionTitles] = useState([]);
 
   const [isUploadInProgress, setIsUploadInProgress] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
@@ -86,6 +86,15 @@ const AddCourse = ({route}) => {
         imagePath: baseImagePath + docRef.id + "__" + image.filename,
         videoPath: baseVideoPath + docRef.id + "__" + video.name
       });
+
+      for(let i = 0; i < numSections; i++) {
+        const courseSectionRef = await dbh.collection("courseSections").add({
+          courseID: docRef.id,
+          index: i,
+          title: courseSectionTitles[i],
+          description: courseSectionDescs[i]
+        });
+      }
 
       const imageLoc = firebase.storage().ref().child(baseImagePath.concat(docRef.id).concat("__").concat(image.filename));
       // Code from: https://medium.com/@ericmorgan1/upload-images-to-firebase-in-expo-c4a7d4c46d06
@@ -207,10 +216,10 @@ const AddCourse = ({route}) => {
                     onChangeText={input => setNumSections(input)} />
                   <CourseSections
                     numSections={numSections}
-                    courseSectionDesc={courseSectionDesc}
-                    setCourseSectionDesc={setCourseSectionDesc}
-                    courseSectionTitle={courseSectionTitle}
-                    setCourseSectionTitle={setCourseSectionTitle}
+                    courseSectionDescs={courseSectionDescs}
+                    setCourseSectionDescs={setCourseSectionDescs}
+                    courseSectionTitles={courseSectionTitles}
+                    setCourseSectionTitles={setCourseSectionTitles}
                   />
                   <CheckBox
                     title="Featured"

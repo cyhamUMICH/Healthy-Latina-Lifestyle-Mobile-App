@@ -26,7 +26,6 @@ const Course = ({route}) => {
 
   const item = route.params.item;
   const navigation = route.params.navigation;
-  const theContentID = item.contentID;
 
   const [data, setData] = useState([]);
 
@@ -35,41 +34,25 @@ const Course = ({route}) => {
     const fetchList = async () => {
       const dbh = firebase.firestore();
       
-      dbh.collection("courseSections").orderBy('date').get()
+      dbh.collection("courseSections").where("courseID", "==", item.contentID).get()
       .then((querySnapshot) => {
-
-        console.log("Snapshot size:" + querySnapshot.size)
 
         if (querySnapshot.size == 0) {
           setIsLoaded(true);
         }
         else {
-          let countCourses = 0;
-      
+          let count = 0;
           querySnapshot.forEach((doc) => {
             let newDoc = doc.data();
             newDoc.contentID = doc.id;
 
-            const courseRef = newDoc.course.id;   
-
-            // https://firebase.google.com/docs/storage/web/download-files
-            let storage = firebase.storage();
-            let pathReference = storage.ref(newDoc.title);
+            setData(oldList => [...oldList, newDoc]);
+            count++;
             
-            if(courseRef == theContentID){
-
-                countCourses++;
-                setData(oldList => [...oldList, newDoc]);
-
-            }
-
-            if(countCourses == item.numSections){
-
+            if(querySnapshot.size === count){
               setIsLoaded(true);
-              
             }
-          
-          })
+          });
         }
       })
       .catch((error) => {
@@ -238,7 +221,7 @@ const Course = ({route}) => {
                contentComponent="CourseSection"
                navigation={navigation}
                contentType="Course Sections"
-               data={data.sort((docA, docB) => docB.dateAdded - docA.dateAdded)} />
+               data={data.sort((docA, docB) => docA.index - docB.index)} />
         </View>
       </View>
     </View>

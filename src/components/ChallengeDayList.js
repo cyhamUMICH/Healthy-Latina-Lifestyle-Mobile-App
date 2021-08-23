@@ -7,6 +7,14 @@ import Tags from './Tags';
 import LoadingSpinner from './LoadingSpinner';
 import defaultImage from '../../assets/logo-icon.png';
 
+const printDate = (date) => {
+  if (date) {
+    // Add one since getMonth() gives the month index
+    let month = date.getMonth() + 1;
+  
+    return month + '/' + date.getDate() + '/' + date.getFullYear();
+  }
+};
 
 const ChallengeCards = (props) => {
   return (
@@ -46,7 +54,7 @@ const ChallengeCard = ({item}, contentComponent, navigation) => {
         </Card.Image> */}
         {/* <Tags difficulty={item.difficulty} topics={item.topics}></Tags> */}
         {/* <Card.Divider/> */}
-        <Card.Title style={styles.cardTitle}>{item.title}</Card.Title>
+        <Card.Title style={styles.cardTitle}>{printDate(item.date.toDate())}</Card.Title>
       </Card>
     </TouchableOpacity>
   );
